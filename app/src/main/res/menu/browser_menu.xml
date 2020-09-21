@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/action_backward"
+        android:icon="@drawable/ic_backward"
+        android:title="@string/back" />
+
+    <item
+        android:id="@+id/action_forward"
+        android:icon="@drawable/ic_forward"
+        android:title="@string/forward" />
+
+    <item
+        android:id="@+id/action_addbookmark"
+        android:icon="@drawable/bookmark"
+        android:title="@string/bookmark" />
+    <item
+        android:id="@+id/action_viewaddbookmark"
+        android:icon="@drawable/view_bookmark"
+        android:title="@string/view_bookmark_s" />
+
+
+</menu>

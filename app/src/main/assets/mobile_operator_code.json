@@ -1,0 +1,6064 @@
+{
+  "ref_operator_codes" : [
+ {
+   "CountryName": "Afghanistan",
+   "OperatorCode": "70",
+   "OperatorName": "AWCC"
+ },
+ {
+   "CountryName": "Afghanistan",
+   "OperatorCode": "71",
+   "OperatorName": "AWCC"
+ },
+ {
+   "CountryName": "Afghanistan",
+   "OperatorCode": "72",
+   "OperatorName": "Roshan"
+ },
+ {
+   "CountryName": "Afghanistan",
+   "OperatorCode": "73",
+   "OperatorName": "Etisalat"
+ },
+ {
+   "CountryName": "Afghanistan",
+   "OperatorCode": "74",
+   "OperatorName": "SALAAM (state owned)"
+ },
+ {
+   "CountryName": "Afghanistan",
+   "OperatorCode": "75",
+   "OperatorName": "Afghan Telecom (state owned)"
+ },
+ {
+   "CountryName": "Afghanistan",
+   "OperatorCode": "76",
+   "OperatorName": "MTN"
+ },
+ {
+   "CountryName": "Afghanistan",
+   "OperatorCode": "77",
+   "OperatorName": "MTN"
+ },
+ {
+   "CountryName": "Afghanistan",
+   "OperatorCode": "78",
+   "OperatorName": "Etisalat"
+ },
+ {
+   "CountryName": "Afghanistan",
+   "OperatorCode": "79",
+   "OperatorName": "Roshan"
+ },
+ {
+   "CountryName": "Åland Islands",
+   "OperatorCode": "457",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Albania",
+   "OperatorCode": "62 - 65",
+   "OperatorName": "?"
+ },
+ {
+   "CountryName": "Albania",
+   "OperatorCode": "66",
+   "OperatorName": "PLUS Communication"
+ },
+ {
+   "CountryName": "Albania",
+   "OperatorCode": "67",
+   "OperatorName": "EAGLE MOBILE"
+ },
+ {
+   "CountryName": "Albania",
+   "OperatorCode": "68",
+   "OperatorName": "AMC"
+ },
+ {
+   "CountryName": "Albania",
+   "OperatorCode": "69",
+   "OperatorName": "Vodafone"
+ },
+ {
+   "CountryName": "Algeria",
+   "OperatorCode": "5",
+   "OperatorName": "Nedjma Telecom"
+ },
+ {
+   "CountryName": "Algeria",
+   "OperatorCode": "6",
+   "OperatorName": "Mobilis-Algerie Telecom"
+ },
+ {
+   "CountryName": "Algeria",
+   "OperatorCode": "7",
+   "OperatorName": "Orascom Telecom Algerie"
+ },
+ {
+   "CountryName": "American Samoa",
+   "OperatorCode": "684",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Andorra",
+   "OperatorCode": "3",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Angola",
+   "OperatorCode": "91",
+   "OperatorName": "MOVICEL - CDMA"
+ },
+ {
+   "CountryName": "Angola",
+   "OperatorCode": "92",
+   "OperatorName": "UNITEL - GSM"
+ },
+ {
+   "CountryName": "Angola",
+   "OperatorCode": "93",
+   "OperatorName": "UNITEL - GSM"
+ },
+ {
+   "CountryName": "Anguilla",
+   "OperatorCode": "264 772",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Antigua and Barbuda",
+   "OperatorCode": "268 7xx",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Argentina",
+   "OperatorCode": "Sep-15",
+   "OperatorName": "All carriers: Claro, Movistar, Personal, Tuenti"
+ },
+ {
+   "CountryName": "Armenia",
+   "OperatorCode": "55",
+   "OperatorName": "Ucom"
+ },
+ {
+   "CountryName": "Armenia",
+   "OperatorCode": "95",
+   "OperatorName": "Ucom"
+ },
+ {
+   "CountryName": "Armenia",
+   "OperatorCode": "41",
+   "OperatorName": "Ucom"
+ },
+ {
+   "CountryName": "Armenia",
+   "OperatorCode": "44",
+   "OperatorName": "Ucom"
+ },
+ {
+   "CountryName": "Armenia",
+   "OperatorCode": "77",
+   "OperatorName": "VivaCell-MTS"
+ },
+ {
+   "CountryName": "Armenia",
+   "OperatorCode": "93",
+   "OperatorName": "VivaCell-MTS"
+ },
+ {
+   "CountryName": "Armenia",
+   "OperatorCode": "94",
+   "OperatorName": "VivaCell-MTS"
+ },
+ {
+   "CountryName": "Armenia",
+   "OperatorCode": "98",
+   "OperatorName": "VivaCell-MTS"
+ },
+ {
+   "CountryName": "Armenia",
+   "OperatorCode": "91",
+   "OperatorName": "Beeline Armenia"
+ },
+ {
+   "CountryName": "Armenia",
+   "OperatorCode": "99",
+   "OperatorName": "Beeline Armenia"
+ },
+ {
+   "CountryName": "Armenia",
+   "OperatorCode": "43",
+   "OperatorName": "Beeline Armenia"
+ },
+ {
+   "CountryName": "Armenia",
+   "OperatorCode": "97",
+   "OperatorName": "Karabakh Telecom"
+ },
+ {
+   "CountryName": "Artsakh",
+   "OperatorCode": "97",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Aruba",
+   "OperatorCode": "??",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Ascension Island",
+   "OperatorCode": "??",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Australia",
+   "OperatorCode": "4",
+   "OperatorName": "any"
+ },
+ {
+   "CountryName": "Australian Antarctic Territory",
+   "OperatorCode": "1x",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Austria",
+   "OperatorCode": "650",
+   "OperatorName": "T-Mobile Austria GmbH (telering)"
+ },
+ {
+   "CountryName": "Austria",
+   "OperatorCode": "660",
+   "OperatorName": "Hutchison 3G Austria GmbH (drei)"
+ },
+ {
+   "CountryName": "Austria",
+   "OperatorCode": "664",
+   "OperatorName": "mobilkom Austria AG (Mobilkom, A1)"
+ },
+ {
+   "CountryName": "Austria",
+   "OperatorCode": "676",
+   "OperatorName": "T-Mobile Austria GmbH (T-Mobile, formerly max)"
+ },
+ {
+   "CountryName": "Austria",
+   "OperatorCode": "680",
+   "OperatorName": "mobilkom Austria AG (Bob)"
+ },
+ {
+   "CountryName": "Austria",
+   "OperatorCode": "677",
+   "OperatorName": "HoT (T-Mobile, formerly max)"
+ },
+ {
+   "CountryName": "Austria",
+   "OperatorCode": "681",
+   "OperatorName": "YESSS! Telekommunikation GmbH"
+ },
+ {
+   "CountryName": "Austria",
+   "OperatorCode": "688",
+   "OperatorName": "Tele2 Mobil"
+ },
+ {
+   "CountryName": "Austria",
+   "OperatorCode": "699",
+   "OperatorName": "Hutchison 3G Austria GmbH (drei) formerly Orange Austria (Orange [formerly ONE], Yesss)"
+ },
+ {
+   "CountryName": "Azerbaijan",
+   "OperatorCode": "40",
+   "OperatorName": "Catel"
+ },
+ {
+   "CountryName": "Azerbaijan",
+   "OperatorCode": "50",
+   "OperatorName": "Azercell"
+ },
+ {
+   "CountryName": "Azerbaijan",
+   "OperatorCode": "51",
+   "OperatorName": "Azercell"
+ },
+ {
+   "CountryName": "Azerbaijan",
+   "OperatorCode": "55",
+   "OperatorName": "Bakcell"
+ },
+ {
+   "CountryName": "Azerbaijan",
+   "OperatorCode": "70",
+   "OperatorName": "Nar Mobile"
+ },
+ {
+   "CountryName": "Azerbaijan",
+   "OperatorCode": "77",
+   "OperatorName": "Azerfon-Vodafone"
+ },
+ {
+   "CountryName": "Bahamas",
+   "OperatorCode": "242 35x",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Bahamas",
+   "OperatorCode": "242 45x",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Bahamas",
+   "OperatorCode": "242 55x",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Bahrain",
+   "OperatorCode": "31",
+   "OperatorName": "Royal Court"
+ },
+ {
+   "CountryName": "Bahrain",
+   "OperatorCode": "322",
+   "OperatorName": "Batelco"
+ },
+ {
+   "CountryName": "Bahrain",
+   "OperatorCode": "33",
+   "OperatorName": "Viva"
+ },
+ {
+   "CountryName": "Bahrain",
+   "OperatorCode": "340",
+   "OperatorName": "Viva"
+ },
+ {
+   "CountryName": "Bahrain",
+   "OperatorCode": "341",
+   "OperatorName": "Viva"
+ },
+ {
+   "CountryName": "Bahrain",
+   "OperatorCode": "343",
+   "OperatorName": "Viva"
+ },
+ {
+   "CountryName": "Bahrain",
+   "OperatorCode": "344",
+   "OperatorName": "Viva"
+ },
+ {
+   "CountryName": "Bahrain",
+   "OperatorCode": "345",
+   "OperatorName": "Viva"
+ },
+ {
+   "CountryName": "Bahrain",
+   "OperatorCode": "353",
+   "OperatorName": "Viva"
+ },
+ {
+   "CountryName": "Bahrain",
+   "OperatorCode": "355",
+   "OperatorName": "Viva"
+ },
+ {
+   "CountryName": "Bahrain",
+   "OperatorCode": "36",
+   "OperatorName": "Zain"
+ },
+ {
+   "CountryName": "Bahrain",
+   "OperatorCode": "377",
+   "OperatorName": "Zain"
+ },
+ {
+   "CountryName": "Bahrain",
+   "OperatorCode": "383",
+   "OperatorName": "Batelco"
+ },
+ {
+   "CountryName": "Bahrain",
+   "OperatorCode": "384",
+   "OperatorName": "Batelco"
+ },
+ {
+   "CountryName": "Bahrain",
+   "OperatorCode": "388",
+   "OperatorName": "Batelco"
+ },
+ {
+   "CountryName": "Bahrain",
+   "OperatorCode": "39",
+   "OperatorName": "Batelco"
+ },
+ {
+   "CountryName": "Bahrain",
+   "OperatorCode": "663",
+   "OperatorName": "Zain"
+ },
+ {
+   "CountryName": "Bahrain",
+   "OperatorCode": "666",
+   "OperatorName": "Zain"
+ },
+ {
+   "CountryName": "Bahrain",
+   "OperatorCode": "669",
+   "OperatorName": "Zain"
+ },
+ {
+   "CountryName": "Bangladesh",
+   "OperatorCode": "11xx",
+   "OperatorName": "Citycell"
+ },
+ {
+   "CountryName": "Bangladesh",
+   "OperatorCode": "15xx",
+   "OperatorName": "TeleTalk"
+ },
+ {
+   "CountryName": "Bangladesh",
+   "OperatorCode": "16xx",
+   "OperatorName": "Airtel"
+ },
+ {
+   "CountryName": "Bangladesh",
+   "OperatorCode": "17xx",
+   "OperatorName": "GrameenPhone"
+ },
+ {
+   "CountryName": "Bangladesh",
+   "OperatorCode": "18xx",
+   "OperatorName": "Robi"
+ },
+ {
+   "CountryName": "Bangladesh",
+   "OperatorCode": "19xx",
+   "OperatorName": "Banglalink"
+ },
+ {
+   "CountryName": "Barbados",
+   "OperatorCode": "246",
+   "OperatorName": "AT&T Wireless (formerly)"
+ },
+ {
+   "CountryName": "Barbados",
+   "OperatorCode": "246",
+   "OperatorName": "Digicel"
+ },
+ {
+   "CountryName": "Barbados",
+   "OperatorCode": "246",
+   "OperatorName": "LIME"
+ },
+ {
+   "CountryName": "Barbados",
+   "OperatorCode": "246",
+   "OperatorName": "Sunbeach"
+ },
+ {
+   "CountryName": "Belarus",
+   "OperatorCode": "25",
+   "OperatorName": "life:)"
+ },
+ {
+   "CountryName": "Belarus",
+   "OperatorCode": "29 1",
+   "OperatorName": "Velcom"
+ },
+ {
+   "CountryName": "Belarus",
+   "OperatorCode": "29 2",
+   "OperatorName": "MTS"
+ },
+ {
+   "CountryName": "Belarus",
+   "OperatorCode": "29 3",
+   "OperatorName": "Velcom"
+ },
+ {
+   "CountryName": "Belarus",
+   "OperatorCode": "29 4",
+   "OperatorName": "diallog"
+ },
+ {
+   "CountryName": "Belarus",
+   "OperatorCode": "29 5",
+   "OperatorName": "MTS"
+ },
+ {
+   "CountryName": "Belarus",
+   "OperatorCode": "29 6",
+   "OperatorName": "Velcom"
+ },
+ {
+   "CountryName": "Belarus",
+   "OperatorCode": "29 7",
+   "OperatorName": "MTS"
+ },
+ {
+   "CountryName": "Belarus",
+   "OperatorCode": "29 8",
+   "OperatorName": "MTS"
+ },
+ {
+   "CountryName": "Belarus",
+   "OperatorCode": "29 9",
+   "OperatorName": "Velcom"
+ },
+ {
+   "CountryName": "Belarus",
+   "OperatorCode": "33",
+   "OperatorName": "MTS"
+ },
+ {
+   "CountryName": "Belarus",
+   "OperatorCode": "44",
+   "OperatorName": "Velcom"
+ },
+ {
+   "CountryName": "Belgium",
+   "OperatorCode": "456",
+   "OperatorName": "Unleashed (Mobile Vikings / JIM Mobile) (or other)"
+ },
+ {
+   "CountryName": "Belgium",
+   "OperatorCode": "47x",
+   "OperatorName": "Proximus (or other)"
+ },
+ {
+   "CountryName": "Belgium",
+   "OperatorCode": "48x",
+   "OperatorName": "Telenet/Base (or other)"
+ },
+ {
+   "CountryName": "Belgium",
+   "OperatorCode": "49x",
+   "OperatorName": "Orange Belgium (or other)"
+ },
+ {
+   "CountryName": "Belize",
+   "OperatorCode": "6",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Belize",
+   "OperatorCode": "6",
+   "OperatorName": "Mobile Smart"
+ },
+ {
+   "CountryName": "Belize",
+   "OperatorCode": "6",
+   "OperatorName": "Mobile Smart"
+ },
+ {
+   "CountryName": "Benin",
+   "OperatorCode": "9x",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Bermuda",
+   "OperatorCode": "441",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Bhutan",
+   "OperatorCode": "17",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Bolivia",
+   "OperatorCode": "6",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Bolivia",
+   "OperatorCode": "7",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Bonaire",
+   "OperatorCode": "??",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Bosnia and Herzegovina (Bosnia-Herzegovina)",
+   "OperatorCode": "60",
+   "OperatorName": "BH Mobile"
+ },
+ {
+   "CountryName": "Bosnia and Herzegovina (Bosnia-Herzegovina)",
+   "OperatorCode": "61",
+   "OperatorName": "BH Mobile"
+ },
+ {
+   "CountryName": "Bosnia and Herzegovina (Bosnia-Herzegovina)",
+   "OperatorCode": "62",
+   "OperatorName": "BH Mobile"
+ },
+ {
+   "CountryName": "Bosnia and Herzegovina (Bosnia-Herzegovina)",
+   "OperatorCode": "63",
+   "OperatorName": "Eronet"
+ },
+ {
+   "CountryName": "Bosnia and Herzegovina (Bosnia-Herzegovina)",
+   "OperatorCode": "64",
+   "OperatorName": "Hallo"
+ },
+ {
+   "CountryName": "Bosnia and Herzegovina (Bosnia-Herzegovina)",
+   "OperatorCode": "65",
+   "OperatorName": "m:tel"
+ },
+ {
+   "CountryName": "Bosnia and Herzegovina (Bosnia-Herzegovina)",
+   "OperatorCode": "66",
+   "OperatorName": "m:tel"
+ },
+ {
+   "CountryName": "Botswana",
+   "OperatorCode": "7",
+   "OperatorName": "Mascom"
+ },
+ {
+   "CountryName": "Brazil",
+   "OperatorCode": "xx 9",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "British Indian Ocean Territory",
+   "OperatorCode": "387",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "British Virgin Islands",
+   "OperatorCode": "284",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "British Virgin Islands",
+   "OperatorCode": "284",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Brunei",
+   "OperatorCode": "8x",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Bulgaria",
+   "OperatorCode": "48",
+   "OperatorName": "Mobikom (now defunct)"
+ },
+ {
+   "CountryName": "Bulgaria",
+   "OperatorCode": "87",
+   "OperatorName": "Vivacom"
+ },
+ {
+   "CountryName": "Bulgaria",
+   "OperatorCode": "88",
+   "OperatorName": "Mobiltel"
+ },
+ {
+   "CountryName": "Bulgaria",
+   "OperatorCode": "89",
+   "OperatorName": "Globul"
+ },
+ {
+   "CountryName": "Bulgaria",
+   "OperatorCode": "988",
+   "OperatorName": "Other mobile networks"
+ },
+ {
+   "CountryName": "Burkina Faso",
+   "OperatorCode": "70",
+   "OperatorName": "Telmob"
+ },
+ {
+   "CountryName": "Burkina Faso",
+   "OperatorCode": "71",
+   "OperatorName": "Telmob"
+ },
+ {
+   "CountryName": "Burkina Faso",
+   "OperatorCode": "72",
+   "OperatorName": "Telmob"
+ },
+ {
+   "CountryName": "Burkina Faso",
+   "OperatorCode": "74",
+   "OperatorName": "Celtel"
+ },
+ {
+   "CountryName": "Burkina Faso",
+   "OperatorCode": "75",
+   "OperatorName": "Celtel"
+ },
+ {
+   "CountryName": "Burkina Faso",
+   "OperatorCode": "77",
+   "OperatorName": "Celtel"
+ },
+ {
+   "CountryName": "Burkina Faso",
+   "OperatorCode": "78",
+   "OperatorName": "Telecel"
+ },
+ {
+   "CountryName": "Burkina Faso",
+   "OperatorCode": "79",
+   "OperatorName": "Telecel"
+ },
+ {
+   "CountryName": "Burma",
+   "OperatorCode": "",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Burundi",
+   "OperatorCode": "7x",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Cambodia",
+   "OperatorCode": "92",
+   "OperatorName": "Cellcard"
+ },
+ {
+   "CountryName": "Cambodia",
+   "OperatorCode": "12",
+   "OperatorName": "Cellcard"
+ },
+ {
+   "CountryName": "Cambodia",
+   "OperatorCode": "11",
+   "OperatorName": "Cellcard"
+ },
+ {
+   "CountryName": "Cambodia",
+   "OperatorCode": "77",
+   "OperatorName": "Cellcard"
+ },
+ {
+   "CountryName": "Cambodia",
+   "OperatorCode": "99",
+   "OperatorName": "Cellcard"
+ },
+ {
+   "CountryName": "Cameroon",
+   "OperatorCode": "7",
+   "OperatorName": "MTN"
+ },
+ {
+   "CountryName": "Cameroon",
+   "OperatorCode": "9",
+   "OperatorName": "Orange"
+ },
+ {
+   "CountryName": "Canada",
+   "OperatorCode": "",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Canary Islands",
+   "OperatorCode": "??",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Cape Verde",
+   "OperatorCode": "9",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Cayman Islands",
+   "OperatorCode": "345",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Central African Republic",
+   "OperatorCode": "??",
+   "OperatorName": "Telecel"
+ },
+ {
+   "CountryName": "Ceuta",
+   "OperatorCode": "??",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Chad",
+   "OperatorCode": "66",
+   "OperatorName": "Airtel"
+ },
+ {
+   "CountryName": "Chad",
+   "OperatorCode": "63",
+   "OperatorName": "Airtel"
+ },
+ {
+   "CountryName": "Chad",
+   "OperatorCode": "65",
+   "OperatorName": "Airtel"
+ },
+ {
+   "CountryName": "Chad",
+   "OperatorCode": "99",
+   "OperatorName": "Tigo"
+ },
+ {
+   "CountryName": "Chad",
+   "OperatorCode": "95",
+   "OperatorName": "Tigo"
+ },
+ {
+   "CountryName": "Chad",
+   "OperatorCode": "93",
+   "OperatorName": "Tigo"
+ },
+ {
+   "CountryName": "Chad",
+   "OperatorCode": "90",
+   "OperatorName": "Tigo"
+ },
+ {
+   "CountryName": "Chad",
+   "OperatorCode": "77",
+   "OperatorName": "Salamat"
+ },
+ {
+   "CountryName": "Chagos Islands",
+   "OperatorCode": "387",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Chile",
+   "OperatorCode": "9",
+   "OperatorName": "All carriers: Movistar, Claro, Entel, WOM, Virgin Mobile, etc."
+ },
+ {
+   "CountryName": "Christmas Island",
+   "OperatorCode": "8 9164",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Cocos (Keeling) Islands",
+   "OperatorCode": "8 9162",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Collectivity of Saint Martin",
+   "OperatorCode": "6",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Colombia",
+   "OperatorCode": "30x",
+   "OperatorName": "Tigo"
+ },
+ {
+   "CountryName": "Colombia",
+   "OperatorCode": "310",
+   "OperatorName": "Claro"
+ },
+ {
+   "CountryName": "Colombia",
+   "OperatorCode": "311",
+   "OperatorName": "Claro"
+ },
+ {
+   "CountryName": "Colombia",
+   "OperatorCode": "312",
+   "OperatorName": "Claro"
+ },
+ {
+   "CountryName": "Colombia",
+   "OperatorCode": "313",
+   "OperatorName": "Claro"
+ },
+ {
+   "CountryName": "Colombia",
+   "OperatorCode": "314",
+   "OperatorName": "Claro"
+ },
+ {
+   "CountryName": "Colombia",
+   "OperatorCode": "315",
+   "OperatorName": "Movistar"
+ },
+ {
+   "CountryName": "Colombia",
+   "OperatorCode": "316",
+   "OperatorName": "Movistar"
+ },
+ {
+   "CountryName": "Colombia",
+   "OperatorCode": "317",
+   "OperatorName": "Movistar"
+ },
+ {
+   "CountryName": "Colombia",
+   "OperatorCode": "318",
+   "OperatorName": "Movistar"
+ },
+ {
+   "CountryName": "Colombia",
+   "OperatorCode": "319",
+   "OperatorName": "Movistar"
+ },
+ {
+   "CountryName": "Colombia",
+   "OperatorCode": "32x",
+   "OperatorName": "Claro"
+ },
+ {
+   "CountryName": "Colombia",
+   "OperatorCode": "350, 351",
+   "OperatorName": "Avantel"
+ },
+ {
+   "CountryName": "Comoros",
+   "OperatorCode": "3",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Cook Islands",
+   "OperatorCode": "5x",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Cook Islands",
+   "OperatorCode": "7x",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Costa Rica",
+   "OperatorCode": "6",
+   "OperatorName": "Movistar"
+ },
+ {
+   "CountryName": "Costa Rica",
+   "OperatorCode": "7",
+   "OperatorName": "Claro"
+ },
+ {
+   "CountryName": "Costa Rica",
+   "OperatorCode": "8",
+   "OperatorName": "Instituto Costarricense de Electricidad (Kölbi)"
+ },
+ {
+   "CountryName": "Croatia",
+   "OperatorCode": "91",
+   "OperatorName": "Vipnet"
+ },
+ {
+   "CountryName": "Croatia",
+   "OperatorCode": "92",
+   "OperatorName": "Tomato"
+ },
+ {
+   "CountryName": "Croatia",
+   "OperatorCode": "95",
+   "OperatorName": "Tele2"
+ },
+ {
+   "CountryName": "Croatia",
+   "OperatorCode": "97",
+   "OperatorName": "bonbon"
+ },
+ {
+   "CountryName": "Croatia",
+   "OperatorCode": "98",
+   "OperatorName": "T-Mobile"
+ },
+ {
+   "CountryName": "Croatia",
+   "OperatorCode": "99",
+   "OperatorName": "T-Mobile"
+ },
+ {
+   "CountryName": "Cuba",
+   "OperatorCode": "5",
+   "OperatorName": "ETECSA"
+ },
+ {
+   "CountryName": "Curaçao",
+   "OperatorCode": "??",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Curaçao and the Caribbean Netherlands",
+   "OperatorCode": "??",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Cyprus",
+   "OperatorCode": "94",
+   "OperatorName": "LemonTel"
+ },
+ {
+   "CountryName": "Cyprus",
+   "OperatorCode": "95",
+   "OperatorName": "PrimeTel"
+ },
+ {
+   "CountryName": "Cyprus",
+   "OperatorCode": "96",
+   "OperatorName": "MTN"
+ },
+ {
+   "CountryName": "Cyprus",
+   "OperatorCode": "97",
+   "OperatorName": "Cytamobile-Vodafone"
+ },
+ {
+   "CountryName": "Cyprus",
+   "OperatorCode": "99",
+   "OperatorName": "Cytamobile-Vodafone"
+ },
+ {
+   "CountryName": "Czech Republic",
+   "OperatorCode": "601",
+   "OperatorName": "Telefónica O2"
+ },
+ {
+   "CountryName": "Czech Republic",
+   "OperatorCode": "602",
+   "OperatorName": "Telefónica O2"
+ },
+ {
+   "CountryName": "Czech Republic",
+   "OperatorCode": "603",
+   "OperatorName": "T-Mobile"
+ },
+ {
+   "CountryName": "Czech Republic",
+   "OperatorCode": "604",
+   "OperatorName": "T-Mobile"
+ },
+ {
+   "CountryName": "Czech Republic",
+   "OperatorCode": "605",
+   "OperatorName": "T-Mobile"
+ },
+ {
+   "CountryName": "Czech Republic",
+   "OperatorCode": "606",
+   "OperatorName": "Telefónica O2"
+ },
+ {
+   "CountryName": "Czech Republic",
+   "OperatorCode": "607",
+   "OperatorName": "Telefónica O2"
+ },
+ {
+   "CountryName": "Czech Republic",
+   "OperatorCode": "608",
+   "OperatorName": "Vodafone"
+ },
+ {
+   "CountryName": "Czech Republic",
+   "OperatorCode": "702",
+   "OperatorName": "Telefónica O2"
+ },
+ {
+   "CountryName": "Czech Republic",
+   "OperatorCode": "72x",
+   "OperatorName": "Telefónica O2"
+ },
+ {
+   "CountryName": "Czech Republic",
+   "OperatorCode": "73x",
+   "OperatorName": "T-Mobile"
+ },
+ {
+   "CountryName": "Czech Republic",
+   "OperatorCode": "77x",
+   "OperatorName": "Vodafone"
+ },
+ {
+   "CountryName": "Czech Republic",
+   "OperatorCode": "790",
+   "OperatorName": "U:fon"
+ },
+ {
+   "CountryName": "Democratic Republic of Congo",
+   "OperatorCode": "22",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Democratic Republic of Congo",
+   "OperatorCode": "78",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Democratic Republic of Congo",
+   "OperatorCode": "81",
+   "OperatorName": "Vodacom"
+ },
+ {
+   "CountryName": "Democratic Republic of Congo",
+   "OperatorCode": "84",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Democratic Republic of Congo",
+   "OperatorCode": "85",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Democratic Republic of Congo",
+   "OperatorCode": "86",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Democratic Republic of Congo",
+   "OperatorCode": "88",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Democratic Republic of Congo",
+   "OperatorCode": "89",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Democratic Republic of Congo",
+   "OperatorCode": "90",
+   "OperatorName": "Africell"
+ },
+ {
+   "CountryName": "Democratic Republic of Congo",
+   "OperatorCode": "94",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Democratic Republic of Congo",
+   "OperatorCode": "95",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Democratic Republic of Congo",
+   "OperatorCode": "96",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Democratic Republic of Congo",
+   "OperatorCode": "97",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Democratic Republic of Congo",
+   "OperatorCode": "98",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Democratic Republic of Congo",
+   "OperatorCode": "99",
+   "OperatorName": "Airtel"
+ },
+ {
+   "CountryName": "Denmark",
+   "OperatorCode": "2x",
+   "OperatorName": "TDC"
+ },
+ {
+   "CountryName": "Denmark",
+   "OperatorCode": "30",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Denmark",
+   "OperatorCode": "31",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Denmark",
+   "OperatorCode": "40",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Denmark",
+   "OperatorCode": "41",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Denmark",
+   "OperatorCode": "42",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Denmark",
+   "OperatorCode": "50",
+   "OperatorName": "Telenor"
+ },
+ {
+   "CountryName": "Denmark",
+   "OperatorCode": "51",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Denmark",
+   "OperatorCode": "52",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Denmark",
+   "OperatorCode": "53",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Denmark",
+   "OperatorCode": "60",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Denmark",
+   "OperatorCode": "61",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Denmark",
+   "OperatorCode": "71",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Denmark",
+   "OperatorCode": "81",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Diego Garcia",
+   "OperatorCode": "387",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Djibouti",
+   "OperatorCode": "8",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Dominica",
+   "OperatorCode": "767 2xx",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Dominican Republic",
+   "OperatorCode": "809",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Dominican Republic",
+   "OperatorCode": "829",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Dominican Republic",
+   "OperatorCode": "849",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "East Timor",
+   "OperatorCode": "77",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "East Timor",
+   "OperatorCode": "78",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Easter Island",
+   "OperatorCode": "32",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Ecuador",
+   "OperatorCode": "8",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Ecuador",
+   "OperatorCode": "9",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Egypt",
+   "OperatorCode": "10",
+   "OperatorName": "Vodafone"
+ },
+ {
+   "CountryName": "Egypt",
+   "OperatorCode": "11",
+   "OperatorName": "Etisalat"
+ },
+ {
+   "CountryName": "Egypt",
+   "OperatorCode": "12",
+   "OperatorName": "Mobinil"
+ },
+ {
+   "CountryName": "El Salvador",
+   "OperatorCode": "6",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "El Salvador",
+   "OperatorCode": "7",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "England",
+   "OperatorCode": "",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Equatorial Guinea",
+   "OperatorCode": "2",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Equatorial Guinea",
+   "OperatorCode": "7",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Eritrea",
+   "OperatorCode": "7",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Estonia",
+   "OperatorCode": "5x",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Ethiopia",
+   "OperatorCode": "9X",
+   "OperatorName": "Ethio telecom"
+ },
+ {
+   "CountryName": "Falkland Islands",
+   "OperatorCode": "5",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Falkland Islands",
+   "OperatorCode": "6",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Faroe Islands",
+   "OperatorCode": "21",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Faroe Islands",
+   "OperatorCode": "22",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Faroe Islands",
+   "OperatorCode": "23",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Faroe Islands",
+   "OperatorCode": "24",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Faroe Islands",
+   "OperatorCode": "25",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Faroe Islands",
+   "OperatorCode": "26",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Faroe Islands",
+   "OperatorCode": "27",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Faroe Islands",
+   "OperatorCode": "28",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Faroe Islands",
+   "OperatorCode": "29",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Faroe Islands",
+   "OperatorCode": "5x",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Faroe Islands",
+   "OperatorCode": "71",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Faroe Islands",
+   "OperatorCode": "72",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Faroe Islands",
+   "OperatorCode": "73",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Faroe Islands",
+   "OperatorCode": "74",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Faroe Islands",
+   "OperatorCode": "75",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Faroe Islands",
+   "OperatorCode": "76",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Faroe Islands",
+   "OperatorCode": "77",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Faroe Islands",
+   "OperatorCode": "78",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Faroe Islands",
+   "OperatorCode": "79",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Faroe Islands",
+   "OperatorCode": "91",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Faroe Islands",
+   "OperatorCode": "92",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Faroe Islands",
+   "OperatorCode": "93",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Faroe Islands",
+   "OperatorCode": "94",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Faroe Islands",
+   "OperatorCode": "95",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Faroe Islands",
+   "OperatorCode": "96",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Faroe Islands",
+   "OperatorCode": "97",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Faroe Islands",
+   "OperatorCode": "98",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Faroe Islands",
+   "OperatorCode": "99",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Federated States of Micronesia",
+   "OperatorCode": "92",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Federated States of Micronesia",
+   "OperatorCode": "93",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Federated States of Micronesia",
+   "OperatorCode": "95",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Federated States of Micronesia",
+   "OperatorCode": "97",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Fiji",
+   "OperatorCode": "3",
+   "OperatorName": "Telecom"
+ },
+ {
+   "CountryName": "Fiji",
+   "OperatorCode": "7",
+   "OperatorName": "Digicel"
+ },
+ {
+   "CountryName": "Fiji",
+   "OperatorCode": "9",
+   "OperatorName": "Vodafone"
+ },
+ {
+   "CountryName": "Finland",
+   "OperatorCode": "4x",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Finland",
+   "OperatorCode": "457",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Finland",
+   "OperatorCode": "50",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Finland",
+   "OperatorCode": "500",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "France",
+   "OperatorCode": "6",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "France",
+   "OperatorCode": "700",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "France",
+   "OperatorCode": "73",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "France",
+   "OperatorCode": "74",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "France",
+   "OperatorCode": "75",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "France",
+   "OperatorCode": "76",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "France",
+   "OperatorCode": "77",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "France",
+   "OperatorCode": "78",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "French Guiana",
+   "OperatorCode": "694",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "French Guiana",
+   "OperatorCode": "700",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "French Overseas Departments and Territories",
+   "OperatorCode": "",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "French Overseas Departments and Territories",
+   "OperatorCode": "",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "French Overseas Departments and Territories",
+   "OperatorCode": "",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "French Overseas Departments and Territories",
+   "OperatorCode": "",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "French Overseas Departments and Territories",
+   "OperatorCode": "",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "French Polynesia",
+   "OperatorCode": "87",
+   "OperatorName": "Vini"
+ },
+ {
+   "CountryName": "French Polynesia",
+   "OperatorCode": "89",
+   "OperatorName": "Vodafone"
+ },
+ {
+   "CountryName": "Gabon",
+   "OperatorCode": "2",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Gabon",
+   "OperatorCode": "3",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Gabon",
+   "OperatorCode": "4",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Gabon",
+   "OperatorCode": "5",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Gabon",
+   "OperatorCode": "6",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Gabon",
+   "OperatorCode": "7",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Gambia",
+   "OperatorCode": "7x",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Gambia",
+   "OperatorCode": "9x",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Georgia",
+   "OperatorCode": "544",
+   "OperatorName": "Aquafon"
+ },
+ {
+   "CountryName": "Georgia",
+   "OperatorCode": "514",
+   "OperatorName": "Silknet Geocell"
+ },
+ {
+   "CountryName": "Georgia",
+   "OperatorCode": "551",
+   "OperatorName": "MagtiCom Bani"
+ },
+ {
+   "CountryName": "Georgia",
+   "OperatorCode": "555",
+   "OperatorName": "Silknet Geocell"
+ },
+ {
+   "CountryName": "Georgia",
+   "OperatorCode": "557",
+   "OperatorName": "Silknet Geocell"
+ },
+ {
+   "CountryName": "Georgia",
+   "OperatorCode": "558",
+   "OperatorName": "Silknet Geocell"
+ },
+ {
+   "CountryName": "Georgia",
+   "OperatorCode": "568",
+   "OperatorName": "BeeLine"
+ },
+ {
+   "CountryName": "Georgia",
+   "OperatorCode": "570",
+   "OperatorName": "Silknet S1"
+ },
+ {
+   "CountryName": "Georgia",
+   "OperatorCode": "571",
+   "OperatorName": "BeeLine"
+ },
+ {
+   "CountryName": "Georgia",
+   "OperatorCode": "574",
+   "OperatorName": "BeeLine"
+ },
+ {
+   "CountryName": "Georgia",
+   "OperatorCode": "577",
+   "OperatorName": "Silknet Geocell"
+ },
+ {
+   "CountryName": "Georgia",
+   "OperatorCode": "578",
+   "OperatorName": "Silknet S1"
+ },
+ {
+   "CountryName": "Georgia",
+   "OperatorCode": "579",
+   "OperatorName": "BeeLine"
+ },
+ {
+   "CountryName": "Georgia",
+   "OperatorCode": "591",
+   "OperatorName": "MagtiCom"
+ },
+ {
+   "CountryName": "Georgia",
+   "OperatorCode": "592",
+   "OperatorName": "BeeLine"
+ },
+ {
+   "CountryName": "Georgia",
+   "OperatorCode": "593",
+   "OperatorName": "Silknet Geocell"
+ },
+ {
+   "CountryName": "Georgia",
+   "OperatorCode": "595",
+   "OperatorName": "MagtiCom"
+ },
+ {
+   "CountryName": "Georgia",
+   "OperatorCode": "596",
+   "OperatorName": "MagtiCom Bali"
+ },
+ {
+   "CountryName": "Georgia",
+   "OperatorCode": "597",
+   "OperatorName": "BeeLine"
+ },
+ {
+   "CountryName": "Georgia",
+   "OperatorCode": "598",
+   "OperatorName": "MagtiCom Bali"
+ },
+ {
+   "CountryName": "Georgia",
+   "OperatorCode": "599",
+   "OperatorName": "MagtiCom"
+ },
+ {
+   "CountryName": "Germany",
+   "OperatorCode": "151x",
+   "OperatorName": "T-Mobile (GSM/UMTS)"
+ },
+ {
+   "CountryName": "Germany",
+   "OperatorCode": "152x",
+   "OperatorName": "Vodafone D2 (GSM/UMTS)"
+ },
+ {
+   "CountryName": "Germany",
+   "OperatorCode": "155x",
+   "OperatorName": "E-Plus (GSM/UMTS)"
+ },
+ {
+   "CountryName": "Germany",
+   "OperatorCode": "157x",
+   "OperatorName": "E-Plus (GSM/UMTS)"
+ },
+ {
+   "CountryName": "Germany",
+   "OperatorCode": "159x",
+   "OperatorName": "O2 Germany (GSM/UMTS)"
+ },
+ {
+   "CountryName": "Germany",
+   "OperatorCode": "160",
+   "OperatorName": "T-Mobile (GSM/UMTS)"
+ },
+ {
+   "CountryName": "Germany",
+   "OperatorCode": "162",
+   "OperatorName": "Vodafone D2 (GSM/UMTS)"
+ },
+ {
+   "CountryName": "Germany",
+   "OperatorCode": "163",
+   "OperatorName": "E-Plus (GSM/UMTS)"
+ },
+ {
+   "CountryName": "Germany",
+   "OperatorCode": "170",
+   "OperatorName": "T-Mobile (GSM/UMTS)"
+ },
+ {
+   "CountryName": "Germany",
+   "OperatorCode": "171",
+   "OperatorName": "T-Mobile (GSM/UMTS)"
+ },
+ {
+   "CountryName": "Germany",
+   "OperatorCode": "172",
+   "OperatorName": "Vodafone D2 (GSM/UMTS)"
+ },
+ {
+   "CountryName": "Germany",
+   "OperatorCode": "173",
+   "OperatorName": "Vodafone D2 (GSM/UMTS)"
+ },
+ {
+   "CountryName": "Germany",
+   "OperatorCode": "174",
+   "OperatorName": "Vodafone D2 (GSM/UMTS)"
+ },
+ {
+   "CountryName": "Germany",
+   "OperatorCode": "175",
+   "OperatorName": "T-Mobile (GSM/UMTS)"
+ },
+ {
+   "CountryName": "Germany",
+   "OperatorCode": "176",
+   "OperatorName": "O2 Germany (GSM/UMTS)"
+ },
+ {
+   "CountryName": "Germany",
+   "OperatorCode": "177",
+   "OperatorName": "E-Plus (GSM/UMTS)"
+ },
+ {
+   "CountryName": "Germany",
+   "OperatorCode": "178",
+   "OperatorName": "E-Plus (GSM/UMTS)"
+ },
+ {
+   "CountryName": "Germany",
+   "OperatorCode": "179",
+   "OperatorName": "O2 Germany (GSM/UMTS)"
+ },
+ {
+   "CountryName": "Ghana",
+   "OperatorCode": "20",
+   "OperatorName": "GT-Vodafone"
+ },
+ {
+   "CountryName": "Ghana",
+   "OperatorCode": "23",
+   "OperatorName": "Glo Mobile"
+ },
+ {
+   "CountryName": "Ghana",
+   "OperatorCode": "24",
+   "OperatorName": "MTN"
+ },
+ {
+   "CountryName": "Ghana",
+   "OperatorCode": "26",
+   "OperatorName": "Airtel (Zain)"
+ },
+ {
+   "CountryName": "Ghana",
+   "OperatorCode": "27",
+   "OperatorName": "Tigo"
+ },
+ {
+   "CountryName": "Ghana",
+   "OperatorCode": "28",
+   "OperatorName": "Kasapa"
+ },
+ {
+   "CountryName": "Ghana",
+   "OperatorCode": "54",
+   "OperatorName": "MTN"
+ },
+ {
+   "CountryName": "Ghana",
+   "OperatorCode": "57",
+   "OperatorName": "Tigo"
+ },
+ {
+   "CountryName": "Gibraltar",
+   "OperatorCode": "58x",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Greece",
+   "OperatorCode": "690",
+   "OperatorName": "WIND"
+ },
+ {
+   "CountryName": "Greece",
+   "OperatorCode": "693",
+   "OperatorName": "WIND"
+ },
+ {
+   "CountryName": "Greece",
+   "OperatorCode": "694",
+   "OperatorName": "Vodafone"
+ },
+ {
+   "CountryName": "Greece",
+   "OperatorCode": "695",
+   "OperatorName": "Vodafone"
+ },
+ {
+   "CountryName": "Greece",
+   "OperatorCode": "697",
+   "OperatorName": "Cosmote"
+ },
+ {
+   "CountryName": "Greece",
+   "OperatorCode": "698",
+   "OperatorName": "Cosmote"
+ },
+ {
+   "CountryName": "Greece",
+   "OperatorCode": "699",
+   "OperatorName": "WIND"
+ },
+ {
+   "CountryName": "Greenland",
+   "OperatorCode": "??",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Grenada",
+   "OperatorCode": "473 41x",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Guadeloupe",
+   "OperatorCode": "690",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Guadeloupe",
+   "OperatorCode": "700",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Guam",
+   "OperatorCode": "671",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Guatemala",
+   "OperatorCode": "231",
+   "OperatorName": "Comcel Mobile"
+ },
+ {
+   "CountryName": "Guatemala",
+   "OperatorCode": "2324",
+   "OperatorName": "Comcel Mobile"
+ },
+ {
+   "CountryName": "Guatemala",
+   "OperatorCode": "2326",
+   "OperatorName": "Comcel Mobile"
+ },
+ {
+   "CountryName": "Guatemala",
+   "OperatorCode": "2327",
+   "OperatorName": "Comcel Mobile"
+ },
+ {
+   "CountryName": "Guatemala",
+   "OperatorCode": "2328",
+   "OperatorName": "Comcel Mobile"
+ },
+ {
+   "CountryName": "Guatemala",
+   "OperatorCode": "2329",
+   "OperatorName": "Comcel Mobile"
+ },
+ {
+   "CountryName": "Guatemala",
+   "OperatorCode": "2428",
+   "OperatorName": "Comcel Mobile"
+ },
+ {
+   "CountryName": "Guatemala",
+   "OperatorCode": "2429",
+   "OperatorName": "Comcel Mobile"
+ },
+ {
+   "CountryName": "Guatemala",
+   "OperatorCode": "30",
+   "OperatorName": "Comcel Mobile"
+ },
+ {
+   "CountryName": "Guatemala",
+   "OperatorCode": "310",
+   "OperatorName": "Comcel Mobile"
+ },
+ {
+   "CountryName": "Guatemala",
+   "OperatorCode": "311",
+   "OperatorName": "Comcel Mobile"
+ },
+ {
+   "CountryName": "Guatemala",
+   "OperatorCode": "3120-3128",
+   "OperatorName": "Comcel Mobile"
+ },
+ {
+   "CountryName": "Guatemala",
+   "OperatorCode": "4476-4479",
+   "OperatorName": "Comcel Mobile"
+ },
+ {
+   "CountryName": "Guatemala",
+   "OperatorCode": "448",
+   "OperatorName": "Comcel Mobile"
+ },
+ {
+   "CountryName": "Guatemala",
+   "OperatorCode": "449",
+   "OperatorName": "Comcel Mobile"
+ },
+ {
+   "CountryName": "Guatemala",
+   "OperatorCode": "45",
+   "OperatorName": "Comcel Mobile"
+ },
+ {
+   "CountryName": "Guatemala",
+   "OperatorCode": "46",
+   "OperatorName": "Comcel Mobile"
+ },
+ {
+   "CountryName": "Guatemala",
+   "OperatorCode": "470-476",
+   "OperatorName": "Comcel Mobile"
+ },
+ {
+   "CountryName": "Guatemala",
+   "OperatorCode": "4773-4779",
+   "OperatorName": "Comcel Mobile"
+ },
+ {
+   "CountryName": "Guatemala",
+   "OperatorCode": "478",
+   "OperatorName": "Comcel Mobile"
+ },
+ {
+   "CountryName": "Guatemala",
+   "OperatorCode": "479",
+   "OperatorName": "Comcel Mobile"
+ },
+ {
+   "CountryName": "Guatemala",
+   "OperatorCode": "480",
+   "OperatorName": "Comcel Mobile"
+ },
+ {
+   "CountryName": "Guatemala",
+   "OperatorCode": "481",
+   "OperatorName": "Comcel Mobile"
+ },
+ {
+   "CountryName": "Guatemala",
+   "OperatorCode": "4822-4829",
+   "OperatorName": "Comcel Mobile"
+ },
+ {
+   "CountryName": "Guatemala",
+   "OperatorCode": "483-489",
+   "OperatorName": "Comcel Mobile"
+ },
+ {
+   "CountryName": "Guatemala",
+   "OperatorCode": "49",
+   "OperatorName": "Comcel Mobile"
+ },
+ {
+   "CountryName": "Guatemala",
+   "OperatorCode": "4x",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Guatemala",
+   "OperatorCode": "5x",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Guernsey",
+   "OperatorCode": "",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Guinea",
+   "OperatorCode": "6",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Guinea-Bissau",
+   "OperatorCode": "6",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Guinea-Bissau",
+   "OperatorCode": "7",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Guyana",
+   "OperatorCode": "6",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Haiti",
+   "OperatorCode": "34",
+   "OperatorName": "Comcel (Voilà)"
+ },
+ {
+   "CountryName": "Haiti",
+   "OperatorCode": "39",
+   "OperatorName": "Comcel (Voilà)"
+ },
+ {
+   "CountryName": "Haiti",
+   "OperatorCode": "35",
+   "OperatorName": "Haïtel"
+ },
+ {
+   "CountryName": "Haiti",
+   "OperatorCode": "36",
+   "OperatorName": "Digicel"
+ },
+ {
+   "CountryName": "Haiti",
+   "OperatorCode": "37",
+   "OperatorName": "Digicel"
+ },
+ {
+   "CountryName": "Haiti",
+   "OperatorCode": "38",
+   "OperatorName": "Digicel"
+ },
+ {
+   "CountryName": "Haiti",
+   "OperatorCode": "4x",
+   "OperatorName": "Any carrier"
+ },
+ {
+   "CountryName": "Hawaii",
+   "OperatorCode": "808",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Honduras",
+   "OperatorCode": "3",
+   "OperatorName": "Claro"
+ },
+ {
+   "CountryName": "Honduras",
+   "OperatorCode": "7",
+   "OperatorName": "Hondutel"
+ },
+ {
+   "CountryName": "Honduras",
+   "OperatorCode": "8",
+   "OperatorName": "Digicel"
+ },
+ {
+   "CountryName": "Honduras",
+   "OperatorCode": "9",
+   "OperatorName": "Tigo"
+ },
+ {
+   "CountryName": "Hong Kong",
+   "OperatorCode": "510-569",
+   "OperatorName": "various operators, including  CSL Mobile, Sun Mobile, 3 HK, PCCW Mobile, SmarTone, CMHK, China Unicom"
+ },
+ {
+   "CountryName": "Hong Kong",
+   "OperatorCode": "590-599",
+   "OperatorName": "various operators, including  CSL Mobile, Sun Mobile, 3 HK, PCCW Mobile, SmarTone, CMHK, China Unicom"
+ },
+ {
+   "CountryName": "Hong Kong",
+   "OperatorCode": "601-699",
+   "OperatorName": "various operators, including  CSL Mobile, Sun Mobile, 3 HK, PCCW Mobile, SmarTone, CMHK, China Unicom"
+ },
+ {
+   "CountryName": "Hong Kong",
+   "OperatorCode": "901-989",
+   "OperatorName": "various operators, including  CSL Mobile, Sun Mobile, 3 HK, PCCW Mobile, SmarTone, CMHK, China Unicom"
+ },
+ {
+   "CountryName": "Hungary",
+   "OperatorCode": "20",
+   "OperatorName": "Telenor HU (formerly \"Pannon\", and \"Pannon GSM\")"
+ },
+ {
+   "CountryName": "Hungary",
+   "OperatorCode": "30",
+   "OperatorName": "Telekom HU (formerly \"T-Mobile\", \"Westel 900\")"
+ },
+ {
+   "CountryName": "Hungary",
+   "OperatorCode": "31",
+   "OperatorName": "UPC Mobil (MVNO), hosted by Vodafone HU.\n(formerly Tesco Mobile which was also hosted by Vodafone HU until 2016.04.16.)"
+ },
+ {
+   "CountryName": "Hungary",
+   "OperatorCode": "38",
+   "OperatorName": "GSM-R network for MÁV & GySEV (Railroad providers)"
+ },
+ {
+   "CountryName": "Hungary",
+   "OperatorCode": "50",
+   "OperatorName": "DIGI.MOBILE HU"
+ },
+ {
+   "CountryName": "Hungary",
+   "OperatorCode": "60",
+   "OperatorName": "reserved/retired"
+ },
+ {
+   "CountryName": "Hungary",
+   "OperatorCode": "70",
+   "OperatorName": "Vodafone HU"
+ },
+ {
+   "CountryName": "Iceland",
+   "OperatorCode": "6",
+   "OperatorName": "Three providers are present in Iceland: Siminn, Vodafone and Nova."
+ },
+ {
+   "CountryName": "India",
+   "OperatorCode": "7xx",
+   "OperatorName": "Various GSM and CDMA, including Aircel GSM, Airtel, BSNL GSM & CDMA, Idea, Loop Mobile GSM, MTS CDMA, Reliance GSM & CDMA, S-Tel GSM, Uninor GSM, Videocon GSM, Vodafone GSM."
+ },
+ {
+   "CountryName": "India",
+   "OperatorCode": "8xx",
+   "OperatorName": "Various GSM and CDMA, including Aircel GSM, Airtel, BSNL GSM & CDMA, Idea, Loop Mobile GSM, MTS CDMA, Reliance GSM & CDMA, S-Tel GSM, Uninor GSM, Videocon GSM, Vodafone GSM."
+ },
+ {
+   "CountryName": "India",
+   "OperatorCode": "90x",
+   "OperatorName": "Various GSM"
+ },
+ {
+   "CountryName": "India",
+   "OperatorCode": "91x",
+   "OperatorName": "Various GSM and CDMA, including MTS CDMA, BSNL GSM & CDMA, Uninor GSM, Loop Mobile GSM, S-Tel GSM etc."
+ },
+ {
+   "CountryName": "India",
+   "OperatorCode": "92x",
+   "OperatorName": "Tata Indicom CDMA"
+ },
+ {
+   "CountryName": "India",
+   "OperatorCode": "93x",
+   "OperatorName": "Reliance CDMA"
+ },
+ {
+   "CountryName": "India",
+   "OperatorCode": "94x",
+   "OperatorName": "BSNL GSM"
+ },
+ {
+   "CountryName": "India",
+   "OperatorCode": "95x",
+   "OperatorName": "Various GSM, including Airtel, BSNL, Idea, Aircel, Reliance GSM and Vodafone."
+ },
+ {
+   "CountryName": "India",
+   "OperatorCode": "96x",
+   "OperatorName": "Various GSM and CDMA, including Airtel, Idea, Reliance CDMA & GSM, Vodafone and Aircel."
+ },
+ {
+   "CountryName": "India",
+   "OperatorCode": "97x",
+   "OperatorName": "Various GSM, including Airtel, Vodafone, Idea, Aircel, Uninor, Reliance GSM and Videocon."
+ },
+ {
+   "CountryName": "India",
+   "OperatorCode": "98x",
+   "OperatorName": "Various GSM, including Airtel, Vodafone, Idea, Aircel, Uninor, Reliance GSM and Videocon."
+ },
+ {
+   "CountryName": "India",
+   "OperatorCode": "99x",
+   "OperatorName": "Various GSM, including Airtel, Vodafone, Idea, Aircel, Uninor, Reliance GSM and Videocon."
+ },
+ {
+   "CountryName": "Indonesia",
+   "OperatorCode": "811",
+   "OperatorName": "Telkomsel (KartuHalo)"
+ },
+ {
+   "CountryName": "Indonesia",
+   "OperatorCode": "812",
+   "OperatorName": "Telkomsel (KartuHalo & simPati)"
+ },
+ {
+   "CountryName": "Indonesia",
+   "OperatorCode": "813",
+   "OperatorName": "Telkomsel (KartuHalo & simPati)"
+ },
+ {
+   "CountryName": "Indonesia",
+   "OperatorCode": "814",
+   "OperatorName": "Indosat (IM2 Broadband Internet & Matrix)"
+ },
+ {
+   "CountryName": "Indonesia",
+   "OperatorCode": "815",
+   "OperatorName": "Indosat (Mentari & Matrix)"
+ },
+ {
+   "CountryName": "Indonesia",
+   "OperatorCode": "816",
+   "OperatorName": "Indosat (Mentari)"
+ },
+ {
+   "CountryName": "Indonesia",
+   "OperatorCode": "817",
+   "OperatorName": "XL"
+ },
+ {
+   "CountryName": "Indonesia",
+   "OperatorCode": "818",
+   "OperatorName": "XL"
+ },
+ {
+   "CountryName": "Indonesia",
+   "OperatorCode": "819",
+   "OperatorName": "XL"
+ },
+ {
+   "CountryName": "Indonesia",
+   "OperatorCode": "838",
+   "OperatorName": "AXIS"
+ },
+ {
+   "CountryName": "Indonesia",
+   "OperatorCode": "852",
+   "OperatorName": "Telkomsel (Kartu As)"
+ },
+ {
+   "CountryName": "Indonesia",
+   "OperatorCode": "853",
+   "OperatorName": "Telkomsel (Kartu As)"
+ },
+ {
+   "CountryName": "Indonesia",
+   "OperatorCode": "855",
+   "OperatorName": "Indosat (im3 Postpaid)"
+ },
+ {
+   "CountryName": "Indonesia",
+   "OperatorCode": "856",
+   "OperatorName": "Indosat (im3 Prepaid)"
+ },
+ {
+   "CountryName": "Indonesia",
+   "OperatorCode": "858",
+   "OperatorName": "Indosat (Mentari)"
+ },
+ {
+   "CountryName": "Indonesia",
+   "OperatorCode": "859",
+   "OperatorName": "XL"
+ },
+ {
+   "CountryName": "Indonesia",
+   "OperatorCode": "878",
+   "OperatorName": "XL"
+ },
+ {
+   "CountryName": "Indonesia",
+   "OperatorCode": "896",
+   "OperatorName": "3"
+ },
+ {
+   "CountryName": "Indonesia",
+   "OperatorCode": "897",
+   "OperatorName": "3"
+ },
+ {
+   "CountryName": "Indonesia",
+   "OperatorCode": "898",
+   "OperatorName": "3"
+ },
+ {
+   "CountryName": "Indonesia",
+   "OperatorCode": "899",
+   "OperatorName": "3"
+ },
+ {
+   "CountryName": "Iran",
+   "OperatorCode": "901",
+   "OperatorName": "MTN Irancell"
+ },
+ {
+   "CountryName": "Iran",
+   "OperatorCode": "902",
+   "OperatorName": "MTN Irancell"
+ },
+ {
+   "CountryName": "Iran",
+   "OperatorCode": "903",
+   "OperatorName": "MTN Irancell"
+ },
+ {
+   "CountryName": "Iran",
+   "OperatorCode": "91x",
+   "OperatorName": "Hamrah Aval"
+ },
+ {
+   "CountryName": "Iran",
+   "OperatorCode": "920",
+   "OperatorName": "RighTel"
+ },
+ {
+   "CountryName": "Iran",
+   "OperatorCode": "921",
+   "OperatorName": "RighTel"
+ },
+ {
+   "CountryName": "Iran",
+   "OperatorCode": "922",
+   "OperatorName": "RighTel"
+ },
+ {
+   "CountryName": "Iran",
+   "OperatorCode": "930",
+   "OperatorName": "MTN Irancell"
+ },
+ {
+   "CountryName": "Iran",
+   "OperatorCode": "931",
+   "OperatorName": "MTCE"
+ },
+ {
+   "CountryName": "Iran",
+   "OperatorCode": "932",
+   "OperatorName": "Taliya"
+ },
+ {
+   "CountryName": "Iran",
+   "OperatorCode": "933",
+   "OperatorName": "MTN Irancell"
+ },
+ {
+   "CountryName": "Iran",
+   "OperatorCode": "934",
+   "OperatorName": "Kish-TCI"
+ },
+ {
+   "CountryName": "Iran",
+   "OperatorCode": "935",
+   "OperatorName": "MTN Irancell"
+ },
+ {
+   "CountryName": "Iran",
+   "OperatorCode": "936",
+   "OperatorName": "MTN Irancell"
+ },
+ {
+   "CountryName": "Iran",
+   "OperatorCode": "937",
+   "OperatorName": "MTN Irancell"
+ },
+ {
+   "CountryName": "Iran",
+   "OperatorCode": "938",
+   "OperatorName": "MTN Irancell"
+ },
+ {
+   "CountryName": "Iran",
+   "OperatorCode": "939",
+   "OperatorName": "MTN Irancell"
+ },
+ {
+   "CountryName": "Iran",
+   "OperatorCode": "990",
+   "OperatorName": "Hamrah Aval"
+ },
+ {
+   "CountryName": "Iran",
+   "OperatorCode": "999 9",
+   "OperatorName": "SamanTel"
+ },
+ {
+   "CountryName": "Iraq",
+   "OperatorCode": "73x",
+   "OperatorName": "Korek Telecom (formerly SanaTel)"
+ },
+ {
+   "CountryName": "Iraq",
+   "OperatorCode": "74x",
+   "OperatorName": "Itisaluna and Kalemat"
+ },
+ {
+   "CountryName": "Iraq",
+   "OperatorCode": "75x",
+   "OperatorName": "Korek Telecom"
+ },
+ {
+   "CountryName": "Iraq",
+   "OperatorCode": "76x",
+   "OperatorName": "Mobitel (Iraq-Kurdistan) and Moutiny"
+ },
+ {
+   "CountryName": "Iraq",
+   "OperatorCode": "77x",
+   "OperatorName": "AsiaCell"
+ },
+ {
+   "CountryName": "Iraq",
+   "OperatorCode": "78x",
+   "OperatorName": "Zain Iraq (formerly MTC Atheer)"
+ },
+ {
+   "CountryName": "Iraq",
+   "OperatorCode": "79x",
+   "OperatorName": "Zain Iraq, (formerly Iraqna)"
+ },
+ {
+   "CountryName": "Ireland",
+   "OperatorCode": "8x",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Ireland",
+   "OperatorCode": "83",
+   "OperatorName": "Three"
+ },
+ {
+   "CountryName": "Ireland",
+   "OperatorCode": "85",
+   "OperatorName": "eir/Meteor (Meteor branding to be retired in September 2017)"
+ },
+ {
+   "CountryName": "Ireland",
+   "OperatorCode": "86",
+   "OperatorName": "Three (Formerly O2)"
+ },
+ {
+   "CountryName": "Ireland",
+   "OperatorCode": "87",
+   "OperatorName": "Vodafone"
+ },
+ {
+   "CountryName": "Ireland",
+   "OperatorCode": "89",
+   "OperatorName": "Tesco(MVNO)"
+ },
+ {
+   "CountryName": "Isle of Man",
+   "OperatorCode": "",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Israel",
+   "OperatorCode": "50",
+   "OperatorName": "Pelephone / Walla Mobile / YouPhone"
+ },
+ {
+   "CountryName": "Israel",
+   "OperatorCode": "52",
+   "OperatorName": "Cellcom"
+ },
+ {
+   "CountryName": "Israel",
+   "OperatorCode": "53",
+   "OperatorName": "Hot Mobile"
+ },
+ {
+   "CountryName": "Israel",
+   "OperatorCode": "54",
+   "OperatorName": "Partner / 012 Mobile"
+ },
+ {
+   "CountryName": "Israel",
+   "OperatorCode": "5522 or 5523",
+   "OperatorName": "Home Cellular"
+ },
+ {
+   "CountryName": "Israel",
+   "OperatorCode": "556",
+   "OperatorName": "Rami Levy Hashikma Marketing"
+ },
+ {
+   "CountryName": "Israel",
+   "OperatorCode": "5570 or 5571",
+   "OperatorName": "Cellact"
+ },
+ {
+   "CountryName": "Israel",
+   "OperatorCode": "558",
+   "OperatorName": "Pelephone / Walla Mobile / YouPhone"
+ },
+ {
+   "CountryName": "Israel",
+   "OperatorCode": "559",
+   "OperatorName": "019 Telecom"
+ },
+ {
+   "CountryName": "Israel",
+   "OperatorCode": "58",
+   "OperatorName": "Golan Telecom"
+ },
+ {
+   "CountryName": "Italy",
+   "OperatorCode": "310",
+   "OperatorName": "Elsacom S.p.A. (Retired)"
+ },
+ {
+   "CountryName": "Italy",
+   "OperatorCode": "31100",
+   "OperatorName": "Telespazio S.p.A."
+ },
+ {
+   "CountryName": "Italy",
+   "OperatorCode": "31101",
+   "OperatorName": "Telespazio S.p.A."
+ },
+ {
+   "CountryName": "Italy",
+   "OperatorCode": "31105",
+   "OperatorName": "Spal Telecommunications S.r.l."
+ },
+ {
+   "CountryName": "Italy",
+   "OperatorCode": "313",
+   "OperatorName": "RFI Rete Ferroviaria Italiana S.p.A."
+ },
+ {
+   "CountryName": "Italy",
+   "OperatorCode": "319",
+   "OperatorName": "Intermatica S.r.l."
+ },
+ {
+   "CountryName": "Italy",
+   "OperatorCode": "320",
+   "OperatorName": "WIND"
+ },
+ {
+   "CountryName": "Italy",
+   "OperatorCode": "322",
+   "OperatorName": "WIND operator reserved (routing number)"
+ },
+ {
+   "CountryName": "Italy",
+   "OperatorCode": "323",
+   "OperatorName": "WIND operator reserved (voice mail)"
+ },
+ {
+   "CountryName": "Italy",
+   "OperatorCode": "324",
+   "OperatorName": "WIND"
+ },
+ {
+   "CountryName": "Italy",
+   "OperatorCode": "327",
+   "OperatorName": "WIND"
+ },
+ {
+   "CountryName": "Italy",
+   "OperatorCode": "328",
+   "OperatorName": "WIND"
+ },
+ {
+   "CountryName": "Italy",
+   "OperatorCode": "329",
+   "OperatorName": "WIND"
+ },
+ {
+   "CountryName": "Italy",
+   "OperatorCode": "330",
+   "OperatorName": "TIM there are many legacy 9-digit numbers"
+ },
+ {
+   "CountryName": "Italy",
+   "OperatorCode": "331",
+   "OperatorName": "TIM"
+ },
+ {
+   "CountryName": "Italy",
+   "OperatorCode": "333",
+   "OperatorName": "TIM"
+ },
+ {
+   "CountryName": "Italy",
+   "OperatorCode": "334",
+   "OperatorName": "TIM"
+ },
+ {
+   "CountryName": "Italy",
+   "OperatorCode": "335",
+   "OperatorName": "TIM there are a few legacy 9-digit numbers"
+ },
+ {
+   "CountryName": "Italy",
+   "OperatorCode": "336",
+   "OperatorName": "TIM there are a few legacy 9-digit numbers"
+ },
+ {
+   "CountryName": "Italy",
+   "OperatorCode": "337",
+   "OperatorName": "TIM there are a few legacy 9-digit numbers"
+ },
+ {
+   "CountryName": "Italy",
+   "OperatorCode": "338",
+   "OperatorName": "TIM"
+ },
+ {
+   "CountryName": "Italy",
+   "OperatorCode": "339",
+   "OperatorName": "TIM"
+ },
+ {
+   "CountryName": "Italy",
+   "OperatorCode": "340",
+   "OperatorName": "Vodafone"
+ },
+ {
+   "CountryName": "Italy",
+   "OperatorCode": "341",
+   "OperatorName": "Vodafone operator reserved (routing number)"
+ },
+ {
+   "CountryName": "Italy",
+   "OperatorCode": "342",
+   "OperatorName": "Vodafone"
+ },
+ {
+   "CountryName": "Italy",
+   "OperatorCode": "343",
+   "OperatorName": "Vodafone operator reserved (voice mail)"
+ },
+ {
+   "CountryName": "Italy",
+   "OperatorCode": "344",
+   "OperatorName": "Vodafone"
+ },
+ {
+   "CountryName": "Italy",
+   "OperatorCode": "345",
+   "OperatorName": "Vodafone"
+ },
+ {
+   "CountryName": "Italy",
+   "OperatorCode": "346",
+   "OperatorName": "Vodafone"
+ },
+ {
+   "CountryName": "Italy",
+   "OperatorCode": "347",
+   "OperatorName": "Vodafone"
+ },
+ {
+   "CountryName": "Italy",
+   "OperatorCode": "348",
+   "OperatorName": "Vodafone"
+ },
+ {
+   "CountryName": "Italy",
+   "OperatorCode": "349",
+   "OperatorName": "Vodafone"
+ },
+ {
+   "CountryName": "Italy",
+   "OperatorCode": "3505",
+   "OperatorName": "Full MVNO Nòverca using TIM network (retired 9 January 2015, users are being migrated to TIM)"
+ },
+ {
+   "CountryName": "Italy",
+   "OperatorCode": "3510",
+   "OperatorName": "Full MVNO Lycamobile using Vodafone network"
+ },
+ {
+   "CountryName": "Italy",
+   "OperatorCode": "3512",
+   "OperatorName": "Full MVNO Lycamobile"
+ },
+ {
+   "CountryName": "Italy",
+   "OperatorCode": "360",
+   "OperatorName": "TIM there are many legacy 9-digit numbers"
+ },
+ {
+   "CountryName": "Italy",
+   "OperatorCode": "361",
+   "OperatorName": "TIM operator reserved (TACS legacy routing number)"
+ },
+ {
+   "CountryName": "Italy",
+   "OperatorCode": "362",
+   "OperatorName": "TIM operator reserved (GSM/UMTS routing number)"
+ },
+ {
+   "CountryName": "Italy",
+   "OperatorCode": "363",
+   "OperatorName": "TIM operator reserved (voice mail)"
+ },
+ {
+   "CountryName": "Italy",
+   "OperatorCode": "366",
+   "OperatorName": "TIM"
+ },
+ {
+   "CountryName": "Italy",
+   "OperatorCode": "368",
+   "OperatorName": "TIM there are many legacy 9-digit numbers"
+ },
+ {
+   "CountryName": "Italy",
+   "OperatorCode": "370",
+   "OperatorName": "various Light MVNOs including Coop Voce, Noverca, Tiscali Mobile, Terrecablate Mobile. Operated by TIM"
+ },
+ {
+   "CountryName": "Italy",
+   "OperatorCode": "3710",
+   "OperatorName": "Full MVNO BT Mobile using TIM network"
+ },
+ {
+   "CountryName": "Italy",
+   "OperatorCode": "3711",
+   "OperatorName": "Full MVNO PosteMobile using WIND network"
+ },
+ {
+   "CountryName": "Italy",
+   "OperatorCode": "373",
+   "OperatorName": "various Light MVNOs operated by H3G (Tre)"
+ },
+ {
+   "CountryName": "Italy",
+   "OperatorCode": "377",
+   "OperatorName": "various Light MVNOs including PosteMobile, Erg Mobile, Daily Telecom Mobile, Carrefour UNO Mobile, Bladna Mobile, BT Mobile, BT Enìa. Operated by Vodafone"
+ },
+ {
+   "CountryName": "Italy",
+   "OperatorCode": "380",
+   "OperatorName": "WIND"
+ },
+ {
+   "CountryName": "Italy",
+   "OperatorCode": "381",
+   "OperatorName": "Full MVNO Nòverca operator reserved (routing number) (retired 9 January 2015)"
+ },
+ {
+   "CountryName": "Italy",
+   "OperatorCode": "382",
+   "OperatorName": "Full MVNO Lycamobile operator reserved (routing number)"
+ },
+ {
+   "CountryName": "Italy",
+   "OperatorCode": "383",
+   "OperatorName": "Vodafone operator reserved (voice mail)"
+ },
+ {
+   "CountryName": "Italy",
+   "OperatorCode": "385",
+   "OperatorName": "Telecom Italia S.p.A. (not TIM)"
+ },
+ {
+   "CountryName": "Italy",
+   "OperatorCode": "388",
+   "OperatorName": "WIND"
+ },
+ {
+   "CountryName": "Italy",
+   "OperatorCode": "389",
+   "OperatorName": "WIND"
+ },
+ {
+   "CountryName": "Italy",
+   "OperatorCode": "390",
+   "OperatorName": "H3G (Tre) operator reserved (voice mail)"
+ },
+ {
+   "CountryName": "Italy",
+   "OperatorCode": "391",
+   "OperatorName": "H3G (Tre) initially it was given to early business contracts; then it was operator reserved (employee numbers, system numbers e.g. SMSC) until 2013 when H3G started giving 391 numbers to regular users"
+ },
+ {
+   "CountryName": "Italy",
+   "OperatorCode": "392",
+   "OperatorName": "H3G (Tre)"
+ },
+ {
+   "CountryName": "Italy",
+   "OperatorCode": "393",
+   "OperatorName": "H3G (Tre)"
+ },
+ {
+   "CountryName": "Italy",
+   "OperatorCode": "397",
+   "OperatorName": "H3G (Tre) operator reserved (routing number)"
+ },
+ {
+   "CountryName": "Ivory Coast",
+   "OperatorCode": "0x",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Ivory Coast",
+   "OperatorCode": "6x",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Jamaica",
+   "OperatorCode": "876",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Jan Mayen",
+   "OperatorCode": "79",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Japan",
+   "OperatorCode": "60",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Japan",
+   "OperatorCode": "70",
+   "OperatorName": "NTT DOCOMO,  au, SoftBank"
+ },
+ {
+   "CountryName": "Japan",
+   "OperatorCode": "80",
+   "OperatorName": "NTT DOCOMO,  au, SoftBank"
+ },
+ {
+   "CountryName": "Japan",
+   "OperatorCode": "90",
+   "OperatorName": "NTT DOCOMO,  au, SoftBank"
+ },
+ {
+   "CountryName": "Jersey",
+   "OperatorCode": "",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Jordan",
+   "OperatorCode": "77",
+   "OperatorName": "Orange"
+ },
+ {
+   "CountryName": "Jordan",
+   "OperatorCode": "79",
+   "OperatorName": "Zain Jordan"
+ },
+ {
+   "CountryName": "Jordan",
+   "OperatorCode": "78",
+   "OperatorName": "Umniah"
+ },
+ {
+   "CountryName": "Kazakhstan",
+   "OperatorCode": "700",
+   "OperatorName": "Altel"
+ },
+ {
+   "CountryName": "Kazakhstan",
+   "OperatorCode": "701",
+   "OperatorName": "Kcell GSM"
+ },
+ {
+   "CountryName": "Kazakhstan",
+   "OperatorCode": "702",
+   "OperatorName": "KCell GSM"
+ },
+ {
+   "CountryName": "Kazakhstan",
+   "OperatorCode": "705",
+   "OperatorName": "Beeline GSM"
+ },
+ {
+   "CountryName": "Kazakhstan",
+   "OperatorCode": "707",
+   "OperatorName": "Tele2 GSM"
+ },
+ {
+   "CountryName": "Kazakhstan",
+   "OperatorCode": "777",
+   "OperatorName": "Beeline GSM"
+ },
+ {
+   "CountryName": "Kenya",
+   "OperatorCode": "70x",
+   "OperatorName": "Safaricom"
+ },
+ {
+   "CountryName": "Kenya",
+   "OperatorCode": "71x",
+   "OperatorName": "Safaricom"
+ },
+ {
+   "CountryName": "Kenya",
+   "OperatorCode": "72x",
+   "OperatorName": "Safaricom"
+ },
+ {
+   "CountryName": "Kenya",
+   "OperatorCode": "73x",
+   "OperatorName": "Airtel"
+ },
+ {
+   "CountryName": "Kenya",
+   "OperatorCode": "763",
+   "OperatorName": "Equitel"
+ },
+ {
+   "CountryName": "Kenya",
+   "OperatorCode": "78x",
+   "OperatorName": "Airtel"
+ },
+ {
+   "CountryName": "Kenya",
+   "OperatorCode": "75x",
+   "OperatorName": "Yu"
+ },
+ {
+   "CountryName": "Kenya",
+   "OperatorCode": "77x",
+   "OperatorName": "Orange"
+ },
+ {
+   "CountryName": "Kiribati",
+   "OperatorCode": "6x",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Kiribati",
+   "OperatorCode": "9x",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Kosovo",
+   "OperatorCode": "44",
+   "OperatorName": "Post and Telecom of Kosovo"
+ },
+ {
+   "CountryName": "Kosovo",
+   "OperatorCode": "45",
+   "OperatorName": "Z mobile"
+ },
+ {
+   "CountryName": "Kosovo",
+   "OperatorCode": "49",
+   "OperatorName": "IPKO"
+ },
+ {
+   "CountryName": "Kuwait",
+   "OperatorCode": "5",
+   "OperatorName": "Viva"
+ },
+ {
+   "CountryName": "Kuwait",
+   "OperatorCode": "6",
+   "OperatorName": "Ooredoo Kuwait"
+ },
+ {
+   "CountryName": "Kuwait",
+   "OperatorCode": "9",
+   "OperatorName": "Zain"
+ },
+ {
+   "CountryName": "Kyrgyzstan",
+   "OperatorCode": "5xx",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Laos",
+   "OperatorCode": "20",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Latvia",
+   "OperatorCode": "2xx",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Lebanon",
+   "OperatorCode": "3",
+   "OperatorName": "(03-Abcdef) where A is 1/2/3/4/5 for Alfa and 0/6/7/8/9 for Touch"
+ },
+ {
+   "CountryName": "Lebanon",
+   "OperatorCode": "70",
+   "OperatorName": "(70-Abcdef) where A is 1/2/3/4/5 for Alfa and 0/6/7/8/9 for Touch"
+ },
+ {
+   "CountryName": "Lebanon",
+   "OperatorCode": "71",
+   "OperatorName": "(71-Abcdef) where A is 1/2/3/4/5 for Touch and 0/6/7/8/9 for Alfa"
+ },
+ {
+   "CountryName": "Lebanon",
+   "OperatorCode": "76",
+   "OperatorName": "(76-Abcdef) where A is 1/2/3/4/5 for Alfa and 0/6/7/8/9 for Touch, until 01-2011, only 76-6 & 76-7 are available"
+ },
+ {
+   "CountryName": "Lesotho",
+   "OperatorCode": "58",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Lesotho",
+   "OperatorCode": "6x",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Liberia",
+   "OperatorCode": "46",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Liberia",
+   "OperatorCode": "47",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Liberia",
+   "OperatorCode": "5",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Liberia",
+   "OperatorCode": "64",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Liberia",
+   "OperatorCode": "65",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Liberia",
+   "OperatorCode": "7",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Libya",
+   "OperatorCode": "91",
+   "OperatorName": "AL-MADAR"
+ },
+ {
+   "CountryName": "Libya",
+   "OperatorCode": "92",
+   "OperatorName": "LIBYANA"
+ },
+ {
+   "CountryName": "Libya",
+   "OperatorCode": "94",
+   "OperatorName": "LIBYANA"
+ },
+ {
+   "CountryName": "Liechtenstein",
+   "OperatorCode": "7",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Lithuania",
+   "OperatorCode": "6xx",
+   "OperatorName": "Bitė Lietuva, Tele2, Telia (previously Omnitel), Eurocom"
+ },
+ {
+   "CountryName": "Luxembourg",
+   "OperatorCode": "621",
+   "OperatorName": "LuxGSM"
+ },
+ {
+   "CountryName": "Luxembourg",
+   "OperatorCode": "628",
+   "OperatorName": "LuxGSM"
+ },
+ {
+   "CountryName": "Luxembourg",
+   "OperatorCode": "661",
+   "OperatorName": "Orange"
+ },
+ {
+   "CountryName": "Luxembourg",
+   "OperatorCode": "668",
+   "OperatorName": "Orange"
+ },
+ {
+   "CountryName": "Luxembourg",
+   "OperatorCode": "691",
+   "OperatorName": "Tango Mobile"
+ },
+ {
+   "CountryName": "Luxembourg",
+   "OperatorCode": "698",
+   "OperatorName": "Tango Mobile"
+ },
+ {
+   "CountryName": "Macau",
+   "OperatorCode": "6",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Madagascar",
+   "OperatorCode": "3x",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Madeira",
+   "OperatorCode": "??",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Malawi",
+   "OperatorCode": "8",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Malawi",
+   "OperatorCode": "9",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Malaysia",
+   "OperatorCode": "10",
+   "OperatorName": "DiGi"
+ },
+ {
+   "CountryName": "Malaysia",
+   "OperatorCode": "11",
+   "OperatorName": "Maxis"
+ },
+ {
+   "CountryName": "Malaysia",
+   "OperatorCode": "12",
+   "OperatorName": "Maxis"
+ },
+ {
+   "CountryName": "Malaysia",
+   "OperatorCode": "13",
+   "OperatorName": "Celcom"
+ },
+ {
+   "CountryName": "Malaysia",
+   "OperatorCode": "14",
+   "OperatorName": "DiGi"
+ },
+ {
+   "CountryName": "Malaysia",
+   "OperatorCode": "16",
+   "OperatorName": "DiGi"
+ },
+ {
+   "CountryName": "Malaysia",
+   "OperatorCode": "17",
+   "OperatorName": "Maxis"
+ },
+ {
+   "CountryName": "Malaysia",
+   "OperatorCode": "18",
+   "OperatorName": "U Mobile"
+ },
+ {
+   "CountryName": "Malaysia",
+   "OperatorCode": "19",
+   "OperatorName": "Celcom"
+ },
+ {
+   "CountryName": "Maldives",
+   "OperatorCode": "7",
+   "OperatorName": "Dhiraagu"
+ },
+ {
+   "CountryName": "Maldives",
+   "OperatorCode": "9",
+   "OperatorName": "Ooredoo"
+ },
+ {
+   "CountryName": "Mali",
+   "OperatorCode": "3",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Mali",
+   "OperatorCode": "4",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Mali",
+   "OperatorCode": "5",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Mali",
+   "OperatorCode": "6",
+   "OperatorName": "Malitel"
+ },
+ {
+   "CountryName": "Mali",
+   "OperatorCode": "7",
+   "OperatorName": "Orange Mali"
+ },
+ {
+   "CountryName": "Malta",
+   "OperatorCode": "77",
+   "OperatorName": "Melita Mobile Ltd"
+ },
+ {
+   "CountryName": "Malta",
+   "OperatorCode": "79",
+   "OperatorName": "Go Mobile Ltd & MTV Mobile"
+ },
+ {
+   "CountryName": "Malta",
+   "OperatorCode": "98",
+   "OperatorName": "Red Touch Phone"
+ },
+ {
+   "CountryName": "Malta",
+   "OperatorCode": "99",
+   "OperatorName": "Vodafone Malta"
+ },
+ {
+   "CountryName": "Marshall Islands",
+   "OperatorCode": "??",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Martinique",
+   "OperatorCode": "696",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Martinique",
+   "OperatorCode": "700",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Mauritania",
+   "OperatorCode": "6",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Mauritius",
+   "OperatorCode": "57",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Mauritius",
+   "OperatorCode": "58",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Mauritius",
+   "OperatorCode": "59",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Mayotte",
+   "OperatorCode": "??",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Melilla",
+   "OperatorCode": "??",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Mexico",
+   "OperatorCode": "1",
+   "OperatorName": "Telcel, Movistar, IUSACell, Nextel, UNEFON, Virgin Mobile, Tuenti"
+ },
+ {
+   "CountryName": "Moldova",
+   "OperatorCode": "60xxxxxx",
+   "OperatorName": "Orange"
+ },
+ {
+   "CountryName": "Moldova",
+   "OperatorCode": "65xxxxxx",
+   "OperatorName": "Eventis"
+ },
+ {
+   "CountryName": "Moldova",
+   "OperatorCode": "67xxxxxx",
+   "OperatorName": "Unité"
+ },
+ {
+   "CountryName": "Moldova",
+   "OperatorCode": "68xxxxxx",
+   "OperatorName": "Orange"
+ },
+ {
+   "CountryName": "Moldova",
+   "OperatorCode": "69xxxxxx",
+   "OperatorName": "Orange"
+ },
+ {
+   "CountryName": "Moldova",
+   "OperatorCode": "78xxxxxx",
+   "OperatorName": "Moldcell"
+ },
+ {
+   "CountryName": "Moldova",
+   "OperatorCode": "79xxxxxx",
+   "OperatorName": "Moldcell"
+ },
+ {
+   "CountryName": "Monaco",
+   "OperatorCode": "4",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Monaco",
+   "OperatorCode": "6",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Mongolia",
+   "OperatorCode": "70xxxxxx",
+   "OperatorName": "Mongolian Telecom Company"
+ },
+ {
+   "CountryName": "Mongolia",
+   "OperatorCode": "88xxxxxx",
+   "OperatorName": "Unitel Corporation"
+ },
+ {
+   "CountryName": "Mongolia",
+   "OperatorCode": "89xxxxxx",
+   "OperatorName": "Unitel Corporation"
+ },
+ {
+   "CountryName": "Mongolia",
+   "OperatorCode": "91xxxxxx",
+   "OperatorName": "Skytel"
+ },
+ {
+   "CountryName": "Mongolia",
+   "OperatorCode": "93xxxxxx",
+   "OperatorName": "G-Mobile"
+ },
+ {
+   "CountryName": "Mongolia",
+   "OperatorCode": "94xxxxxx",
+   "OperatorName": "Mobicom Corporation"
+ },
+ {
+   "CountryName": "Mongolia",
+   "OperatorCode": "95xxxxxx",
+   "OperatorName": "Mobicom Corporation"
+ },
+ {
+   "CountryName": "Mongolia",
+   "OperatorCode": "96xxxxxx",
+   "OperatorName": "Skytel"
+ },
+ {
+   "CountryName": "Mongolia",
+   "OperatorCode": "98xxxxxx",
+   "OperatorName": "G-Mobile"
+ },
+ {
+   "CountryName": "Mongolia",
+   "OperatorCode": "99xxxxxx",
+   "OperatorName": "Mobicom Corporation"
+ },
+ {
+   "CountryName": "Montenegro",
+   "OperatorCode": "60",
+   "OperatorName": "Revolucija, VMNO under MTEL CG"
+ },
+ {
+   "CountryName": "Montenegro",
+   "OperatorCode": "63",
+   "OperatorName": "Telenor Montenegro"
+ },
+ {
+   "CountryName": "Montenegro",
+   "OperatorCode": "66",
+   "OperatorName": "Volim, VMNO under T-Mobile"
+ },
+ {
+   "CountryName": "Montenegro",
+   "OperatorCode": "67",
+   "OperatorName": "T-Mobile"
+ },
+ {
+   "CountryName": "Montenegro",
+   "OperatorCode": "68",
+   "OperatorName": "MTEL CG"
+ },
+ {
+   "CountryName": "Montenegro",
+   "OperatorCode": "69",
+   "OperatorName": "Telenor Montenegro"
+ },
+ {
+   "CountryName": "Montserrat",
+   "OperatorCode": "664",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Morocco",
+   "OperatorCode": "6x",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Mozambique",
+   "OperatorCode": "8x",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Myanmar",
+   "OperatorCode": "92xxxxxx",
+   "OperatorName": "MPT"
+ },
+ {
+   "CountryName": "Myanmar",
+   "OperatorCode": "925xxxxxxx",
+   "OperatorName": "MPT"
+ },
+ {
+   "CountryName": "Myanmar",
+   "OperatorCode": "926xxxxxxx",
+   "OperatorName": "MPT"
+ },
+ {
+   "CountryName": "Myanmar",
+   "OperatorCode": "943xxxxxx",
+   "OperatorName": "MPT"
+ },
+ {
+   "CountryName": "Myanmar",
+   "OperatorCode": "94xxxxxxxx",
+   "OperatorName": "MPT"
+ },
+ {
+   "CountryName": "Myanmar",
+   "OperatorCode": "944xxxxxx",
+   "OperatorName": "MPT"
+ },
+ {
+   "CountryName": "Myanmar",
+   "OperatorCode": "95xxxxxx",
+   "OperatorName": "MPT"
+ },
+ {
+   "CountryName": "Myanmar",
+   "OperatorCode": "96xxxxxx",
+   "OperatorName": "MPT"
+ },
+ {
+   "CountryName": "Myanmar",
+   "OperatorCode": "973xxxxxx",
+   "OperatorName": "MPT"
+ },
+ {
+   "CountryName": "Myanmar",
+   "OperatorCode": "991xxxxxx",
+   "OperatorName": "MPT"
+ },
+ {
+   "CountryName": "Myanmar",
+   "OperatorCode": "93xxxxxxx",
+   "OperatorName": "MEC"
+ },
+ {
+   "CountryName": "Myanmar",
+   "OperatorCode": "996xxxxxxx",
+   "OperatorName": "Ooredoo Myanmar"
+ },
+ {
+   "CountryName": "Myanmar",
+   "OperatorCode": "997xxxxxxx",
+   "OperatorName": "Ooredoo Myanmar"
+ },
+ {
+   "CountryName": "Myanmar",
+   "OperatorCode": "977xxxxxxx",
+   "OperatorName": "Telenor Myanmar"
+ },
+ {
+   "CountryName": "Myanmar",
+   "OperatorCode": "978xxxxxxx",
+   "OperatorName": "Telenor Myanmar"
+ },
+ {
+   "CountryName": "Myanmar",
+   "OperatorCode": "979xxxxxxx",
+   "OperatorName": "Telenor Myanmar"
+ },
+ {
+   "CountryName": "Namibia",
+   "OperatorCode": "60",
+   "OperatorName": "Switch"
+ },
+ {
+   "CountryName": "Namibia",
+   "OperatorCode": "81",
+   "OperatorName": "MTC"
+ },
+ {
+   "CountryName": "Namibia",
+   "OperatorCode": "85",
+   "OperatorName": "Leo"
+ },
+ {
+   "CountryName": "Nauru",
+   "OperatorCode": "555",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Nepal",
+   "OperatorCode": "98xxxxxxxx",
+   "OperatorName": "Nepal Telecom, Ncell"
+ },
+ {
+   "CountryName": "Netherlands",
+   "OperatorCode": "6",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "New Caledonia",
+   "OperatorCode": "7",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "New Caledonia",
+   "OperatorCode": "8",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "New Caledonia",
+   "OperatorCode": "9",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "New Zealand",
+   "OperatorCode": "20",
+   "OperatorName": "Orcon"
+ },
+ {
+   "CountryName": "New Zealand",
+   "OperatorCode": "21",
+   "OperatorName": "Vodafone"
+ },
+ {
+   "CountryName": "New Zealand",
+   "OperatorCode": "22",
+   "OperatorName": "2degrees"
+ },
+ {
+   "CountryName": "New Zealand",
+   "OperatorCode": "24",
+   "OperatorName": "Unused"
+ },
+ {
+   "CountryName": "New Zealand",
+   "OperatorCode": "25",
+   "OperatorName": "Unused"
+ },
+ {
+   "CountryName": "New Zealand",
+   "OperatorCode": "27",
+   "OperatorName": "Spark New Zealand"
+ },
+ {
+   "CountryName": "New Zealand",
+   "OperatorCode": "280",
+   "OperatorName": "Compass Communications"
+ },
+ {
+   "CountryName": "New Zealand",
+   "OperatorCode": "28",
+   "OperatorName": "Mainly CallPlus"
+ },
+ {
+   "CountryName": "New Zealand",
+   "OperatorCode": "283",
+   "OperatorName": "Teletraders MVNO"
+ },
+ {
+   "CountryName": "New Zealand",
+   "OperatorCode": "28",
+   "OperatorName": "M2 MVNO"
+ },
+ {
+   "CountryName": "New Zealand",
+   "OperatorCode": "29",
+   "OperatorName": "TelstraClear"
+ },
+ {
+   "CountryName": "Nicaragua",
+   "OperatorCode": "8",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Niger",
+   "OperatorCode": "9",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Nigeria",
+   "OperatorCode": "804",
+   "OperatorName": "ntel"
+ },
+ {
+   "CountryName": "Nigeria",
+   "OperatorCode": "805",
+   "OperatorName": "glo"
+ },
+ {
+   "CountryName": "Nigeria",
+   "OperatorCode": "803",
+   "OperatorName": "mtn"
+ },
+ {
+   "CountryName": "Nigeria",
+   "OperatorCode": "802",
+   "OperatorName": "airtel"
+ },
+ {
+   "CountryName": "Nigeria",
+   "OperatorCode": "809",
+   "OperatorName": "etisalat"
+ },
+ {
+   "CountryName": "Niue",
+   "OperatorCode": "1",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Niue",
+   "OperatorCode": "3",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Niue",
+   "OperatorCode": "4",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Norfolk Island",
+   "OperatorCode": "38",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "North Korea",
+   "OperatorCode": "?",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "North Macedonia",
+   "OperatorCode": "70",
+   "OperatorName": "Telekom Macedonia"
+ },
+ {
+   "CountryName": "North Macedonia",
+   "OperatorCode": "71",
+   "OperatorName": "Telekom Macedonia"
+ },
+ {
+   "CountryName": "North Macedonia",
+   "OperatorCode": "72",
+   "OperatorName": "Telekom Macedonia"
+ },
+ {
+   "CountryName": "North Macedonia",
+   "OperatorCode": "79",
+   "OperatorName": "Lycamobile MVNO"
+ },
+ {
+   "CountryName": "North Macedonia",
+   "OperatorCode": "75",
+   "OperatorName": "former One- now one.vip"
+ },
+ {
+   "CountryName": "North Macedonia",
+   "OperatorCode": "76",
+   "OperatorName": "former One- now one.vip"
+ },
+ {
+   "CountryName": "North Macedonia",
+   "OperatorCode": "77",
+   "OperatorName": "one.vip VIP Operator"
+ },
+ {
+   "CountryName": "North Macedonia",
+   "OperatorCode": "78",
+   "OperatorName": "one.vip VIP Operator"
+ },
+ {
+   "CountryName": "Northern Cyprus",
+   "OperatorCode": "533",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Northern Cyprus",
+   "OperatorCode": "542",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Northern Ireland",
+   "OperatorCode": "",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Northern Mariana Islands",
+   "OperatorCode": "670",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Norway",
+   "OperatorCode": "4",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Norway",
+   "OperatorCode": "59",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Norway",
+   "OperatorCode": "9",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Oman",
+   "OperatorCode": "91",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Oman",
+   "OperatorCode": "91",
+   "OperatorName": "Oman Mobile"
+ },
+ {
+   "CountryName": "Oman",
+   "OperatorCode": "92",
+   "OperatorName": "Oman Mobile"
+ },
+ {
+   "CountryName": "Oman",
+   "OperatorCode": "93",
+   "OperatorName": "Nawras"
+ },
+ {
+   "CountryName": "Oman",
+   "OperatorCode": "94",
+   "OperatorName": "Nawras"
+ },
+ {
+   "CountryName": "Oman",
+   "OperatorCode": "95",
+   "OperatorName": "Nawras"
+ },
+ {
+   "CountryName": "Oman",
+   "OperatorCode": "96",
+   "OperatorName": "Nawras"
+ },
+ {
+   "CountryName": "Oman",
+   "OperatorCode": "97",
+   "OperatorName": "Nawras"
+ },
+ {
+   "CountryName": "Oman",
+   "OperatorCode": "98",
+   "OperatorName": "Friendy"
+ },
+ {
+   "CountryName": "Oman",
+   "OperatorCode": "99",
+   "OperatorName": "Oman Mobile"
+ },
+ {
+   "CountryName": "Pakistan",
+   "OperatorCode": "3xx MOBILE CODE",
+   "OperatorName": "ALL PAKISTAN MOBILE OPERATORS"
+ },
+ {
+   "CountryName": "Pakistan",
+   "OperatorCode": "30x",
+   "OperatorName": "Mobilink"
+ },
+ {
+   "CountryName": "Pakistan",
+   "OperatorCode": "31x",
+   "OperatorName": "Zong"
+ },
+ {
+   "CountryName": "Pakistan",
+   "OperatorCode": "32x",
+   "OperatorName": "Warid Pakistan"
+ },
+ {
+   "CountryName": "Pakistan",
+   "OperatorCode": "33x",
+   "OperatorName": "Ufone"
+ },
+ {
+   "CountryName": "Pakistan",
+   "OperatorCode": "34x",
+   "OperatorName": "Telenor"
+ },
+ {
+   "CountryName": "Palau",
+   "OperatorCode": "??",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Palestine, State of",
+   "OperatorCode": "56",
+   "OperatorName": "Wataniya"
+ },
+ {
+   "CountryName": "Palestine, State of",
+   "OperatorCode": "59",
+   "OperatorName": "Jawwal"
+ },
+ {
+   "CountryName": "Panama",
+   "OperatorCode": "6",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Papua New Guinea",
+   "OperatorCode": "68",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Papua New Guinea",
+   "OperatorCode": "69",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Paraguay",
+   "OperatorCode": "9xx",
+   "OperatorName": "Tigo"
+ },
+ {
+   "CountryName": "People's Republic of China",
+   "OperatorCode": "13x",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "People's Republic of China",
+   "OperatorCode": "15x",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "People's Republic of China",
+   "OperatorCode": "18x",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Peru",
+   "OperatorCode": "9",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Philippines",
+   "OperatorCode": "973",
+   "OperatorName": "Express Telecom"
+ },
+ {
+   "CountryName": "Philippines",
+   "OperatorCode": "974",
+   "OperatorName": "Express Telecom"
+ },
+ {
+   "CountryName": "Philippines",
+   "OperatorCode": "905",
+   "OperatorName": "Globe Telecom, Touch Mobile"
+ },
+ {
+   "CountryName": "Philippines",
+   "OperatorCode": "906",
+   "OperatorName": "Globe Telecom, Touch Mobile"
+ },
+ {
+   "CountryName": "Philippines",
+   "OperatorCode": "977",
+   "OperatorName": "Globe Telecom, Touch Mobile"
+ },
+ {
+   "CountryName": "Philippines",
+   "OperatorCode": "915",
+   "OperatorName": "Globe Telecom, Touch Mobile"
+ },
+ {
+   "CountryName": "Philippines",
+   "OperatorCode": "916",
+   "OperatorName": "Globe Telecom, Touch Mobile"
+ },
+ {
+   "CountryName": "Philippines",
+   "OperatorCode": "926",
+   "OperatorName": "Globe Telecom, Touch Mobile"
+ },
+ {
+   "CountryName": "Philippines",
+   "OperatorCode": "927",
+   "OperatorName": "Globe Telecom, Touch Mobile"
+ },
+ {
+   "CountryName": "Philippines",
+   "OperatorCode": "935",
+   "OperatorName": "Globe Telecom, Touch Mobile"
+ },
+ {
+   "CountryName": "Philippines",
+   "OperatorCode": "936",
+   "OperatorName": "Globe Telecom, Touch Mobile"
+ },
+ {
+   "CountryName": "Philippines",
+   "OperatorCode": "937",
+   "OperatorName": "Globe Telecom, Touch Mobile"
+ },
+ {
+   "CountryName": "Philippines",
+   "OperatorCode": "996",
+   "OperatorName": "Globe Telecom, Touch Mobile"
+ },
+ {
+   "CountryName": "Philippines",
+   "OperatorCode": "997",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Philippines",
+   "OperatorCode": "917",
+   "OperatorName": "Globe Telecom"
+ },
+ {
+   "CountryName": "Philippines",
+   "OperatorCode": "979",
+   "OperatorName": "Next Mobile"
+ },
+ {
+   "CountryName": "Philippines",
+   "OperatorCode": "920",
+   "OperatorName": "Smart Communications, Talk 'N Text, Addict Mobile"
+ },
+ {
+   "CountryName": "Philippines",
+   "OperatorCode": "930",
+   "OperatorName": "Smart Communications, Talk 'N Text, Red Mobile"
+ },
+ {
+   "CountryName": "Philippines",
+   "OperatorCode": "938",
+   "OperatorName": "Smart Communications, Talk 'N Text, Red Mobile"
+ },
+ {
+   "CountryName": "Philippines",
+   "OperatorCode": "939",
+   "OperatorName": "Smart Communications, Talk 'N Text, Red Mobile"
+ },
+ {
+   "CountryName": "Philippines",
+   "OperatorCode": "907",
+   "OperatorName": "Smart Communications, Talk 'N Text"
+ },
+ {
+   "CountryName": "Philippines",
+   "OperatorCode": "908",
+   "OperatorName": "Smart Communications, Talk 'N Text"
+ },
+ {
+   "CountryName": "Philippines",
+   "OperatorCode": "909",
+   "OperatorName": "Smart Communications, Talk 'N Text"
+ },
+ {
+   "CountryName": "Philippines",
+   "OperatorCode": "910",
+   "OperatorName": "Smart Communications, Talk 'N Text"
+ },
+ {
+   "CountryName": "Philippines",
+   "OperatorCode": "912",
+   "OperatorName": "Smart Communications, Talk 'N Text"
+ },
+ {
+   "CountryName": "Philippines",
+   "OperatorCode": "919",
+   "OperatorName": "Smart Communications, Talk 'N Text"
+ },
+ {
+   "CountryName": "Philippines",
+   "OperatorCode": "921",
+   "OperatorName": "Smart Communications, Talk 'N Text"
+ },
+ {
+   "CountryName": "Philippines",
+   "OperatorCode": "928",
+   "OperatorName": "Smart Communications, Talk 'N Text"
+ },
+ {
+   "CountryName": "Philippines",
+   "OperatorCode": "929",
+   "OperatorName": "Smart Communications, Talk 'N Text"
+ },
+ {
+   "CountryName": "Philippines",
+   "OperatorCode": "947",
+   "OperatorName": "Smart Communications, Talk 'N Text"
+ },
+ {
+   "CountryName": "Philippines",
+   "OperatorCode": "948",
+   "OperatorName": "Smart Communications, Talk 'N Text"
+ },
+ {
+   "CountryName": "Philippines",
+   "OperatorCode": "949",
+   "OperatorName": "Smart Communications, Talk 'N Text"
+ },
+ {
+   "CountryName": "Philippines",
+   "OperatorCode": "989",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Philippines",
+   "OperatorCode": "918",
+   "OperatorName": "Smart Communications"
+ },
+ {
+   "CountryName": "Philippines",
+   "OperatorCode": "999",
+   "OperatorName": "Smart Communications, Red Mobile"
+ },
+ {
+   "CountryName": "Philippines",
+   "OperatorCode": "922",
+   "OperatorName": "Sun Cellular"
+ },
+ {
+   "CountryName": "Philippines",
+   "OperatorCode": "923",
+   "OperatorName": "Sun Cellular"
+ },
+ {
+   "CountryName": "Philippines",
+   "OperatorCode": "932",
+   "OperatorName": "Sun Cellular"
+ },
+ {
+   "CountryName": "Philippines",
+   "OperatorCode": "933",
+   "OperatorName": "Sun Cellular"
+ },
+ {
+   "CountryName": "Philippines",
+   "OperatorCode": "942",
+   "OperatorName": "Sun Cellular"
+ },
+ {
+   "CountryName": "Philippines",
+   "OperatorCode": "943",
+   "OperatorName": "Sun Cellular"
+ },
+ {
+   "CountryName": "Pitcairn Islands",
+   "OperatorCode": "??",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Plazas de soberanía",
+   "OperatorCode": "??",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Poland",
+   "OperatorCode": "50x",
+   "OperatorName": "Category grouping Polish cellular operators on 2012-08-21 there are 4 leading companies: Polkomtel, T-Mobile, P4, PTK Centertel"
+ },
+ {
+   "CountryName": "Poland",
+   "OperatorCode": "45x",
+   "OperatorName": "Category grouping Polish cellular operators on 2012-08-21 there are 4 leading companies: Polkomtel, T-Mobile, P4, PTK Centertel"
+ },
+ {
+   "CountryName": "Poland",
+   "OperatorCode": "51x",
+   "OperatorName": "Category grouping Polish cellular operators on 2012-08-21 there are 4 leading companies: Polkomtel, T-Mobile, P4, PTK Centertel"
+ },
+ {
+   "CountryName": "Poland",
+   "OperatorCode": "53x",
+   "OperatorName": "Category grouping Polish cellular operators on 2012-08-21 there are 4 leading companies: Polkomtel, T-Mobile, P4, PTK Centertel"
+ },
+ {
+   "CountryName": "Poland",
+   "OperatorCode": "57x",
+   "OperatorName": "Category grouping Polish cellular operators on 2012-08-21 there are 4 leading companies: Polkomtel, T-Mobile, P4, PTK Centertel"
+ },
+ {
+   "CountryName": "Poland",
+   "OperatorCode": "60x",
+   "OperatorName": "Category grouping Polish cellular operators on 2012-08-21 there are 4 leading companies: Polkomtel, T-Mobile, P4, PTK Centertel"
+ },
+ {
+   "CountryName": "Poland",
+   "OperatorCode": "66x",
+   "OperatorName": "Category grouping Polish cellular operators on 2012-08-21 there are 4 leading companies: Polkomtel, T-Mobile, P4, PTK Centertel"
+ },
+ {
+   "CountryName": "Poland",
+   "OperatorCode": "69x",
+   "OperatorName": "Category grouping Polish cellular operators on 2012-08-21 there are 4 leading companies: Polkomtel, T-Mobile, P4, PTK Centertel"
+ },
+ {
+   "CountryName": "Poland",
+   "OperatorCode": "72x",
+   "OperatorName": "Category grouping Polish cellular operators on 2012-08-21 there are 4 leading companies: Polkomtel, T-Mobile, P4, PTK Centertel"
+ },
+ {
+   "CountryName": "Poland",
+   "OperatorCode": "73x",
+   "OperatorName": "Category grouping Polish cellular operators on 2012-08-21 there are 4 leading companies: Polkomtel, T-Mobile, P4, PTK Centertel"
+ },
+ {
+   "CountryName": "Poland",
+   "OperatorCode": "78x",
+   "OperatorName": "Category grouping Polish cellular operators on 2012-08-21 there are 4 leading companies: Polkomtel, T-Mobile, P4, PTK Centertel"
+ },
+ {
+   "CountryName": "Poland",
+   "OperatorCode": "79x",
+   "OperatorName": "Category grouping Polish cellular operators on 2012-08-21 there are 4 leading companies: Polkomtel, T-Mobile, P4, PTK Centertel"
+ },
+ {
+   "CountryName": "Poland",
+   "OperatorCode": "88x",
+   "OperatorName": "Category grouping Polish cellular operators on 2012-08-21 there are 4 leading companies: Polkomtel, T-Mobile, P4, PTK Centertel"
+ },
+ {
+   "CountryName": "Portugal",
+   "OperatorCode": "91",
+   "OperatorName": "Vodafone"
+ },
+ {
+   "CountryName": "Portugal",
+   "OperatorCode": "921",
+   "OperatorName": "Vodafone"
+ },
+ {
+   "CountryName": "Portugal",
+   "OperatorCode": "922",
+   "OperatorName": "Phone-Ix"
+ },
+ {
+   "CountryName": "Portugal",
+   "OperatorCode": "924",
+   "OperatorName": "TMN"
+ },
+ {
+   "CountryName": "Portugal",
+   "OperatorCode": "925",
+   "OperatorName": "TMN"
+ },
+ {
+   "CountryName": "Portugal",
+   "OperatorCode": "926",
+   "OperatorName": "TMN"
+ },
+ {
+   "CountryName": "Portugal",
+   "OperatorCode": "927",
+   "OperatorName": "TMN"
+ },
+ {
+   "CountryName": "Portugal",
+   "OperatorCode": "9290",
+   "OperatorName": "Zon Mobile"
+ },
+ {
+   "CountryName": "Portugal",
+   "OperatorCode": "9291",
+   "OperatorName": "Zon Mobile"
+ },
+ {
+   "CountryName": "Portugal",
+   "OperatorCode": "9292",
+   "OperatorName": "Zon Mobile"
+ },
+ {
+   "CountryName": "Portugal",
+   "OperatorCode": "9293",
+   "OperatorName": "Zon Mobile"
+ },
+ {
+   "CountryName": "Portugal",
+   "OperatorCode": "9294",
+   "OperatorName": "Zon Mobile"
+ },
+ {
+   "CountryName": "Portugal",
+   "OperatorCode": "93",
+   "OperatorName": "Optimus"
+ },
+ {
+   "CountryName": "Portugal",
+   "OperatorCode": "96",
+   "OperatorName": "TMN"
+ },
+ {
+   "CountryName": "Príncipe",
+   "OperatorCode": "90",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Puerto Rico",
+   "OperatorCode": "787",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Puerto Rico",
+   "OperatorCode": "939",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Qatar",
+   "OperatorCode": "33",
+   "OperatorName": "Qtel"
+ },
+ {
+   "CountryName": "Qatar",
+   "OperatorCode": "55",
+   "OperatorName": "Qtel"
+ },
+ {
+   "CountryName": "Qatar",
+   "OperatorCode": "66",
+   "OperatorName": "Qtel"
+ },
+ {
+   "CountryName": "Qatar",
+   "OperatorCode": "77",
+   "OperatorName": "Vodafone"
+ },
+ {
+   "CountryName": "Republic of Congo",
+   "OperatorCode": "4",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Republic of Congo",
+   "OperatorCode": "5",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Republic of Congo",
+   "OperatorCode": "6",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Réunion",
+   "OperatorCode": "692 / 693",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Réunion",
+   "OperatorCode": "700",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Romania",
+   "OperatorCode": "70x",
+   "OperatorName": "Reserved for virtual operators"
+ },
+ {
+   "CountryName": "Romania",
+   "OperatorCode": "711",
+   "OperatorName": "Telekom Romania"
+ },
+ {
+   "CountryName": "Romania",
+   "OperatorCode": "72x",
+   "OperatorName": "Vodafone Romania"
+ },
+ {
+   "CountryName": "Romania",
+   "OperatorCode": "73x",
+   "OperatorName": "Vodafone Romania"
+ },
+ {
+   "CountryName": "Romania",
+   "OperatorCode": "74x",
+   "OperatorName": "Orange Romania"
+ },
+ {
+   "CountryName": "Romania",
+   "OperatorCode": "75x",
+   "OperatorName": "Orange Romania"
+ },
+ {
+   "CountryName": "Romania",
+   "OperatorCode": "76x",
+   "OperatorName": "Telekom Romania"
+ },
+ {
+   "CountryName": "Romania",
+   "OperatorCode": "77x",
+   "OperatorName": "DigiMobil (RCS & RDS)"
+ },
+ {
+   "CountryName": "Romania",
+   "OperatorCode": "78x",
+   "OperatorName": "Zapp Mobile (merged with Telekom[6])"
+ },
+ {
+   "CountryName": "Russia (Russian Federation)",
+   "OperatorCode": "901",
+   "OperatorName": "Skylink (Russia)"
+ },
+ {
+   "CountryName": "Russia (Russian Federation)",
+   "OperatorCode": "902",
+   "OperatorName": "Tele2 (Russia) and regional operators"
+ },
+ {
+   "CountryName": "Russia (Russian Federation)",
+   "OperatorCode": "903",
+   "OperatorName": "Beeline"
+ },
+ {
+   "CountryName": "Russia (Russian Federation)",
+   "OperatorCode": "904",
+   "OperatorName": "Tele2 (Russia)"
+ },
+ {
+   "CountryName": "Russia (Russian Federation)",
+   "OperatorCode": "905",
+   "OperatorName": "Beeline"
+ },
+ {
+   "CountryName": "Russia (Russian Federation)",
+   "OperatorCode": "906",
+   "OperatorName": "Beeline"
+ },
+ {
+   "CountryName": "Russia (Russian Federation)",
+   "OperatorCode": "908",
+   "OperatorName": "Tele2 (Russia)"
+ },
+ {
+   "CountryName": "Russia (Russian Federation)",
+   "OperatorCode": "909",
+   "OperatorName": "Beeline"
+ },
+ {
+   "CountryName": "Russia (Russian Federation)",
+   "OperatorCode": "91x",
+   "OperatorName": "MTS"
+ },
+ {
+   "CountryName": "Russia (Russian Federation)",
+   "OperatorCode": "92x",
+   "OperatorName": "Megafon"
+ },
+ {
+   "CountryName": "Russia (Russian Federation)",
+   "OperatorCode": "93x",
+   "OperatorName": "Megafon"
+ },
+ {
+   "CountryName": "Russia (Russian Federation)",
+   "OperatorCode": "950",
+   "OperatorName": "Tele2 (Russia)"
+ },
+ {
+   "CountryName": "Russia (Russian Federation)",
+   "OperatorCode": "951",
+   "OperatorName": "MTS"
+ },
+ {
+   "CountryName": "Russia (Russian Federation)",
+   "OperatorCode": "952",
+   "OperatorName": "Tele2 (Russia)"
+ },
+ {
+   "CountryName": "Russia (Russian Federation)",
+   "OperatorCode": "953",
+   "OperatorName": "Tele2 (Russia)"
+ },
+ {
+   "CountryName": "Rwanda",
+   "OperatorCode": "7",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Rwanda",
+   "OperatorCode": "8",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Saba",
+   "OperatorCode": "??",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Sahrawi Arab Democratic Republic",
+   "OperatorCode": "??",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Saint Barthélemy",
+   "OperatorCode": "6",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Saint Helena and Tristan da Cunha (not Ascenscion)",
+   "OperatorCode": "??",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Saint Kitts and Nevis",
+   "OperatorCode": "869",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Saint Lucia",
+   "OperatorCode": "758",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Saint Pierre and Miquelon",
+   "OperatorCode": "??",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Saint Vincent and the Grenadines",
+   "OperatorCode": "784",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Samoa",
+   "OperatorCode": "77",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "San Marino",
+   "OperatorCode": "66",
+   "OperatorName": "Prima"
+ },
+ {
+   "CountryName": "São Tomé and Príncipe",
+   "OperatorCode": "90",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Saudi Arabia",
+   "OperatorCode": "50",
+   "OperatorName": "STC"
+ },
+ {
+   "CountryName": "Saudi Arabia",
+   "OperatorCode": "51",
+   "OperatorName": "Bravo"
+ },
+ {
+   "CountryName": "Saudi Arabia",
+   "OperatorCode": "53",
+   "OperatorName": "STC"
+ },
+ {
+   "CountryName": "Saudi Arabia",
+   "OperatorCode": "54",
+   "OperatorName": "mobily"
+ },
+ {
+   "CountryName": "Saudi Arabia",
+   "OperatorCode": "55",
+   "OperatorName": "STC"
+ },
+ {
+   "CountryName": "Saudi Arabia",
+   "OperatorCode": "56",
+   "OperatorName": "mobily"
+ },
+ {
+   "CountryName": "Saudi Arabia",
+   "OperatorCode": "57",
+   "OperatorName": "Bravo"
+ },
+ {
+   "CountryName": "Saudi Arabia",
+   "OperatorCode": "58",
+   "OperatorName": "Zain"
+ },
+ {
+   "CountryName": "Saudi Arabia",
+   "OperatorCode": "59",
+   "OperatorName": "Zain"
+ },
+ {
+   "CountryName": "Scotland",
+   "OperatorCode": "",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Senegal",
+   "OperatorCode": "76",
+   "OperatorName": "Senegal Mobile Tigo"
+ },
+ {
+   "CountryName": "Senegal",
+   "OperatorCode": "77",
+   "OperatorName": "Senegal Mobile Orange"
+ },
+ {
+   "CountryName": "Serbia",
+   "OperatorCode": "60",
+   "OperatorName": "Vip mobile"
+ },
+ {
+   "CountryName": "Serbia",
+   "OperatorCode": "61",
+   "OperatorName": "Vip mobile"
+ },
+ {
+   "CountryName": "Serbia",
+   "OperatorCode": "62",
+   "OperatorName": "Telenor Serbia"
+ },
+ {
+   "CountryName": "Serbia",
+   "OperatorCode": "63",
+   "OperatorName": "Telenor Serbia"
+ },
+ {
+   "CountryName": "Serbia",
+   "OperatorCode": "64",
+   "OperatorName": "mt:s"
+ },
+ {
+   "CountryName": "Serbia",
+   "OperatorCode": "65",
+   "OperatorName": "mt:s"
+ },
+ {
+   "CountryName": "Serbia",
+   "OperatorCode": "66",
+   "OperatorName": "mt:s"
+ },
+ {
+   "CountryName": "Serbia",
+   "OperatorCode": "677",
+   "OperatorName": "Globaltel"
+ },
+ {
+   "CountryName": "Serbia",
+   "OperatorCode": "68",
+   "OperatorName": "Vip mobile"
+ },
+ {
+   "CountryName": "Serbia",
+   "OperatorCode": "69",
+   "OperatorName": "Telenor Serbia"
+ },
+ {
+   "CountryName": "Seychelles",
+   "OperatorCode": "5",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Seychelles",
+   "OperatorCode": "7",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Sierra Leone",
+   "OperatorCode": "23",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Sierra Leone",
+   "OperatorCode": "30",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Sierra Leone",
+   "OperatorCode": "33",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Sierra Leone",
+   "OperatorCode": "7x",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Singapore",
+   "OperatorCode": "8",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Singapore",
+   "OperatorCode": "9",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Sint Eustatius",
+   "OperatorCode": "??",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Sint Maarten",
+   "OperatorCode": "721",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Slovakia (Slovak Republic)",
+   "OperatorCode": "901",
+   "OperatorName": "T-Mobile"
+ },
+ {
+   "CountryName": "Slovakia (Slovak Republic)",
+   "OperatorCode": "902",
+   "OperatorName": "T-Mobile"
+ },
+ {
+   "CountryName": "Slovakia (Slovak Republic)",
+   "OperatorCode": "903",
+   "OperatorName": "T-Mobile"
+ },
+ {
+   "CountryName": "Slovakia (Slovak Republic)",
+   "OperatorCode": "904",
+   "OperatorName": "T-Mobile"
+ },
+ {
+   "CountryName": "Slovakia (Slovak Republic)",
+   "OperatorCode": "905",
+   "OperatorName": "Orange"
+ },
+ {
+   "CountryName": "Slovakia (Slovak Republic)",
+   "OperatorCode": "906",
+   "OperatorName": "Orange"
+ },
+ {
+   "CountryName": "Slovakia (Slovak Republic)",
+   "OperatorCode": "907",
+   "OperatorName": "Orange"
+ },
+ {
+   "CountryName": "Slovakia (Slovak Republic)",
+   "OperatorCode": "908",
+   "OperatorName": "Orange"
+ },
+ {
+   "CountryName": "Slovakia (Slovak Republic)",
+   "OperatorCode": "910",
+   "OperatorName": "T-Mobile"
+ },
+ {
+   "CountryName": "Slovakia (Slovak Republic)",
+   "OperatorCode": "911",
+   "OperatorName": "T-Mobile"
+ },
+ {
+   "CountryName": "Slovakia (Slovak Republic)",
+   "OperatorCode": "912",
+   "OperatorName": "T-Mobile"
+ },
+ {
+   "CountryName": "Slovakia (Slovak Republic)",
+   "OperatorCode": "914",
+   "OperatorName": "T-Mobile"
+ },
+ {
+   "CountryName": "Slovakia (Slovak Republic)",
+   "OperatorCode": "915",
+   "OperatorName": "Orange"
+ },
+ {
+   "CountryName": "Slovakia (Slovak Republic)",
+   "OperatorCode": "916",
+   "OperatorName": "Orange"
+ },
+ {
+   "CountryName": "Slovakia (Slovak Republic)",
+   "OperatorCode": "917",
+   "OperatorName": "Orange"
+ },
+ {
+   "CountryName": "Slovakia (Slovak Republic)",
+   "OperatorCode": "918",
+   "OperatorName": "Orange"
+ },
+ {
+   "CountryName": "Slovakia (Slovak Republic)",
+   "OperatorCode": "940",
+   "OperatorName": "O2"
+ },
+ {
+   "CountryName": "Slovakia (Slovak Republic)",
+   "OperatorCode": "944",
+   "OperatorName": "O2"
+ },
+ {
+   "CountryName": "Slovakia (Slovak Republic)",
+   "OperatorCode": "948",
+   "OperatorName": "O2"
+ },
+ {
+   "CountryName": "Slovakia (Slovak Republic)",
+   "OperatorCode": "949",
+   "OperatorName": "O2"
+ },
+ {
+   "CountryName": "Slovakia (Slovak Republic)",
+   "OperatorCode": "950",
+   "OperatorName": "SWAN"
+ },
+ {
+   "CountryName": "Slovenia",
+   "OperatorCode": "20",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Slovenia",
+   "OperatorCode": "21",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Slovenia",
+   "OperatorCode": "30",
+   "OperatorName": "Si.mobil"
+ },
+ {
+   "CountryName": "Slovenia",
+   "OperatorCode": "31",
+   "OperatorName": "Mobitel"
+ },
+ {
+   "CountryName": "Slovenia",
+   "OperatorCode": "40",
+   "OperatorName": "Si.mobil"
+ },
+ {
+   "CountryName": "Slovenia",
+   "OperatorCode": "41",
+   "OperatorName": "Mobitel"
+ },
+ {
+   "CountryName": "Slovenia",
+   "OperatorCode": "49",
+   "OperatorName": "Mobitel"
+ },
+ {
+   "CountryName": "Slovenia",
+   "OperatorCode": "50",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Slovenia",
+   "OperatorCode": "51",
+   "OperatorName": "Mobitel"
+ },
+ {
+   "CountryName": "Slovenia",
+   "OperatorCode": "60",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Slovenia",
+   "OperatorCode": "61",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Slovenia",
+   "OperatorCode": "64",
+   "OperatorName": "T-2"
+ },
+ {
+   "CountryName": "Slovenia",
+   "OperatorCode": "70",
+   "OperatorName": "Telemach Mobile"
+ },
+ {
+   "CountryName": "Slovenia",
+   "OperatorCode": "71",
+   "OperatorName": "Mobitel"
+ },
+ {
+   "CountryName": "Solomon Islands",
+   "OperatorCode": "74",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Solomon Islands",
+   "OperatorCode": "75",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Somalia",
+   "OperatorCode": "??",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "South Africa",
+   "OperatorCode": "60",
+   "OperatorName": "MTN"
+ },
+ {
+   "CountryName": "South Africa",
+   "OperatorCode": "710",
+   "OperatorName": "MTN"
+ },
+ {
+   "CountryName": "South Africa",
+   "OperatorCode": "711",
+   "OperatorName": "Vodacom"
+ },
+ {
+   "CountryName": "South Africa",
+   "OperatorCode": "712",
+   "OperatorName": "Vodacom"
+ },
+ {
+   "CountryName": "South Africa",
+   "OperatorCode": "713",
+   "OperatorName": "Vodacom"
+ },
+ {
+   "CountryName": "South Africa",
+   "OperatorCode": "714",
+   "OperatorName": "Vodacom"
+ },
+ {
+   "CountryName": "South Africa",
+   "OperatorCode": "715",
+   "OperatorName": "Vodacom"
+ },
+ {
+   "CountryName": "South Africa",
+   "OperatorCode": "716",
+   "OperatorName": "Vodacom"
+ },
+ {
+   "CountryName": "South Africa",
+   "OperatorCode": "717",
+   "OperatorName": "MTN"
+ },
+ {
+   "CountryName": "South Africa",
+   "OperatorCode": "718",
+   "OperatorName": "MTN"
+ },
+ {
+   "CountryName": "South Africa",
+   "OperatorCode": "719",
+   "OperatorName": "MTN"
+ },
+ {
+   "CountryName": "South Africa",
+   "OperatorCode": "72",
+   "OperatorName": "Vodacom"
+ },
+ {
+   "CountryName": "South Africa",
+   "OperatorCode": "73",
+   "OperatorName": "MTN"
+ },
+ {
+   "CountryName": "South Africa",
+   "OperatorCode": "74",
+   "OperatorName": "Cell C"
+ },
+ {
+   "CountryName": "South Africa",
+   "OperatorCode": "741",
+   "OperatorName": "Virgin Mobile"
+ },
+ {
+   "CountryName": "South Africa",
+   "OperatorCode": "76",
+   "OperatorName": "Vodacom"
+ },
+ {
+   "CountryName": "South Africa",
+   "OperatorCode": "78",
+   "OperatorName": "MTN"
+ },
+ {
+   "CountryName": "South Africa",
+   "OperatorCode": "79",
+   "OperatorName": "Vodacom"
+ },
+ {
+   "CountryName": "South Africa",
+   "OperatorCode": "811",
+   "OperatorName": "Telkom Mobile (Former 8ta)"
+ },
+ {
+   "CountryName": "South Africa",
+   "OperatorCode": "812",
+   "OperatorName": "Telkom Mobile (Former 8ta)"
+ },
+ {
+   "CountryName": "South Africa",
+   "OperatorCode": "813",
+   "OperatorName": "Telkom Mobile (Former 8ta)"
+ },
+ {
+   "CountryName": "South Africa",
+   "OperatorCode": "814",
+   "OperatorName": "Telkom Mobile (Former 8ta)"
+ },
+ {
+   "CountryName": "South Africa",
+   "OperatorCode": "82",
+   "OperatorName": "Vodacom"
+ },
+ {
+   "CountryName": "South Africa",
+   "OperatorCode": "83",
+   "OperatorName": "MTN"
+ },
+ {
+   "CountryName": "South Africa",
+   "OperatorCode": "84",
+   "OperatorName": "Cell C"
+ },
+ {
+   "CountryName": "South Georgia and the South Sandwich Islands",
+   "OperatorCode": "??",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "South Korea",
+   "OperatorCode": "10",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "South Korea",
+   "OperatorCode": "11",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "South Korea",
+   "OperatorCode": "16",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "South Korea",
+   "OperatorCode": "17",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "South Korea",
+   "OperatorCode": "18",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "South Korea",
+   "OperatorCode": "19",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "South Ossetia",
+   "OperatorCode": "34x",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "South Sudan",
+   "OperatorCode": "9x",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Spain",
+   "OperatorCode": "6",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Spain",
+   "OperatorCode": "7",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Sri Lanka",
+   "OperatorCode": "70",
+   "OperatorName": "Mobitel"
+ },
+ {
+   "CountryName": "Sri Lanka",
+   "OperatorCode": "71",
+   "OperatorName": "Mobitel"
+ },
+ {
+   "CountryName": "Sri Lanka",
+   "OperatorCode": "72",
+   "OperatorName": "Hutch *(previously used by Etisalat)[7]"
+ },
+ {
+   "CountryName": "Sri Lanka",
+   "OperatorCode": "75",
+   "OperatorName": "Airtel"
+ },
+ {
+   "CountryName": "Sri Lanka",
+   "OperatorCode": "76",
+   "OperatorName": "Dialog"
+ },
+ {
+   "CountryName": "Sri Lanka",
+   "OperatorCode": "77",
+   "OperatorName": "Dialog"
+ },
+ {
+   "CountryName": "Sri Lanka",
+   "OperatorCode": "78",
+   "OperatorName": "Hutch"
+ },
+ {
+   "CountryName": "Sudan",
+   "OperatorCode": "9",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Suriname",
+   "OperatorCode": "8",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Svalbard",
+   "OperatorCode": "79",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Swaziland",
+   "OperatorCode": "7",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Sweden",
+   "OperatorCode": "70",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Sweden",
+   "OperatorCode": "71 0",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Sweden",
+   "OperatorCode": "72",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Sweden",
+   "OperatorCode": "73 00",
+   "OperatorName": "TeliaSonera Sv. AB"
+ },
+ {
+   "CountryName": "Sweden",
+   "OperatorCode": "73 01",
+   "OperatorName": "Wireless Maingate N"
+ },
+ {
+   "CountryName": "Sweden",
+   "OperatorCode": "73 02 - 09",
+   "OperatorName": "TeliaSonera Sv. AB"
+ },
+ {
+   "CountryName": "Sweden",
+   "OperatorCode": "73 10",
+   "OperatorName": "Timepiece Servicos"
+ },
+ {
+   "CountryName": "Sweden",
+   "OperatorCode": "73 11",
+   "OperatorName": "Wireless Maingate N"
+ },
+ {
+   "CountryName": "Sweden",
+   "OperatorCode": "73 12",
+   "OperatorName": "Ledig"
+ },
+ {
+   "CountryName": "Sweden",
+   "OperatorCode": "73 13",
+   "OperatorName": "Wireless Maingate M"
+ },
+ {
+   "CountryName": "Sweden",
+   "OperatorCode": "73 14 - 15",
+   "OperatorName": "Campuz Mobile AB"
+ },
+ {
+   "CountryName": "Sweden",
+   "OperatorCode": "73 16",
+   "OperatorName": "Abbla Mobile Sv. AB"
+ },
+ {
+   "CountryName": "Sweden",
+   "OperatorCode": "73 170",
+   "OperatorName": "Netnet AS"
+ },
+ {
+   "CountryName": "Sweden",
+   "OperatorCode": "73 171 - 179",
+   "OperatorName": "Ledig"
+ },
+ {
+   "CountryName": "Sweden",
+   "OperatorCode": "73 18",
+   "OperatorName": "ACN Communications S"
+ },
+ {
+   "CountryName": "Sweden",
+   "OperatorCode": "73 19",
+   "OperatorName": "Terraflex Europe LPP"
+ },
+ {
+   "CountryName": "Sweden",
+   "OperatorCode": "73 20",
+   "OperatorName": "Telenor Sverige AB"
+ },
+ {
+   "CountryName": "Sweden",
+   "OperatorCode": "73 21 - 22",
+   "OperatorName": "Optimal Telecom Sver"
+ },
+ {
+   "CountryName": "Sweden",
+   "OperatorCode": "73 23",
+   "OperatorName": "Telenor Sverige AB"
+ },
+ {
+   "CountryName": "Sweden",
+   "OperatorCode": "73 24 - 26",
+   "OperatorName": "Telenor Mobile Sv."
+ },
+ {
+   "CountryName": "Sweden",
+   "OperatorCode": "73 27",
+   "OperatorName": "Ventelo Sverige AB"
+ },
+ {
+   "CountryName": "Sweden",
+   "OperatorCode": "73 28",
+   "OperatorName": "Chess AB"
+ },
+ {
+   "CountryName": "Sweden",
+   "OperatorCode": "73 29",
+   "OperatorName": "Telogic ApS"
+ },
+ {
+   "CountryName": "Sweden",
+   "OperatorCode": "73 3",
+   "OperatorName": "Telenor Sverige AB"
+ },
+ {
+   "CountryName": "Sweden",
+   "OperatorCode": "73 40 - 44",
+   "OperatorName": "Telenor Sverige AB"
+ },
+ {
+   "CountryName": "Sweden",
+   "OperatorCode": "73 450 - 454",
+   "OperatorName": "Telogic ApS"
+ },
+ {
+   "CountryName": "Sweden",
+   "OperatorCode": "73 455",
+   "OperatorName": "Ledig"
+ },
+ {
+   "CountryName": "Sweden",
+   "OperatorCode": "73 456",
+   "OperatorName": "Intelligent Appl. AB"
+ },
+ {
+   "CountryName": "Sweden",
+   "OperatorCode": "73 457 - 459",
+   "OperatorName": "Ledig"
+ },
+ {
+   "CountryName": "Sweden",
+   "OperatorCode": "73 46 - 49",
+   "OperatorName": "Ledig"
+ },
+ {
+   "CountryName": "Sweden",
+   "OperatorCode": "73 50 - 54",
+   "OperatorName": "Hi3G Access AB"
+ },
+ {
+   "CountryName": "Sweden",
+   "OperatorCode": "73 55 - 59",
+   "OperatorName": "Tele2 Sverige AB"
+ },
+ {
+   "CountryName": "Sweden",
+   "OperatorCode": "73 6",
+   "OperatorName": "Tele2 Sverige AB"
+ },
+ {
+   "CountryName": "Sweden",
+   "OperatorCode": "73 70 - 79",
+   "OperatorName": "Tele2 Sverige AB"
+ },
+ {
+   "CountryName": "Sweden",
+   "OperatorCode": "73 80 - 84",
+   "OperatorName": "TeliaSonera Sv. AB"
+ },
+ {
+   "CountryName": "Sweden",
+   "OperatorCode": "73 85",
+   "OperatorName": "Telenor Sverige AB"
+ },
+ {
+   "CountryName": "Sweden",
+   "OperatorCode": "73 86",
+   "OperatorName": "Lebara Ltd."
+ },
+ {
+   "CountryName": "Sweden",
+   "OperatorCode": "73 87",
+   "OperatorName": "Ledig"
+ },
+ {
+   "CountryName": "Sweden",
+   "OperatorCode": "73 88",
+   "OperatorName": "Newphone SP AB"
+ },
+ {
+   "CountryName": "Sweden",
+   "OperatorCode": "73 89",
+   "OperatorName": "Ledig"
+ },
+ {
+   "CountryName": "Sweden",
+   "OperatorCode": "73 9",
+   "OperatorName": "Tele2 Sverige AB"
+ },
+ {
+   "CountryName": "Sweden",
+   "OperatorCode": "76",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Sweden",
+   "OperatorCode": "79",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Switzerland",
+   "OperatorCode": "74",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Switzerland",
+   "OperatorCode": "75",
+   "OperatorName": "Swisscom (second mobile dialling code)"
+ },
+ {
+   "CountryName": "Switzerland",
+   "OperatorCode": "76",
+   "OperatorName": "Sunrise (TDC Switzerland)"
+ },
+ {
+   "CountryName": "Switzerland",
+   "OperatorCode": "77",
+   "OperatorName": "Swisscom Used by Migros"
+ },
+ {
+   "CountryName": "Switzerland",
+   "OperatorCode": "78",
+   "OperatorName": "SALT"
+ },
+ {
+   "CountryName": "Switzerland",
+   "OperatorCode": "79",
+   "OperatorName": "Swisscom"
+ },
+ {
+   "CountryName": "Syria",
+   "OperatorCode": "93",
+   "OperatorName": "Syriatel"
+ },
+ {
+   "CountryName": "Syria",
+   "OperatorCode": "98",
+   "OperatorName": "Syriatel"
+ },
+ {
+   "CountryName": "Syria",
+   "OperatorCode": "99",
+   "OperatorName": "Syriatel"
+ },
+ {
+   "CountryName": "Syria",
+   "OperatorCode": "94",
+   "OperatorName": "MTN"
+ },
+ {
+   "CountryName": "Syria",
+   "OperatorCode": "95",
+   "OperatorName": "MTN"
+ },
+ {
+   "CountryName": "Syria",
+   "OperatorCode": "96",
+   "OperatorName": "MTN"
+ },
+ {
+   "CountryName": "Taiwan",
+   "OperatorCode": "9",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Tajikistan",
+   "OperatorCode": "9",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Tajikistan",
+   "OperatorCode": "90",
+   "OperatorName": "MLT GSM/3G"
+ },
+ {
+   "CountryName": "Tajikistan",
+   "OperatorCode": "910",
+   "OperatorName": "Beeline-TJ GSM/3G"
+ },
+ {
+   "CountryName": "Tajikistan",
+   "OperatorCode": "911",
+   "OperatorName": "Beeline-TJ GSM/3G"
+ },
+ {
+   "CountryName": "Tajikistan",
+   "OperatorCode": "912",
+   "OperatorName": "Beeline-TJ GSM/3G"
+ },
+ {
+   "CountryName": "Tajikistan",
+   "OperatorCode": "913",
+   "OperatorName": "Beeline-TJ GSM/3G"
+ },
+ {
+   "CountryName": "Tajikistan",
+   "OperatorCode": "914",
+   "OperatorName": "Beeline-TJ GSM/3G"
+ },
+ {
+   "CountryName": "Tajikistan",
+   "OperatorCode": "915",
+   "OperatorName": "Beeline-TJ GSM/3G"
+ },
+ {
+   "CountryName": "Tajikistan",
+   "OperatorCode": "916",
+   "OperatorName": "Beeline-TJ GSM/3G"
+ },
+ {
+   "CountryName": "Tajikistan",
+   "OperatorCode": "917",
+   "OperatorName": "Beeline-TJ GSM/3G"
+ },
+ {
+   "CountryName": "Tajikistan",
+   "OperatorCode": "918",
+   "OperatorName": "Babilon-Mobile GSM/3G"
+ },
+ {
+   "CountryName": "Tajikistan",
+   "OperatorCode": "919",
+   "OperatorName": "Beeline-TJ GSM/3G"
+ },
+ {
+   "CountryName": "Tajikistan",
+   "OperatorCode": "92",
+   "OperatorName": "TCell-Somoncom GSM/3G"
+ },
+ {
+   "CountryName": "Tajikistan",
+   "OperatorCode": "93",
+   "OperatorName": "TCell-Tajikistan GSM/3G"
+ },
+ {
+   "CountryName": "Tajikistan",
+   "OperatorCode": "95",
+   "OperatorName": "TK-Mobile CDMA"
+ },
+ {
+   "CountryName": "Tajikistan",
+   "OperatorCode": "96",
+   "OperatorName": "M.Teko CDMA"
+ },
+ {
+   "CountryName": "Tajikistan",
+   "OperatorCode": "97",
+   "OperatorName": "Skytel CDMA"
+ },
+ {
+   "CountryName": "Tajikistan",
+   "OperatorCode": "98",
+   "OperatorName": "Babilon-Mobile GSM/3G"
+ },
+ {
+   "CountryName": "Tanzania",
+   "OperatorCode": "74x",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Thailand",
+   "OperatorCode": "6",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Thailand",
+   "OperatorCode": "8",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Thailand",
+   "OperatorCode": "9",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Togo",
+   "OperatorCode": "90",
+   "OperatorName": "Togocel"
+ },
+ {
+   "CountryName": "Togo",
+   "OperatorCode": "91",
+   "OperatorName": "Togocel"
+ },
+ {
+   "CountryName": "Togo",
+   "OperatorCode": "92",
+   "OperatorName": "Togocel"
+ },
+ {
+   "CountryName": "Togo",
+   "OperatorCode": "97",
+   "OperatorName": "Moov Togo"
+ },
+ {
+   "CountryName": "Togo",
+   "OperatorCode": "98",
+   "OperatorName": "Moov Togo"
+ },
+ {
+   "CountryName": "Togo",
+   "OperatorCode": "99",
+   "OperatorName": "Moov Togo"
+ },
+ {
+   "CountryName": "Tokelau",
+   "OperatorCode": "??",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Tonga",
+   "OperatorCode": "15",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Tonga",
+   "OperatorCode": "16",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Tonga",
+   "OperatorCode": "17",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Tonga",
+   "OperatorCode": "18",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Tonga",
+   "OperatorCode": "19",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Tonga",
+   "OperatorCode": "87",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Tonga",
+   "OperatorCode": "88",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Tonga",
+   "OperatorCode": "89",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Trinidad and Tobago",
+   "OperatorCode": "868",
+   "OperatorName": "Trinidad and Tobago Cellular"
+ },
+ {
+   "CountryName": "Tristan da Cunha",
+   "OperatorCode": "8",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Tunisia",
+   "OperatorCode": "2",
+   "OperatorName": "Tunisia Mobile Ooredoo"
+ },
+ {
+   "CountryName": "Tunisia",
+   "OperatorCode": "3",
+   "OperatorName": "Tunisia Mobile Orange"
+ },
+ {
+   "CountryName": "Tunisia",
+   "OperatorCode": "4",
+   "OperatorName": "Tunisia Mobile Tuntel"
+ },
+ {
+   "CountryName": "Tunisia",
+   "OperatorCode": "5",
+   "OperatorName": "Tunisia Mobile Orange"
+ },
+ {
+   "CountryName": "Tunisia",
+   "OperatorCode": "9",
+   "OperatorName": "Tunisia Mobile Tuntel"
+ },
+ {
+   "CountryName": "Turkey",
+   "OperatorCode": "50",
+   "OperatorName": "Avea"
+ },
+ {
+   "CountryName": "Turkey",
+   "OperatorCode": "53",
+   "OperatorName": "Turkcell"
+ },
+ {
+   "CountryName": "Turkey",
+   "OperatorCode": "54",
+   "OperatorName": "Vodafone Turkey"
+ },
+ {
+   "CountryName": "Turkey",
+   "OperatorCode": "55",
+   "OperatorName": "Avea"
+ },
+ {
+   "CountryName": "Turkmenistan",
+   "OperatorCode": "65",
+   "OperatorName": "TMCELL"
+ },
+ {
+   "CountryName": "Turkmenistan",
+   "OperatorCode": "66",
+   "OperatorName": "BCTI (MTS)"
+ },
+ {
+   "CountryName": "Turkmenistan",
+   "OperatorCode": "67",
+   "OperatorName": "BCTI (MTS)"
+ },
+ {
+   "CountryName": "Turks and Caicos Islands",
+   "OperatorCode": "649",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Tuvalu",
+   "OperatorCode": "??",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "U.S. Virgin Islands",
+   "OperatorCode": "340",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Uganda",
+   "OperatorCode": "7x",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Ukraine",
+   "OperatorCode": "39",
+   "OperatorName": "Golden Telecom"
+ },
+ {
+   "CountryName": "Ukraine",
+   "OperatorCode": "50",
+   "OperatorName": "Vodafone Ukraine"
+ },
+ {
+   "CountryName": "Ukraine",
+   "OperatorCode": "63",
+   "OperatorName": "Lifecell (Astelit)"
+ },
+ {
+   "CountryName": "Ukraine",
+   "OperatorCode": "66",
+   "OperatorName": "Vodafone Ukraine"
+ },
+ {
+   "CountryName": "Ukraine",
+   "OperatorCode": "67",
+   "OperatorName": "Kyivstar"
+ },
+ {
+   "CountryName": "Ukraine",
+   "OperatorCode": "68",
+   "OperatorName": "Beeline"
+ },
+ {
+   "CountryName": "Ukraine",
+   "OperatorCode": "91",
+   "OperatorName": "UTEL"
+ },
+ {
+   "CountryName": "Ukraine",
+   "OperatorCode": "92",
+   "OperatorName": "PEOPLEnet"
+ },
+ {
+   "CountryName": "Ukraine",
+   "OperatorCode": "93",
+   "OperatorName": "Lifecell (Astelit)"
+ },
+ {
+   "CountryName": "Ukraine",
+   "OperatorCode": "94",
+   "OperatorName": "Intertelecom"
+ },
+ {
+   "CountryName": "Ukraine",
+   "OperatorCode": "95",
+   "OperatorName": "Vodafone Ukraine"
+ },
+ {
+   "CountryName": "Ukraine",
+   "OperatorCode": "96",
+   "OperatorName": "Kyivstar"
+ },
+ {
+   "CountryName": "Ukraine",
+   "OperatorCode": "97",
+   "OperatorName": "Kyivstar"
+ },
+ {
+   "CountryName": "Ukraine",
+   "OperatorCode": "98",
+   "OperatorName": "Kyivstar"
+ },
+ {
+   "CountryName": "Ukraine",
+   "OperatorCode": "99",
+   "OperatorName": "Vodafone Ukraine"
+ },
+ {
+   "CountryName": "United Arab Emirates",
+   "OperatorCode": "50",
+   "OperatorName": "Etisalat"
+ },
+ {
+   "CountryName": "United Arab Emirates",
+   "OperatorCode": "52",
+   "OperatorName": "Du"
+ },
+ {
+   "CountryName": "United Arab Emirates",
+   "OperatorCode": "54",
+   "OperatorName": "Etisalat"
+ },
+ {
+   "CountryName": "United Arab Emirates",
+   "OperatorCode": "55",
+   "OperatorName": "Du"
+ },
+ {
+   "CountryName": "United Arab Emirates",
+   "OperatorCode": "56",
+   "OperatorName": "Etisalat"
+ },
+ {
+   "CountryName": "United Arab Emirates",
+   "OperatorCode": "58",
+   "OperatorName": "Du"
+ },
+ {
+   "CountryName": "United Kingdom",
+   "OperatorCode": "71xx",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "United Kingdom",
+   "OperatorCode": "72xx",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "United Kingdom",
+   "OperatorCode": "73xx",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "United Kingdom",
+   "OperatorCode": "74xx",
+   "OperatorName": "3 (Hutchison 3G UK Ltd)"
+ },
+ {
+   "CountryName": "United Kingdom",
+   "OperatorCode": "75xx",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "United Kingdom",
+   "OperatorCode": "7624",
+   "OperatorName": "Isle of Man"
+ },
+ {
+   "CountryName": "United Kingdom",
+   "OperatorCode": "77xx",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "United Kingdom",
+   "OperatorCode": "78xx",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "United Kingdom",
+   "OperatorCode": "79xx",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "United States (USA)",
+   "OperatorCode": "",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "United States Virgin Islands",
+   "OperatorCode": "340",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Uruguay",
+   "OperatorCode": "91",
+   "OperatorName": "Ancel"
+ },
+ {
+   "CountryName": "Uruguay",
+   "OperatorCode": "93",
+   "OperatorName": "Movistar"
+ },
+ {
+   "CountryName": "Uruguay",
+   "OperatorCode": "94",
+   "OperatorName": "Movistar"
+ },
+ {
+   "CountryName": "Uruguay",
+   "OperatorCode": "95",
+   "OperatorName": "Movistar"
+ },
+ {
+   "CountryName": "Uruguay",
+   "OperatorCode": "96",
+   "OperatorName": "Claro"
+ },
+ {
+   "CountryName": "Uruguay",
+   "OperatorCode": "97",
+   "OperatorName": "Claro"
+ },
+ {
+   "CountryName": "Uruguay",
+   "OperatorCode": "98",
+   "OperatorName": "Ancel"
+ },
+ {
+   "CountryName": "Uruguay",
+   "OperatorCode": "99",
+   "OperatorName": "Ancel"
+ },
+ {
+   "CountryName": "Uzbekistan",
+   "OperatorCode": "90",
+   "OperatorName": "Beeline (\"Unitel\" LLC subsidiary of \"ВымпелКом\" PTD)"
+ },
+ {
+   "CountryName": "Uzbekistan",
+   "OperatorCode": "91",
+   "OperatorName": "Beeline (\"Unitel\" LLC subsidiary of \"ВымпелКом\" PTD)"
+ },
+ {
+   "CountryName": "Uzbekistan",
+   "OperatorCode": "93",
+   "OperatorName": "UCell (\"COSCOM\" LLC subsidiary of \"TeliaSonera\" Public Enterprise)"
+ },
+ {
+   "CountryName": "Uzbekistan",
+   "OperatorCode": "94",
+   "OperatorName": "UCell (\"COSCOM\" LLC subsidiary of \"TeliaSonera\" Public Enterprise)"
+ },
+ {
+   "CountryName": "Uzbekistan",
+   "OperatorCode": "97",
+   "OperatorName": "UMS (\"Uzdunrobita\" LLC subsidiary of \"Мобильные ТелеСистемы\" PTD)"
+ },
+ {
+   "CountryName": "Vanuatu",
+   "OperatorCode": "4",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Vanuatu",
+   "OperatorCode": "5",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Vatican City",
+   "OperatorCode": "06 698",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Venezuela",
+   "OperatorCode": "4xx",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Venezuela",
+   "OperatorCode": "412",
+   "OperatorName": "Digitel GSM"
+ },
+ {
+   "CountryName": "Venezuela",
+   "OperatorCode": "414",
+   "OperatorName": "Movistar"
+ },
+ {
+   "CountryName": "Venezuela",
+   "OperatorCode": "416",
+   "OperatorName": "Movilnet"
+ },
+ {
+   "CountryName": "Venezuela",
+   "OperatorCode": "424",
+   "OperatorName": "Movistar"
+ },
+ {
+   "CountryName": "Venezuela",
+   "OperatorCode": "426",
+   "OperatorName": "Movilnet"
+ },
+ {
+   "CountryName": "Vietnam",
+   "OperatorCode": "3x, 5x, 7x, 8x, 9x",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Wales",
+   "OperatorCode": "",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Wallis and Futuna",
+   "OperatorCode": "??",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Western Sahara",
+   "OperatorCode": "5288",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Western Sahara",
+   "OperatorCode": "5289",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Yemen",
+   "OperatorCode": "7x",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Yemen",
+   "OperatorCode": "70",
+   "OperatorName": "Y (Yemen)"
+ },
+ {
+   "CountryName": "Yemen",
+   "OperatorCode": "71",
+   "OperatorName": "Sabafon"
+ },
+ {
+   "CountryName": "Yemen",
+   "OperatorCode": "73",
+   "OperatorName": "MTN"
+ },
+ {
+   "CountryName": "Yemen",
+   "OperatorCode": "77",
+   "OperatorName": "Yemen Mobile"
+ },
+ {
+   "CountryName": "Zambia",
+   "OperatorCode": "9x",
+   "OperatorName": "Operator Name Not Found"
+ },
+ {
+   "CountryName": "Zimbabwe",
+   "OperatorCode": "71",
+   "OperatorName": "Net One"
+ },
+ {
+   "CountryName": "Zimbabwe",
+   "OperatorCode": "73",
+   "OperatorName": "Telecel Zimbabwe"
+ },
+ {
+   "CountryName": "Zimbabwe",
+   "OperatorCode": "77",
+   "OperatorName": "Econet Zimbabwe"
+ }
+  ]
+}

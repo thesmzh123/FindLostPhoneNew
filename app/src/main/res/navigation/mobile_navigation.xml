@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/nav_home"
+    tools:ignore="UnusedNavigation">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="lost.phone.finder.app.online.finder.fragments.HomeFragment"
+        android:label="@string/home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_nav_home_to_lostPhoneLocFragment"
+            app:destination="@id/lostPhoneLocFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_lockPhoneFragment"
+            app:destination="@id/lockPhoneFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_eraseDataFragment"
+            app:destination="@id/eraseDataFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_ringPhoneFragment"
+            app:destination="@id/ringPhoneFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_lastHopeFragment"
+            app:destination="@id/lastHopeFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_compassFragment"
+            app:destination="@id/compassFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_networkProviderFragment"
+            app:destination="@id/networkProviderFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_backupRestoreFragment"
+            app:destination="@id/backupRestoreFragment" />
+      
+    </fragment>
+    <fragment
+        android:id="@+id/nav_profile"
+        android:name="lost.phone.finder.app.online.finder.fragments.ProfileFragment"
+        android:label="@string/profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/nav_nearby"
+        android:name="lost.phone.finder.app.online.finder.fragments.NearbyPlacesFragment"
+        android:label="@string/nearby_places"
+        tools:layout="@layout/fragment_nearby_places" />
+    <fragment
+        android:id="@+id/lostPhoneLocFragment"
+        android:name="lost.phone.finder.app.online.finder.fragments.LostPhoneLocFragment"
+        tools:layout="@layout/fragment_lost_phone_loc">
+        <action
+            android:id="@+id/action_lostPhoneLocFragment_to_mapViewFragment"
+            app:destination="@id/mapViewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mapViewFragment"
+        android:name="lost.phone.finder.app.online.finder.fragments.MapViewFragment"
+        android:label="@string/view_on_map"
+        tools:layout="@layout/fragment_map_view">
+        <argument
+            android:name="mapView"
+            app:argType="lost.phone.finder.app.online.finder.models.MapView" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/lockPhoneFragment"
+        android:name="lost.phone.finder.app.online.finder.fragments.LockPhoneFragment"
+        tools:layout="@layout/fragment_lost_phone_loc">
+        <argument
+            android:name="isActivate"
+            android:defaultValue="false"
+            app:argType="boolean" />
+    </fragment>
+    <fragment
+        android:id="@+id/eraseDataFragment"
+        android:name="lost.phone.finder.app.online.finder.fragments.EraseDataFragment"
+        tools:layout="@layout/fragment_lost_phone_loc">
+        <argument
+            android:name="isActivate"
+            android:defaultValue="false"
+            app:argType="boolean" />
+    </fragment>
+    <fragment
+        android:id="@+id/ringPhoneFragment"
+        android:name="lost.phone.finder.app.online.finder.fragments.RingPhoneFragment"
+        tools:layout="@layout/fragment_lost_phone_loc" />
+    <fragment
+        android:id="@+id/lastHopeFragment"
+        android:name="lost.phone.finder.app.online.finder.fragments.LastHopeFragment"
+        tools:layout="@layout/fragment_lost_phone_loc" />
+    <fragment
+        android:id="@+id/hideAppFragment"
+        android:name="lost.phone.finder.app.online.finder.fragments.HideAppFragment"
+        tools:layout="@layout/fragment_lost_phone_loc" />
+    <fragment
+        android:id="@+id/compassFragment"
+        android:name="lost.phone.finder.app.online.finder.fragments.CompassFragment"
+        tools:layout="@layout/fragment_compass" />
+    <fragment
+        android:id="@+id/networkProviderFragment"
+        android:name="lost.phone.finder.app.online.finder.fragments.NetworkProviderFragment"
+        tools:layout="@layout/fragment_network_provider" />
+    <fragment
+        android:id="@+id/backupRestoreFragment"
+        android:name="lost.phone.finder.app.online.finder.fragments.BackupRestoreFragment"
+        tools:layout="@layout/fragment_backup_restore" />
+
+
+</navigation>

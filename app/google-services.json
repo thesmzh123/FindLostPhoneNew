@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "539090906934",
+    "firebase_url": "https://find-lost-phone-new.firebaseio.com",
+    "project_id": "find-lost-phone-new",
+    "storage_bucket": "find-lost-phone-new.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:539090906934:android:77cd2d15d410a300494d97",
+        "android_client_info": {
+          "package_name": "lost.phone.finder.app.online.finder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "539090906934-9h47jftpbnl5j81dt4sim5tsi8f7nk8l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "lost.phone.finder.app.online.finder",
+            "certificate_hash": "24165eafbaf6efebfc69247f9cccd1530759a5a3"
+          }
+        },
+        {
+          "client_id": "539090906934-jpeika84p8qmmu1qlist7fkpaldom6a8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxgljv_31X81nN_favI5gsb1O2m1V9ESA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "539090906934-jpeika84p8qmmu1qlist7fkpaldom6a8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

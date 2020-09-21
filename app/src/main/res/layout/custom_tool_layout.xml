@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="@dimen/_135sdp"
+    android:layout_height="@dimen/_150sdp"
+    android:layout_margin="@dimen/_10sdp"
+    app:cardBackgroundColor="@color/colorAccent"
+    app:cardCornerRadius="@dimen/_10sdp"
+    android:clickable="true"
+    android:focusable="true"
+    app:cardElevation="@dimen/_10sdp">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/toolIcon"
+            android:layout_width="@dimen/_140sdp"
+            android:layout_height="@dimen/_110sdp"
+            android:layout_centerInParent="true"
+            android:contentDescription="@string/app_name"
+            android:padding="2dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/torch" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/toolText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/toolIcon"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="@dimen/_5sdp"
+            android:padding="@dimen/_5sdp"
+            android:text="@string/torch"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/_14ssp" />
+    </RelativeLayout>
+</com.google.android.material.card.MaterialCardView>

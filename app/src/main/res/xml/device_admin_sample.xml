@@ -1,0 +1,7 @@
+<device-admin>
+    <uses-policies>
+        <watch-login />
+        <force-lock />
+        <wipe-data />
+    </uses-policies>
+</device-admin>
