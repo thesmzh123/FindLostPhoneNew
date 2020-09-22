@@ -9,6 +9,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.app.ActivityCompat
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.find.lost.app.phone.utils.InternetConnection
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -34,11 +36,16 @@ class MapViewFragment : BaseFragment(), OnMapReadyCallback, LocationListener,
     ): View? {
         // Inflate the layout for this fragment
         root = inflater.inflate(R.layout.fragment_map_view, container, false)
+
         arrayList = requireArguments().getSerializable("mapView") as ArrayList<MapView>
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = (this.childFragmentManager
             .findFragmentById(R.id.mapFragment) as SupportMapFragment?)!!
         mapFragment.getMapAsync(this)
+        if (!InternetConnection().checkConnection(requireActivity())) {
+            showToast(getString(R.string.no_internet))
+            findNavController().navigateUp()
+        }
         return root
     }
 

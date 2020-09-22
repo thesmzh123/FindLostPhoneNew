@@ -1,3 +1,5 @@
+@file:Suppress("UNUSED_ANONYMOUS_PARAMETER")
+
 package lost.phone.finder.app.online.finder.fragments
 
 import android.os.Bundle
@@ -6,14 +8,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.ProcessLifecycleOwner
 import com.bumptech.glide.Glide
 import com.find.lost.app.phone.utils.InternetConnection
 import com.find.lost.app.phone.utils.SharedPrefUtils
+import com.google.android.gms.ads.AdListener
 import kotlinx.android.synthetic.main.custom_curve_profile_layout.view.*
 import kotlinx.android.synthetic.main.fragment_lost_phone_loc.view.*
 import kotlinx.android.synthetic.main.main_header_layout.view.*
 import lost.phone.finder.app.online.finder.R
-import lost.phone.finder.app.online.finder.utils.Constants
 import lost.phone.finder.app.online.finder.utils.Constants.TAGI
 import org.json.JSONArray
 import org.json.JSONObject
@@ -40,22 +44,31 @@ class RingPhoneFragment : BaseFragment() {
         root!!.profile.setOnClickListener {
             baseContext!!.navigateFragmentByAds(R.id.nav_profile)
         }
+        loadInterstial()
         root!!.ringBlock.visibility = View.VISIBLE
         root!!.mainBtn.setOnClickListener {
-            jsonArray = JSONArray()
-            if (InternetConnection().checkConnection(requireActivity())) {
-                if (adapter!!.getMultiSelectionDevice().size > 0) {
-                    if (ringPhone) {
-                        sendRingNotification("ringSilent")
-                    } else if (ringSilent) {
-                        sendRingNotification("ringPlay")
+            if (!SharedPrefUtils.getBooleanData(requireActivity(), "hideAds")) {
+                if (interstitial.isLoaded) {
+                    if (ProcessLifecycleOwner.get().lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED)) {
+                        interstitial.show()
+                    } else {
+                        Log.d(TAGI, "App Is In Background Ad Is Not Going To Show")
 
                     }
                 } else {
-                    showToast(getString(R.string.please_select_option))
+                    ringMobile()
+
+                }
+                interstitial.adListener = object : AdListener() {
+                    override fun onAdClosed() {
+                        requestNewInterstitial()
+                        ringMobile()
+                    }
                 }
             } else {
-                showToast(getString(R.string.no_internet))
+                ringMobile()
+
+
             }
 
         }
@@ -75,6 +88,24 @@ class RingPhoneFragment : BaseFragment() {
             }
         }
         return root
+    }
+
+    private fun ringMobile() {
+        jsonArray = JSONArray()
+        if (InternetConnection().checkConnection(requireActivity())) {
+            if (adapter!!.getMultiSelectionDevice().size > 0) {
+                if (ringPhone) {
+                    sendRingNotification("ringSilent")
+                } else if (ringSilent) {
+                    sendRingNotification("ringPlay")
+
+                }
+            } else {
+                showToast(getString(R.string.please_select_option))
+            }
+        } else {
+            showToast(getString(R.string.no_internet))
+        }
     }
 
     private fun sendRingNotification(ring: String) {
@@ -103,8 +134,7 @@ class RingPhoneFragment : BaseFragment() {
             root?.signInBlock!!.visibility = View.GONE
             root!!.mainBtn.visibility = View.VISIBLE
             loadAllData(
-                root!!,
-                SharedPrefUtils.getStringData(requireActivity(), "base_url").toString()
+                root!!
             )
         } else {
             root?.signInBlock!!.visibility = View.VISIBLE

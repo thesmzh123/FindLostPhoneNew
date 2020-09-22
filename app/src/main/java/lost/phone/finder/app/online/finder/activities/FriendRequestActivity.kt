@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import com.bumptech.glide.Glide
+import com.find.lost.app.phone.utils.InternetConnection
 import com.find.lost.app.phone.utils.SharedPrefUtils
 import kotlinx.android.synthetic.main.activity_friend_request.*
 import lost.phone.finder.app.online.finder.R
@@ -25,6 +26,10 @@ class FriendRequestActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_friend_request)
+        if (!InternetConnection().checkConnection(this)) {
+            showToast(getString(R.string.no_internet))
+            finish()
+        }
         familyRequestList = ArrayList()
         if (intent.getBooleanExtra("b", false)) {
             isFriendRequest = intent.getBooleanExtra("b", false)

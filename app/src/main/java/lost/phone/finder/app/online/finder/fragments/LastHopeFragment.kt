@@ -40,12 +40,12 @@ class LastHopeFragment : BaseFragment() {
         root!!.textLayout.visibility = View.VISIBLE
         root!!.mainBtn.setOnClickListener {
             jsonArray = JSONArray()
-            if (InternetConnection().checkConnection(requireActivity())) {
                 if (adapter!!.getMultiSelectionDevice().size > 0) {
                     if (TextUtils.isEmpty(root!!.contactNum.text) || TextUtils.isEmpty(root!!.customMessage.text)) {
                         showToast(getString(R.string.fill_the_field))
                     } else {
-                        for (i in 0 until adapter!!.getMultiSelectionDevice().size) {
+                        if (InternetConnection().checkConnection(requireActivity())) {
+                            for (i in 0 until adapter!!.getMultiSelectionDevice().size) {
                             Log.d(
                                 Constants.TAGI,
                                 "name: " + adapter!!.getMultiSelectionDevice()[i].deviceName
@@ -69,13 +69,14 @@ class LastHopeFragment : BaseFragment() {
                         sendMultipleRequest(jsonArray, getString(R.string.sending_message))
                         root!!.contactNum.text!!.clear()
                         root!!.customMessage.text!!.clear()
+                    } else {
+                        showToast(getString(R.string.no_internet))
+                    }
                     }
                 } else {
                     showToast(getString(R.string.please_select_option))
                 }
-            } else {
-                showToast(getString(R.string.no_internet))
-            }
+
 
         }
         return root
@@ -88,8 +89,7 @@ class LastHopeFragment : BaseFragment() {
             root?.signInBlock!!.visibility = View.GONE
             root!!.mainBtn.visibility = View.VISIBLE
             loadAllData(
-                root!!,
-                SharedPrefUtils.getStringData(requireActivity(), "base_url").toString()
+                root!!
             )
         } else {
             root?.signInBlock!!.visibility = View.VISIBLE

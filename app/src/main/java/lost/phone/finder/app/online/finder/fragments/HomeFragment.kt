@@ -18,11 +18,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.annotation.Nullable
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.ProcessLifecycleOwner
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import com.bumptech.glide.Glide
 import com.find.lost.app.phone.utils.SharedPrefUtils
+import com.google.android.gms.ads.AdListener
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.android.synthetic.main.custom_feature_layout.view.*
 import kotlinx.android.synthetic.main.feature_icon_layout.view.*
@@ -347,10 +351,34 @@ class HomeFragment : BaseFragment() {
             familyView!!.featureTitle.setTextSize(TypedValue.COMPLEX_UNIT_PX, 18F)
         }
         familyView!!.cardClick.setOnClickListener {
-           startActivity(Intent(requireActivity(),FamilyLocatorActivity::class.java))
+            callFamilyLocatorActivity()
         }
         familyView!!.featureBtn.setOnClickListener {
-            startActivity(Intent(requireActivity(),FamilyLocatorActivity::class.java))
+            callFamilyLocatorActivity()
+        }
+    }
+
+    private fun callFamilyLocatorActivity() {
+        if (!SharedPrefUtils.getBooleanData(requireActivity(), "hideAds")) {
+            if (interstitial.isLoaded) {
+                if (ProcessLifecycleOwner.get().lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED)) {
+                    interstitial.show()
+                } else {
+                    Log.d(TAGI, "App Is In Background Ad Is Not Going To Show")
+
+                }
+            } else {
+                startActivity(Intent(requireActivity(), FamilyLocatorActivity::class.java))
+
+            }
+            interstitial.adListener = object : AdListener() {
+                override fun onAdClosed() {
+                    requestNewInterstitial()
+                    startActivity(Intent(requireActivity(), FamilyLocatorActivity::class.java))
+                }
+            }
+        } else {
+            startActivity(Intent(requireActivity(), FamilyLocatorActivity::class.java))
 
         }
     }

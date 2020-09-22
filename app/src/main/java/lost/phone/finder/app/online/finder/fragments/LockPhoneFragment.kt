@@ -105,8 +105,7 @@ class LockPhoneFragment : BaseFragment() {
             root?.signInBlock!!.visibility = View.GONE
             root!!.mainBtn.visibility = View.VISIBLE
             loadAllData(
-                root!!,
-                SharedPrefUtils.getStringData(requireActivity(), "base_url").toString()
+                root!!
             )
         } else {
             root?.signInBlock!!.visibility = View.VISIBLE

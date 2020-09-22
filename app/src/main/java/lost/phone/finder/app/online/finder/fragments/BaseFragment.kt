@@ -24,7 +24,10 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.find.lost.app.phone.utils.InternetConnection
 import com.find.lost.app.phone.utils.SharedPrefUtils
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.InterstitialAd
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.GoogleApiClient
 import com.google.android.gms.location.*
@@ -91,6 +94,38 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
     var jsonObject: JSONObject? = null
     var gpsTracker: GPSTracker? = null
 
+    lateinit var interstitial: InterstitialAd
+
+    //TODO: load interstial
+    fun loadInterstial() {
+        try {
+
+            Log.d(TAGI, "load ads")
+            if (!SharedPrefUtils.getBooleanData(requireActivity(), "hideAds")) {
+                interstitial = InterstitialAd(requireActivity())
+                interstitial.adUnitId = getString(R.string.interstitial)
+                try {
+                    if (!interstitial.isLoading && !interstitial.isLoaded) {
+                        val adRequest = AdRequest.Builder().build()
+                        interstitial.loadAd(adRequest)
+                    }
+                } catch (ex: Exception) {
+                    ex.printStackTrace()
+                    Log.d(TAGI, "error: " + ex.message)
+                }
+
+                requestNewInterstitial()
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
+    //TODO: requestNewInterstitial
+    fun requestNewInterstitial() {
+        val adRequest = AdRequest.Builder().build()
+        interstitial.loadAd(adRequest)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -119,12 +154,15 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
 
                 // Log and toast
                 Log.d(TAGI, token)
-                SharedPrefUtils.saveData(requireActivity(), "deviceToken", token)
+                if (isAdded) {
+                    SharedPrefUtils.saveData(requireActivity(), "deviceToken", token)
+                }
             })
         setUpGClient()
         mDeviceAdminSample = ComponentName(requireActivity(), DeviceAdminSample::class.java)
         dpm =
             requireActivity().getSystemService(Context.DEVICE_POLICY_SERVICE) as DevicePolicyManager
+        loadInterstial()
 
     }
 
@@ -203,7 +241,7 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
                             val id = jsonObject.getString("id")
                             val phoneNum = jsonObject.getString("phone_num")
                             val isNumberFound = jsonObject.getBoolean("isNumberFound")
-                            var isDevice =false
+                            var isDevice = false
                             if (isNumberFound) {
                                 isDevice = jsonObject.getBoolean("isDevice")
                             }
@@ -400,11 +438,15 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
             if (TextUtils.isEmpty(deleteDialogView.editText_carrierNumber1.text)) {
                 showToast(getString(R.string.fill_the_field))
             } else {
-                if (!SharedPrefUtils.getBooleanData(requireActivity(), "isInserted")) {
-                    showDialog(getString(R.string.saving_number))
-                    updatePhoneNumber(deleteDialogView.ccp1.selectedCountryCode + deleteDialogView.editText_carrierNumber1.text)
+                if (InternetConnection().checkConnection(requireActivity())) {
+                    if (!SharedPrefUtils.getBooleanData(requireActivity(), "isInserted")) {
+                        showDialog(getString(R.string.saving_number))
+                        updatePhoneNumber(deleteDialogView.ccp1.selectedCountryCode + deleteDialogView.editText_carrierNumber1.text)
+                    }
+                    deleteDialog.dismiss()
+                } else {
+                    showToast(getString(R.string.no_internet))
                 }
-                deleteDialog.dismiss()
             }
         }
 
@@ -593,7 +635,7 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
     }
 
     //TODO: load all device data
-    fun loadAllData(view1: View, url: String) {
+    fun loadAllData(view1: View) {
         try {
             val deviceList = ArrayList<Devices>()
             val jsonArray =
@@ -617,7 +659,7 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
                 )
             }
             //creating our adapter
-            adapter = activity?.let { DevicesAdapter(it, deviceList, url) }
+            adapter = activity?.let { DevicesAdapter(it, deviceList) }
 
             //now adding the adapter to recyclerview
             val horizontalLayoutManagaer =

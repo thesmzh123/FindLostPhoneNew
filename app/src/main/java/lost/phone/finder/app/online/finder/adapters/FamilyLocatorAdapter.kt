@@ -13,7 +13,9 @@ import android.view.animation.OvershootInterpolator
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.find.lost.app.phone.utils.InternetConnection
 import com.find.lost.app.phone.utils.SharedPrefUtils
+import com.google.android.gms.ads.AdListener
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.android.synthetic.main.activity_family_locator.*
 import kotlinx.android.synthetic.main.custom_message_layout.view.*
@@ -42,6 +44,10 @@ class FamilyLocatorAdapter(
 ) :
     RecyclerView.Adapter<FamilyLocatorAdapter.MyHolder>(),
     ExpandableLayout.OnExpansionUpdateListener {
+    init {
+        (context as BaseActivity).loadInterstial()
+    }
+
     private var selectedItem: Int = UNSELECTED
     private var deleteDialogView: View? = null
 
@@ -101,35 +107,112 @@ class FamilyLocatorAdapter(
         }
         holder.itemView.expandable_layout.lockPhone.setOnClickListener {
             (context as FamilyLocatorActivity).mapLayout.visibility = View.GONE
-
-            sendLostPhoneRequest(
-                SharedPrefUtils.getStringData(context, "uid"),
-                familyLocator.macAddress,
-                "lockPhone",
-                "1",
-                context.getString(R.string.locking_the_device)
-            )
+            if (InternetConnection().checkConnection(context)) {
+                sendLostPhoneRequest(
+                    SharedPrefUtils.getStringData(context, "uid"),
+                    familyLocator.macAddress,
+                    "lockPhone",
+                    "1",
+                    context.getString(R.string.locking_the_device)
+                )
+            } else {
+                (context as BaseActivity).showToast(context.getString(R.string.no_internet))
+            }
         }
         holder.itemView.expandable_layout.customMessage.setOnClickListener {
             (context as FamilyLocatorActivity).mapLayout.visibility = View.GONE
-            showCustomMessage(familyLocator)
+
+            if (!SharedPrefUtils.getBooleanData(context, "hideAds")) {
+                if ((context as BaseActivity).interstitial.isLoaded) {
+                    context.interstitial.show()
+                } else {
+                    if (InternetConnection().checkConnection(context)) {
+                        showCustomMessage(familyLocator)
+
+                    } else {
+                        (context as BaseActivity).showToast(context.getString(R.string.no_internet))
+                    }
+                }
+                context.interstitial.adListener = object : AdListener() {
+                    override fun onAdClosed() {
+                        context.requestNewInterstitial()
+                        if (InternetConnection().checkConnection(context)) {
+                            showCustomMessage(familyLocator)
+
+                        } else {
+                            (context as BaseActivity).showToast(context.getString(R.string.no_internet))
+                        }
+                    }
+                }
+            } else {
+                if (InternetConnection().checkConnection(context)) {
+                    showCustomMessage(familyLocator)
+
+                } else {
+                    (context as BaseActivity).showToast(context.getString(R.string.no_internet))
+                }
+            }
         }
         holder.itemView.expandable_layout.ringPhone.setOnClickListener {
             (context as FamilyLocatorActivity).mapLayout.visibility = View.GONE
-            sendLostPhoneRequest(
-                SharedPrefUtils.getStringData(context, "uid"),
-                familyLocator.macAddress,
-                "ringPlay",
-                "1",
-                context.getString(R.string.ringing_the_device)
-            )
+
+            if (!SharedPrefUtils.getBooleanData(context, "hideAds")) {
+                if ((context as BaseActivity).interstitial.isLoaded) {
+                    context.interstitial.show()
+                } else {
+                    if (InternetConnection().checkConnection(context)) {
+                        sendLostPhoneRequest(
+                            SharedPrefUtils.getStringData(context, "uid"),
+                            familyLocator.macAddress,
+                            "ringPlay",
+                            "1",
+                            context.getString(R.string.ringing_the_device)
+                        )
+                    } else {
+                        (context as BaseActivity).showToast(context.getString(R.string.no_internet))
+                    }
+                }
+                context.interstitial.adListener = object : AdListener() {
+                    override fun onAdClosed() {
+                        context.requestNewInterstitial()
+                        if (InternetConnection().checkConnection(context)) {
+                            sendLostPhoneRequest(
+                                SharedPrefUtils.getStringData(context, "uid"),
+                                familyLocator.macAddress,
+                                "ringPlay",
+                                "1",
+                                context.getString(R.string.ringing_the_device)
+                            )
+                        } else {
+                            (context as BaseActivity).showToast(context.getString(R.string.no_internet))
+                        }
+                    }
+                }
+            } else {
+                if (InternetConnection().checkConnection(context)) {
+                    sendLostPhoneRequest(
+                        SharedPrefUtils.getStringData(context, "uid"),
+                        familyLocator.macAddress,
+                        "ringPlay",
+                        "1",
+                        context.getString(R.string.ringing_the_device)
+                    )
+                } else {
+                    (context as BaseActivity).showToast(context.getString(R.string.no_internet))
+                }
+            }
+
         }
         holder.itemView.expandable_layout.locateDevice.setOnClickListener {
-            (context as FamilyLocatorActivity).initMap(
-                familyLocator.latitude,
-                familyLocator.longitude,
-                familyLocator.name
-            )
+            if (InternetConnection().checkConnection(context)) {
+                (context as FamilyLocatorActivity).initMap(
+                    familyLocator.latitude,
+                    familyLocator.longitude,
+                    familyLocator.name
+                )
+            } else {
+                (context as BaseActivity).showToast(context.getString(R.string.no_internet))
+            }
         }
     }
 
@@ -145,19 +228,24 @@ class FamilyLocatorAdapter(
         deleteDialog.setCancelable(false)
         deleteDialogView!!.send.setOnClickListener {
             if (deleteDialogView!!.contactNum.text!!.isEmpty() ||
-                deleteDialogView!!.customMessage1.text!!.isEmpty()) {
+                deleteDialogView!!.customMessage1.text!!.isEmpty()
+            ) {
                 (context as BaseActivity).showToast(context.getString(R.string.fill_the_field))
             } else {
-                sendLastHopeRequest(
-                    SharedPrefUtils.getStringData(context, "uid"),
-                    familyLocator.macAddress,
-                    deleteDialogView!!.contactNum.text!!.toString(),
-                    deleteDialogView!!.customMessage1.text!!.toString(),
-                    context.getString(R.string.sending_notification)
-                )
-                deleteDialogView!!.contactNum.text!!.clear()
-                deleteDialogView!!.customMessage1.text!!.clear()
-                deleteDialog.dismiss()
+                if (InternetConnection().checkConnection(context)) {
+                    sendLastHopeRequest(
+                        SharedPrefUtils.getStringData(context, "uid"),
+                        familyLocator.macAddress,
+                        deleteDialogView!!.contactNum.text!!.toString(),
+                        deleteDialogView!!.customMessage1.text!!.toString(),
+                        context.getString(R.string.sending_notification)
+                    )
+                    deleteDialogView!!.contactNum.text!!.clear()
+                    deleteDialogView!!.customMessage1.text!!.clear()
+                    deleteDialog.dismiss()
+                } else {
+                    (context as BaseActivity).showToast(context.getString(R.string.no_internet))
+                }
             }
         }
         deleteDialogView!!.cancel.setOnClickListener {
@@ -167,6 +255,7 @@ class FamilyLocatorAdapter(
         deleteDialog.show()
         deleteDialog.window!!.decorView.setBackgroundResource(android.R.color.transparent)
     }
+
     //TODO: send fcm to other devices using last hope
     private fun sendLastHopeRequest(
         uid: String?,
@@ -217,6 +306,7 @@ class FamilyLocatorAdapter(
             }
         )
     }
+
     override fun onExpansionUpdate(expansionFraction: Float, state: Int) {
         Log.d("ExpandableLayout", "State: $state")
         /* if (state == ExpandableLayout.State.EXPANDING) {

@@ -47,7 +47,11 @@ class EraseDataFragment : BaseFragment() {
             jsonArray = JSONArray()
             if (InternetConnection().checkConnection(requireActivity())) {
                 if (adapter!!.getMultiSelectionDevice().size > 0) {
-                    deleteData()
+                    if (InternetConnection().checkConnection(requireActivity())) {
+                        deleteData()
+                    } else {
+                        showToast(getString(R.string.no_internet))
+                    }
                 } else {
                     showToast(getString(R.string.please_select_option))
                 }
@@ -134,8 +138,7 @@ class EraseDataFragment : BaseFragment() {
             root?.signInBlock!!.visibility = View.GONE
             root!!.mainBtn.visibility = View.VISIBLE
             loadAllData(
-                root!!,
-                SharedPrefUtils.getStringData(requireActivity(), "base_url").toString()
+                root!!
             )
         } else {
             root?.signInBlock!!.visibility = View.VISIBLE

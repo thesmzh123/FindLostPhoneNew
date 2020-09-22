@@ -68,7 +68,6 @@ class LostPhoneLocFragment : BaseFragment() {
             } else {
                 showToast(getString(R.string.no_internet))
             }
-
         }
         root!!.switchBtnLoc.isChecked =
             SharedPrefUtils.getBooleanData(requireActivity(), "isTrackLoc")
@@ -152,8 +151,7 @@ class LostPhoneLocFragment : BaseFragment() {
             root?.signInBlock!!.visibility = View.GONE
             root!!.mainBtn.visibility = View.VISIBLE
             loadAllData(
-                root!!,
-                SharedPrefUtils.getStringData(requireActivity(), "base_url").toString()
+                root!!
             )
         } else {
             root?.signInBlock!!.visibility = View.VISIBLE

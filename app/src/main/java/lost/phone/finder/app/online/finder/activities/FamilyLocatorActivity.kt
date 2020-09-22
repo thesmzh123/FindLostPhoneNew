@@ -6,16 +6,33 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.database.Cursor
+import android.location.Location
+import android.location.LocationListener
 import android.net.Uri
 import android.os.Bundle
 import android.provider.ContactsContract
 import android.util.Log
 import android.view.*
 import androidx.appcompat.app.AlertDialog
+import androidx.core.app.ActivityCompat
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.ProcessLifecycleOwner
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
+import com.find.lost.app.phone.utils.InternetConnection
 import com.find.lost.app.phone.utils.SharedPrefUtils
+import com.google.android.gms.ads.AdListener
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.Marker
+import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.android.synthetic.main.activity_family_locator.*
 import kotlinx.android.synthetic.main.enter_phone_number_layout.view.*
@@ -33,21 +50,6 @@ import retrofit.RestAdapter
 import retrofit.RetrofitError
 import java.io.BufferedReader
 import java.io.InputStreamReader
-import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener
-import com.google.android.gms.maps.OnMapReadyCallback
-import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.BitmapDescriptorFactory
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.Marker
-import com.google.android.gms.maps.model.MarkerOptions
-import android.content.pm.PackageManager
-import android.location.Location
-import android.location.LocationListener
-import androidx.core.app.ActivityCompat
-import com.find.lost.app.phone.utils.InternetConnection
-import lost.phone.finder.app.online.finder.models.MapView
 
 class FamilyLocatorActivity : BaseActivity(), OnMapReadyCallback, LocationListener,
     OnMarkerClickListener {
@@ -61,6 +63,11 @@ class FamilyLocatorActivity : BaseActivity(), OnMapReadyCallback, LocationListen
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_family_locator)
+        if (!InternetConnection().checkConnection(this)) {
+            showToast(getString(R.string.no_internet))
+            finish()
+        }
+
         familyLocatorList = ArrayList()
         setSupportActionBar(toolbar)
         if (supportActionBar != null) {
@@ -70,11 +77,58 @@ class FamilyLocatorActivity : BaseActivity(), OnMapReadyCallback, LocationListen
         }
         addMember.visibility = View.VISIBLE
         addMember.setOnClickListener {
-            showNumberDialog()
+            if (!SharedPrefUtils.getBooleanData(this, "hideAds")) {
+                if (interstitial.isLoaded) {
+                    if (ProcessLifecycleOwner.get().lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED)) {
+                        interstitial.show()
+                    } else {
+                        Log.d(TAGI, "App Is In Background Ad Is Not Going To Show")
+
+                    }
+                } else {
+                    showNumberDialog()
+
+                }
+                interstitial.adListener = object : AdListener() {
+                    override fun onAdClosed() {
+                        requestNewInterstitial()
+                        showNumberDialog()
+                    }
+                }
+            } else {
+                showNumberDialog()
+
+
+            }
         }
         addMember1.setOnClickListener {
-            showNumberDialog()
+            if (!SharedPrefUtils.getBooleanData(this, "hideAds")) {
+                if (interstitial.isLoaded) {
+                    if (ProcessLifecycleOwner.get().lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED)) {
+                        interstitial.show()
+                    } else {
+                        Log.d(TAGI, "App Is In Background Ad Is Not Going To Show")
+
+                    }
+                } else {
+                    showNumberDialog()
+
+                }
+                interstitial.adListener = object : AdListener() {
+                    override fun onAdClosed() {
+                        requestNewInterstitial()
+                        showNumberDialog()
+                    }
+                }
+            } else {
+                showNumberDialog()
+
+
+            }
         }
+        loadInterstial()
+        loadFamilyList()
+
     }
 
     fun initMap(lati: Double, lonngi: Double, name: String) {
@@ -165,14 +219,20 @@ class FamilyLocatorActivity : BaseActivity(), OnMapReadyCallback, LocationListen
             if (deleteDialogView!!.editText_carrierNumber1.text!!.isEmpty()) {
                 showToast(getString(R.string.fill_the_field))
             } else {
-                var num = deleteDialogView!!.editText_carrierNumber1.text!!.toString()
-                num = num.replace(" ", "")
-                if (num.contains("+")) {
-                    num = num.replace("+", "")
+                if (InternetConnection().checkConnection(this@FamilyLocatorActivity)) {
+                    var num = deleteDialogView!!.editText_carrierNumber1.text!!.toString()
+                    num = num.replace(" ", "")
+                    if (num.contains("+")) {
+                        num = num.replace("+", "")
+                    }
+                    showDialog(getString(R.string.sending_family_memeber_request))
+                    sendFamilyMemberRequest(num)
+                    deleteDialog.dismiss()
+                } else {
+                    showToast(getString(R.string.no_internet))
                 }
-                showDialog(getString(R.string.sending_family_memeber_request))
-                sendFamilyMemberRequest(num)
-                deleteDialog.dismiss()
+
+
             }
         }
         deleteDialogView!!.cancel.setOnClickListener {
@@ -228,11 +288,7 @@ class FamilyLocatorActivity : BaseActivity(), OnMapReadyCallback, LocationListen
         return true
     }
 
-    override fun onResume() {
-        super.onResume()
-        loadFamilyList()
 
-    }
 
     private fun loadFamilyList() {
         showDialog(getString(R.string.fetch_family_list))
@@ -332,11 +388,57 @@ class FamilyLocatorActivity : BaseActivity(), OnMapReadyCallback, LocationListen
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.friends_requests -> {
-                openActivity(true, FriendRequestActivity())
+                if (!SharedPrefUtils.getBooleanData(this, "hideAds")) {
+                    if (interstitial.isLoaded) {
+                        if (ProcessLifecycleOwner.get().lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED)) {
+                            interstitial.show()
+                        } else {
+                            Log.d(TAGI, "App Is In Background Ad Is Not Going To Show")
+
+                        }
+                    } else {
+                        openActivity(true, FriendRequestActivity())
+
+                    }
+                    interstitial.adListener = object : AdListener() {
+                        override fun onAdClosed() {
+                            requestNewInterstitial()
+                            openActivity(true, FriendRequestActivity())
+                        }
+                    }
+                } else {
+                    openActivity(true, FriendRequestActivity())
+
+
+
+                }
                 return true
             }
             R.id.requests_status -> {
+                if (!SharedPrefUtils.getBooleanData(this, "hideAds")) {
+                if (interstitial.isLoaded) {
+                    if (ProcessLifecycleOwner.get().lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED)) {
+                        interstitial.show()
+                    } else {
+                        Log.d(TAGI, "App Is In Background Ad Is Not Going To Show")
+
+                    }
+                } else {
+                    openActivity(false, FriendRequestActivity())
+
+                }
+                interstitial.adListener = object : AdListener() {
+                    override fun onAdClosed() {
+                        requestNewInterstitial()
+                        openActivity(false, FriendRequestActivity())
+                    }
+                }
+            } else {
                 openActivity(false, FriendRequestActivity())
+
+
+            }
+
 
                 return true
             }

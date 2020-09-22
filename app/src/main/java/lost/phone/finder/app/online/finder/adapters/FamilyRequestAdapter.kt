@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
+import com.find.lost.app.phone.utils.InternetConnection
 import com.find.lost.app.phone.utils.SharedPrefUtils
 import kotlinx.android.synthetic.main.family_request_list_layout.view.*
 import lost.phone.finder.app.online.finder.R
@@ -50,7 +51,11 @@ class FamilyRequestAdapter(
         }
         holder.itemView.accept.setOnClickListener {
             if (family.isFriendRequest) {
-                acceptRequest(family, position)
+                if (InternetConnection().checkConnection(context)) {
+                    acceptRequest(family, position)
+                }else{
+                    context.getString(R.string.no_internet)
+                }
 
             } else {
                 Log.d(TAGI, "onBindViewHolder: pending")
@@ -58,11 +63,19 @@ class FamilyRequestAdapter(
         }
         holder.itemView.cancel.setOnClickListener {
             if (family.isFriendRequest) {
-                cancelRequest(family, position)
+                if (InternetConnection().checkConnection(context)) {
+                    cancelRequest(family, position)
+                }else{
+                    context.getString(R.string.no_internet)
+                }
 
             } else {
                 Log.d(TAGI, "onBindViewHolder: pending")
-                cancelRequestPending(family, position)
+                if (InternetConnection().checkConnection(context)) {
+                    cancelRequestPending(family, position)
+                }else{
+                    context.getString(R.string.no_internet)
+                }
             }
         }
     }
