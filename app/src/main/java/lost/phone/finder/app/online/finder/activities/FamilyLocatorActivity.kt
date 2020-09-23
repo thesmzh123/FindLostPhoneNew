@@ -1,10 +1,11 @@
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "UNUSED_ANONYMOUS_PARAMETER")
 
 package lost.phone.finder.app.online.finder.activities
 
 import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.database.Cursor
@@ -254,7 +255,8 @@ class FamilyLocatorActivity : BaseActivity(), OnMapReadyCallback, LocationListen
                 hideDialog()
                 val jsonObject = JSONObject(response!!)
                 if (jsonObject.getBoolean("error")) {
-                    showToast(jsonObject.getString("message"))
+//                    showToast(jsonObject.getString("message"))
+                    showInviteDialog()
                 } else {
                     showToast(jsonObject.getString("message"))
 
@@ -278,6 +280,43 @@ class FamilyLocatorActivity : BaseActivity(), OnMapReadyCallback, LocationListen
         queue!!.add(postRequest)
     }
 
+    private fun showInviteDialog() {
+        val yesNoDialog =
+            MaterialAlertDialogBuilder(
+                this@FamilyLocatorActivity, R.style.MaterialAlertDialogTheme
+            )
+        //yes or no alert box
+        yesNoDialog.setTitle(getString(R.string.invite_member))
+            .setMessage(getString(R.string.invite_message))
+            .setCancelable(false)
+            .setNegativeButton(
+                getString(R.string.no)
+            ) { dialog: DialogInterface?, which: Int ->
+                dialog?.dismiss()
+            }
+            .setPositiveButton(
+                getString(R.string.invite)
+            ) { dialogInterface: DialogInterface?, i: Int ->
+                try {
+                    shareApp()
+                    dialogInterface!!.dismiss()
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            }.setNegativeButton(
+                getString(R.string.not_now)
+            ) { dialogInterface: DialogInterface?, i: Int ->
+                try {
+                    dialogInterface!!.dismiss()
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            }
+
+        val dialog = yesNoDialog.create()
+        dialog.show()
+    }
+
 
     override fun onBackPressed() {
         finish()
@@ -287,7 +326,6 @@ class FamilyLocatorActivity : BaseActivity(), OnMapReadyCallback, LocationListen
         onBackPressed()
         return true
     }
-
 
 
     private fun loadFamilyList() {
@@ -410,34 +448,33 @@ class FamilyLocatorActivity : BaseActivity(), OnMapReadyCallback, LocationListen
                     openActivity(true, FriendRequestActivity())
 
 
-
                 }
                 return true
             }
             R.id.requests_status -> {
                 if (!SharedPrefUtils.getBooleanData(this, "hideAds")) {
-                if (interstitial.isLoaded) {
-                    if (ProcessLifecycleOwner.get().lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED)) {
-                        interstitial.show()
-                    } else {
-                        Log.d(TAGI, "App Is In Background Ad Is Not Going To Show")
+                    if (interstitial.isLoaded) {
+                        if (ProcessLifecycleOwner.get().lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED)) {
+                            interstitial.show()
+                        } else {
+                            Log.d(TAGI, "App Is In Background Ad Is Not Going To Show")
 
+                        }
+                    } else {
+                        openActivity(false, FriendRequestActivity())
+
+                    }
+                    interstitial.adListener = object : AdListener() {
+                        override fun onAdClosed() {
+                            requestNewInterstitial()
+                            openActivity(false, FriendRequestActivity())
+                        }
                     }
                 } else {
                     openActivity(false, FriendRequestActivity())
 
-                }
-                interstitial.adListener = object : AdListener() {
-                    override fun onAdClosed() {
-                        requestNewInterstitial()
-                        openActivity(false, FriendRequestActivity())
-                    }
-                }
-            } else {
-                openActivity(false, FriendRequestActivity())
 
-
-            }
+                }
 
 
                 return true

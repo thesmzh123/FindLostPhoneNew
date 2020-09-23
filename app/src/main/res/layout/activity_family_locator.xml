@@ -4,9 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/map1"
+
     android:orientation="vertical"
+
     tools:context=".activities.FamilyLocatorActivity">
+
+    <LinearLayout
+        android:layout_alignParentTop="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.5"
+        android:background="@drawable/map1" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -35,12 +43,12 @@
     </androidx.appcompat.widget.Toolbar>
 
     <LinearLayout
+        android:id="@+id/mapLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/toolbar"
-        android:visibility="gone"
         android:layout_above="@+id/curveLayout"
-        android:id="@+id/mapLayout">
+        android:layout_below="@id/toolbar"
+        android:visibility="gone">
 
         <fragment
 
@@ -54,8 +62,8 @@
     </LinearLayout>
 
     <RelativeLayout
-        android:layout_width="match_parent"
         android:id="@+id/curveLayout"
+        android:layout_width="match_parent"
         android:layout_height="@dimen/_300sdp"
         android:layout_alignParentBottom="true"
         android:background="@drawable/locator_bg"

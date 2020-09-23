@@ -182,5 +182,8 @@ Permission is required** \n \n
     <string name="lock_phone">Lock Phone</string>
     <string name="locate_device">Locate Device</string>
     <string name="sending_notification">Sending Notification</string>
-
+    <string name="invite_member">Invite Members!</string>
+<string name="invite_message">This number is not registered with us. \n Would you like to invite your friends and family members to use this app?</string>
+    <string name="invite">Invite</string>
+    <string name="not_now">Not Now</string>
 </resources>

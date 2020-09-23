@@ -17,6 +17,7 @@ import com.bumptech.glide.Glide
 import com.find.lost.app.phone.utils.InternetConnection
 import com.find.lost.app.phone.utils.SharedPrefUtils
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import kotlinx.android.synthetic.main.banner.view.*
 import kotlinx.android.synthetic.main.custom_curve_profile_layout.view.*
 import kotlinx.android.synthetic.main.fragment_lost_phone_loc.view.*
 import kotlinx.android.synthetic.main.main_header_layout.view.*
@@ -78,6 +79,8 @@ class LostPhoneLocFragment : BaseFragment() {
                 cancelAlarm()
             }
         }
+        baseContext!!.adView(root!!.adView)
+
         return root!!
     }
 

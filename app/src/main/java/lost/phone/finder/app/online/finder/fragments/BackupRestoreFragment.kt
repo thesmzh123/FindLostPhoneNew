@@ -25,6 +25,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
 import com.bumptech.glide.Glide
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import kotlinx.android.synthetic.main.banner.view.*
 import kotlinx.android.synthetic.main.contact_email_restore_dialog.view.*
 import kotlinx.android.synthetic.main.custom_curve_profile_layout.view.*
 import kotlinx.android.synthetic.main.fragment_backup_restore.view.*
@@ -114,6 +115,7 @@ class BackupRestoreFragment : BaseFragment() {
                 ContactsBackground("memorybackup").execute()
             }
         }
+        baseContext!!.adView(root!!.adView)
         return root
     }
 

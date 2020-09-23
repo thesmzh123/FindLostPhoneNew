@@ -12,9 +12,10 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginTop="@dimen/_10sdp"
         android:overScrollMode="never"
+        android:layout_weight="2"
         android:scrollbars="none">
 
         <LinearLayout
@@ -218,4 +219,5 @@
             </LinearLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
+    <include layout="@layout/banner"/>
 </LinearLayout>

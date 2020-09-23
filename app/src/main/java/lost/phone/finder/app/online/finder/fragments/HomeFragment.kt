@@ -31,6 +31,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.android.synthetic.main.custom_feature_layout.view.*
 import kotlinx.android.synthetic.main.feature_icon_layout.view.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
+import kotlinx.android.synthetic.main.native_ad_layout.view.*
 import lost.phone.finder.app.online.finder.R
 import lost.phone.finder.app.online.finder.activities.FamilyLocatorActivity
 import lost.phone.finder.app.online.finder.activities.PrivateBrowserActivity
@@ -108,7 +109,9 @@ class HomeFragment : BaseFragment() {
         })
         torchInit()
         initTool()
-
+        refreshAd(root!!.nativeAd, R.layout.ad_unified)
+        root!!.nestedScrollView.fullScroll(View.FOCUS_UP)
+        root!!.nestedScrollView.scrollTo(0,0)
         return root!!
     }
 

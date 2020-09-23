@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import kotlinx.android.synthetic.main.banner.view.*
 import kotlinx.android.synthetic.main.custom_curve_profile_layout.view.*
 import kotlinx.android.synthetic.main.fragment_network_provider.view.*
 import kotlinx.android.synthetic.main.main_header_layout.view.*
@@ -48,6 +49,7 @@ class NetworkProviderFragment : BaseFragment() {
                 fetchProvider(code, countryName, number)
             }
         }
+        baseContext!!.adView(root!!.adView)
         return root
     }
 

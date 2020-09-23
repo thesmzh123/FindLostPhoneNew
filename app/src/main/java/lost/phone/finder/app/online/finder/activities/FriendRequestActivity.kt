@@ -7,6 +7,7 @@ import com.bumptech.glide.Glide
 import com.find.lost.app.phone.utils.InternetConnection
 import com.find.lost.app.phone.utils.SharedPrefUtils
 import kotlinx.android.synthetic.main.activity_friend_request.*
+import kotlinx.android.synthetic.main.banner.*
 import lost.phone.finder.app.online.finder.R
 import lost.phone.finder.app.online.finder.adapters.FamilyRequestAdapter
 import lost.phone.finder.app.online.finder.models.Family
@@ -50,6 +51,7 @@ class FriendRequestActivity : BaseActivity() {
             toolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back_24)
         }
         init(isFriendRequest)
+        adView(adView)
     }
 
     fun init(friendRequest: Boolean) {

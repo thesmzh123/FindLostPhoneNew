@@ -31,6 +31,17 @@
         tools:targetApi="q"
         tools:ignore="UnusedAttribute">
         <activity
+            android:name=".activities.SplashScreenActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".activities.FriendRequestActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait">
@@ -64,11 +75,11 @@
         <activity
             android:name=".activities.MainActivity"
             android:screenOrientation="portrait">
-            <intent-filter>
+        <!--    <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter>-->
             <intent-filter
                 android:scheme="file"
                 tools:ignore="AppLinkUrlError">

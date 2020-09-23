@@ -1,8 +1,11 @@
+@file:Suppress("DEPRECATION")
+
 package lost.phone.finder.app.online.finder.activities
 
 import android.annotation.SuppressLint
 import android.annotation.TargetApi
 import android.content.Context
+import android.content.Intent
 import android.media.AudioAttributes
 import android.media.Ringtone
 import android.media.RingtoneManager
@@ -64,7 +67,8 @@ open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListene
     var mainUrl: String? = null
     var ringtone: Ringtone? = null
     var databaseHelperUtils: DatabaseHelperUtils? = null
-    var queue: RequestQueue? =null
+    var queue: RequestQueue? = null
+
 
     //TODO: add back arrow to activity
     fun addBackArrow() {
@@ -74,6 +78,8 @@ open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListene
             supportActionBar!!.setDisplayShowHomeEnabled(true)
         }
     }
+
+
 
 
     //TODO: fetch base url
@@ -126,7 +132,7 @@ open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListene
             StrictMode.ThreadPolicy.Builder().permitAll().build()
 
         StrictMode.setThreadPolicy(policy)
-       queue= Volley.newRequestQueue(this) // this = context
+        queue = Volley.newRequestQueue(this) // this = context
         databaseHelperUtils = DatabaseHelperUtils(this@BaseActivity)
         auth = FirebaseAuth.getInstance()
         if (SharedPrefUtils.getBooleanData(this, "isFirst")) {
@@ -473,4 +479,31 @@ open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListene
         Toast.makeText(this@BaseActivity, toast, Toast.LENGTH_LONG).show()
 
     }
+
+    //TODO: rate us
+    fun rateUs() {
+        startActivity(
+            Intent(
+                Intent.ACTION_VIEW,
+                Uri.parse("https://play.google.com/store/apps/details?id=$packageName")
+            )
+        )
+    }
+
+    //TODO: share App
+    fun shareApp() {
+        try {
+            val shareIntent = Intent(Intent.ACTION_SEND)
+            shareIntent.type = "text/plain"
+            shareIntent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.app_name))
+            var shareMessage = "\nLet me recommend you this application\n\n"
+            shareMessage =
+                shareMessage + "https://play.google.com/store/apps/details?id=" + packageName + "\n\n"
+            shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage)
+            startActivity(Intent.createChooser(shareIntent, "Share via"))
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
 }

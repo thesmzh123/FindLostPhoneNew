@@ -1,6 +1,7 @@
 package lost.phone.finder.app.online.finder.activities
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -10,6 +11,9 @@ import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.view.menu.MenuBuilder
+import androidx.core.view.GravityCompat
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.ProcessLifecycleOwner
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.fragment.NavHostFragment
@@ -18,6 +22,8 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.bumptech.glide.Glide
+import com.find.lost.app.phone.utils.SharedPrefUtils
+import com.google.android.gms.ads.AdListener
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
@@ -66,7 +72,12 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_profile, R.id.nav_nearby, R.id.nav_rate, R.id.nav_share
+                R.id.nav_home,
+                R.id.nav_profile,
+                R.id.nav_nearby,
+                R.id.nav_family,
+                R.id.nav_rate,
+                R.id.nav_share
             ), drawer_layout
         )
         setupActionBarWithNavController(navController, appBarConfiguration!!)
@@ -243,13 +254,30 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
         val viewShare = shareItem.actionView
         Glide.with(this).load(R.drawable.share).into(viewShare.navIcon)
         viewShare.navText.text = getString(R.string.share)
+        viewShare.setOnClickListener {
+            closeDrawer()
+            shareApp()
+        }
         //rate menu
         val rateItem = navigationView!!.menu.findItem(R.id.nav_rate)
         rateItem.setActionView(R.layout.drawer_custom_layout)
         val viewRate = rateItem.actionView
         Glide.with(this).load(R.drawable.rate_us).into(viewRate.navIcon)
         viewRate.navText.text = getString(R.string.rate_us)
-
+        viewRate.setOnClickListener {
+            closeDrawer()
+            rateUs()
+        }
+        //family menu
+        val familyItem = navigationView!!.menu.findItem(R.id.nav_family)
+        familyItem.setActionView(R.layout.drawer_custom_layout)
+        val family = familyItem.actionView
+        Glide.with(this).load(R.drawable.family_locator_icon).into(family.navIcon)
+        family.navText.text = getString(R.string.family_locator1)
+        family.setOnClickListener {
+            closeDrawer()
+            callFamilyLocatorActivity()
+        }
 
         when {
             isHome -> {
@@ -270,6 +298,35 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
         }
     }
 
+    private fun callFamilyLocatorActivity() {
+        if (!SharedPrefUtils.getBooleanData(this@MainActivity, "hideAds")) {
+            if (interstitial.isLoaded) {
+                if (ProcessLifecycleOwner.get().lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED)) {
+                    interstitial.show()
+                } else {
+                    Log.d(TAGI, "App Is In Background Ad Is Not Going To Show")
+
+                }
+            } else {
+                startActivity(Intent(this@MainActivity, FamilyLocatorActivity::class.java))
+
+            }
+            interstitial.adListener = object : AdListener() {
+                override fun onAdClosed() {
+                    requestNewInterstitial()
+                    startActivity(Intent(this@MainActivity, FamilyLocatorActivity::class.java))
+                }
+            }
+        } else {
+            startActivity(Intent(this@MainActivity, FamilyLocatorActivity::class.java))
+
+        }
+    }
+    fun closeDrawer() {
+        if (drawer_layout!!.isDrawerOpen(GravityCompat.START)) {
+            drawer_layout!!.closeDrawer(GravityCompat.START)
+        }
+    }
     fun updateNavView() {
         if (isLoggedIn()) {
             headerView!!.name.text = auth.currentUser!!.displayName

@@ -9,8 +9,11 @@
     tools:ignore="UselessParent,RelativeOverlap">
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:overScrollMode="never"
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -53,8 +56,8 @@
                         android:padding="2dp"
                         android:scaleType="centerInside"
                         android:src="@drawable/ic_baseline_arrow_back_ios_24"
-                        app:tint="@color/colorAccent"
-                        android:visibility="invisible" />
+                        android:visibility="invisible"
+                        app:tint="@color/colorAccent" />
 
                     <ImageView
                         android:id="@+id/forwardFeature"
@@ -96,6 +99,8 @@
                 app:dotsStrokeColor="@android:color/white"
                 app:dotsStrokeWidth="1dp"
                 app:stiffness="300" />
+
+            <include layout="@layout/native_ad_layout" />
 
             <RelativeLayout
                 android:layout_width="match_parent"

@@ -11,86 +11,95 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_10sdp"
-        android:orientation="vertical"
-        android:padding="@dimen/_10sdp">
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:orientation="vertical">
 
-        <com.google.android.material.textview.MaterialTextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/_2sdp"
-            android:padding="@dimen/_5sdp"
-            android:text="@string/enter_number"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/_12ssp" />
+            android:layout_margin="@dimen/_10sdp"
+            android:orientation="vertical"
+            android:padding="@dimen/_10sdp">
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <com.hbb20.CountryCodePicker
-                android:id="@+id/ccp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_centerInParent="true"
-                app:ccpDialog_fastScroller_bubbleColor="@android:color/white"
-                app:ccpDialog_fastScroller_bubbleTextAppearance="@style/TextAppearance.AppCompat.Medium"
-                app:ccpDialog_fastScroller_handleColor="@android:color/white"
-                app:ccpDialog_keyboardAutoPopup="false"
-                app:ccpDialog_searchEditTextTint="@color/colorPrimaryDark"
-                app:ccpDialog_showCloseIcon="true"
-                app:ccpDialog_showTitle="false"
-                app:ccpDialog_textColor="@color/colorPrimaryDark"
-                app:ccp_autoDetectCountry="true"
-                app:ccp_contentColor="@android:color/white"
-                app:ccp_defaultNameCode="US"
-                app:ccp_hintExampleNumber="true"
-                app:ccp_rememberLastSelection="true"
-                app:ccp_showFlag="true" />
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editText_carrierNumber"
+            <com.google.android.material.textview.MaterialTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_gravity="center"
-                android:layout_toEndOf="@id/ccp"
-                android:backgroundTint="@android:color/white"
-                android:editable="false"
-                android:inputType="phone"
-                android:singleLine="true"
+                android:layout_marginBottom="@dimen/_2sdp"
+                android:padding="@dimen/_5sdp"
+                android:text="@string/enter_number"
                 android:textColor="@android:color/white"
-                android:textColorHint="@android:color/darker_gray"
-                android:textCursorDrawable="@drawable/color_cursor" />
-        </RelativeLayout>
+                android:textSize="@dimen/_12ssp" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <com.hbb20.CountryCodePicker
+                    android:id="@+id/ccp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerInParent="true"
+                    app:ccpDialog_fastScroller_bubbleColor="@android:color/white"
+                    app:ccpDialog_fastScroller_bubbleTextAppearance="@style/TextAppearance.AppCompat.Medium"
+                    app:ccpDialog_fastScroller_handleColor="@android:color/white"
+                    app:ccpDialog_keyboardAutoPopup="false"
+                    app:ccpDialog_searchEditTextTint="@color/colorPrimaryDark"
+                    app:ccpDialog_showCloseIcon="true"
+                    app:ccpDialog_showTitle="false"
+                    app:ccpDialog_textColor="@color/colorPrimaryDark"
+                    app:ccp_autoDetectCountry="true"
+                    app:ccp_contentColor="@android:color/white"
+                    app:ccp_defaultNameCode="US"
+                    app:ccp_hintExampleNumber="true"
+                    app:ccp_rememberLastSelection="true"
+                    app:ccp_showFlag="true" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editText_carrierNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
+                    android:layout_toEndOf="@id/ccp"
+                    android:backgroundTint="@android:color/white"
+                    android:editable="false"
+                    android:inputType="phone"
+                    android:singleLine="true"
+                    android:textColor="@android:color/white"
+                    android:textColorHint="@android:color/darker_gray"
+                    android:textCursorDrawable="@drawable/color_cursor" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/mainBtn"
+            android:layout_width="@dimen/_150sdp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/_10sdp"
+            android:gravity="center"
+            android:text="@string/search"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/_12ssp"
+            app:backgroundTint="@color/colorAccent"
+            app:cornerRadius="@dimen/_10sdp"
+            app:elevation="@dimen/_10sdp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/networkProvider"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_2sdp"
+            android:gravity="center"
+            android:padding="@dimen/_5sdp"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/_12ssp" />
     </LinearLayout>
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/mainBtn"
-        android:layout_width="@dimen/_150sdp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="@dimen/_10sdp"
-        android:gravity="center"
-        android:text="@string/search"
-        android:textAlignment="center"
-        android:textColor="@color/colorPrimary"
-        android:textSize="@dimen/_12ssp"
-        app:backgroundTint="@color/colorAccent"
-        app:cornerRadius="@dimen/_10sdp"
-        app:elevation="@dimen/_10sdp" />
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/networkProvider"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:layout_marginBottom="@dimen/_2sdp"
-        android:gravity="center"
-        android:padding="@dimen/_5sdp"
-        android:textColor="@android:color/white"
-        android:textSize="@dimen/_12ssp" />
+    <include layout="@layout/banner" />
 </LinearLayout>

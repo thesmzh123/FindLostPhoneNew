@@ -16,6 +16,9 @@
             android:actionLayout="@layout/drawer_custom_layout" />
     </group>
     <item
+        android:id="@+id/nav_family"
+        android:actionLayout="@layout/drawer_custom_layout"/>
+    <item
         android:id="@+id/nav_rate"
         android:actionLayout="@layout/drawer_custom_layout" />
     <item
