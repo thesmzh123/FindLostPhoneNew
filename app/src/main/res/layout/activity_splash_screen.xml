@@ -23,14 +23,15 @@
             android:src="@drawable/icon" />
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/splashText"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:gravity="center"
             android:layout_margin="10dp"
             android:layout_marginTop="@dimen/_5sdp"
             android:text="@string/app_name"
             android:textColor="@color/colorAccent"
-            android:textSize="@dimen/_18ssp" />
+            android:textSize="@dimen/_20ssp" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/splashText2"
@@ -40,7 +41,7 @@
             android:gravity="center"
             android:text="@string/track_your_phone"
             android:textColor="@color/colorAccent"
-            android:textSize="@dimen/_14ssp" />
+            android:textSize="@dimen/_16ssp" />
 
 
 

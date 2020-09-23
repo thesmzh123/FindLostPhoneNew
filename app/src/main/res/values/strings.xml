@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">Device Spotter</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="home">Home</string>
     <string name="profile">Profile</string>
     <string name="nearby_places">Nearby Places</string>
@@ -36,8 +35,6 @@
     <string name="last_hope">Send</string>
     <string name="backup_and_restore"><![CDATA[Backup &\nRestore]]></string>
     <string name="view">View</string>
-    <string name="hide_icon">Hide\nApp Icon</string>
-    <string name="hide">Hide</string>
     <string name="family_locator">Family\nLocator</string>
     <string name="newtork_provider">Network\nProvider</string>
     <string name="find">Find</string>
@@ -52,7 +49,6 @@
     <string name="do_you_want_to_go_to_setting">GPS is not enabled. Do you want to go to settings menu?</string>
     <string name="settings">Settings</string>
     <string name="cancel">Cancel</string>
-    <string name="with_this_feature_you_can_remotely_loc_your_phone_title">With this\nfeature you can remotely\nlocate\nyour phone</string>
     <string name="track_your_loc">Track your location</string>
     <string name="select_your_remote_device">Select your remote device</string>
     <string name="note_you_don_t_have_any_remote_device">Note: You don\'t have any remote device</string>
@@ -186,4 +182,27 @@ Permission is required** \n \n
 <string name="invite_message">This number is not registered with us. \n Would you like to invite your friends and family members to use this app?</string>
     <string name="invite">Invite</string>
     <string name="not_now">Not Now</string>
+    <string name="browse_website">Browse a Web</string>
+    <string name="termsandc"><u>Terms and Conditions</u></string>
+
+    <string name="termpara">Our product helps the user find lost or misplaced phone it needs special privileges. We ensure you that the users personal data or information is not collected by the company nor does the application host users data.\n\n
+       **Following are the Main Working of application for which BIND_SERVICE_ADMIN\n\n
+Permission is required**\n\n
+-For the erasing of all the data of device.\n\n
+-For changing the screen lock\n\n
+-For Locking the screen\n\n\n\n
+        The application requires the user to agree to grant administrator access. This access is used by the application in the following ways:\n\n
+    1. In case of theft of device being misplaced the application allows the user to remotely wipe their personal data via Phone. \n\n
+    2. The application allows the user to lock their devices via Phone.\n\n
+    3. In order to find the lost device the application also provides the user with the feature of sharing the location, of misplaced or lost device, on social media outlets via a link . \n\n
+    4. Even if the device,lost or misplaced, is silent or on vibrate mode, the application allows the user to play ringtone sound.\n\n
+    5. Furthermore the application also provides the user to use family finder module to find the family members.\n\n
+    6. We are not violating any google policy or not harming any user or culture.\n\n
+     7. Active internet is required to use this app.\n\n
+
+    </string>
+    <string name="policy_subTitle">If you click on Accept, you acknowledge that it makes the content present and all the content of our Terms of Service and implies that you have read our Privacy Policy.</string>
+    <string name="agree1">Agree</string>
+    <string name="do_you_want_exit">Do you want to exit?</string>
+    <string name="exit">Exit</string>
 </resources>

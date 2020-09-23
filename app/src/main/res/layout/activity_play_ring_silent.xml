@@ -16,7 +16,6 @@
         android:orientation="vertical">
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/sound"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_10sdp"
@@ -26,7 +25,6 @@
             android:textSize="@dimen/_14ssp" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/wrongPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_10sdp"

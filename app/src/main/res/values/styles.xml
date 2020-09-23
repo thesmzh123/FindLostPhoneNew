@@ -16,8 +16,6 @@
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar" />
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.MaterialComponents.Light" />
-
     <!-- Alert Dialog -->
     <style name="MaterialAlertDialogTheme" parent="@style/ThemeOverlay.MaterialComponents.MaterialAlertDialog">
         <!-- Background Color-->
@@ -43,9 +41,10 @@
         <!-- text color for the button -->
         <item name="android:textColor">@color/colorPrimary</item>
         <!-- Background tint for the button -->
-        <item name="backgroundTint">@color/colorAccent</item>
+        <item name="backgroundTint">@android:color/white</item>
         <item name="android:textSize">@dimen/_10ssp</item>
         <item name="elevation">0dp</item>
+        <item name="android:layout_margin">5dp</item>
 
     </style>
 
@@ -53,9 +52,10 @@
         <!-- text color for the button -->
         <item name="android:textColor">@color/colorPrimary</item>
         <!-- Background tint for the button -->
-        <item name="backgroundTint">@color/colorAccent</item>
+        <item name="backgroundTint">@android:color/white</item>
         <item name="android:textSize">@dimen/_10ssp</item>
         <item name="elevation">0dp</item>
+        <item name="android:layout_margin">5dp</item>
 
     </style>
 
@@ -63,9 +63,10 @@
         <!-- text color for the button -->
         <item name="android:textColor">@color/colorPrimary</item>
         <!-- Background tint for the button -->
-        <item name="backgroundTint">@color/colorAccent</item>
+        <item name="backgroundTint">@android:color/white</item>
         <item name="android:textSize">@dimen/_10ssp</item>
         <item name="elevation">0dp</item>
+        <item name="android:layout_margin">5dp</item>
     </style>
     <style name="AppTheme.AdAttribution">
         <item name="android:layout_width">wrap_content</item>

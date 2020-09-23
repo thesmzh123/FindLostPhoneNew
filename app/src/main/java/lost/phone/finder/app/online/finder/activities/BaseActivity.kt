@@ -80,8 +80,6 @@ open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListene
     }
 
 
-
-
     //TODO: fetch base url
     fun fetchBaseUrl() {
         //connecting declared wiidgets with xml
@@ -135,7 +133,7 @@ open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListene
         queue = Volley.newRequestQueue(this) // this = context
         databaseHelperUtils = DatabaseHelperUtils(this@BaseActivity)
         auth = FirebaseAuth.getInstance()
-        if (SharedPrefUtils.getBooleanData(this, "isFirst")) {
+        if (!SharedPrefUtils.getBooleanData(this, "isFirst")) {
             FirebaseAuth.getInstance().signOut()
         }
         fetchBaseUrl()

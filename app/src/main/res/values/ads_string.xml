@@ -10,8 +10,6 @@
 
 
     <string name="_0_0">0.0</string>
-    <string name="client_id">539090906934-n74fomdj25t8llkuqj6qp413dbu962rl.apps.googleusercontent.com</string>
-    <string name="client_secret">de_5naFuUU40dK2DOYLGzITH</string>
     <string name="e_g_1234567">e.g., 1234567</string>
-
+    <string name="site_url">https://www.devicespotter.com/</string>
 </resources>

@@ -8,6 +8,7 @@ import android.content.pm.PackageManager
 import android.hardware.Camera
 import android.hardware.camera2.CameraAccessException
 import android.hardware.camera2.CameraManager
+import android.net.Uri
 import android.os.BatteryManager
 import android.os.Build
 import android.os.Bundle
@@ -20,7 +21,6 @@ import androidx.activity.OnBackPressedCallback
 import androidx.annotation.Nullable
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ProcessLifecycleOwner
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener
@@ -64,6 +64,34 @@ class HomeFragment : BaseFragment() {
     private var mCameraId: String? = null
     private var isTorchOn: Boolean? = null
     var level: Int = 0
+
+    private fun exit() {
+        val yesNoDialog =
+            MaterialAlertDialogBuilder(
+                requireActivity()
+                , R.style.MaterialAlertDialogTheme
+            )
+        //yes or no alert box
+        yesNoDialog.setMessage(getString(R.string.do_you_want_exit)).setCancelable(false)
+            .setNegativeButton(
+                getString(R.string.rate_us)
+            ) { dialog: DialogInterface?, which: Int ->
+                startActivity(
+                    Intent(
+                        Intent.ACTION_VIEW,
+                        Uri.parse("https://play.google.com/store/apps/details?id=" + requireActivity().packageName)
+                    )
+                )
+            }
+            .setPositiveButton(
+                getString(R.string.exit)
+            ) { dialogInterface: DialogInterface?, i: Int -> requireActivity().finishAffinity() }
+            .setNeutralButton(
+                getString(R.string.cancel)
+            ) { dialogInterface: DialogInterface, i: Int -> dialogInterface.dismiss() }
+        val dialog = yesNoDialog.create()
+        dialog.show()
+    }
 
     @SuppressLint("InflateParams")
     override fun onCreateView(
@@ -111,7 +139,7 @@ class HomeFragment : BaseFragment() {
         initTool()
         refreshAd(root!!.nativeAd, R.layout.ad_unified)
         root!!.nestedScrollView.fullScroll(View.FOCUS_UP)
-        root!!.nestedScrollView.scrollTo(0,0)
+        root!!.nestedScrollView.scrollTo(0, 0)
         return root!!
     }
 
@@ -557,7 +585,7 @@ class HomeFragment : BaseFragment() {
                 override fun handleOnBackPressed() {
                     switchOffTorch()
                     isTorchOn = false
-                    requireActivity().finish()
+                    exit()
                 }
             }
         requireActivity().onBackPressedDispatcher.addCallback(this, callback)

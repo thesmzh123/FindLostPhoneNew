@@ -2,6 +2,7 @@ package lost.phone.finder.app.online.finder.activities
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -31,7 +32,6 @@ import kotlinx.android.synthetic.main.drawer_custom_layout.view.*
 import kotlinx.android.synthetic.main.nav_header_main.view.*
 import lost.phone.finder.app.online.finder.R
 import lost.phone.finder.app.online.finder.utils.Constants.TAGI
-import lost.phone.finder.app.online.finder.utils.FilePathUtil
 import lost.phone.finder.app.online.finder.utils.PermissionsUtils
 
 
@@ -47,65 +47,71 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
-        val data = intent.data
-        if (data != null) {
-            val path = intent.data!!.path
-            Log.d(TAGI, "onCreate: $path")
-            if (!path!!.contains("messages") || !path.contains(".com")) {
-                Log.d(TAGI, "onCreate: " + FilePathUtil.getPath(this@MainActivity, data))
-            }
-        }
-        if (Build.VERSION.SDK_INT >= 23) {
-            val permissionsUtils = PermissionsUtils().getInstance(this)
-            if (permissionsUtils?.isAllPermissionAvailable()!!) {
-                Log.d("Test", "Permission")
-            } else {
-                permissionsUtils.setActivity(this)
-                permissionsUtils.requestPermissionsIfDenied()
-            }
-        }
-        navigationView = findViewById(R.id.nav_view)
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        val navController = navHostFragment.navController
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.nav_home,
-                R.id.nav_profile,
-                R.id.nav_nearby,
-                R.id.nav_family,
-                R.id.nav_rate,
-                R.id.nav_share
-            ), drawer_layout
-        )
-        setupActionBarWithNavController(navController, appBarConfiguration!!)
-        navigationView!!.setupWithNavController(navController)
-        drawer_layout!!.setViewScale(Gravity.START, 0.9f)
-        drawer_layout!!.setViewElevation(Gravity.START, 20f)
-        headerView = navigationView!!.getHeaderView(0)
+        /*   val data = intent.data
+           if (data != null) {
+               val path = intent.data!!.path
+               Log.d(TAGI, "onCreate: $path")
+               *//*  if (!path!!.contains("messages") || !path.contains(".com")) {
+                  Log.d(TAGI, "onCreate: " + FilePathUtil.getPath(this@MainActivity, data))
+              }*//*
+        }*/
+        if (!SharedPrefUtils.getBooleanData(this@MainActivity, "isTerms")) {
+            startActivity(Intent(applicationContext, TermsAndConditionsActivity::class.java))
+            finish()
 
-        val actionBarDrawerToggle = ActionBarDrawerToggle(
-            this,
-            drawer_layout!!,
-            toolbar,
-            R.string.open_drawer,
-            R.string.close_drawer
-        )
-        drawer_layout.addDrawerListener(actionBarDrawerToggle)
-        actionBarDrawerToggle.syncState()
-        toolbar.setNavigationIcon(R.drawable.menu_icon)
-        /*      val drawable =
+        } else {
+            if (Build.VERSION.SDK_INT >= 23) {
+                val permissionsUtils = PermissionsUtils().getInstance(this)
+                if (permissionsUtils?.isAllPermissionAvailable()!!) {
+                    Log.d("Test", "Permission")
+                } else {
+                    permissionsUtils.setActivity(this)
+                    permissionsUtils.requestPermissionsIfDenied()
+                }
+            }
+            navigationView = findViewById(R.id.nav_view)
+            val navHostFragment =
+                supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+            val navController = navHostFragment.navController
+            // Passing each menu ID as a set of Ids because each
+            // menu should be considered as top level destinations.
+            appBarConfiguration = AppBarConfiguration(
+                setOf(
+                    R.id.nav_home,
+                    R.id.nav_profile,
+                    R.id.nav_nearby,
+                    R.id.nav_family,
+                    R.id.nav_rate,
+                    R.id.nav_share
+                ), drawer_layout
+            )
+            setupActionBarWithNavController(navController, appBarConfiguration!!)
+            navigationView!!.setupWithNavController(navController)
+            drawer_layout!!.setViewScale(Gravity.START, 0.9f)
+            drawer_layout!!.setViewElevation(Gravity.START, 20f)
+            headerView = navigationView!!.getHeaderView(0)
+
+            val actionBarDrawerToggle = ActionBarDrawerToggle(
+                this,
+                drawer_layout!!,
+                toolbar,
+                R.string.open_drawer,
+                R.string.close_drawer
+            )
+            drawer_layout.addDrawerListener(actionBarDrawerToggle)
+            actionBarDrawerToggle.syncState()
+            toolbar.setNavigationIcon(R.drawable.menu_icon)
+            /*      val drawable =
                  ResourcesCompat.getDrawable(resources, R.drawable.menu_icon, theme)
              actionBarDrawerToggle.setHomeAsUpIndicator(drawable)
              actionBarDrawerToggle.setDrawerIndicatorEnabled(false)*/
-        navController.addOnDestinationChangedListener(this)
+            navController.addOnDestinationChangedListener(this)
 
 
-        addMenuLayout(isHome = true, isProfile = false, isNearby = false)
-        updateNavView()
-        loadInterstial()
+            addMenuLayout(isHome = true, isProfile = false, isNearby = false)
+            updateNavView()
+            loadInterstial()
+        }
     }
 
     private fun setViewToNav() {
@@ -278,6 +284,18 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
             closeDrawer()
             callFamilyLocatorActivity()
         }
+        //browser menu
+        val browserItem = navigationView!!.menu.findItem(R.id.nav_browser)
+        browserItem.setActionView(R.layout.drawer_custom_layout)
+        val browser = browserItem.actionView
+        Glide.with(this).load(R.drawable.global).into(browser.navIcon)
+        browser.navText.text = getString(R.string.browse_website)
+        browser.setOnClickListener {
+            closeDrawer()
+            val browserIntent =
+                Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.site_url)))
+            startActivity(browserIntent)
+        }
 
         when {
             isHome -> {
@@ -322,11 +340,13 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
 
         }
     }
-    fun closeDrawer() {
+
+    private fun closeDrawer() {
         if (drawer_layout!!.isDrawerOpen(GravityCompat.START)) {
             drawer_layout!!.closeDrawer(GravityCompat.START)
         }
     }
+
     fun updateNavView() {
         if (isLoggedIn()) {
             headerView!!.name.text = auth.currentUser!!.displayName

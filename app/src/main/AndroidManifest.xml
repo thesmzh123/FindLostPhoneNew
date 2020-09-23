@@ -80,18 +80,16 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>-->
-            <intent-filter
-                android:scheme="file"
-                tools:ignore="AppLinkUrlError">
+          <!--  <intent-filter> &lt;!&ndash; Handle intent from a file browser app: &ndash;&gt;
                 <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.INSERT_OR_EDIT" />
 
                 <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
 
+                <data android:scheme="file" />
+                <data android:scheme="content" />
                 <data android:mimeType="text/x-vcard" />
-                <data android:pathPattern=".*\\.vcf" />
-                <data android:host="*" />
-            </intent-filter>
+            </intent-filter>-->
         </activity>
 
         <meta-data
@@ -172,6 +170,11 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider_path" />
         </provider>
+
+        <activity
+            android:name=".activities.TermsAndConditionsActivity"
+            android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>

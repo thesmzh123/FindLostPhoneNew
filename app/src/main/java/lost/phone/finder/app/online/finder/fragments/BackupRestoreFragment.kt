@@ -11,9 +11,7 @@ import android.content.pm.PackageManager
 import android.content.res.AssetFileDescriptor
 import android.database.Cursor
 import android.net.Uri
-import android.os.AsyncTask
-import android.os.Bundle
-import android.os.Environment
+import android.os.*
 import android.provider.ContactsContract
 import android.util.Log
 import android.view.LayoutInflater
@@ -31,6 +29,7 @@ import kotlinx.android.synthetic.main.custom_curve_profile_layout.view.*
 import kotlinx.android.synthetic.main.fragment_backup_restore.view.*
 import kotlinx.android.synthetic.main.main_header_layout.view.*
 import lost.phone.finder.app.online.finder.R
+import lost.phone.finder.app.online.finder.activities.PlayRingPhoneActivity
 import lost.phone.finder.app.online.finder.utils.Constants.TAGI
 import lost.phone.finder.app.online.finder.utils.RestoreContacts
 import java.io.File
@@ -150,11 +149,18 @@ class BackupRestoreFragment : BaseFragment() {
             null
         )
         if (cursor != null && cursor!!.count > 0) {
-            cursor!!.moveToFirst()
-            for (i in 0 until cursor!!.count) {
-                get(cursor!!)
-                Log.d(TAGI, "Contact " + (i + 1) + " VcF String is " + vCard!![i])
-                cursor!!.moveToNext()
+            try {
+                cursor!!.moveToFirst()
+                for (i in 0 until cursor!!.count) {
+                    get(cursor!!)
+                    Log.d(TAGI, "Contact " + (i + 1) + " VcF String is " + vCard!![i])
+                    cursor!!.moveToNext()
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+                Handler(Looper.getMainLooper()).post {
+                    showToast("Sorry! You do not have contacts in your phone storage.\n Please try again!")
+                }
             }
         } else {
             Log.d(TAGI, "No Contacts in Your Phone")
