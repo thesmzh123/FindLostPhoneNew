@@ -78,53 +78,17 @@ class FamilyLocatorActivity : BaseActivity(), OnMapReadyCallback, LocationListen
         }
         addMember.visibility = View.VISIBLE
         addMember.setOnClickListener {
-            if (!SharedPrefUtils.getBooleanData(this, "hideAds")) {
-                if (interstitial.isLoaded) {
-                    if (ProcessLifecycleOwner.get().lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED)) {
-                        interstitial.show()
-                    } else {
-                        Log.d(TAGI, "App Is In Background Ad Is Not Going To Show")
-
-                    }
-                } else {
-                    showNumberDialog()
-
-                }
-                interstitial.adListener = object : AdListener() {
-                    override fun onAdClosed() {
-                        requestNewInterstitial()
-                        showNumberDialog()
-                    }
-                }
+            if (isLoggedIn()) {
+                addNewMember()
             } else {
-                showNumberDialog()
-
-
+                showToast(getString(R.string.login_to_use_this))
             }
         }
         addMember1.setOnClickListener {
-            if (!SharedPrefUtils.getBooleanData(this, "hideAds")) {
-                if (interstitial.isLoaded) {
-                    if (ProcessLifecycleOwner.get().lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED)) {
-                        interstitial.show()
-                    } else {
-                        Log.d(TAGI, "App Is In Background Ad Is Not Going To Show")
-
-                    }
-                } else {
-                    showNumberDialog()
-
-                }
-                interstitial.adListener = object : AdListener() {
-                    override fun onAdClosed() {
-                        requestNewInterstitial()
-                        showNumberDialog()
-                    }
-                }
+            if (isLoggedIn()) {
+                addNewMember()
             } else {
-                showNumberDialog()
-
-
+                showToast(getString(R.string.login_to_use_this))
             }
         }
         loadInterstial()
@@ -132,13 +96,39 @@ class FamilyLocatorActivity : BaseActivity(), OnMapReadyCallback, LocationListen
 
     }
 
-    fun initMap(lati: Double, lonngi: Double, name: String) {
+    private fun addNewMember() {
+        if (!SharedPrefUtils.getBooleanData(this, "hideAds")) {
+            if (interstitial.isLoaded) {
+                if (ProcessLifecycleOwner.get().lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED)) {
+                    interstitial.show()
+                } else {
+                    Log.d(TAGI, "App Is In Background Ad Is Not Going To Show")
+
+                }
+            } else {
+                showNumberDialog()
+
+            }
+            interstitial.adListener = object : AdListener() {
+                override fun onAdClosed() {
+                    requestNewInterstitial()
+                    showNumberDialog()
+                }
+            }
+        } else {
+            showNumberDialog()
+
+
+        }
+    }
+
+    fun initMap(lati: String, lonngi: String, name: String) {
         mapLayout.visibility = View.VISIBLE
         val mapFragment = (this.supportFragmentManager
             .findFragmentById(R.id.mapFragment) as SupportMapFragment?)!!
         mapFragment.getMapAsync(this)
-        this.lati = lati
-        longi = lonngi
+        this.lati = lati.toDoubleOrNull()
+        longi = lonngi.toDoubleOrNull()
         this.name = name
     }
 
@@ -372,8 +362,8 @@ class FamilyLocatorActivity : BaseActivity(), OnMapReadyCallback, LocationListen
                                     jsonObject1.getString("devicename"),
                                     jsonObject1.getString("model"),
                                     jsonObject1.getString("token"),
-                                    jsonObject1.getDouble("latitude"),
-                                    jsonObject1.getDouble("longitude"),
+                                    jsonObject1.getString("latitude"),
+                                    jsonObject1.getString("longitude"),
                                     jsonObject1.getString("mac_address"),
                                     jsonObject1.getString("updateDate"),
                                     jsonObject1.getInt("pid")

@@ -282,7 +282,11 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
         family.navText.text = getString(R.string.family_locator1)
         family.setOnClickListener {
             closeDrawer()
-            callFamilyLocatorActivity()
+            if (isLoggedIn()) {
+                callFamilyLocatorActivity()
+            } else {
+                showToast(getString(R.string.login_to_use_this))
+            }
         }
         //browser menu
         val browserItem = navigationView!!.menu.findItem(R.id.nav_browser)

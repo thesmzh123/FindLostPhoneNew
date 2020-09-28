@@ -3,14 +3,9 @@
 package lost.phone.finder.app.online.finder.fragments
 
 import android.annotation.SuppressLint
-import android.content.*
-import android.content.pm.PackageManager
-import android.hardware.Camera
-import android.hardware.camera2.CameraAccessException
-import android.hardware.camera2.CameraManager
+import android.content.DialogInterface
+import android.content.Intent
 import android.net.Uri
-import android.os.BatteryManager
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.util.TypedValue
@@ -34,13 +29,10 @@ import kotlinx.android.synthetic.main.fragment_home.view.*
 import kotlinx.android.synthetic.main.native_ad_layout.view.*
 import lost.phone.finder.app.online.finder.R
 import lost.phone.finder.app.online.finder.activities.FamilyLocatorActivity
-import lost.phone.finder.app.online.finder.activities.PrivateBrowserActivity
 import lost.phone.finder.app.online.finder.adapters.ToolsAdapter
 import lost.phone.finder.app.online.finder.adapters.ViewPagerAdapter
 import lost.phone.finder.app.online.finder.models.Tools
 import lost.phone.finder.app.online.finder.utils.Constants.TAGI
-import lost.phone.finder.app.online.finder.utils.RecyclerClickListener
-import lost.phone.finder.app.online.finder.utils.RecyclerTouchListener
 
 
 @Suppress("UNUSED_ANONYMOUS_PARAMETER")
@@ -57,13 +49,7 @@ class HomeFragment : BaseFragment() {
     private var familyView: View? = null
     private var neworkView: View? = null
     private var toolList: ArrayList<Tools>? = null
-
-    private var camera: Camera? = null
-    private var parameters: Camera.Parameters? = null
-    private var mCameraManager: CameraManager? = null
-    private var mCameraId: String? = null
-    private var isTorchOn: Boolean? = null
-    var level: Int = 0
+    private var addItemAdapter: ToolsAdapter? = null
 
     private fun exit() {
         val yesNoDialog =
@@ -135,7 +121,6 @@ class HomeFragment : BaseFragment() {
 
             override fun onPageScrollStateChanged(state: Int) {}
         })
-        torchInit()
         initTool()
         refreshAd(root!!.nativeAd, R.layout.ad_unified)
         root!!.nestedScrollView.fullScroll(View.FOCUS_UP)
@@ -143,147 +128,52 @@ class HomeFragment : BaseFragment() {
         return root!!
     }
 
-    private fun torchInit() {
-        isTorchOn = false
-        mCameraManager = requireActivity().getSystemService(Context.CAMERA_SERVICE) as CameraManager
-        try {
-            mCameraId = mCameraManager!!.cameraIdList[0]
-        } catch (e: CameraAccessException) {
-            e.printStackTrace()
-        }
-        getBatteryPercentage()
-
-    }
-
-    //Battery Percentage
-    private fun getBatteryPercentage() {
-        val batteryLevelReceiver = object : BroadcastReceiver() {
-            @SuppressLint("SetTextI18n")
-            override fun onReceive(context: Context, intent: Intent) {
-                context.unregisterReceiver(this)
-                val currentLevel = intent.getIntExtra(BatteryManager.EXTRA_LEVEL, -1)
-                val scale = intent.getIntExtra(BatteryManager.EXTRA_SCALE, -1)
-                level = -1
-                if (currentLevel >= 0 && scale > 0) {
-                    level = currentLevel * 100 / scale
-                }
-            }
-        }
-        val batteryLevelFilter = IntentFilter(Intent.ACTION_BATTERY_CHANGED)
-        requireActivity().registerReceiver(batteryLevelReceiver, batteryLevelFilter)
-    }
 
     private fun initTool() {
-        val addItemAdapter = ToolsAdapter(toolsList(), requireActivity())
+        addItemAdapter = ToolsAdapter(toolsList(), requireActivity())
         val horizontalLayoutManagaer =
             LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
         root!!.recyclerView.layoutManager = horizontalLayoutManagaer
         root!!.recyclerView.itemAnimator = DefaultItemAnimator()
         root!!.recyclerView.adapter = addItemAdapter
-        addItemAdapter.notifyDataSetChanged()
+        addItemAdapter!!.notifyDataSetChanged()
         root!!.recyclerViewIndicator.setRecyclerView(root!!.recyclerView)
 
-        root!!.recyclerView.addOnItemTouchListener(
-            RecyclerTouchListener(
-                requireActivity(),
-                root!!.recyclerView,
-                object : RecyclerClickListener {
-                    override fun onClick(view: View?, position: Int) {
-                        if (position == 0) {
-                            baseContext!!.navigateFragmentByAds(R.id.compassFragment)
+        /*   root!!.recyclerView.addOnItemTouchListener(
+               RecyclerTouchListener(
+                   requireActivity(),
+                   root!!.recyclerView,
+                   object : RecyclerClickListener {
+                       override fun onClick(view: View?, position: Int) {
+                           if (position == 0) {
+                               baseContext!!.navigateFragmentByAds(R.id.compassFragment)
 
-                        } else if (position == 1) {
-                            checkFlash()
-                            if (level <= 15) {
-                                showToast(getString(R.string.battery_low_flash))
-                            } else {
-                                openFlash()
-                            }
-                        } else if (position == 2) {
-                            startActivity(
-                                Intent(
-                                    requireActivity(),
-                                    PrivateBrowserActivity::class.java
-                                )
-                            )
-                        }
-                    }
+                           } else if (position == 1) {
+                               holderTool = ToolsAdapter.MyHolder(view!!)
+                               checkFlash()
+                               if (level <= 15) {
+                                   showToast(getString(R.string.battery_low_flash))
+                               } else {
+                                   openFlash()
+                               }
+                           } else if (position == 2) {
+                               startActivity(
+                                   Intent(
+                                       requireActivity(),
+                                       PrivateBrowserActivity::class.java
+                                   )
+                               )
+                           }
+                       }
 
-                    override fun onLongClick(view: View?, position: Int) {
-                        Log.d(TAGI, "onLongClick")
+                       override fun onLongClick(view: View?, position: Int) {
+                           Log.d(TAGI, "onLongClick")
 
-                    }
-                })
-        )
+                       }
+                   })
+           )*/
     }
 
-    private fun openFlash() {
-        isTorchOn = if (isTorchOn!!) {
-            switchOffTorch()
-            false
-
-        } else {
-            switchOnTorch()
-            true
-
-        }
-    }
-
-    private fun switchOnTorch() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            mCameraId?.let { mCameraManager?.setTorchMode(it, true) }
-        } else {
-            try {
-                parameters?.flashMode = Camera.Parameters.FLASH_MODE_TORCH
-                camera?.parameters = parameters
-                camera?.startPreview()
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-
-        }
-
-    }
-
-    private fun switchOffTorch() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            mCameraId?.let { mCameraManager?.setTorchMode(it, false) }
-        } else {
-            try {
-                parameters?.flashMode = Camera.Parameters.FLASH_MODE_OFF
-                camera?.parameters = parameters
-                camera?.stopPreview()
-            } catch (e: Exception) {
-                e.printStackTrace()
-
-            }
-
-        }
-    }
-
-    private fun checkFlash() {
-        val isFlashAvailable = requireActivity().packageManager.hasSystemFeature(
-            PackageManager.FEATURE_CAMERA_FLASH
-        )
-        if (!isFlashAvailable) {
-
-            val alert = MaterialAlertDialogBuilder(
-                requireActivity(),
-                R.style.MaterialAlertDialogTheme
-            ).create()
-            alert.setTitle(getString(R.string.error))
-            alert.setMessage(getString(R.string.no_flash_light))
-            alert.setButton(
-                DialogInterface.BUTTON_POSITIVE, getString(R.string.ok)
-            ) { dialog, which ->
-                // closing the application
-                dialog.dismiss()
-
-            }
-            alert.show()
-            return
-        }
-    }
 
     private fun toolsList(): ArrayList<Tools> {
         toolList!!.add(Tools(R.drawable.compass_icon, getString(R.string.compass)))
@@ -382,10 +272,18 @@ class HomeFragment : BaseFragment() {
             familyView!!.featureTitle.setTextSize(TypedValue.COMPLEX_UNIT_PX, 18F)
         }
         familyView!!.cardClick.setOnClickListener {
-            callFamilyLocatorActivity()
+            if (isLoggedIn()) {
+                callFamilyLocatorActivity()
+            } else {
+                showToast(getString(R.string.login_to_use_this))
+            }
         }
         familyView!!.featureBtn.setOnClickListener {
-            callFamilyLocatorActivity()
+            if (isLoggedIn()) {
+                callFamilyLocatorActivity()
+            } else {
+                showToast(getString(R.string.login_to_use_this))
+            }
         }
     }
 
@@ -583,8 +481,8 @@ class HomeFragment : BaseFragment() {
         val callback: OnBackPressedCallback =
             object : OnBackPressedCallback(true /* enabled by default */) {
                 override fun handleOnBackPressed() {
-                    switchOffTorch()
-                    isTorchOn = false
+                    addItemAdapter!!.switchOffTorch()
+                    addItemAdapter!!.isTorchOn = false
                     exit()
                 }
             }
@@ -596,8 +494,8 @@ class HomeFragment : BaseFragment() {
 
     override fun onStop() {
         super.onStop()
-        switchOffTorch()
-        isTorchOn = false
+        addItemAdapter!!.switchOffTorch()
+        addItemAdapter!!.isTorchOn = false
     }
 
 

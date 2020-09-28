@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg"
+    android:background="@color/colorPrimary"
     tools:context=".activities.SplashScreenActivity">
 
     <LinearLayout
@@ -13,6 +14,13 @@
         android:orientation="vertical"
         tools:ignore="UselessParent">
 
+        <com.cunoraz.gifview.library.GifView
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="@dimen/_200sdp"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_10sdp"
+            custom:gif="@drawable/splashgif"/>
+
         <ImageView
             android:id="@+id/splashImage"
             android:layout_width="@dimen/_100sdp"
@@ -20,18 +28,20 @@
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/_10sdp"
             android:contentDescription="@string/app_name"
-            android:src="@drawable/icon" />
+            android:src="@drawable/icon"
+            android:visibility="gone" />
+
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/splashText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:gravity="center"
             android:layout_margin="10dp"
             android:layout_marginTop="@dimen/_5sdp"
+            android:gravity="center"
             android:text="@string/app_name"
             android:textColor="@color/colorAccent"
-            android:textSize="@dimen/_20ssp" />
+            android:textSize="@dimen/_19ssp" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/splashText2"
@@ -42,7 +52,6 @@
             android:text="@string/track_your_phone"
             android:textColor="@color/colorAccent"
             android:textSize="@dimen/_16ssp" />
-
 
 
     </LinearLayout>

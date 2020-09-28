@@ -51,7 +51,7 @@ class SplashScreenActivity : BaseActivity() {
             } else {
                 startNewActivtySplashAds(MainActivity())
             }
-        }, 3000)
+        }, 4000)
     }
 
     override fun onBackPressed() {

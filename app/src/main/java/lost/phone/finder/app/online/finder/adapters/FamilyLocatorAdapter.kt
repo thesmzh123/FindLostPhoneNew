@@ -109,7 +109,7 @@ class FamilyLocatorAdapter(
             (context as FamilyLocatorActivity).mapLayout.visibility = View.GONE
             if (InternetConnection().checkConnection(context)) {
                 sendLostPhoneRequest(
-                    SharedPrefUtils.getStringData(context, "uid"),
+                    familyLocator.uid.toString(),
                     familyLocator.macAddress,
                     "lockPhone",
                     "1",
@@ -162,7 +162,7 @@ class FamilyLocatorAdapter(
                 } else {
                     if (InternetConnection().checkConnection(context)) {
                         sendLostPhoneRequest(
-                            SharedPrefUtils.getStringData(context, "uid"),
+                            familyLocator.uid.toString(),
                             familyLocator.macAddress,
                             "ringPlay",
                             "1",
@@ -177,7 +177,7 @@ class FamilyLocatorAdapter(
                         context.requestNewInterstitial()
                         if (InternetConnection().checkConnection(context)) {
                             sendLostPhoneRequest(
-                                SharedPrefUtils.getStringData(context, "uid"),
+                                familyLocator.uid.toString(),
                                 familyLocator.macAddress,
                                 "ringPlay",
                                 "1",
@@ -191,7 +191,7 @@ class FamilyLocatorAdapter(
             } else {
                 if (InternetConnection().checkConnection(context)) {
                     sendLostPhoneRequest(
-                        SharedPrefUtils.getStringData(context, "uid"),
+                        familyLocator.uid.toString(),
                         familyLocator.macAddress,
                         "ringPlay",
                         "1",
@@ -205,11 +205,22 @@ class FamilyLocatorAdapter(
         }
         holder.itemView.expandable_layout.locateDevice.setOnClickListener {
             if (InternetConnection().checkConnection(context)) {
-                (context as FamilyLocatorActivity).initMap(
-                    familyLocator.latitude,
-                    familyLocator.longitude,
-                    familyLocator.name
-                )
+                if (familyLocator.latitude.isEmpty() || familyLocator.latitude.equals(
+                        "null",
+                        true
+                    ) || familyLocator.latitude == "0.0" && familyLocator.longitude.isEmpty() || familyLocator.longitude.equals(
+                        "null",
+                        true
+                    ) || familyLocator.longitude == "0.0"
+                ) {
+                    (context as BaseActivity).showToast("This member location is off or not set properly")
+                } else {
+                    (context as FamilyLocatorActivity).initMap(
+                        familyLocator.latitude,
+                        familyLocator.longitude,
+                        familyLocator.name
+                    )
+                }
             } else {
                 (context as BaseActivity).showToast(context.getString(R.string.no_internet))
             }
@@ -234,7 +245,7 @@ class FamilyLocatorAdapter(
             } else {
                 if (InternetConnection().checkConnection(context)) {
                     sendLastHopeRequest(
-                        SharedPrefUtils.getStringData(context, "uid"),
+                        familyLocator.uid.toString(),
                         familyLocator.macAddress,
                         deleteDialogView!!.contactNum.text!!.toString(),
                         deleteDialogView!!.customMessage1.text!!.toString(),

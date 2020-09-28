@@ -60,21 +60,26 @@ class CompassFragment : BaseFragment(), SensorEventListener {
         Glide.with(requireActivity()).load(R.drawable.compass_icon).into(root!!.imageView)
         mSensorManager =
             requireActivity().getSystemService(Context.SENSOR_SERVICE) as SensorManager?
-        if (gpsTracker!!.canGetLocation()) {
-            if (Geocoder.isPresent()) {
-                val geocoder = Geocoder(requireActivity(), Locale.getDefault())
-                val addresses = geocoder.getFromLocation(
-                    gpsTracker!!.getLatitude(),
-                    gpsTracker!!.getLongitude(),
-                    1
-                )
-                val obj = addresses[0]
-                root!!.countryName.text = obj.locality + ", " + obj.countryName
+        try {
+            if (gpsTracker!!.canGetLocation()) {
+                if (Geocoder.isPresent()) {
+                    val geocoder = Geocoder(requireActivity(), Locale.getDefault())
+                    val addresses = geocoder.getFromLocation(
+                        gpsTracker!!.getLatitude(),
+                        gpsTracker!!.getLongitude(),
+                        1
+                    )
+                    val obj = addresses[0]
+                    root!!.countryName.text = obj.locality + ", " + obj.countryName
+                } else {
+                    root!!.countryName.text =
+                        "Lat: " + gpsTracker!!.getLatitude() + ", Long: " + gpsTracker!!.getLongitude()
+                }
             } else {
-                root!!.countryName.text =
-                    "Lat: " + gpsTracker!!.getLatitude() + ", Long: " + gpsTracker!!.getLongitude()
+                root!!.country.visibility = View.GONE
             }
-        } else {
+        } catch (e: Exception) {
+            e.printStackTrace()
             root!!.country.visibility = View.GONE
         }
         return root

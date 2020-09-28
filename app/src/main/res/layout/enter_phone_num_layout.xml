@@ -28,6 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_centerInParent="true"
+            android:visibility="gone"
             app:ccpDialog_fastScroller_bubbleColor="@android:color/white"
             app:ccpDialog_fastScroller_bubbleTextAppearance="@style/TextAppearance.AppCompat.Medium"
             app:ccpDialog_fastScroller_handleColor="@android:color/white"
@@ -52,10 +53,12 @@
             android:layout_toEndOf="@id/ccp1"
             android:backgroundTint="@android:color/white"
             android:editable="false"
+            android:hint="@string/e_g_1234567"
             android:inputType="phone"
             android:singleLine="true"
+
             android:textColor="@android:color/white"
-            android:textColorHint="@android:color/darker_gray"
+            android:textColorHint="@android:color/white"
             android:textCursorDrawable="@drawable/color_cursor"
             tools:ignore="Deprecated" />
     </RelativeLayout>

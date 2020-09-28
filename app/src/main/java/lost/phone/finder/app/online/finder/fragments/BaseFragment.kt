@@ -446,7 +446,7 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
                 if (InternetConnection().checkConnection(requireActivity())) {
                     if (!SharedPrefUtils.getBooleanData(requireActivity(), "isInserted")) {
                         showDialog(getString(R.string.saving_number))
-                        updatePhoneNumber(deleteDialogView.ccp1.selectedCountryCode + deleteDialogView.editText_carrierNumber1.text)
+                        updatePhoneNumber(deleteDialogView.editText_carrierNumber1.text.toString())
                     }
                     deleteDialog.dismiss()
                 } else {

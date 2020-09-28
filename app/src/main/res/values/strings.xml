@@ -12,14 +12,14 @@
     <string name="features">Features</string>
     <string name="secure_my_phone">Secure\nMy Phone</string>
     <string name="with_this_feature_you_can_remotely_lock_your_phone">Lock your phone\nremotely</string>
-    <string name="with_this_feature_you_can_remotely_erase_your_phone">Erase your phone\ndata remotely</string>
-    <string name="with_this_feature_you_can_remotely_loc_your_phone">You can remotely\nlocate your\nphone</string>
-    <string name="with_this_feature_you_can_remotely_alarm_your_phone">You can remotely ring\nyour phone</string>
-    <string name="with_this_feature_you_can_remotely_send_your_phone">You can remotely send\na message to\nyour phone</string>
-    <string name="with_this_feature_you_can_remotely_backup_your_phone">You can backup &amp; \nrestore your\ncontacts</string>
+    <string name="with_this_feature_you_can_remotely_erase_your_phone">Erase your data\nremotely</string>
+    <string name="with_this_feature_you_can_remotely_loc_your_phone">Locate your phone\nremotely</string>
+    <string name="with_this_feature_you_can_remotely_alarm_your_phone">Ring your phone\nremotely</string>
+    <string name="with_this_feature_you_can_remotely_send_your_phone">Send meassge to phone\nremotely</string>
+    <string name="with_this_feature_you_can_remotely_backup_your_phone">Backup phone contacts\nremotely</string>
     <string name="with_this_feature_you_can_remotely_hide_your_phone">You can hide app icon</string>
-    <string name="with_this_feature_you_can_remotely_family_your_phone">Locate\n your family\nmembers</string>
-    <string name="with_this_feature_you_can_remotely_network_your_phone">Find your mobile\nnetwork provider</string>
+    <string name="with_this_feature_you_can_remotely_family_your_phone">Locate your family\nmembers</string>
+    <string name="with_this_feature_you_can_remotely_network_your_phone">Find mobile\nnetwork provider</string>
     <string name="secure">Secure</string>
     <string name="erase">Erase</string>
     <string name="erase_my_phone">Erase\nMy Phone</string>
@@ -205,4 +205,5 @@ Permission is required**\n\n
     <string name="agree1">Agree</string>
     <string name="do_you_want_exit">Do you want to exit?</string>
     <string name="exit">Exit</string>
+    <string name="login_to_use_this">Please Login to use this feature</string>
 </resources>

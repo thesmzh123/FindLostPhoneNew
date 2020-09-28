@@ -1,14 +1,17 @@
-@file:Suppress("LocalVariableName")
+@file:Suppress("LocalVariableName", "UNUSED_ANONYMOUS_PARAMETER")
 
 package lost.phone.finder.app.online.finder.fragments
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.banner.view.*
@@ -39,18 +42,37 @@ class NetworkProviderFragment : BaseFragment() {
         root!!.ccp.registerCarrierNumberEditText(root!!.editText_carrierNumber)
 
         root!!.mainBtn.setOnClickListener {
-            if (TextUtils.isEmpty(root!!.editText_carrierNumber.text)) {
-                showToast(getString(R.string.fill_the_field))
+            checkNumber()
+        }
+        root!!.editText_carrierNumber!!.setOnKeyListener { v: View?, keyCode: Int, event: KeyEvent ->
+            if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
+                checkNumber()
+                return@setOnKeyListener true
             } else {
-                showDialog(getString(R.string.fetching))
-                val countryName: String = root!!.ccp.selectedCountryName.toString()
-                val code: String = root!!.ccp.selectedCountryCode
-                val number = code + root!!.editText_carrierNumber.text
-                fetchProvider(code, countryName, number)
+                return@setOnKeyListener false
             }
         }
         baseContext!!.adView(root!!.adView)
         return root
+    }
+
+    private fun checkNumber() {
+        if (TextUtils.isEmpty(root!!.editText_carrierNumber.text)) {
+            showToast(getString(R.string.fill_the_field))
+        } else {
+            hideKeyboard()
+            showDialog(getString(R.string.fetching))
+            val countryName: String = root!!.ccp.selectedCountryName.toString()
+            val code: String = root!!.ccp.selectedCountryCode
+            val number = code + root!!.editText_carrierNumber.text
+            fetchProvider(code, countryName, number)
+        }
+    }
+
+    private fun hideKeyboard() {
+        val imm =
+            (requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?)!!
+        imm.hideSoftInputFromWindow(root!!.editText_carrierNumber!!.windowToken, 0)
     }
 
     @SuppressLint("SetTextI18n")
