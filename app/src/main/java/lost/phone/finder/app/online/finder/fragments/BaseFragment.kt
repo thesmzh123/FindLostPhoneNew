@@ -19,6 +19,7 @@ import android.util.DisplayMetrics
 import android.util.Log
 import android.view.*
 import android.widget.*
+import androidx.annotation.NonNull
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -33,12 +34,24 @@ import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.GoogleApiClient
 import com.google.android.gms.location.*
 import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.gms.tasks.Task
+import com.google.android.gms.tasks.TaskExecutors
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.switchmaterial.SwitchMaterial
+import com.google.firebase.FirebaseException
+import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.PhoneAuthCredential
+import com.google.firebase.auth.PhoneAuthProvider
+import com.google.firebase.auth.PhoneAuthProvider.ForceResendingToken
+import com.google.firebase.auth.PhoneAuthProvider.OnVerificationStateChangedCallbacks
 import com.google.firebase.iid.FirebaseInstanceId
 import kotlinx.android.synthetic.main.ad_unified.view.*
 import kotlinx.android.synthetic.main.enter_phone_num_layout.view.*
+import kotlinx.android.synthetic.main.enter_phone_num_layout.view.ccp1
+import kotlinx.android.synthetic.main.enter_phone_num_layout.view.editText_carrierNumber1
+import kotlinx.android.synthetic.main.enter_phone_num_layout.view.mainBtn1
+import kotlinx.android.synthetic.main.enter_phone_num_otp_layout.view.*
 import kotlinx.android.synthetic.main.fragment_lost_phone_loc.view.*
 import kotlinx.android.synthetic.main.layout_loading_dialog.view.*
 import lost.phone.finder.app.online.finder.R
@@ -72,6 +85,7 @@ import retrofit.client.Response
 import java.io.*
 import java.text.SimpleDateFormat
 import java.util.*
+import java.util.concurrent.TimeUnit
 
 @Suppress("NAME_SHADOWING", "UNUSED_ANONYMOUS_PARAMETER")
 open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
@@ -97,6 +111,11 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
     var gpsTracker: GPSTracker? = null
 
     lateinit var interstitial: InterstitialAd
+    private var verificationId: String? = null
+    private var getNum: String? = null
+    var deleteDialog: AlertDialog? = null
+    var otpDialog: AlertDialog? = null
+    var otpDialogView: View? = null
 
     //TODO: load interstial
     fun loadInterstial() {
@@ -209,7 +228,7 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
             R.style.MaterialAlertDialogTheme
         )
         builder.setCancelable(false)
-        val inflater = this.layoutInflater
+        val inflater = layoutInflater
         val view = inflater.inflate(R.layout.layout_loading_dialog, null)
         builder.setView(view)
 
@@ -313,6 +332,13 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
         ) { dialog, which -> // I do not need any action here you might
             dialog.dismiss()
             enterNumberDialog()
+
+        }
+        builder.setNeutralButton(
+            getString(R.string.not_now)
+        ) { dialog, which -> // I do not need any action here you might
+            dialog.dismiss()
+            SharedPrefUtils.saveData(requireActivity(), "isInserted", true)
 
         }
 
@@ -433,10 +459,16 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
         val factory = LayoutInflater.from(requireActivity())
         @SuppressLint("InflateParams") val deleteDialogView: View =
             factory.inflate(R.layout.enter_phone_num_layout, null)
-        val deleteDialog: AlertDialog = MaterialAlertDialogBuilder(requireActivity()).create()
-        deleteDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        deleteDialog.setView(deleteDialogView)
-        deleteDialog.setCancelable(false)
+        deleteDialog = if (Build.VERSION.SDK_INT > 23) {
+
+            MaterialAlertDialogBuilder(requireActivity()).create()
+        } else {
+            AlertDialog.Builder(requireActivity()).create()
+        }
+
+        deleteDialog!!.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        deleteDialog!!.setView(deleteDialogView)
+        deleteDialog!!.setCancelable(false)
 //        deleteDialogView.ccp1.registerCarrierNumberEditText(deleteDialogView.editText_carrierNumber1)
 
         deleteDialogView.mainBtn1.setOnClickListener {
@@ -445,18 +477,116 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
             } else {
                 if (InternetConnection().checkConnection(requireActivity())) {
                     if (!SharedPrefUtils.getBooleanData(requireActivity(), "isInserted")) {
-                        showDialog(getString(R.string.saving_number))
-                        updatePhoneNumber(deleteDialogView.editText_carrierNumber1.text.toString())
+                        showDialog(getString(R.string.sending_you_verification_code))
+                        getNum =
+                            deleteDialogView.ccp1.selectedCountryCode + deleteDialogView.editText_carrierNumber1.text.toString()
+                        sendVerificationCode(deleteDialogView.ccp1.selectedCountryCode + deleteDialogView.editText_carrierNumber1.text.toString())
+//                        updatePhoneNumber(deleteDialogView.editText_carrierNumber1.text.toString())
                     }
-                    deleteDialog.dismiss()
+                    deleteDialog!!.dismiss()
                 } else {
                     showToast(getString(R.string.no_internet))
                 }
             }
         }
 
-        deleteDialog.show()
-        deleteDialog.window!!.decorView.setBackgroundResource(android.R.color.transparent)
+        deleteDialog!!.show()
+        deleteDialog!!.window!!.decorView.setBackgroundResource(android.R.color.transparent)
+    }
+
+    fun sendVerificationCode(number: String) {
+        PhoneAuthProvider.getInstance().verifyPhoneNumber(
+            "+" + number,
+            60,
+            TimeUnit.SECONDS,
+            TaskExecutors.MAIN_THREAD,
+            mCallBack
+        )
+    }
+
+    private val mCallBack: OnVerificationStateChangedCallbacks =
+        object : OnVerificationStateChangedCallbacks() {
+            override fun onCodeSent(
+                s: String,
+                forceResendingToken: ForceResendingToken
+            ) {
+                super.onCodeSent(s, forceResendingToken)
+                verificationId = s
+                deleteDialog!!.dismiss()
+                hideDialog()
+                showOTPDialog()
+            }
+
+            override fun onVerificationCompleted(phoneAuthCredential: PhoneAuthCredential) {
+                val code: String = phoneAuthCredential.getSmsCode().toString()
+                Log.d(TAGI, "onVerificationCompleted: " + code)
+                otpDialogView!!.editText_carrierNumber2.setText(code)
+                verifyCode(code)
+            }
+
+            override fun onVerificationFailed(e: FirebaseException) {
+                Log.d(TAGI, "onVerificationFailed: " + e.message)
+                showToast("Some error occured while generating OTP. Please try again!")
+            }
+        }
+
+    private fun showOTPDialog() {
+        val factory = LayoutInflater.from(requireActivity())
+        otpDialogView = factory.inflate(R.layout.enter_phone_num_otp_layout, null)
+        otpDialog = if (Build.VERSION.SDK_INT > 23) {
+
+            MaterialAlertDialogBuilder(requireActivity()).create()
+        } else {
+            AlertDialog.Builder(requireActivity()).create()
+        }
+
+        otpDialog!!.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        otpDialog!!.setView(otpDialogView)
+        otpDialog!!.setCancelable(false)
+//        deleteDialogView.ccp1.registerCarrierNumberEditText(deleteDialogView.editText_carrierNumber1)
+
+        otpDialogView!!.mainBtn1.setOnClickListener {
+            if (TextUtils.isEmpty(otpDialogView!!.editText_carrierNumber2.text)) {
+                showToast(getString(R.string.fill_the_field))
+            } else {
+                if (InternetConnection().checkConnection(requireActivity())) {
+                    showDialog(getString(R.string.verifying_code))
+                    val code = otpDialogView!!.editText_carrierNumber2.text.toString()
+                    verifyCode(code)
+//                        updatePhoneNumber(deleteDialogView.editText_carrierNumber1.text.toString())
+
+                    otpDialog!!.dismiss()
+                } else {
+                    showToast(getString(R.string.no_internet))
+                }
+            }
+        }
+
+        otpDialog!!.show()
+        otpDialog!!.window!!.decorView.setBackgroundResource(android.R.color.transparent)
+    }
+
+    private fun verifyCode(code: String) {
+        val credential = PhoneAuthProvider.getCredential(verificationId!!, code)
+        signInWithCredential(credential)
+    }
+
+    private fun signInWithCredential(credential: PhoneAuthCredential) {
+        auth.signInWithCredential(credential)
+            .addOnCompleteListener(object :
+                OnCompleteListener<AuthResult?> {
+                override fun onComplete(@NonNull task: Task<AuthResult?>) {
+                    if (task.isSuccessful()) {
+                        otpDialog!!.dismiss()
+                        showDialog(getString(R.string.saving_number))
+                        updatePhoneNumber(getNum.toString())
+                    } else {
+                        otpDialog!!.dismiss()
+                        showToast(task.exception!!.message.toString())
+                        hideDialog()
+                    }
+                }
+            })
     }
 
     //TODO: last updated

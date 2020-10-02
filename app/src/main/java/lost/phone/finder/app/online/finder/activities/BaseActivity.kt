@@ -504,4 +504,21 @@ open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListene
         }
     }
 
+    //TODO: share App family locator
+    fun shareAppFamily(number: String?) {
+        try {
+            val shareIntent = Intent(Intent.ACTION_SEND)
+            shareIntent.type = "text/plain"
+            shareIntent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.app_name))
+            var shareMessage =
+                "\nI recommend you to join me as family member by using this phone number " + number + " by visiting this app and installing the application from play store.\n\n"
+            shareMessage =
+                shareMessage + "https://play.google.com/store/apps/details?id=" + packageName + "\n\n"
+            shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage)
+            startActivity(Intent.createChooser(shareIntent, "Share via"))
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
 }

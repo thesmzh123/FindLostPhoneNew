@@ -2,6 +2,7 @@
 
 package lost.phone.finder.app.online.finder.activities
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
@@ -23,7 +24,7 @@ class TermsAndConditionsActivity : BaseActivity() {
     }
 
     private fun policyDialog() {
-        val materialAlertDialog = MaterialAlertDialogBuilder(this)
+        val materialAlertDialog = AlertDialog.Builder(this)
         val inflater = LayoutInflater.from(this)
         val view: View = inflater.inflate(R.layout.terms_layout, null, false)
         materialAlertDialog.setView(view)

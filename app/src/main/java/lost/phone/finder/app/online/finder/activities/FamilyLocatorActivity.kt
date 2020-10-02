@@ -12,6 +12,7 @@ import android.database.Cursor
 import android.location.Location
 import android.location.LocationListener
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.provider.ContactsContract
 import android.util.Log
@@ -198,11 +199,17 @@ class FamilyLocatorActivity : BaseActivity(), OnMapReadyCallback, LocationListen
 
     @SuppressLint("InflateParams")
     private fun showNumberDialog() {
+        val deleteDialog: AlertDialog?
         val factory = LayoutInflater.from(this@FamilyLocatorActivity)
         deleteDialogView =
             factory.inflate(R.layout.enter_phone_number_layout, null)
-        val deleteDialog: AlertDialog =
+        deleteDialog = if (Build.VERSION.SDK_INT > 23) {
+
             MaterialAlertDialogBuilder(this@FamilyLocatorActivity).create()
+        } else {
+            AlertDialog.Builder(this@FamilyLocatorActivity).create()
+        }
+
         deleteDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         deleteDialog.setView(deleteDialogView)
         deleteDialog.setCancelable(false)
@@ -288,7 +295,7 @@ class FamilyLocatorActivity : BaseActivity(), OnMapReadyCallback, LocationListen
                 getString(R.string.invite)
             ) { dialogInterface: DialogInterface?, i: Int ->
                 try {
-                    shareApp()
+                    shareAppFamily(SharedPrefUtils.getStringData(this@FamilyLocatorActivity,"phoneNum"))
                     dialogInterface!!.dismiss()
                 } catch (e: Exception) {
                     e.printStackTrace()

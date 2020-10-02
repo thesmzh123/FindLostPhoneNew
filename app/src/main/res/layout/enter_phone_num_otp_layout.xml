@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/_2sdp"
         android:padding="@dimen/_5sdp"
-        android:text="@string/enter_number"
+        android:text="@string/enter_verification_code"
         android:textColor="@android:color/white"
         android:textSize="@dimen/_12ssp" />
 
@@ -35,6 +35,7 @@
             app:ccpDialog_searchEditTextTint="@color/colorPrimaryDark"
             app:ccpDialog_showCloseIcon="true"
             app:ccpDialog_showTitle="false"
+            android:visibility="gone"
             app:ccpDialog_textColor="@color/colorPrimaryDark"
             app:ccp_autoDetectCountry="true"
             app:ccp_contentColor="@android:color/white"
@@ -44,7 +45,7 @@
             app:ccp_showFlag="true" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editText_carrierNumber1"
+            android:id="@+id/editText_carrierNumber2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -69,7 +70,7 @@
         android:layout_gravity="center"
         android:layout_margin="@dimen/_10sdp"
         android:gravity="center"
-        android:text="@string/continue1"
+        android:text="@string/verify"
         android:textAlignment="center"
         android:textColor="@color/colorPrimary"
         android:textSize="@dimen/_12ssp"

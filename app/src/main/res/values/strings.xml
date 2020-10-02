@@ -206,4 +206,9 @@ Permission is required**\n\n
     <string name="do_you_want_exit">Do you want to exit?</string>
     <string name="exit">Exit</string>
     <string name="login_to_use_this">Please Login to use this feature</string>
+    <string name="sending_you_verification_code">Sending you verification code (OTP)..</string>
+    <string name="continue1">Continue</string>
+    <string name="enter_verification_code">Enter Verification Code</string>
+    <string name="verify">Verify</string>
+    <string name="verifying_code">Verifying code..</string>
 </resources>
