@@ -15,7 +15,7 @@
     <string name="with_this_feature_you_can_remotely_erase_your_phone">Erase your data\nremotely</string>
     <string name="with_this_feature_you_can_remotely_loc_your_phone">Locate your phone\nremotely</string>
     <string name="with_this_feature_you_can_remotely_alarm_your_phone">Ring your phone\nremotely</string>
-    <string name="with_this_feature_you_can_remotely_send_your_phone">Send meassge to phone\nremotely</string>
+    <string name="with_this_feature_you_can_remotely_send_your_phone">Send message to phone\nremotely</string>
     <string name="with_this_feature_you_can_remotely_backup_your_phone">Backup phone contacts\nremotely</string>
     <string name="with_this_feature_you_can_remotely_hide_your_phone">You can hide app icon</string>
     <string name="with_this_feature_you_can_remotely_family_your_phone">Locate your family\nmembers</string>
@@ -176,7 +176,7 @@ Permission is required** \n \n
     <string name="cancel_request">Cancelling the request..</string>
     <string name="accept_request">Accepting the request..</string>
     <string name="lock_phone">Lock Phone</string>
-    <string name="locate_device">Locate Device</string>
+    <string name="locate_device">Find Location</string>
     <string name="sending_notification">Sending Notification</string>
     <string name="invite_member">Invite Members!</string>
 <string name="invite_message">This number is not registered with us. \n Would you like to invite your friends and family members to use this app?</string>
@@ -196,9 +196,12 @@ Permission is required**\n\n
     2. The application allows the user to lock their devices via Phone.\n\n
     3. In order to find the lost device the application also provides the user with the feature of sharing the location, of misplaced or lost device, on social media outlets via a link . \n\n
     4. Even if the device,lost or misplaced, is silent or on vibrate mode, the application allows the user to play ringtone sound.\n\n
-    5. Furthermore the application also provides the user to use family finder module to find the family members.\n\n
-    6. We are not violating any google policy or not harming any user or culture.\n\n
-     7. Active internet is required to use this app.\n\n
+    5. Application uses mobile number to login and ask for OTP to connect.\n\n
+    6. Moreover device ask user to connect with his/her family member and ask for their location by sending request.\n\n
+    7. All the data including number, email and location are secure using encrycption,\n\n
+    5. Furthermore the application also provides the user to use family finder module to find the family members location.\n\n
+    7. We are not violating any google policy or not harming any user or culture.\n\n
+     8. Active internet is required to use this app.\n\n
 
     </string>
     <string name="policy_subTitle">If you click on Accept, you acknowledge that it makes the content present and all the content of our Terms of Service and implies that you have read our Privacy Policy.</string>
@@ -211,4 +214,6 @@ Permission is required**\n\n
     <string name="enter_verification_code">Enter Verification Code</string>
     <string name="verify">Verify</string>
     <string name="verifying_code">Verifying code..</string>
+    <string name="profile_note">Note:\n\n To complete the Gmail ID login verification process the application will ask for your contact number to send the OTP code. </string>
+    <string name="not_enter_phone_num">To use this please enter phone number to complete the process.</string>
 </resources>

@@ -175,6 +175,15 @@
                     app:cornerRadius="@dimen/_10sdp"
                     app:elevation="@dimen/_5sdp" />
             </LinearLayout>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                android:padding="@dimen/_5sdp"
+                android:textSize="@dimen/_14ssp"
+                android:text="@string/profile_note"
+                android:textColor="@color/colorAccent" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

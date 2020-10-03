@@ -9,7 +9,7 @@ android {
     buildToolsVersion "29.0.3"
 
     defaultConfig {
-        applicationId "lost.phone.finder.app.online.finder"
+        applicationId "device.spotter.finder.appss"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 3

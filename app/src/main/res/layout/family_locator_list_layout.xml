@@ -118,7 +118,8 @@
                 android:layout_height="wrap_content"
                 android:background="?android:attr/selectableItemBackground"
                 android:clickable="true"
-                android:focusable="true">
+                android:focusable="true"
+                android:visibility="gone">
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="wrap_content"
@@ -153,7 +154,8 @@
                 android:layout_marginLeft="@dimen/_15sdp"
                 android:layout_marginTop="@dimen/_2sdp"
                 android:layout_marginRight="@dimen/_15sdp"
-                android:background="@color/colorIconText" />
+                android:background="@color/colorIconText"
+                android:visibility="gone" />
 
             <RelativeLayout
                 android:id="@+id/locateDevice"
@@ -197,13 +199,15 @@
                 android:layout_marginTop="@dimen/_2sdp"
                 android:layout_marginRight="@dimen/_15sdp"
                 android:background="@color/colorIconText" />
+
             <RelativeLayout
                 android:id="@+id/ringPhone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="?android:attr/selectableItemBackground"
                 android:clickable="true"
-                android:focusable="true">
+                android:focusable="true"
+                android:visibility="gone">
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="wrap_content"
@@ -238,14 +242,17 @@
                 android:layout_marginLeft="@dimen/_15sdp"
                 android:layout_marginTop="@dimen/_2sdp"
                 android:layout_marginRight="@dimen/_15sdp"
-                android:background="@color/colorIconText" />
+                android:background="@color/colorIconText"
+                android:visibility="gone" />
+
             <RelativeLayout
                 android:id="@+id/customMessage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="?android:attr/selectableItemBackground"
                 android:clickable="true"
-                android:focusable="true">
+                android:focusable="true"
+                android:visibility="gone">
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="wrap_content"
@@ -280,7 +287,8 @@
                 android:layout_marginLeft="@dimen/_15sdp"
                 android:layout_marginTop="@dimen/_2sdp"
                 android:layout_marginRight="@dimen/_15sdp"
-                android:background="@color/colorIconText" />
+                android:background="@color/colorIconText"
+                android:visibility="gone" />
         </LinearLayout>
     </net.cachapa.expandablelayout.ExpandableLayout>
 </LinearLayout>

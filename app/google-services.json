@@ -8,6 +8,51 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:539090906934:android:cf9c6265a711d24e494d97",
+        "android_client_info": {
+          "package_name": "device.spotter.finder.appss"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "539090906934-6dqru9sqg1hvn0ei82sg1c11l2dgrvaf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "device.spotter.finder.appss",
+            "certificate_hash": "39352812deb06e81f62ffa62b27f7994a100d45e"
+          }
+        },
+        {
+          "client_id": "539090906934-5jlni3srojr569tvalltkmb2onr53bpf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "device.spotter.finder.appss",
+            "certificate_hash": "24165eafbaf6efebfc69247f9cccd1530759a5a3"
+          }
+        },
+        {
+          "client_id": "539090906934-jpeika84p8qmmu1qlist7fkpaldom6a8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxgljv_31X81nN_favI5gsb1O2m1V9ESA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "539090906934-n74fomdj25t8llkuqj6qp413dbu962rl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:539090906934:android:77cd2d15d410a300494d97",
         "android_client_info": {
           "package_name": "lost.phone.finder.app.online.finder"
