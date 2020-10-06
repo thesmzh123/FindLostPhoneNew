@@ -163,7 +163,8 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
         baseContext = (requireActivity() as BaseActivity)
         gpsTracker = GPSTracker(requireActivity())
         try {
-            mainUrl = SharedPrefUtils.getStringData(requireActivity(), "base_url")
+//            mainUrl = SharedPrefUtils.getStringData(requireActivity(), "base_url")
+            mainUrl = "https://www.lostphonefinderapp.toptrendingappstudio.com/"
         } catch (e: Exception) {
             e.printStackTrace()
         }
@@ -269,7 +270,10 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
 
                 //Passing the values by getting it from editTexts
 
-                displayName.toString(), email.toString(), object : Callback<Response> {
+                displayName.toString(),
+                email.toString(),
+                baseContext!!.getMacAddres(),
+                object : Callback<Response> {
                     override fun success(result: Response, response: Response) {
                         //On success we will read the server's output using bufferedreader
                         //Creating a bufferedreader object
@@ -651,6 +655,7 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
 
     private fun getMyLocation() {
         try {
+            if(isAdded){
             if (googleApiClient != null) {
                 if (googleApiClient!!.isConnected) {
                     val permissionLocation = ContextCompat.checkSelfPermission(
@@ -677,14 +682,16 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
                                 LocationSettingsStatusCodes.SUCCESS -> {
                                     // All location settings are satisfied.
                                     // You can initialize location requests here.
-                                    val permissionLocation = ContextCompat
-                                        .checkSelfPermission(
-                                            requireActivity(),
-                                            Manifest.permission.ACCESS_FINE_LOCATION
-                                        )
-                                    if (permissionLocation == PackageManager.PERMISSION_GRANTED) {
-                                        mylocation = LocationServices.FusedLocationApi
-                                            .getLastLocation(googleApiClient)
+                                    if (isAdded) {
+                                        val permissionLocation = ContextCompat
+                                            .checkSelfPermission(
+                                                requireContext(),
+                                                Manifest.permission.ACCESS_FINE_LOCATION
+                                            )
+                                        if (permissionLocation == PackageManager.PERMISSION_GRANTED) {
+                                            mylocation = LocationServices.FusedLocationApi
+                                                .getLastLocation(googleApiClient)
+                                        }
                                     }
                                 }
                                 LocationSettingsStatusCodes.RESOLUTION_REQUIRED ->
@@ -713,6 +720,7 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
                     }
                 }
             }
+                }
         } catch (e: Exception) {
             e.printStackTrace()
         }
@@ -785,8 +793,10 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
                             Log.d(TAGI, "Longitude : $longitude")*/
                 //Or Do whatever you want with your location
 
-                SharedPrefUtils.saveData(requireActivity(), "lati", latitude.toString())
-                SharedPrefUtils.saveData(requireActivity(), "longi", longitude.toString())
+                if (isAdded) {
+                    SharedPrefUtils.saveData(requireActivity(), "lati", latitude.toString())
+                    SharedPrefUtils.saveData(requireActivity(), "longi", longitude.toString())
+                }
             }
         } catch (e: Exception) {
             e.printStackTrace()
@@ -1076,7 +1086,7 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
             num,
             activity?.let {
                 SharedPrefUtils.getStringData(it, "deviceToken").toString()
-            }.toString(),
+            }.toString(), baseContext!!.getMacAddres(),
             object : Callback<Response> {
                 override fun success(result: Response, response: Response) {
                     //On success we will read the server's output using bufferedreader

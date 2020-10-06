@@ -199,9 +199,9 @@ Permission is required**\n\n
     5. Application uses mobile number to login and ask for OTP to connect.\n\n
     6. Moreover device ask user to connect with his/her family member and ask for their location by sending request.\n\n
     7. All the data including number, email and location are secure using encrycption,\n\n
-    5. Furthermore the application also provides the user to use family finder module to find the family members location.\n\n
-    7. We are not violating any google policy or not harming any user or culture.\n\n
-     8. Active internet is required to use this app.\n\n
+    8. Furthermore the application also provides the user to use family finder module to find the family members location.\n\n
+    9. We are not violating any google policy or not harming any user or culture.\n\n
+     10. Active internet is required to use this app.\n\n
 
     </string>
     <string name="policy_subTitle">If you click on Accept, you acknowledge that it makes the content present and all the content of our Terms of Service and implies that you have read our Privacy Policy.</string>

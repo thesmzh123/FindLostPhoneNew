@@ -1,3 +1,5 @@
+@file:Suppress("LocalVariableName")
+
 package device.spotter.finder.appss.utils
 
 import android.content.ContentValues

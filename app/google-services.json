@@ -15,15 +15,7 @@
       },
       "oauth_client": [
         {
-          "client_id": "539090906934-6dqru9sqg1hvn0ei82sg1c11l2dgrvaf.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "device.spotter.finder.appss",
-            "certificate_hash": "39352812deb06e81f62ffa62b27f7994a100d45e"
-          }
-        },
-        {
-          "client_id": "539090906934-5jlni3srojr569tvalltkmb2onr53bpf.apps.googleusercontent.com",
+          "client_id": "539090906934-pn1jse84p69r4dhheeqru276p5dpvupb.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "device.spotter.finder.appss",
@@ -31,56 +23,19 @@
           }
         },
         {
-          "client_id": "539090906934-jpeika84p8qmmu1qlist7fkpaldom6a8.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBxgljv_31X81nN_favI5gsb1O2m1V9ESA"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "539090906934-n74fomdj25t8llkuqj6qp413dbu962rl.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:539090906934:android:77cd2d15d410a300494d97",
-        "android_client_info": {
-          "package_name": "lost.phone.finder.app.online.finder"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "539090906934-0895r42fqan8r18bc33bmfqr5439srsr.apps.googleusercontent.com",
+          "client_id": "539090906934-5u9ebljhjmh8qfn4vbo74on0bdjm725t.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "lost.phone.finder.app.online.finder",
-            "certificate_hash": "be2e4d00c9334c91412e7a7140fde67180feeb88"
+            "package_name": "device.spotter.finder.appss",
+            "certificate_hash": "283918e7a3954eba80f1d15709cfb3ae128c9556"
           }
         },
         {
-          "client_id": "539090906934-a9pbsb6roasslpnlmdvq692t91n8rpag.apps.googleusercontent.com",
+          "client_id": "539090906934-nt2c7a264cdc6vb498dr0m8krh9gdabh.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "lost.phone.finder.app.online.finder",
-            "certificate_hash": "39352812deb06e81f62ffa62b27f7994a100d45e"
-          }
-        },
-        {
-          "client_id": "539090906934-9h47jftpbnl5j81dt4sim5tsi8f7nk8l.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "lost.phone.finder.app.online.finder",
-            "certificate_hash": "24165eafbaf6efebfc69247f9cccd1530759a5a3"
+            "package_name": "device.spotter.finder.appss",
+            "certificate_hash": "3beeb0a143bb25e4b93aed5f469f77da9cd3e195"
           }
         },
         {

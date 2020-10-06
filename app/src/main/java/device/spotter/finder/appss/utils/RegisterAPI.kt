@@ -12,6 +12,7 @@ interface RegisterAPI {
     fun insertUser(
         @Field("name") name: String,
         @Field("email") email: String,
+        @Field("mac_address") macAddress: String,
         callback: Callback<Response>
     )
 
@@ -69,6 +70,7 @@ interface RegisterAPI {
         @Field("uid") uid: String,
         @Field("phonenum") phonenum: String,
         @Field("token") token: String,
+        @Field("mac_address") macAddress: String,
         callback: Callback<Response>
     )
 
