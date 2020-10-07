@@ -37,6 +37,7 @@ import device.spotter.finder.appss.utils.Constants.TAGI
 
 @Suppress("UNUSED_ANONYMOUS_PARAMETER")
 class HomeFragment : BaseFragment() {
+
     private var viewPagerAdapter: ViewPagerAdapter? = null
     private var lockView: View? = null
     private var eraseView: View? = null

@@ -28,6 +28,7 @@ import java.util.*
 @Suppress("UNCHECKED_CAST")
 class MapViewFragment : BaseFragment(), OnMapReadyCallback, LocationListener,
     OnMarkerClickListener {
+
     private var mMap: GoogleMap? = null
 
     override fun onCreateView(

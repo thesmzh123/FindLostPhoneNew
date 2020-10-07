@@ -30,6 +30,7 @@ import kotlin.math.roundToInt
 
 @Suppress("UNUSED_ANONYMOUS_PARAMETER")
 class CompassFragment : BaseFragment(), SensorEventListener {
+
     private var mAzimuth: Int = 0
     private var mSensorManager: SensorManager? = null
     private var mRotationV: Sensor? = null

@@ -27,6 +27,8 @@ import org.json.JSONObject
 class RingPhoneFragment : BaseFragment() {
     private var ringSilent: Boolean = false
     private var ringPhone: Boolean = false
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (activity as AppCompatActivity).supportActionBar?.title = ""

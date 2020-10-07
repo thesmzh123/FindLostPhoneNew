@@ -1,25 +1,35 @@
 package device.spotter.finder.appss.fragments
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import com.find.lost.app.phone.utils.InternetConnection
+import com.find.lost.app.phone.utils.SharedPrefUtils
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
-import kotlinx.android.synthetic.main.fragment_profile.view.*
 import device.spotter.finder.appss.R
+import device.spotter.finder.appss.activities.BaseActivity
 import device.spotter.finder.appss.utils.Constants.RC_SIGN_IN
 import device.spotter.finder.appss.utils.Constants.TAGI
+import kotlinx.android.synthetic.main.enter_phone_num_layout.view.*
+import kotlinx.android.synthetic.main.fragment_profile.view.*
 
 
 class ProfileFragment : BaseFragment() {
@@ -34,6 +44,8 @@ class ProfileFragment : BaseFragment() {
     ): View? {
         // Inflate the layout for this fragment
         root = inflater.inflate(R.layout.fragment_profile, container, false)
+        layoutNumber = root!!.layoutNumber
+        num = root!!.num
         mMenuButtonListener?.menuEnable(false)
         //Then we need a GoogleSignInOptions object
         //And we need to build it as below
@@ -52,6 +64,7 @@ class ProfileFragment : BaseFragment() {
         } else {
             root!!.signInBlock.visibility = View.VISIBLE
             root!!.profileBlock.visibility = View.GONE
+            root!!.layoutNumber.visibility = View.GONE
 
         }
         root!!.signOut.setOnClickListener {
@@ -62,10 +75,51 @@ class ProfileFragment : BaseFragment() {
             baseContext!!.changeMenu()
         }
 
+        root!!.updateBtn.setOnClickListener {
+            val factory = LayoutInflater.from(requireActivity())
+            @SuppressLint("InflateParams") val deleteDialogView: View =
+                factory.inflate(R.layout.enter_phone_num_layout, null)
+            (context as BaseActivity).deleteDialog = if (Build.VERSION.SDK_INT > 23) {
+
+                MaterialAlertDialogBuilder(requireActivity()).create()
+            } else {
+                AlertDialog.Builder(requireActivity()).create()
+            }
+
+            (context as BaseActivity).deleteDialog!!.requestWindowFeature(Window.FEATURE_NO_TITLE)
+            (context as BaseActivity).deleteDialog!!.setView(deleteDialogView)
+            (context as BaseActivity).deleteDialog!!.setCancelable(false)
+//        deleteDialogView.ccp1.registerCarrierNumberEditText(deleteDialogView.editText_carrierNumber1)
+
+            deleteDialogView.mainBtnNUm.setOnClickListener {
+                if (TextUtils.isEmpty(deleteDialogView.editText_carrierNumber1.text)) {
+                    showToast(getString(R.string.fill_the_field))
+                } else {
+                    if (InternetConnection().checkConnection(requireActivity())) {
+                        (context as BaseActivity).showDialog(getString(R.string.sending_you_verification_code))
+                        (context as  BaseActivity). getNum =
+                            deleteDialogView.ccpNUm.selectedCountryCode + deleteDialogView.editText_carrierNumber1.text.toString()
+                        (context as BaseActivity).sendVerificationCode(deleteDialogView.ccpNUm.selectedCountryCode + deleteDialogView.editText_carrierNumber1.text.toString())
+//                        updatePhoneNumber(deleteDialogView.editText_carrierNumber1.text.toString())
+
+                        (context as BaseActivity).deleteDialog!!.dismiss()
+                    } else {
+                        showToast(getString(R.string.no_internet))
+                    }
+                }
+            }
+
+            (context as BaseActivity).deleteDialog!!.show()
+            (context as BaseActivity).deleteDialog!!.window!!.decorView.setBackgroundResource(
+                android.R.color.transparent
+            )
+
+        }
         return root!!
     }
 
 
+    @SuppressLint("SetTextI18n")
     private fun changeUi() {
         root!!.signInBlock.visibility = View.GONE
         root!!.profileBlock.visibility = View.VISIBLE
@@ -73,6 +127,11 @@ class ProfileFragment : BaseFragment() {
         root!!.email.text = auth.currentUser?.email
         Glide.with(this).load(auth.currentUser?.photoUrl)
             .into(root!!.profileImage)
+        val phone = SharedPrefUtils.getStringData(requireActivity(), "phoneNum").toString()
+        if (!phone.isEmpty() || !phone.equals("null", true)) {
+            layoutNumber!!.visibility = View.VISIBLE
+            num!!.text = "Your number is $phone"
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -166,4 +225,5 @@ class ProfileFragment : BaseFragment() {
     interface MenuButtonListener {
         fun menuEnable(isEnable: Boolean)
     }
+
 }

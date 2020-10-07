@@ -19,6 +19,7 @@ import device.spotter.finder.appss.utils.RecyclerTouchListener
 import device.spotter.finder.appss.utils.SpacesItemDecoration
 
 class NearbyPlacesFragment : BaseFragment() {
+
     private var nearbyList: ArrayList<Nearby>? = null
     private var spanCount = 3 // 3 columns
     private var spacing = 50 // 50px

@@ -13,10 +13,9 @@ import android.media.RingtoneManager
 import android.net.Uri
 import android.os.*
 import android.provider.Settings
+import android.text.TextUtils
 import android.util.Log
-import android.view.Menu
-import android.view.View
-import android.view.WindowManager
+import android.view.*
 import android.widget.Toast
 import androidx.annotation.NonNull
 import androidx.annotation.RequiresApi
@@ -29,26 +28,37 @@ import androidx.navigation.findNavController
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.Volley
 import com.bumptech.glide.Glide
+import com.find.lost.app.phone.utils.InternetConnection
 import com.find.lost.app.phone.utils.SharedPrefUtils
 import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.InterstitialAd
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.gms.tasks.Task
+import com.google.android.gms.tasks.TaskExecutors
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.firebase.FirebaseException
+import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.PhoneAuthCredential
+import com.google.firebase.auth.PhoneAuthProvider
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import de.hdodenhof.circleimageview.CircleImageView
-import kotlinx.android.synthetic.main.layout_loading_dialog.view.*
-import kotlinx.android.synthetic.main.profile_menu_layout.view.*
 import device.spotter.finder.appss.R
 import device.spotter.finder.appss.fragments.ProfileFragment
 import device.spotter.finder.appss.utils.Constants.TAGI
 import device.spotter.finder.appss.utils.DatabaseHelperUtils
 import device.spotter.finder.appss.utils.GPSTracker
 import device.spotter.finder.appss.utils.RegisterAPI
+import kotlinx.android.synthetic.main.enter_phone_num_layout.view.*
+import kotlinx.android.synthetic.main.enter_phone_num_otp_layout.view.*
+import kotlinx.android.synthetic.main.layout_loading_dialog.view.*
+import kotlinx.android.synthetic.main.profile_menu_layout.view.*
+import org.json.JSONObject
 import retrofit.Callback
 import retrofit.RestAdapter
 import retrofit.RetrofitError
@@ -57,6 +67,7 @@ import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.net.NetworkInterface
 import java.util.*
+import java.util.concurrent.TimeUnit
 
 open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListener {
     var menu: Menu? = null
@@ -141,10 +152,15 @@ open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListene
         gpsTracker = GPSTracker(this)
         try {
             mainUrl = SharedPrefUtils.getStringData(this@BaseActivity, "base_url")
+
         } catch (e: Exception) {
             e.printStackTrace()
         }
         if (isLoggedIn()) {
+            val phone = SharedPrefUtils.getStringData(this@BaseActivity, "phoneNum").toString()
+            if (phone.isEmpty() || phone.equals("null", true)) {
+                FirebaseAuth.getInstance().signOut()
+            }
             registerDevice(SharedPrefUtils.getStringData(this, "uid").toString())
         }
     }
@@ -540,6 +556,278 @@ open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListene
         } catch (e: Exception) {
             e.printStackTrace()
         }
+    }
+
+    var deleteDialog: AlertDialog? = null
+    private var verificationId: String? = null
+    var otpDialogView: View? = null
+    private var isRecent: Boolean = false
+    private var isFinish: Boolean = false
+    private var cdt: CountDownTimer? = null
+    var otpDialog: AlertDialog? = null
+    var getNum: String? = null
+
+    fun sendVerificationCode(number: String) {
+        PhoneAuthProvider.getInstance().verifyPhoneNumber(
+            "+" + number,
+            60,
+            TimeUnit.SECONDS,
+            TaskExecutors.MAIN_THREAD,
+            mCallBack
+        )
+    }
+
+    private val mCallBack: PhoneAuthProvider.OnVerificationStateChangedCallbacks =
+        object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+            override fun onCodeSent(
+                s: String,
+                forceResendingToken: PhoneAuthProvider.ForceResendingToken
+            ) {
+                super.onCodeSent(s, forceResendingToken)
+                verificationId = s
+                deleteDialog!!.dismiss()
+                hideDialog()
+                showOTPDialog()
+            }
+
+            override fun onVerificationCompleted(phoneAuthCredential: PhoneAuthCredential) {
+                val code: String = phoneAuthCredential.getSmsCode().toString()
+                Log.d(TAGI, "onVerificationCompleted: " + code)
+                otpDialogView!!.editText_carrierNumber2.setText(code)
+                verifyCode(code)
+            }
+
+            override fun onVerificationFailed(e: FirebaseException) {
+                Log.d(TAGI, "onVerificationFailed: " + e.message)
+//                otpDialog!!.dismiss()
+                hideDialog()
+                showOTpErrorDialog()
+
+            }
+
+        }
+
+    private fun showOTpErrorDialog() {
+        val builder =
+            MaterialAlertDialogBuilder(this@BaseActivity, R.style.MaterialAlertDialogTheme)
+        builder.setTitle("OTP Error!")
+        builder.setMessage("Some error occured while generating OTP or Your Quota of OTP for this number has expired!\n\n Please try again by re-entering the number.")
+        builder.setCancelable(false)
+        builder.setPositiveButton(
+            getString(R.string.yes)
+        ) { dialog, which -> // Do do my action here
+            enterNumberDialog()
+            dialog.dismiss()
+        }
+
+        builder.setNegativeButton(
+            getString(R.string.no)
+        ) { dialog, which -> // I do not need any action here you might
+            FirebaseAuth.getInstance().signOut()
+            dialog.dismiss()
+
+        }
+
+        val alert = builder.create()
+        alert.show()
+    }
+
+    private fun enterNumberDialog() {
+        val factory = LayoutInflater.from(this@BaseActivity)
+        @SuppressLint("InflateParams") val deleteDialogView: View =
+            factory.inflate(R.layout.enter_phone_num_layout, null)
+        deleteDialog = if (Build.VERSION.SDK_INT > 23) {
+
+            MaterialAlertDialogBuilder(this@BaseActivity).create()
+        } else {
+            AlertDialog.Builder(this@BaseActivity).create()
+        }
+
+        deleteDialog!!.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        deleteDialog!!.setView(deleteDialogView)
+        deleteDialog!!.setCancelable(false)
+//        deleteDialogView.ccp1.registerCarrierNumberEditText(deleteDialogView.editText_carrierNumber1)
+
+        deleteDialogView.mainBtnNUm.setOnClickListener {
+            if (TextUtils.isEmpty(deleteDialogView.editText_carrierNumber1.text)) {
+                showToast(getString(R.string.fill_the_field))
+            } else {
+                if (InternetConnection().checkConnection(this@BaseActivity)) {
+                    if (!SharedPrefUtils.getBooleanData(this@BaseActivity, "isInserted")) {
+                        showDialog(getString(R.string.sending_you_verification_code))
+                        getNum =
+                            deleteDialogView.ccpNUm.selectedCountryCode + deleteDialogView.editText_carrierNumber1.text.toString()
+                        sendVerificationCode(deleteDialogView.ccpNUm.selectedCountryCode + deleteDialogView.editText_carrierNumber1.text.toString())
+//                        updatePhoneNumber(deleteDialogView.editText_carrierNumber1.text.toString())
+                    }
+                    deleteDialog!!.dismiss()
+                } else {
+                    showToast(getString(R.string.no_internet))
+                }
+            }
+        }
+
+        deleteDialog!!.show()
+        deleteDialog!!.window!!.decorView.setBackgroundResource(android.R.color.transparent)
+    }
+
+    @SuppressLint("InflateParams")
+    private fun showOTPDialog() {
+        isFinish = false
+        isRecent = false
+        val factory = LayoutInflater.from(this@BaseActivity)
+        otpDialogView = factory.inflate(R.layout.enter_phone_num_otp_layout, null)
+        otpDialog = if (Build.VERSION.SDK_INT > 23) {
+
+            MaterialAlertDialogBuilder(this@BaseActivity).create()
+        } else {
+            AlertDialog.Builder(this@BaseActivity).create()
+        }
+
+        otpDialog!!.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        otpDialog!!.setView(otpDialogView)
+        otpDialog!!.setCancelable(false)
+        cdt = object : CountDownTimer(60000, 1000) {
+            @SuppressLint("SetTextI18n")
+            override fun onTick(millisUntilFinished: Long) {
+                Log.i(
+                    TAGI,
+                    "Countdown seconds remaining: " + millisUntilFinished / 1000
+                )
+                val min = millisUntilFinished / 60000
+                val sec = millisUntilFinished % 60000 / 1000
+                var timeInText: String?
+                timeInText = "" + min
+                timeInText += ":"
+                if (sec < 10) {
+                    timeInText += "0"
+                }
+                timeInText += sec
+                otpDialogView!!.countTime.text = "( $timeInText )"
+            }
+
+            @SuppressLint("SetTextI18n")
+            override fun onFinish() {
+                isFinish = true
+                otpDialogView!!.countTime.text = "( 0:00 )"
+                Log.i(TAGI, "Timer finished")
+                if (!isRecent) {
+                    showToast("OTP Verification timed out! \n Please try again by clicking resend button!")
+                }
+            }
+        }
+
+        cdt!!.start()
+//        deleteDialogView.ccp1.registerCarrierNumberEditText(deleteDialogView.editText_carrierNumber1)
+
+        otpDialogView!!.mainBtn1.setOnClickListener {
+            if (TextUtils.isEmpty(otpDialogView!!.editText_carrierNumber2.text)) {
+                showToast(getString(R.string.fill_the_field))
+            } else {
+                if (InternetConnection().checkConnection(this@BaseActivity)) {
+                    showDialog(getString(R.string.verifying_code))
+                    val code = otpDialogView!!.editText_carrierNumber2.text.toString()
+                    verifyCode(code)
+//                        updatePhoneNumber(deleteDialogView.editText_carrierNumber1.text.toString())
+
+//                    otpDialog!!.dismiss()
+                } else {
+                    showToast(getString(R.string.no_internet))
+                }
+            }
+        }
+        otpDialogView!!.mainBtn2.setOnClickListener {
+            if (isFinish) {
+                cdt!!.cancel()
+                isRecent = true
+                showToast("Please re-enter the number to get the verification code (OTP).")
+                otpDialog!!.dismiss()
+                enterNumberDialog()
+            } else {
+                showToast("Timer is already running.\n Can't resend the OTP Code.")
+            }
+        }
+        otpDialog!!.show()
+        otpDialog!!.window!!.decorView.setBackgroundResource(android.R.color.transparent)
+    }
+
+    private fun verifyCode(code: String) {
+        val credential = PhoneAuthProvider.getCredential(verificationId!!, code)
+        signInWithCredential(credential)
+    }
+
+    private fun signInWithCredential(credential: PhoneAuthCredential) {
+        auth.signInWithCredential(credential)
+            .addOnCompleteListener(object :
+                OnCompleteListener<AuthResult?> {
+                override fun onComplete(@NonNull task: Task<AuthResult?>) {
+                    if (task.isSuccessful()) {
+                        hideDialog()
+                        cdt!!.cancel()
+                        otpDialog!!.dismiss()
+                        showDialog(getString(R.string.saving_number))
+                        updatePhoneNumber(getNum.toString())
+                    } else {
+//                        otpDialog!!.dismiss()
+                        showToast(task.exception!!.message.toString())
+                        hideDialog()
+                    }
+                }
+            })
+    }
+
+    private fun updatePhoneNumber(num1: String) {
+
+        val restAdapter: RestAdapter =
+            RestAdapter.Builder().setEndpoint(mainUrl).build()
+        val api: RegisterAPI = restAdapter.create(RegisterAPI::class.java)
+        api.updatePhoneNum(
+            SharedPrefUtils.getStringData(this@BaseActivity, "uid").toString(),
+            num1,
+                SharedPrefUtils.getStringData(this@BaseActivity, "deviceToken").toString(),getMacAddres(),
+            object : Callback<Response> {
+                override fun success(result: Response, response: Response) {
+                    //On success we will read the server's output using bufferedreader
+                    //Creating a bufferedreader object
+                    val reader: BufferedReader?
+
+                    //An string to store output from the server
+                    val output: String
+
+                    try {
+                        //Initializing buffered reader
+                        reader = BufferedReader(InputStreamReader(result.body.`in`()))
+
+                        //Reading the output in the string
+                        output = reader.readLine()
+                        Log.d(TAGI, "msg: $output")
+                        val jsonObject = JSONObject(output)
+                        val newJson = jsonObject.getJSONObject("data")
+                        val pid = newJson.getString("pid")
+                        val phoneNum = newJson.getString("phone_num")
+                        val id = newJson.getString("uid")
+                        val isInserted = jsonObject.getBoolean("isInserted")
+                        SharedPrefUtils.saveData(this@BaseActivity, "uid", id)
+                        SharedPrefUtils.saveData(this@BaseActivity, "phoneNum", phoneNum)
+                        SharedPrefUtils.saveData(this@BaseActivity, "pid", pid)
+
+
+                        hideDialog()
+                        navigateFragment(R.id.nav_profile)
+                    } catch (e: Exception) {
+                        Log.d(TAGI, "error: " + e.message)
+                        e.printStackTrace()
+                        hideDialog()
+                    }
+
+                }
+
+                override fun failure(error: RetrofitError) {
+                    Log.d(TAGI, error.toString())
+                }
+            }
+        )
+
     }
 
 }

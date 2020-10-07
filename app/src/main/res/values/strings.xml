@@ -158,7 +158,6 @@ Permission is required** \n \n
     <string name="contacts_success">Contacts Backup Successfully</string>
     <string name="contacts_success_r">Contacts Restore Successfully</string>
     <string name="go_to_gmail">Go to Gmail</string>
-    <string name="save">Save</string>
     <string name="saving_number">Saving number..</string>
     <string name="family_locator1">Family Locator</string>
     <string name="friends_requests">Family Requests</string>
@@ -214,6 +213,8 @@ Permission is required**\n\n
     <string name="enter_verification_code">Enter Verification Code</string>
     <string name="verify">Verify</string>
     <string name="verifying_code">Verifying code..</string>
-    <string name="profile_note">Note:\n\n To complete the Gmail ID login verification process the application will ask for your contact number to send the OTP code. </string>
+    <string name="profile_note">Note:\n\nTo complete the Gmail ID login verification process the application will ask for your contact number to send the OTP code. </string>
     <string name="not_enter_phone_num">To use this please enter phone number to complete the process.</string>
+    <string name="resend">Resend</string>
+    <string name="update">Update</string>
 </resources>

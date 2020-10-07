@@ -73,6 +73,15 @@ interface RegisterAPI {
         @Field("mac_address") macAddress: String,
         callback: Callback<Response>
     )
+    @FormUrlEncoded
+    @POST("/update_num.php")
+    fun updatePhoneNum(
+        @Field("uid") uid: String,
+        @Field("phonenum") phonenum: String,
+        @Field("token") token: String,
+        @Field("mac_address") macAddress: String,
+        callback: Callback<Response>
+    )
 
     @FormUrlEncoded
     @POST("/fetch_family_request_list.php")

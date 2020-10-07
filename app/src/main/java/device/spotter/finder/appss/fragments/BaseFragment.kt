@@ -10,10 +10,7 @@ import android.content.*
 import android.content.pm.PackageManager
 import android.location.Location
 import android.net.Uri
-import android.os.AsyncTask
-import android.os.Build
-import android.os.Bundle
-import android.os.StrictMode
+import android.os.*
 import android.text.TextUtils
 import android.util.DisplayMetrics
 import android.util.Log
@@ -24,7 +21,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.find.lost.app.phone.utils.InternetConnection
 import com.find.lost.app.phone.utils.SharedPrefUtils
@@ -39,6 +35,7 @@ import com.google.android.gms.tasks.Task
 import com.google.android.gms.tasks.TaskExecutors
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.switchmaterial.SwitchMaterial
+import com.google.android.material.textview.MaterialTextView
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
@@ -47,14 +44,6 @@ import com.google.firebase.auth.PhoneAuthProvider
 import com.google.firebase.auth.PhoneAuthProvider.ForceResendingToken
 import com.google.firebase.auth.PhoneAuthProvider.OnVerificationStateChangedCallbacks
 import com.google.firebase.iid.FirebaseInstanceId
-import kotlinx.android.synthetic.main.ad_unified.view.*
-import kotlinx.android.synthetic.main.enter_phone_num_layout.view.*
-import kotlinx.android.synthetic.main.enter_phone_num_layout.view.ccp1
-import kotlinx.android.synthetic.main.enter_phone_num_layout.view.editText_carrierNumber1
-import kotlinx.android.synthetic.main.enter_phone_num_layout.view.mainBtn1
-import kotlinx.android.synthetic.main.enter_phone_num_otp_layout.view.*
-import kotlinx.android.synthetic.main.fragment_lost_phone_loc.view.*
-import kotlinx.android.synthetic.main.layout_loading_dialog.view.*
 import device.spotter.finder.appss.R
 import device.spotter.finder.appss.activities.BaseActivity
 import device.spotter.finder.appss.activities.MainActivity
@@ -69,6 +58,11 @@ import device.spotter.finder.appss.utils.Constants.SEND_MULTIPLE_REQUEST
 import device.spotter.finder.appss.utils.Constants.TAGI
 import device.spotter.finder.appss.utils.GPSTracker
 import device.spotter.finder.appss.utils.RegisterAPI
+import kotlinx.android.synthetic.main.ad_unified.view.*
+import kotlinx.android.synthetic.main.enter_phone_num_layout.view.*
+import kotlinx.android.synthetic.main.enter_phone_num_otp_layout.view.*
+import kotlinx.android.synthetic.main.fragment_lost_phone_loc.view.*
+import kotlinx.android.synthetic.main.layout_loading_dialog.view.*
 import org.apache.http.HttpResponse
 import org.apache.http.NameValuePair
 import org.apache.http.client.HttpClient
@@ -113,10 +107,15 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
 
     lateinit var interstitial: InterstitialAd
     private var verificationId: String? = null
-    private var getNum: String? = null
+     var getNum: String? = null
     var deleteDialog: AlertDialog? = null
     var otpDialog: AlertDialog? = null
     var otpDialogView: View? = null
+    private var isRecent: Boolean = false
+    private var isFinish: Boolean = false
+    private var cdt: CountDownTimer? = null
+    var layoutNumber: LinearLayout? = null
+    var num: MaterialTextView? = null
 
     //TODO: load interstial
     fun loadInterstial() {
@@ -163,8 +162,7 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
         baseContext = (requireActivity() as BaseActivity)
         gpsTracker = GPSTracker(requireActivity())
         try {
-//            mainUrl = SharedPrefUtils.getStringData(requireActivity(), "base_url")
-            mainUrl = "https://www.lostphonefinderapp.toptrendingappstudio.com/"
+            mainUrl = SharedPrefUtils.getStringData(requireActivity(), "base_url")
         } catch (e: Exception) {
             e.printStackTrace()
         }
@@ -190,7 +188,10 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
             requireActivity().getSystemService(Context.DEVICE_POLICY_SERVICE) as DevicePolicyManager
         loadInterstial()
         if (isLoggedIn()) {
-
+            val phone = SharedPrefUtils.getStringData(requireActivity(), "phoneNum").toString()
+            if (phone.isEmpty() || phone.equals("null", true)) {
+                FirebaseAuth.getInstance().signOut()
+            }
         }
 
     }
@@ -274,6 +275,7 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
                 email.toString(),
                 baseContext!!.getMacAddres(),
                 object : Callback<Response> {
+                    @SuppressLint("SetTextI18n")
                     override fun success(result: Response, response: Response) {
                         //On success we will read the server's output using bufferedreader
                         //Creating a bufferedreader object
@@ -293,26 +295,31 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
                             val id = jsonObject.getString("id")
                             val phoneNum = jsonObject.getString("phone_num")
                             val isNumberFound = jsonObject.getBoolean("isNumberFound")
+                            val messagePhone = jsonObject.getString("messagePhone")
                             var isDevice = false
                             if (isNumberFound) {
                                 isDevice = jsonObject.getBoolean("isDevice")
                             }
                             SharedPrefUtils.saveData(requireActivity(), "uid", id)
                             SharedPrefUtils.saveData(requireActivity(), "phoneNum", phoneNum)
+                            layoutNumber!!.visibility = View.VISIBLE
+                            num!!.text = "Your number is $phoneNum"
                             if (isNumberFound) {
 
                                 if (isDevice) {
+                                    showNumAddDialog(messagePhone)
                                     baseContext!!.registerDevice(id)
                                     hideDialog()
+
                                 }
-                                if (!SharedPrefUtils.getBooleanData(
-                                        requireActivity(),
-                                        "isInserted"
-                                    )
-                                ) {
-                                    hideDialog()
-                                    replaceNumberDialog()
-                                }
+                                /*    if (!SharedPrefUtils.getBooleanData(
+                                            requireActivity(),
+                                            "isInserted"
+                                        )
+                                    ) {
+                                        hideDialog()
+                                        replaceNumberDialog()
+                                    }*/
 
                             } else {
                                 hideDialog()
@@ -339,6 +346,23 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
             hideDialog()
         }
 
+    }
+
+    private fun showNumAddDialog(messagePhone: String) {
+        val builder =
+            MaterialAlertDialogBuilder(requireActivity(), R.style.MaterialAlertDialogTheme)
+        builder.setTitle("Your mobile device is " + Build.BRAND + ", " + Build.MODEL)
+        builder.setMessage(messagePhone)
+        builder.setCancelable(false)
+        builder.setPositiveButton(
+            getString(R.string.ok)
+        ) { dialog, which -> // Do do my action here
+            dialog.dismiss()
+        }
+
+
+        val alert = builder.create()
+        alert.show()
     }
 
     private fun replaceNumberDialog() {
@@ -499,7 +523,7 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
         deleteDialog!!.setCancelable(false)
 //        deleteDialogView.ccp1.registerCarrierNumberEditText(deleteDialogView.editText_carrierNumber1)
 
-        deleteDialogView.mainBtn1.setOnClickListener {
+        deleteDialogView.mainBtnNUm.setOnClickListener {
             if (TextUtils.isEmpty(deleteDialogView.editText_carrierNumber1.text)) {
                 showToast(getString(R.string.fill_the_field))
             } else {
@@ -507,8 +531,8 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
                     if (!SharedPrefUtils.getBooleanData(requireActivity(), "isInserted")) {
                         showDialog(getString(R.string.sending_you_verification_code))
                         getNum =
-                            deleteDialogView.ccp1.selectedCountryCode + deleteDialogView.editText_carrierNumber1.text.toString()
-                        sendVerificationCode(deleteDialogView.ccp1.selectedCountryCode + deleteDialogView.editText_carrierNumber1.text.toString())
+                            deleteDialogView.ccpNUm.selectedCountryCode + deleteDialogView.editText_carrierNumber1.text.toString()
+                        sendVerificationCode(deleteDialogView.ccpNUm.selectedCountryCode + deleteDialogView.editText_carrierNumber1.text.toString())
 //                        updatePhoneNumber(deleteDialogView.editText_carrierNumber1.text.toString())
                     }
                     deleteDialog!!.dismiss()
@@ -554,11 +578,43 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
 
             override fun onVerificationFailed(e: FirebaseException) {
                 Log.d(TAGI, "onVerificationFailed: " + e.message)
-                showToast("Some error occured while generating OTP. Please try again!")
+//                otpDialog!!.dismiss()
+                hideDialog()
+                showOTpErrorDialog()
+
             }
+
         }
 
+    private fun showOTpErrorDialog() {
+        val builder =
+            MaterialAlertDialogBuilder(requireActivity(), R.style.MaterialAlertDialogTheme)
+        builder.setTitle("OTP Error!")
+        builder.setMessage("Some error occured while generating OTP or Your Quota of OTP for this number has expired!\n\n Please try again by re-entering the number.")
+        builder.setCancelable(false)
+        builder.setPositiveButton(
+            getString(R.string.yes)
+        ) { dialog, which -> // Do do my action here
+            enterNumberDialog()
+            dialog.dismiss()
+        }
+
+        builder.setNegativeButton(
+            getString(R.string.no)
+        ) { dialog, which -> // I do not need any action here you might
+            FirebaseAuth.getInstance().signOut()
+            dialog.dismiss()
+
+        }
+
+        val alert = builder.create()
+        alert.show()
+    }
+
+    @SuppressLint("InflateParams")
     private fun showOTPDialog() {
+        isFinish = false
+        isRecent = false
         val factory = LayoutInflater.from(requireActivity())
         otpDialogView = factory.inflate(R.layout.enter_phone_num_otp_layout, null)
         otpDialog = if (Build.VERSION.SDK_INT > 23) {
@@ -571,6 +627,37 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
         otpDialog!!.requestWindowFeature(Window.FEATURE_NO_TITLE)
         otpDialog!!.setView(otpDialogView)
         otpDialog!!.setCancelable(false)
+        cdt = object : CountDownTimer(60000, 1000) {
+            @SuppressLint("SetTextI18n")
+            override fun onTick(millisUntilFinished: Long) {
+                Log.i(
+                    TAGI,
+                    "Countdown seconds remaining: " + millisUntilFinished / 1000
+                )
+                val min = millisUntilFinished / 60000
+                val sec = millisUntilFinished % 60000 / 1000
+                var timeInText: String?
+                timeInText = "" + min
+                timeInText += ":"
+                if (sec < 10) {
+                    timeInText += "0"
+                }
+                timeInText += sec
+                otpDialogView!!.countTime.text = "( $timeInText )"
+            }
+
+            @SuppressLint("SetTextI18n")
+            override fun onFinish() {
+                isFinish = true
+                otpDialogView!!.countTime.text = "( 0:00 )"
+                Log.i(TAGI, "Timer finished")
+                if (!isRecent) {
+                    showToast("OTP Verification timed out! \n Please try again by clicking resend button!")
+                }
+            }
+        }
+
+        cdt!!.start()
 //        deleteDialogView.ccp1.registerCarrierNumberEditText(deleteDialogView.editText_carrierNumber1)
 
         otpDialogView!!.mainBtn1.setOnClickListener {
@@ -583,13 +670,23 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
                     verifyCode(code)
 //                        updatePhoneNumber(deleteDialogView.editText_carrierNumber1.text.toString())
 
-                    otpDialog!!.dismiss()
+//                    otpDialog!!.dismiss()
                 } else {
                     showToast(getString(R.string.no_internet))
                 }
             }
         }
-
+        otpDialogView!!.mainBtn2.setOnClickListener {
+            if (isFinish) {
+                cdt!!.cancel()
+                isRecent = true
+                showToast("Please re-enter the number to get the verification code (OTP).")
+                otpDialog!!.dismiss()
+                enterNumberDialog()
+            } else {
+                showToast("Timer is already running.\n Can't resend the OTP Code.")
+            }
+        }
         otpDialog!!.show()
         otpDialog!!.window!!.decorView.setBackgroundResource(android.R.color.transparent)
     }
@@ -605,11 +702,13 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
                 OnCompleteListener<AuthResult?> {
                 override fun onComplete(@NonNull task: Task<AuthResult?>) {
                     if (task.isSuccessful()) {
+                        hideDialog()
+                        cdt!!.cancel()
                         otpDialog!!.dismiss()
                         showDialog(getString(R.string.saving_number))
                         updatePhoneNumber(getNum.toString())
                     } else {
-                        otpDialog!!.dismiss()
+//                        otpDialog!!.dismiss()
                         showToast(task.exception!!.message.toString())
                         hideDialog()
                     }
@@ -655,72 +754,72 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
 
     private fun getMyLocation() {
         try {
-            if(isAdded){
-            if (googleApiClient != null) {
-                if (googleApiClient!!.isConnected) {
-                    val permissionLocation = ContextCompat.checkSelfPermission(
-                        requireActivity(),
-                        Manifest.permission.ACCESS_FINE_LOCATION
-                    )
-                    if (permissionLocation == PackageManager.PERMISSION_GRANTED) {
-                        mylocation =
-                            LocationServices.FusedLocationApi.getLastLocation(googleApiClient)
-                        val locationRequest = LocationRequest()
-                        locationRequest.interval = 3000
-                        locationRequest.fastestInterval = 3000
-                        locationRequest.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
-                        val builder = LocationSettingsRequest.Builder()
-                            .addLocationRequest(locationRequest)
-                        builder.setAlwaysShow(true)
-                        LocationServices.FusedLocationApi
-                            .requestLocationUpdates(googleApiClient, locationRequest, this)
-                        val result = LocationServices.SettingsApi
-                            .checkLocationSettings(googleApiClient, builder.build())
-                        result.setResultCallback { result ->
-                            val status = result.status
-                            when (status.statusCode) {
-                                LocationSettingsStatusCodes.SUCCESS -> {
-                                    // All location settings are satisfied.
-                                    // You can initialize location requests here.
-                                    if (isAdded) {
-                                        val permissionLocation = ContextCompat
-                                            .checkSelfPermission(
-                                                requireContext(),
-                                                Manifest.permission.ACCESS_FINE_LOCATION
-                                            )
-                                        if (permissionLocation == PackageManager.PERMISSION_GRANTED) {
-                                            mylocation = LocationServices.FusedLocationApi
-                                                .getLastLocation(googleApiClient)
+            if (isAdded) {
+                if (googleApiClient != null) {
+                    if (googleApiClient!!.isConnected) {
+                        val permissionLocation = ContextCompat.checkSelfPermission(
+                            requireActivity(),
+                            Manifest.permission.ACCESS_FINE_LOCATION
+                        )
+                        if (permissionLocation == PackageManager.PERMISSION_GRANTED) {
+                            mylocation =
+                                LocationServices.FusedLocationApi.getLastLocation(googleApiClient)
+                            val locationRequest = LocationRequest()
+                            locationRequest.interval = 3000
+                            locationRequest.fastestInterval = 3000
+                            locationRequest.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
+                            val builder = LocationSettingsRequest.Builder()
+                                .addLocationRequest(locationRequest)
+                            builder.setAlwaysShow(true)
+                            LocationServices.FusedLocationApi
+                                .requestLocationUpdates(googleApiClient, locationRequest, this)
+                            val result = LocationServices.SettingsApi
+                                .checkLocationSettings(googleApiClient, builder.build())
+                            result.setResultCallback { result ->
+                                val status = result.status
+                                when (status.statusCode) {
+                                    LocationSettingsStatusCodes.SUCCESS -> {
+                                        // All location settings are satisfied.
+                                        // You can initialize location requests here.
+                                        if (isAdded) {
+                                            val permissionLocation = ContextCompat
+                                                .checkSelfPermission(
+                                                    requireContext(),
+                                                    Manifest.permission.ACCESS_FINE_LOCATION
+                                                )
+                                            if (permissionLocation == PackageManager.PERMISSION_GRANTED) {
+                                                mylocation = LocationServices.FusedLocationApi
+                                                    .getLastLocation(googleApiClient)
+                                            }
                                         }
                                     }
-                                }
-                                LocationSettingsStatusCodes.RESOLUTION_REQUIRED ->
-                                    // Location settings are not satisfied.
-                                    // But could be fixed by showing the user a dialog.
-                                    try {
-                                        // Show the dialog by calling startResolutionForResult(),
-                                        // and check the result in onActivityResult().
-                                        // Ask to turn on GPS automatically
-                                        status.startResolutionForResult(
-                                            requireActivity(),
-                                            REQUEST_CHECK_SETTINGS_GPS
-                                        )
-                                    } catch (e: IntentSender.SendIntentException) {
-                                        // Ignore the error.
-                                    }
+                                    LocationSettingsStatusCodes.RESOLUTION_REQUIRED ->
+                                        // Location settings are not satisfied.
+                                        // But could be fixed by showing the user a dialog.
+                                        try {
+                                            // Show the dialog by calling startResolutionForResult(),
+                                            // and check the result in onActivityResult().
+                                            // Ask to turn on GPS automatically
+                                            status.startResolutionForResult(
+                                                requireActivity(),
+                                                REQUEST_CHECK_SETTINGS_GPS
+                                            )
+                                        } catch (e: IntentSender.SendIntentException) {
+                                            // Ignore the error.
+                                        }
 
-                                LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE -> {
-                                }
-                            }// Location settings are not satisfied.
-                            // However, we have no way
-                            // to fix the
-                            // settings so we won't show the dialog.
-                            // finish();
+                                    LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE -> {
+                                    }
+                                }// Location settings are not satisfied.
+                                // However, we have no way
+                                // to fix the
+                                // settings so we won't show the dialog.
+                                // finish();
+                            }
                         }
                     }
                 }
             }
-                }
         } catch (e: Exception) {
             e.printStackTrace()
         }
@@ -1076,14 +1175,14 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
         return json
     }
 
-    private fun updatePhoneNumber(num: String) {
+    private fun updatePhoneNumber(num1: String) {
 
         val restAdapter: RestAdapter =
             RestAdapter.Builder().setEndpoint(mainUrl).build()
         val api: RegisterAPI = restAdapter.create(RegisterAPI::class.java)
         api.updatePhone(
             SharedPrefUtils.getStringData(requireActivity(), "uid").toString(),
-            num,
+            num1,
             activity?.let {
                 SharedPrefUtils.getStringData(it, "deviceToken").toString()
             }.toString(), baseContext!!.getMacAddres(),
@@ -1116,6 +1215,8 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
                             SharedPrefUtils.saveData(context!!, "isInserted", isInserted)
                             registerDevice(id, pid)
                         }
+                        layoutNumber!!.visibility = View.VISIBLE
+                        num!!.text = "Your number is $phoneNum"
 //                        hideDialog()
                     } catch (e: Exception) {
                         Log.d(TAGI, "error: " + e.message)

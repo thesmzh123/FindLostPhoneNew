@@ -39,6 +39,8 @@ import java.io.IOException
 
 
 class BackupRestoreFragment : BaseFragment() {
+
+
     private var isEmailBackup: Boolean = false
     private var isEmailRestore: Boolean = false
     private var cursor: Cursor? = null
