@@ -3,7 +3,11 @@
 package device.spotter.finder.appss.adapters
 
 import android.annotation.SuppressLint
+import android.app.AlarmManager
+import android.app.PendingIntent
 import android.content.Context
+import android.content.DialogInterface
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -17,18 +21,20 @@ import com.find.lost.app.phone.utils.InternetConnection
 import com.find.lost.app.phone.utils.SharedPrefUtils
 import com.google.android.gms.ads.AdListener
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.switchmaterial.SwitchMaterial
+import device.spotter.finder.appss.R
+import device.spotter.finder.appss.activities.BaseActivity
+import device.spotter.finder.appss.activities.FamilyLocatorActivity
+import device.spotter.finder.appss.models.FamilyLocator
+import device.spotter.finder.appss.receivers.ShareLocReceiver
+import device.spotter.finder.appss.utils.Constants.TAGI
+import device.spotter.finder.appss.utils.Constants.UNSELECTED
+import device.spotter.finder.appss.utils.RegisterAPI
 import kotlinx.android.synthetic.main.activity_family_locator.*
 import kotlinx.android.synthetic.main.custom_message_layout.view.*
 import kotlinx.android.synthetic.main.enter_phone_number_layout.view.cancel
 import kotlinx.android.synthetic.main.enter_phone_number_layout.view.send
 import kotlinx.android.synthetic.main.family_locator_list_layout.view.*
-import device.spotter.finder.appss.R
-import device.spotter.finder.appss.activities.BaseActivity
-import device.spotter.finder.appss.activities.FamilyLocatorActivity
-import device.spotter.finder.appss.models.FamilyLocator
-import device.spotter.finder.appss.utils.Constants.TAGI
-import device.spotter.finder.appss.utils.Constants.UNSELECTED
-import device.spotter.finder.appss.utils.RegisterAPI
 import net.cachapa.expandablelayout.ExpandableLayout
 import retrofit.Callback
 import retrofit.RestAdapter
@@ -63,6 +69,7 @@ class FamilyLocatorAdapter(
         return familyLocatorList.size
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: MyHolder, position: Int) {
         val isSelected = position == selectedItem
         val familyLocator = familyLocatorList[position]
@@ -203,6 +210,21 @@ class FamilyLocatorAdapter(
             }
 
         }
+        if (familyLocator.latitude.isEmpty() || familyLocator.latitude.equals(
+                "null",
+                true
+            ) || familyLocator.latitude == "0.0" && familyLocator.longitude.isEmpty() || familyLocator.longitude.equals(
+                "null",
+                true
+            ) || familyLocator.longitude == "0.0"
+        ) {
+            holder.itemView.expandable_layout.lastUpdated.visibility = View.GONE
+        } else {
+            holder.itemView.expandable_layout.lastUpdated.visibility = View.VISIBLE
+
+            holder.itemView.expandable_layout.lastUpdated.text =
+                "Last Updated at: " + familyLocator.updateDate
+        }
         holder.itemView.expandable_layout.locateDevice.setOnClickListener {
             if (InternetConnection().checkConnection(context)) {
                 if (familyLocator.latitude.isEmpty() || familyLocator.latitude.equals(
@@ -224,6 +246,79 @@ class FamilyLocatorAdapter(
             } else {
                 (context as BaseActivity).showToast(context.getString(R.string.no_internet))
             }
+        }
+        holder.itemView.expandable_layout.shareLoc.isChecked =
+            SharedPrefUtils.getBooleanData(context, "isTrackLoc1")
+        holder.itemView.expandable_layout.shareLoc.setOnCheckedChangeListener { compoundButton, b ->
+            if (b) {
+                showLocDialog(holder.itemView.expandable_layout.shareLoc)
+            } else {
+                cancelAlarm(holder.itemView.expandable_layout.shareLoc)
+            }
+        }
+    }
+
+    private fun showLocDialog(switchBtnLoc: SwitchMaterial) {
+        val dialogClickListener =
+            DialogInterface.OnClickListener { dialog, which ->
+                when (which) {
+                    DialogInterface.BUTTON_POSITIVE -> {
+                        startReciver(switchBtnLoc)
+                    }
+                    DialogInterface.BUTTON_NEGATIVE -> {
+                        dialog.dismiss()
+                        try {
+                            switchBtnLoc.isChecked = false
+
+                        } catch (e: Exception) {
+                            e.printStackTrace()
+                        }
+                    }
+                }
+            }
+
+        val builder = MaterialAlertDialogBuilder(
+            context,
+            R.style.MaterialAlertDialogTheme
+        )
+        builder.setTitle(context.getString(R.string.share_your_location))
+            .setMessage(context.getString(R.string.share_location_in_background))
+            .setPositiveButton(context.getString(R.string.yes), dialogClickListener)
+            .setNegativeButton(context.getString(R.string.no), dialogClickListener)
+            .setCancelable(false)
+            .show()
+    }
+
+    //TODO: start reciever
+    private fun startReciver(switchBtnLoc: SwitchMaterial) {
+        val intent = Intent(context, ShareLocReceiver::class.java)
+        val pendingIntent = PendingIntent.getBroadcast(context, 1035, intent, 0)
+        //60000 equal to 1 minute
+        val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        alarmManager
+            .set(
+                AlarmManager.RTC_WAKEUP,
+                System.currentTimeMillis() + 60000,
+                pendingIntent
+            )//180000
+        SharedPrefUtils.saveData(context, "isTrackLoc1", true)
+        switchBtnLoc.isChecked = true
+    }
+
+    private fun cancelAlarm(switchBtnLoc: SwitchMaterial) {
+        val intent = Intent(context, ShareLocReceiver::class.java)
+        val alarmManager =
+            context.getSystemService(Context.ALARM_SERVICE) as? AlarmManager
+        val pendingIntent =
+            PendingIntent.getBroadcast(
+                context, 1035, intent,
+                PendingIntent.FLAG_NO_CREATE
+            )
+        if (pendingIntent != null && alarmManager != null) {
+            alarmManager.cancel(pendingIntent)
+            SharedPrefUtils.saveData(context, "isTrackLoc1", false)
+            switchBtnLoc.isChecked = false
+            Log.d(TAGI, "onReceive: Alarm cancel!")
         }
     }
 

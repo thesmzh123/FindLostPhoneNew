@@ -72,6 +72,7 @@ import java.util.concurrent.TimeUnit
 open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListener {
     var menu: Menu? = null
     lateinit var auth: FirebaseAuth
+    lateinit var auth1: FirebaseAuth
     private var isMenuEnable = true
     lateinit var interstitial: InterstitialAd
     private var dialog: AlertDialog? = null
@@ -145,6 +146,7 @@ open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListene
         queue = Volley.newRequestQueue(this) // this = context
         databaseHelperUtils = DatabaseHelperUtils(this@BaseActivity)
         auth = FirebaseAuth.getInstance()
+        auth1 = FirebaseAuth.getInstance()
         if (!SharedPrefUtils.getBooleanData(this, "isFirst")) {
             FirebaseAuth.getInstance().signOut()
         }
@@ -757,7 +759,7 @@ open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListene
     }
 
     private fun signInWithCredential(credential: PhoneAuthCredential) {
-        auth.signInWithCredential(credential)
+        auth1.signInWithCredential(credential)
             .addOnCompleteListener(object :
                 OnCompleteListener<AuthResult?> {
                 override fun onComplete(@NonNull task: Task<AuthResult?>) {
@@ -806,7 +808,7 @@ open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListene
                         val pid = newJson.getString("pid")
                         val phoneNum = newJson.getString("phone_num")
                         val id = newJson.getString("uid")
-                        val isInserted = jsonObject.getBoolean("isInserted")
+//                        val isInserted = jsonObject.getBoolean("isInserted")
                         SharedPrefUtils.saveData(this@BaseActivity, "uid", id)
                         SharedPrefUtils.saveData(this@BaseActivity, "phoneNum", phoneNum)
                         SharedPrefUtils.saveData(this@BaseActivity, "pid", pid)

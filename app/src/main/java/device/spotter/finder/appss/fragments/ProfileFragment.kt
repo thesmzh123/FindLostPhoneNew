@@ -128,7 +128,7 @@ class ProfileFragment : BaseFragment() {
         Glide.with(this).load(auth.currentUser?.photoUrl)
             .into(root!!.profileImage)
         val phone = SharedPrefUtils.getStringData(requireActivity(), "phoneNum").toString()
-        if (!phone.isEmpty() || !phone.equals("null", true)) {
+        if (phone.isNotEmpty() || !phone.equals("null", true)) {
             layoutNumber!!.visibility = View.VISIBLE
             num!!.text = "Your number is $phone"
         }

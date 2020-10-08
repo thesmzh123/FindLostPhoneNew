@@ -122,6 +122,9 @@
             </intent-filter>
         </receiver>
         <receiver
+            android:name=".receivers.ShareLocReceiver"
+            android:enabled="true"/>
+        <receiver
             android:name=".receivers.DeviceAdminSample"
             android:permission="android.permission.BIND_DEVICE_ADMIN">
             <meta-data

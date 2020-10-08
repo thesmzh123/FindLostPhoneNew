@@ -87,6 +87,7 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
     GoogleApiClient.OnConnectionFailedListener, LocationListener {
     var root: View? = null
     lateinit var auth: FirebaseAuth
+    lateinit var auth1: FirebaseAuth
     var mainContext: MainActivity? = null
     var baseContext: BaseActivity? = null
     private var dialog: AlertDialog? = null
@@ -107,7 +108,7 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
 
     lateinit var interstitial: InterstitialAd
     private var verificationId: String? = null
-     var getNum: String? = null
+    var getNum: String? = null
     var deleteDialog: AlertDialog? = null
     var otpDialog: AlertDialog? = null
     var otpDialogView: View? = null
@@ -158,6 +159,7 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
 
         StrictMode.setThreadPolicy(policy)
         auth = FirebaseAuth.getInstance()
+        auth1 = FirebaseAuth.getInstance()
         mainContext = (requireActivity() as MainActivity)
         baseContext = (requireActivity() as BaseActivity)
         gpsTracker = GPSTracker(requireActivity())
@@ -697,7 +699,7 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
     }
 
     private fun signInWithCredential(credential: PhoneAuthCredential) {
-        auth.signInWithCredential(credential)
+        auth1.signInWithCredential(credential)
             .addOnCompleteListener(object :
                 OnCompleteListener<AuthResult?> {
                 override fun onComplete(@NonNull task: Task<AuthResult?>) {
@@ -1187,6 +1189,7 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
                 SharedPrefUtils.getStringData(it, "deviceToken").toString()
             }.toString(), baseContext!!.getMacAddres(),
             object : Callback<Response> {
+                @SuppressLint("SetTextI18n")
                 override fun success(result: Response, response: Response) {
                     //On success we will read the server's output using bufferedreader
                     //Creating a bufferedreader object
@@ -1208,15 +1211,29 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
                         val phoneNum = newJson.getString("phone_num")
                         val id = newJson.getString("uid")
                         val isInserted = jsonObject.getBoolean("isInserted")
-                        SharedPrefUtils.saveData(requireActivity(), "uid", id)
-                        SharedPrefUtils.saveData(requireActivity(), "phoneNum", phoneNum)
-                        SharedPrefUtils.saveData(requireActivity(), "pid", pid)
+                        val error = jsonObject.getBoolean("error")
+                        val messagePhone = jsonObject.getString("message")
+
                         if (jsonObject.getBoolean("isInserted")) {
+                            SharedPrefUtils.saveData(requireActivity(), "uid", id)
+                            SharedPrefUtils.saveData(requireActivity(), "phoneNum", phoneNum)
+                            SharedPrefUtils.saveData(requireActivity(), "pid", pid)
+                            layoutNumber!!.visibility = View.VISIBLE
+                            num!!.text = "Your number is $phoneNum"
                             SharedPrefUtils.saveData(context!!, "isInserted", isInserted)
                             registerDevice(id, pid)
+                        } else if (error) {
+                            alreadyAddDialog(messagePhone)
+                            hideDialog()
+                        } else {
+                            SharedPrefUtils.saveData(requireActivity(), "uid", id)
+                            SharedPrefUtils.saveData(requireActivity(), "phoneNum", phoneNum)
+                            SharedPrefUtils.saveData(requireActivity(), "pid", pid)
+                            layoutNumber!!.visibility = View.VISIBLE
+                            num!!.text = "Your number is $phoneNum"
+                            hideDialog()
                         }
-                        layoutNumber!!.visibility = View.VISIBLE
-                        num!!.text = "Your number is $phoneNum"
+
 //                        hideDialog()
                     } catch (e: Exception) {
                         Log.d(TAGI, "error: " + e.message)
@@ -1232,6 +1249,30 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
             }
         )
 
+    }
+
+    private fun alreadyAddDialog(messagePhone: String) {
+        val builder =
+            MaterialAlertDialogBuilder(requireActivity(), R.style.MaterialAlertDialogTheme)
+        builder.setTitle("Your mobile device is " + Build.BRAND + ", " + Build.MODEL)
+        builder.setMessage(messagePhone)
+        builder.setCancelable(false)
+        builder.setPositiveButton(
+            getString(R.string.ok)
+        ) { dialog, which -> // Do do my action here
+            enterNumberDialog()
+            dialog.dismiss()
+        }
+        builder.setNegativeButton(
+            getString(R.string.cancel)
+        ) { dialog, which -> // Do do my action here
+            FirebaseAuth.getInstance().signOut()
+            dialog.dismiss()
+        }
+
+
+        val alert = builder.create()
+        alert.show()
     }
 
     @SuppressLint("InflateParams")

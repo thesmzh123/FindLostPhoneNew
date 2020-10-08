@@ -61,6 +61,8 @@
     <string name="yes">Yes</string>
     <string name="track_location_in_background">You need to enable track your location to better track your lost phone location in background, if your location is changed.\n\n
     <b>Remember:</b><![CDATA[ Your location will be updated after every 2–3 minutes. Also, you need to enable your internet & GPS to get better result.]]></string>
+    <string name="share_location_in_background">You need to enable share your location to better share your location in background to family member, if your location is changed.\n\n
+    <b>Remember:</b><![CDATA[ Your location will be updated after every 1 minutes. Also, you need to enable your internet & GPS to get better result.]]></string>
     <string name="no">No</string>
     <string name="ok">OK</string>
     <string name="activate_this">  To use this feature:\n\n
@@ -178,7 +180,7 @@ Permission is required** \n \n
     <string name="locate_device">Find Location</string>
     <string name="sending_notification">Sending Notification</string>
     <string name="invite_member">Invite Members!</string>
-<string name="invite_message">This number is not registered with us. \n Would you like to invite your friends and family members to use this app?</string>
+    <string name="invite_message">This number is not registered with us. \n Would you like to invite your friends and family members to use this app?</string>
     <string name="invite">Invite</string>
     <string name="not_now">Not Now</string>
     <string name="browse_website">Browse a Web</string>
@@ -217,4 +219,5 @@ Permission is required**\n\n
     <string name="not_enter_phone_num">To use this please enter phone number to complete the process.</string>
     <string name="resend">Resend</string>
     <string name="update">Update</string>
+    <string name="share_your_location">Share your location</string>
 </resources>
