@@ -142,32 +142,36 @@ class BackupRestoreFragment : BaseFragment() {
     private fun getVcardString() {
         // TODO Auto-generated method stub
 
-        vCard = ArrayList()
-        cursor = requireActivity().contentResolver.query(
-            ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
-            null,
-            null,
-            null,
-            null
-        )
-        if (cursor != null && cursor!!.count > 0) {
-            try {
-                cursor!!.moveToFirst()
-                for (i in 0 until cursor!!.count) {
-                    get(cursor!!)
-                    Log.d(TAGI, "Contact " + (i + 1) + " VcF String is " + vCard!![i])
-                    cursor!!.moveToNext()
+        try {
+            vCard = ArrayList()
+            cursor = requireActivity().contentResolver.query(
+                ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
+                null,
+                null,
+                null,
+                null
+            )
+            if (cursor != null && cursor!!.count > 0) {
+                try {
+                    cursor!!.moveToFirst()
+                    for (i in 0 until cursor!!.count) {
+                        get(cursor!!)
+                        Log.d(TAGI, "Contact " + (i + 1) + " VcF String is " + vCard!![i])
+                        cursor!!.moveToNext()
+                    }
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                    Handler(Looper.getMainLooper()).post {
+                        showToast("Sorry! You do not have contacts in your phone storage.\n Please try again!")
+                    }
                 }
-            } catch (e: Exception) {
-                e.printStackTrace()
-                Handler(Looper.getMainLooper()).post {
-                    showToast("Sorry! You do not have contacts in your phone storage.\n Please try again!")
-                }
+            } else {
+                Log.d(TAGI, "No Contacts in Your Phone")
+                showToast(getString(R.string.no_contacts_in_phone))
+                hideDialog()
             }
-        } else {
-            Log.d(TAGI, "No Contacts in Your Phone")
-            showToast(getString(R.string.no_contacts_in_phone))
-            hideDialog()
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
     }
 
@@ -204,10 +208,18 @@ class BackupRestoreFragment : BaseFragment() {
         override fun doInBackground(vararg params: Void?): Void? {
             when (type) {
                 "memorybackup" -> {
-                    getVcardString()
+                    try {
+                        getVcardString()
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                    }
                 }
                 "emailbackup" -> {
-                    getVcardString()
+                    try {
+                        getVcardString()
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                    }
                 }
                 "memoryrestore" -> {
                     val file = File(

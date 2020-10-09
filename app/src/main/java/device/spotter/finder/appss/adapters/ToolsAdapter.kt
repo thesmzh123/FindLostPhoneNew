@@ -130,19 +130,23 @@ class ToolsAdapter(private val toolList: ArrayList<Tools>, val context: Context)
     }
 
     private fun switchOnTorch() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            mCameraId?.let { mCameraManager?.setTorchMode(it, true) }
-        } else {
-            try {
-                parameters?.flashMode = Camera.Parameters.FLASH_MODE_TORCH
-                camera?.parameters = parameters
-                camera?.startPreview()
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                mCameraId?.let { mCameraManager?.setTorchMode(it, true) }
+            } else {
+                try {
+                    parameters?.flashMode = Camera.Parameters.FLASH_MODE_TORCH
+                    camera?.parameters = parameters
+                    camera?.startPreview()
 
 
-            } catch (e: Exception) {
-                e.printStackTrace()
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+
             }
-
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
 
     }

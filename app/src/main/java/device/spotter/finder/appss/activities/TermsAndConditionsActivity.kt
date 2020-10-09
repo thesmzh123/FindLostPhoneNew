@@ -39,6 +39,7 @@ class TermsAndConditionsActivity : BaseActivity() {
         materialAlertDialog.setPositiveButton(getString(R.string.agree1)) { dialog, which ->
             SharedPrefUtils.saveData(this, "isTerms", true)
             SharedPrefUtils.saveData(this, "isFirst", true)
+            SharedPrefUtils.saveData(applicationContext, "base_url", getString(R.string.site_url))
             startActivity(Intent(applicationContext, MainActivity::class.java))
             finishAffinity()
             dialog.dismiss()

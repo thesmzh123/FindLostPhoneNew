@@ -123,6 +123,7 @@ open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListene
                     "loadPost:onCancelled",
                     databaseError.toException()
                 )
+
             }
         })
     }
@@ -138,7 +139,7 @@ open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListene
                     dataSnapshot.child("lic_key").getValue(
                         String::class.java
                     )!!
-                Log.d(TAGI, value)
+//                Log.d(TAGI, value)
                 try {
                     SharedPrefUtils.saveData(
                         applicationContext,
@@ -188,6 +189,7 @@ open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListene
         fetchLicKey()
         gpsTracker = GPSTracker(this)
         try {
+
             mainUrl = SharedPrefUtils.getStringData(this@BaseActivity, "base_url")
 
         } catch (e: Exception) {
@@ -204,20 +206,25 @@ open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListene
 
     //TODO: change profile menu
     fun changeMenu() {
-        val profileItem = menu!!.findItem(R.id.profile_menu)
-        val v = profileItem.actionView
-        val itemClick = v.layout
-        val profileImage = changeProfile()
-        if (isLoggedIn()) {
-            Glide.with(this@BaseActivity).load(auth.currentUser!!.photoUrl).into(profileImage)
-        } else {
-            Glide.with(this@BaseActivity).load(R.drawable.ic_profile_black_24dp).into(profileImage)
+        try {
+            val profileItem = menu!!.findItem(R.id.profile_menu)
+            val v = profileItem.actionView
+            val itemClick = v.layout
+            val profileImage = changeProfile()
+            if (isLoggedIn()) {
+                Glide.with(this@BaseActivity).load(auth.currentUser!!.photoUrl).into(profileImage)
+            } else {
+                Glide.with(this@BaseActivity).load(R.drawable.ic_profile_black_24dp)
+                    .into(profileImage)
 
-        }
-        itemClick.setOnClickListener {
-            if (isMenuEnable) {
-                navigateFragmentByAds(R.id.nav_profile)
             }
+            itemClick.setOnClickListener {
+                if (isMenuEnable) {
+                    navigateFragmentByAds(R.id.nav_profile)
+                }
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
     }
 
@@ -761,27 +768,35 @@ open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListene
             if (TextUtils.isEmpty(otpDialogView!!.editText_carrierNumber2.text)) {
                 showToast(getString(R.string.fill_the_field))
             } else {
-                if (InternetConnection().checkConnection(this@BaseActivity)) {
-                    showDialog(getString(R.string.verifying_code))
-                    val code = otpDialogView!!.editText_carrierNumber2.text.toString()
-                    verifyCode(code)
-//                        updatePhoneNumber(deleteDialogView.editText_carrierNumber1.text.toString())
+                try {
+                    if (InternetConnection().checkConnection(this@BaseActivity)) {
+                        showDialog(getString(R.string.verifying_code))
+                        val code = otpDialogView!!.editText_carrierNumber2.text.toString()
+                        verifyCode(code)
+    //                        updatePhoneNumber(deleteDialogView.editText_carrierNumber1.text.toString())
 
-//                    otpDialog!!.dismiss()
-                } else {
-                    showToast(getString(R.string.no_internet))
+    //                    otpDialog!!.dismiss()
+                    } else {
+                        showToast(getString(R.string.no_internet))
+                    }
+                } catch (e: Exception) {
+                    e.printStackTrace()
                 }
             }
         }
         otpDialogView!!.mainBtn2.setOnClickListener {
-            if (isFinish) {
-                cdt!!.cancel()
-                isRecent = true
-                showToast("Please re-enter the number to get the verification code (OTP).")
-                otpDialog!!.dismiss()
-                enterNumberDialog()
-            } else {
-                showToast("Timer is already running.\n Can't resend the OTP Code.")
+            try {
+                if (isFinish) {
+                    cdt!!.cancel()
+                    isRecent = true
+                    showToast("Please re-enter the number to get the verification code (OTP).")
+                    otpDialog!!.dismiss()
+                    enterNumberDialog()
+                } else {
+                    showToast("Timer is already running.\n Can't resend the OTP Code.")
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
             }
         }
         otpDialog!!.show()

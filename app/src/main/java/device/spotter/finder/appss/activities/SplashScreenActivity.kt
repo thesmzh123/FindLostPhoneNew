@@ -35,6 +35,7 @@ class SplashScreenActivity : BaseActivity() {
         splashImage.startAnimation(animation)
         splashText.startAnimation(animation)
         splashText2.startAnimation(animationText)
+        SharedPrefUtils.saveData(applicationContext, "base_url", getString(R.string.site_url))
         loadInterstial()
         fetchBaseUrl()
         fetchLicKey()

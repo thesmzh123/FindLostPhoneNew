@@ -42,7 +42,9 @@ class DevicesAdapter(
         fun bindItem(devices: Devices) {
             itemView.deviceName.text = devices.deviceName
             itemView.deviceModel.text = devices.model
-
+            itemView.isChecked.setOnCheckedChangeListener(null)
+            itemView.isChecked.isChecked =
+                devices.isChecked
             itemView.clickItem.setOnClickListener {
                 devices.isChecked = !devices.isChecked
                 itemView.isChecked.isChecked =

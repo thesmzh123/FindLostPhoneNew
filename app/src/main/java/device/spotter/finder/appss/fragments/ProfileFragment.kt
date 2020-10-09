@@ -29,7 +29,7 @@ import device.spotter.finder.appss.R
 import device.spotter.finder.appss.activities.BaseActivity
 import device.spotter.finder.appss.utils.Constants.RC_SIGN_IN
 import device.spotter.finder.appss.utils.Constants.TAGI
-import kotlinx.android.synthetic.main.enter_phone_num_layout.view.*
+import kotlinx.android.synthetic.main.enter_phone_num_update_layout.view.*
 import kotlinx.android.synthetic.main.fragment_profile.view.*
 
 
@@ -94,7 +94,7 @@ class ProfileFragment : BaseFragment() {
         root!!.updateBtn.setOnClickListener {
             val factory = LayoutInflater.from(requireActivity())
             @SuppressLint("InflateParams") val deleteDialogView: View =
-                factory.inflate(R.layout.enter_phone_num_layout, null)
+                factory.inflate(R.layout.enter_phone_num_update_layout, null)
             (context as BaseActivity).deleteDialog = if (Build.VERSION.SDK_INT > 23) {
 
                 MaterialAlertDialogBuilder(requireActivity()).create()
@@ -106,7 +106,9 @@ class ProfileFragment : BaseFragment() {
             (context as BaseActivity).deleteDialog!!.setView(deleteDialogView)
             (context as BaseActivity).deleteDialog!!.setCancelable(false)
 //        deleteDialogView.ccp1.registerCarrierNumberEditText(deleteDialogView.editText_carrierNumber1)
-
+            deleteDialogView.mainBtnNUmCancel.setOnClickListener {
+                (context as BaseActivity).deleteDialog!!.dismiss()
+            }
             deleteDialogView.mainBtnNUm.setOnClickListener {
                 if (TextUtils.isEmpty(deleteDialogView.editText_carrierNumber1.text)) {
                     showToast(getString(R.string.fill_the_field))
