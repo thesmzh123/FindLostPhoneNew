@@ -11,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
@@ -37,6 +38,21 @@ class ProfileFragment : BaseFragment() {
     private var mGoogleSignInClient: GoogleSignInClient? = null
     private var mMenuButtonListener: MenuButtonListener? = null
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        // This callback will only be called when MyFragment is at least Started.
+        val callback: OnBackPressedCallback =
+            object : OnBackPressedCallback(true /* enabled by default */) {
+                override fun handleOnBackPressed() {
+                    // Handle the back button event
+                    baseContext!!.navigateFragment(R.id.nav_home)
+                }
+            }
+        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
+
+        // The callback can be enabled or disabled here or in handleOnBackPressed()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -97,7 +113,7 @@ class ProfileFragment : BaseFragment() {
                 } else {
                     if (InternetConnection().checkConnection(requireActivity())) {
                         (context as BaseActivity).showDialog(getString(R.string.sending_you_verification_code))
-                        (context as  BaseActivity). getNum =
+                        (context as BaseActivity).getNum =
                             deleteDialogView.ccpNUm.selectedCountryCode + deleteDialogView.editText_carrierNumber1.text.toString()
                         (context as BaseActivity).sendVerificationCode(deleteDialogView.ccpNUm.selectedCountryCode + deleteDialogView.editText_carrierNumber1.text.toString())
 //                        updatePhoneNumber(deleteDialogView.editText_carrierNumber1.text.toString())

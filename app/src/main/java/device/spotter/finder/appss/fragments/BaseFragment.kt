@@ -605,6 +605,7 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
             getString(R.string.no)
         ) { dialog, which -> // I do not need any action here you might
             FirebaseAuth.getInstance().signOut()
+            baseContext!!.navigateFragment(R.id.nav_profile)
             dialog.dismiss()
 
         }
@@ -1267,6 +1268,7 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
             getString(R.string.cancel)
         ) { dialog, which -> // Do do my action here
             FirebaseAuth.getInstance().signOut()
+            baseContext!!.navigateFragment(R.id.nav_profile)
             dialog.dismiss()
         }
 
