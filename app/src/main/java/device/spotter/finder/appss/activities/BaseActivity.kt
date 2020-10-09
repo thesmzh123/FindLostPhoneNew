@@ -127,6 +127,40 @@ open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListene
         })
     }
 
+    //TODO: fetch lic key
+    fun fetchLicKey() {
+        //connecting declared wiidgets with xml
+        val databaseReference =
+            FirebaseDatabase.getInstance().reference.child("noads")
+        databaseReference.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(@NonNull dataSnapshot: DataSnapshot) {
+                val value =
+                    dataSnapshot.child("lic_key").getValue(
+                        String::class.java
+                    )!!
+                Log.d(TAGI, value)
+                try {
+                    SharedPrefUtils.saveData(
+                        applicationContext,
+                        "lic_key",
+                        value
+                    )
+
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            }
+
+            override fun onCancelled(@NonNull databaseError: DatabaseError) {
+                Log.d(
+                    TAGI,
+                    "loadPost:onCancelled",
+                    databaseError.toException()
+                )
+            }
+        })
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         this.window.setSoftInputMode(
             WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN
@@ -151,6 +185,7 @@ open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListene
             FirebaseAuth.getInstance().signOut()
         }
         fetchBaseUrl()
+        fetchLicKey()
         gpsTracker = GPSTracker(this)
         try {
             mainUrl = SharedPrefUtils.getStringData(this@BaseActivity, "base_url")
@@ -786,7 +821,8 @@ open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListene
         api.updatePhoneNum(
             SharedPrefUtils.getStringData(this@BaseActivity, "uid").toString(),
             num1,
-                SharedPrefUtils.getStringData(this@BaseActivity, "deviceToken").toString(),getMacAddres(),
+            SharedPrefUtils.getStringData(this@BaseActivity, "deviceToken").toString(),
+            getMacAddres(),
             object : Callback<Response> {
                 override fun success(result: Response, response: Response) {
                     //On success we will read the server's output using bufferedreader

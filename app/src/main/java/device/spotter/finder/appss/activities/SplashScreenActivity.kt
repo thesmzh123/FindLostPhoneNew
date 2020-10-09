@@ -37,7 +37,7 @@ class SplashScreenActivity : BaseActivity() {
         splashText2.startAnimation(animationText)
         loadInterstial()
         fetchBaseUrl()
-
+        fetchLicKey()
     }
 
     override fun onResume() {
@@ -74,10 +74,10 @@ class SplashScreenActivity : BaseActivity() {
                         Lifecycle.State.STARTED
                     )
                 ) {
-                interstitial.show()
-            } else {
-                Log.d(TAGI, "App Is In Background Ad Is Not Going To Show")
-            }
+                    interstitial.show()
+                } else {
+                    Log.d(TAGI, "App Is In Background Ad Is Not Going To Show")
+                }
             } else {
                 startActivity(Intent(applicationContext, activity.javaClass))
                 this@SplashScreenActivity.finish()
