@@ -435,16 +435,18 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
                         //Reading the output in the string
                         output = reader.readLine()
                         Log.d(TAGI, "device: $output")
-                        val jsonOb = JSONObject(output)
-                        val deviceD = jsonOb.getString("0")
+//                        val jsonOb = JSONObject(output)
+//                        val deviceD = jsonOb.getString("0")
                         SharedPrefUtils.saveData(
                             requireActivity(),
                             "devicedata",
-                            deviceD
+                            output
                         )
 
                         SharedPrefUtils.saveData(requireActivity(), "isInserted", true)
-                        val phone_num = jsonOb.getString("phone_num")
+//                        val phone_num = jsonOb.getString("phone_num")
+                        val phone_num =
+                            SharedPrefUtils.getStringData(requireActivity(), "temp_num").toString()
                         SharedPrefUtils.saveData(requireActivity(), "phoneNum", phone_num)
 
                         layoutNumber!!.visibility = View.VISIBLE
