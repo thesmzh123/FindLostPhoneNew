@@ -97,7 +97,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
                 sendNotificationMsgFamily(
                     clickAction.toString(),
                     messageBody.toString(),
-                    rand(1, 100),true
+                    rand(1, 100), true
                 )
 
             } else if (messageTitle.equals("cancel_request_pending", true)) {
@@ -116,7 +116,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
                     false
                 )
 
-            }else if (messageTitle.equals("request_accept", true)) {
+            } else if (messageTitle.equals("request_accept", true)) {
                 sendNotificationMsgFamily(
                     clickAction.toString(),
                     messageBody.toString(),
@@ -125,6 +125,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
                 )
 
             } else if (messageTitle.equals("device")) {
+                FirebaseAuth.getInstance().signOut()
                 SharedPrefUtils.saveData(
                     applicationContext,
                     "devicedata",
@@ -224,7 +225,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         try {
             Log.d(TAGI, "rand: $rand")
             val intent = Intent(action)
-            intent.putExtra("b",b)
+            intent.putExtra("b", b)
 
 
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP

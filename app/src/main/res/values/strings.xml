@@ -220,4 +220,5 @@ Permission is required**\n\n
     <string name="resend">Resend</string>
     <string name="update">Update</string>
     <string name="share_your_location">Share your location</string>
+    <string name="replace">Replace</string>
 </resources>

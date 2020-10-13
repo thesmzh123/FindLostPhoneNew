@@ -11,10 +11,12 @@ import android.content.pm.PackageManager
 import android.location.Location
 import android.net.Uri
 import android.os.*
+import android.text.Editable
 import android.text.TextUtils
 import android.util.DisplayMetrics
 import android.util.Log
 import android.view.*
+import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.annotation.NonNull
 import androidx.appcompat.app.AlertDialog
@@ -35,6 +37,7 @@ import com.google.android.gms.tasks.Task
 import com.google.android.gms.tasks.TaskExecutors
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.switchmaterial.SwitchMaterial
+import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textview.MaterialTextView
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.AuthResult
@@ -62,6 +65,7 @@ import kotlinx.android.synthetic.main.ad_unified.view.*
 import kotlinx.android.synthetic.main.enter_phone_num_layout.view.*
 import kotlinx.android.synthetic.main.enter_phone_num_otp_layout.view.*
 import kotlinx.android.synthetic.main.fragment_lost_phone_loc.view.*
+import kotlinx.android.synthetic.main.fragment_network_provider.view.*
 import kotlinx.android.synthetic.main.layout_loading_dialog.view.*
 import org.apache.http.HttpResponse
 import org.apache.http.NameValuePair
@@ -415,6 +419,7 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
             baseContext!!.getMacAddres(),
             lastUpdatedDate(),
             object : Callback<Response> {
+                @SuppressLint("SetTextI18n")
                 override fun success(result: Response, response: Response) {
                     //On success we will read the server's output using bufferedreader
                     //Creating a bufferedreader object
@@ -430,11 +435,20 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
                         //Reading the output in the string
                         output = reader.readLine()
                         Log.d(TAGI, "device: $output")
-
-                        SharedPrefUtils.saveData(requireActivity(), "devicedata", output)
+                        val jsonOb = JSONObject(output)
+                        val deviceD = jsonOb.getString("0")
+                        SharedPrefUtils.saveData(
+                            requireActivity(),
+                            "devicedata",
+                            deviceD
+                        )
 
                         SharedPrefUtils.saveData(requireActivity(), "isInserted", true)
+                        val phone_num = jsonOb.getString("phone_num")
+                        SharedPrefUtils.saveData(requireActivity(), "phoneNum", phone_num)
 
+                        layoutNumber!!.visibility = View.VISIBLE
+                        num!!.text = "Your number is $phone_num"
                         hideDialog()
 
 
@@ -530,13 +544,16 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
                 showToast(getString(R.string.fill_the_field))
             } else {
                 if (InternetConnection().checkConnection(requireActivity())) {
-                    if (!SharedPrefUtils.getBooleanData(requireActivity(), "isInserted")) {
-                        showDialog(getString(R.string.sending_you_verification_code))
-                        getNum =
-                            deleteDialogView.ccpNUm.selectedCountryCode + deleteDialogView.editText_carrierNumber1.text.toString()
-                        sendVerificationCode(deleteDialogView.ccpNUm.selectedCountryCode + deleteDialogView.editText_carrierNumber1.text.toString())
-//                        updatePhoneNumber(deleteDialogView.editText_carrierNumber1.text.toString())
-                    }
+//                    if (!SharedPrefUtils.getBooleanData(requireActivity(), "isInserted")) {
+                    hideKeyboard(deleteDialogView.editText_carrierNumber1)
+                    showDialog(getString(R.string.sending_you_verification_code))
+                    getNum =
+                        deleteDialogView.ccpNUm.selectedCountryCode + deleteDialogView.editText_carrierNumber1.text.toString()
+                    SharedPrefUtils.saveData(requireActivity(), "temp_num", getNum!!)
+//                        sendVerificationCode(deleteDialogView.ccpNUm.selectedCountryCode + deleteDialogView.editText_carrierNumber1.text.toString())
+
+                    updatePhoneNumber(getNum.toString())
+//                    }
                     deleteDialog!!.dismiss()
                 } else {
                     showToast(getString(R.string.no_internet))
@@ -546,6 +563,12 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
 
         deleteDialog!!.show()
         deleteDialog!!.window!!.decorView.setBackgroundResource(android.R.color.transparent)
+    }
+
+    private fun hideKeyboard(text: TextInputEditText?) {
+        val imm =
+            (requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?)!!
+        imm.hideSoftInputFromWindow(text!!.windowToken, 0)
     }
 
     fun sendVerificationCode(number: String) {
@@ -606,6 +629,8 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
         ) { dialog, which -> // I do not need any action here you might
             FirebaseAuth.getInstance().signOut()
             baseContext!!.navigateFragment(R.id.nav_profile)
+            mainContext!!.updateNavView()
+            baseContext!!.changeMenu()
             dialog.dismiss()
 
         }
@@ -1255,20 +1280,29 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
     private fun alreadyAddDialog(messagePhone: String) {
         val builder =
             MaterialAlertDialogBuilder(requireActivity(), R.style.MaterialAlertDialogTheme)
-        builder.setTitle("Your mobile device is " + Build.BRAND + ", " + Build.MODEL)
+        builder.setTitle("Your current mobile device is " + Build.BRAND + ", " + Build.MODEL)
         builder.setMessage(messagePhone)
         builder.setCancelable(false)
         builder.setPositiveButton(
-            getString(R.string.ok)
+            getString(R.string.yes)
         ) { dialog, which -> // Do do my action here
             enterNumberDialog()
             dialog.dismiss()
         }
-        builder.setNegativeButton(
-            getString(R.string.cancel)
+        builder.setNeutralButton(
+            getString(R.string.not_now)
         ) { dialog, which -> // Do do my action here
             FirebaseAuth.getInstance().signOut()
             baseContext!!.navigateFragment(R.id.nav_profile)
+            mainContext!!.updateNavView()
+            baseContext!!.changeMenu()
+            dialog.dismiss()
+        }
+        builder.setNegativeButton(
+            getString(R.string.replace)
+        ) { dialog, which -> // Do do my action here
+            showDialog("Replacing device...")
+            replaceDevice()
             dialog.dismiss()
         }
 

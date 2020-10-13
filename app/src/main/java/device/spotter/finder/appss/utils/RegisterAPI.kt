@@ -48,6 +48,11 @@ interface RegisterAPI {
     @POST("/fetch_all_device.php")
     fun fetchAllDevices(
         @Field("uid") uid: String,
+        @Field("mac_address") mac_address: String,
+        @Field("latitude") latitude: String,
+        @Field("longitude") longitude: String,
+        @Field("updateDate") updateDate: String,
+        @Field("token") token: String,
         callback: Callback<Response>
     )
 

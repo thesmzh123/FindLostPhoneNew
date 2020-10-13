@@ -66,6 +66,7 @@ import retrofit.client.Response
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.net.NetworkInterface
+import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.TimeUnit
 
@@ -412,6 +413,13 @@ open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListene
         return longi.toString()
     }
 
+    //TODO: last updated
+    @SuppressLint("SimpleDateFormat")
+    fun lastUpdatedDate(): String {
+        val sdf = SimpleDateFormat("dd/M/yyyy hh:mm:ss")
+        return sdf.format(Date())
+    }
+
     //TODO: register device
     fun registerDevice(id: String) {
 
@@ -419,38 +427,44 @@ open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListene
 
             val restAdapter: RestAdapter = RestAdapter.Builder().setEndpoint(mainUrl).build()
             val api: RegisterAPI = restAdapter.create(RegisterAPI::class.java)
-            api.fetchAllDevices(id, object : Callback<Response> {
-                override fun success(result: Response, response: Response) {
-                    //On success we will read the server's output using buffered reader
-                    //Creating a buffered reader object
-                    val reader: BufferedReader?
+            api.fetchAllDevices(id,
+                getMacAddres(),
+                SharedPrefUtils.getStringData(this@BaseActivity, "lati").toString(),
+                SharedPrefUtils.getStringData(this@BaseActivity, "longi").toString(),
+                SharedPrefUtils.getStringData(this@BaseActivity, "deviceToken").toString(),
+                lastUpdatedDate(),
+                object : Callback<Response> {
+                    override fun success(result: Response, response: Response) {
+                        //On success we will read the server's output using buffered reader
+                        //Creating a buffered reader object
+                        val reader: BufferedReader?
 
-                    //An string to store output from the server
-                    val output: String
+                        //An string to store output from the server
+                        val output: String
 
-                    try {
-                        //Initializing buffered reader
-                        reader = BufferedReader(InputStreamReader(result.body.`in`()))
+                        try {
+                            //Initializing buffered reader
+                            reader = BufferedReader(InputStreamReader(result.body.`in`()))
 
-                        //Reading the output in the string
-                        output = reader.readLine()
-                        Log.d(TAGI, "device: $output")
-                        SharedPrefUtils.saveData(
-                            this@BaseActivity,
-                            "devicedata",
-                            output
-                        )
-                    } catch (e: Exception) {
-                        Log.d(TAGI, "error: " + e.message)
-                        e.printStackTrace()
+                            //Reading the output in the string
+                            output = reader.readLine()
+                            Log.d(TAGI, "device: $output")
+                            SharedPrefUtils.saveData(
+                                this@BaseActivity,
+                                "devicedata",
+                                output
+                            )
+                        } catch (e: Exception) {
+                            Log.d(TAGI, "error: " + e.message)
+                            e.printStackTrace()
+                        }
+
                     }
 
+                    override fun failure(error: RetrofitError) {
+                        Log.d(TAGI, error.toString())
+                    }
                 }
-
-                override fun failure(error: RetrofitError) {
-                    Log.d(TAGI, error.toString())
-                }
-            }
             )
         } catch (e: Exception) {
             e.printStackTrace()
@@ -773,9 +787,9 @@ open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListene
                         showDialog(getString(R.string.verifying_code))
                         val code = otpDialogView!!.editText_carrierNumber2.text.toString()
                         verifyCode(code)
-    //                        updatePhoneNumber(deleteDialogView.editText_carrierNumber1.text.toString())
+                        //                        updatePhoneNumber(deleteDialogView.editText_carrierNumber1.text.toString())
 
-    //                    otpDialog!!.dismiss()
+                        //                    otpDialog!!.dismiss()
                     } else {
                         showToast(getString(R.string.no_internet))
                     }
