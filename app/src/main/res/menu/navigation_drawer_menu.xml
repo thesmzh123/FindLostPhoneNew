@@ -19,6 +19,9 @@
         android:id="@+id/nav_family"
         android:actionLayout="@layout/drawer_custom_layout" />
     <item
+        android:id="@+id/noAds"
+        android:actionLayout="@layout/drawer_custom_layout" />
+    <item
         android:id="@+id/nav_browser"
         android:actionLayout="@layout/drawer_custom_layout" />
     <item

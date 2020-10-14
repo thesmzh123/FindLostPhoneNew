@@ -9,7 +9,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.app.ActivityCompat
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.find.lost.app.phone.utils.InternetConnection
 import com.google.android.gms.maps.CameraUpdateFactory

@@ -59,10 +59,10 @@ public class ViewPagerAdapter extends PagerAdapter {
     }
 
 
-    public int removeView(ViewPager pager, View v) {
+  /*  public int removeView(ViewPager pager, View v) {
         return removeView(pager, viewsList.indexOf(v));
     }
-
+*/
 
     public int removeView(ViewPager pager, int position) {
 

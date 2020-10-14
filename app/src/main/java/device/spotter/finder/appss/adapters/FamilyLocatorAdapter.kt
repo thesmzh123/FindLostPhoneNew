@@ -1,4 +1,4 @@
-@file:Suppress("SameParameterValue")
+@file:Suppress("SameParameterValue", "UNUSED_ANONYMOUS_PARAMETER")
 
 package device.spotter.finder.appss.adapters
 

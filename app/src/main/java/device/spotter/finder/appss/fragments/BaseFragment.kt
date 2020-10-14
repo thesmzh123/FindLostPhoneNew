@@ -1,4 +1,4 @@
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "LocalVariableName")
 
 package device.spotter.finder.appss.fragments
 
@@ -11,14 +11,12 @@ import android.content.pm.PackageManager
 import android.location.Location
 import android.net.Uri
 import android.os.*
-import android.text.Editable
 import android.text.TextUtils
 import android.util.DisplayMetrics
 import android.util.Log
 import android.view.*
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
-import androidx.annotation.NonNull
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -33,14 +31,12 @@ import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.GoogleApiClient
 import com.google.android.gms.location.*
 import com.google.android.gms.tasks.OnCompleteListener
-import com.google.android.gms.tasks.Task
 import com.google.android.gms.tasks.TaskExecutors
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.switchmaterial.SwitchMaterial
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textview.MaterialTextView
 import com.google.firebase.FirebaseException
-import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
@@ -65,7 +61,6 @@ import kotlinx.android.synthetic.main.ad_unified.view.*
 import kotlinx.android.synthetic.main.enter_phone_num_layout.view.*
 import kotlinx.android.synthetic.main.enter_phone_num_otp_layout.view.*
 import kotlinx.android.synthetic.main.fragment_lost_phone_loc.view.*
-import kotlinx.android.synthetic.main.fragment_network_provider.view.*
 import kotlinx.android.synthetic.main.layout_loading_dialog.view.*
 import org.apache.http.HttpResponse
 import org.apache.http.NameValuePair
@@ -91,7 +86,7 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
     GoogleApiClient.OnConnectionFailedListener, LocationListener {
     var root: View? = null
     lateinit var auth: FirebaseAuth
-    lateinit var auth1: FirebaseAuth
+    private lateinit var auth1: FirebaseAuth
     var mainContext: MainActivity? = null
     var baseContext: BaseActivity? = null
     private var dialog: AlertDialog? = null
@@ -112,9 +107,9 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
 
     lateinit var interstitial: InterstitialAd
     private var verificationId: String? = null
-    var getNum: String? = null
+    private var getNum: String? = null
     var deleteDialog: AlertDialog? = null
-    var otpDialog: AlertDialog? = null
+    private var otpDialog: AlertDialog? = null
     var otpDialogView: View? = null
     private var isRecent: Boolean = false
     private var isFinish: Boolean = false
@@ -371,7 +366,7 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
         alert.show()
     }
 
-    private fun replaceNumberDialog() {
+   /* private fun replaceNumberDialog() {
         val builder =
             MaterialAlertDialogBuilder(requireActivity(), R.style.MaterialAlertDialogTheme)
         builder.setTitle("A device with this email is already registered with another phone number.")
@@ -402,7 +397,7 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
 
         val alert = builder.create()
         alert.show()
-    }
+    }*/
 
     private fun replaceDevice() {
         val restAdapter: RestAdapter = RestAdapter.Builder().setEndpoint(mainUrl).build()
@@ -552,9 +547,9 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
                     getNum =
                         deleteDialogView.ccpNUm.selectedCountryCode + deleteDialogView.editText_carrierNumber1.text.toString()
                     SharedPrefUtils.saveData(requireActivity(), "temp_num", getNum!!)
-//                        sendVerificationCode(deleteDialogView.ccpNUm.selectedCountryCode + deleteDialogView.editText_carrierNumber1.text.toString())
+                    sendVerificationCode(deleteDialogView.ccpNUm.selectedCountryCode + deleteDialogView.editText_carrierNumber1.text.toString())
 
-                    updatePhoneNumber(getNum.toString())
+//                    updatePhoneNumber(getNum.toString())
 //                    }
                     deleteDialog!!.dismiss()
                 } else {
@@ -573,9 +568,9 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
         imm.hideSoftInputFromWindow(text!!.windowToken, 0)
     }
 
-    fun sendVerificationCode(number: String) {
+    private fun sendVerificationCode(number: String) {
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
-            "+" + number,
+            "+$number",
             60,
             TimeUnit.SECONDS,
             TaskExecutors.MAIN_THREAD,
@@ -597,8 +592,8 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
             }
 
             override fun onVerificationCompleted(phoneAuthCredential: PhoneAuthCredential) {
-                val code: String = phoneAuthCredential.getSmsCode().toString()
-                Log.d(TAGI, "onVerificationCompleted: " + code)
+                val code: String = phoneAuthCredential.smsCode.toString()
+                Log.d(TAGI, "onVerificationCompleted: $code")
                 otpDialogView!!.editText_carrierNumber2.setText(code)
                 verifyCode(code)
             }
@@ -728,22 +723,19 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
 
     private fun signInWithCredential(credential: PhoneAuthCredential) {
         auth1.signInWithCredential(credential)
-            .addOnCompleteListener(object :
-                OnCompleteListener<AuthResult?> {
-                override fun onComplete(@NonNull task: Task<AuthResult?>) {
-                    if (task.isSuccessful()) {
-                        hideDialog()
-                        cdt!!.cancel()
-                        otpDialog!!.dismiss()
-                        showDialog(getString(R.string.saving_number))
-                        updatePhoneNumber(getNum.toString())
-                    } else {
-//                        otpDialog!!.dismiss()
-                        showToast(task.exception!!.message.toString())
-                        hideDialog()
-                    }
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    hideDialog()
+                    cdt!!.cancel()
+                    otpDialog!!.dismiss()
+                    showDialog(getString(R.string.saving_number))
+                    updatePhoneNumber(getNum.toString())
+                } else {
+                    //                        otpDialog!!.dismiss()
+                    showToast(task.exception!!.message.toString())
+                    hideDialog()
                 }
-            })
+            }
     }
 
     //TODO: last updated
@@ -1242,24 +1234,28 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
                         val error = jsonObject.getBoolean("error")
                         val messagePhone = jsonObject.getString("message")
 
-                        if (jsonObject.getBoolean("isInserted")) {
-                            SharedPrefUtils.saveData(requireActivity(), "uid", id)
-                            SharedPrefUtils.saveData(requireActivity(), "phoneNum", phoneNum)
-                            SharedPrefUtils.saveData(requireActivity(), "pid", pid)
-                            layoutNumber!!.visibility = View.VISIBLE
-                            num!!.text = "Your number is $phoneNum"
-                            SharedPrefUtils.saveData(context!!, "isInserted", isInserted)
-                            registerDevice(id, pid)
-                        } else if (error) {
-                            alreadyAddDialog(messagePhone)
-                            hideDialog()
-                        } else {
-                            SharedPrefUtils.saveData(requireActivity(), "uid", id)
-                            SharedPrefUtils.saveData(requireActivity(), "phoneNum", phoneNum)
-                            SharedPrefUtils.saveData(requireActivity(), "pid", pid)
-                            layoutNumber!!.visibility = View.VISIBLE
-                            num!!.text = "Your number is $phoneNum"
-                            hideDialog()
+                        when {
+                            jsonObject.getBoolean("isInserted") -> {
+                                SharedPrefUtils.saveData(requireActivity(), "uid", id)
+                                SharedPrefUtils.saveData(requireActivity(), "phoneNum", phoneNum)
+                                SharedPrefUtils.saveData(requireActivity(), "pid", pid)
+                                layoutNumber!!.visibility = View.VISIBLE
+                                num!!.text = "Your number is $phoneNum"
+                                SharedPrefUtils.saveData(context!!, "isInserted", isInserted)
+                                registerDevice(id, pid)
+                            }
+                            error -> {
+                                alreadyAddDialog(messagePhone)
+                                hideDialog()
+                            }
+                            else -> {
+                                SharedPrefUtils.saveData(requireActivity(), "uid", id)
+                                SharedPrefUtils.saveData(requireActivity(), "phoneNum", phoneNum)
+                                SharedPrefUtils.saveData(requireActivity(), "pid", pid)
+                                layoutNumber!!.visibility = View.VISIBLE
+                                num!!.text = "Your number is $phoneNum"
+                                hideDialog()
+                            }
                         }
 
 //                        hideDialog()

@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.home_recyclerview_layout.view.*
 import device.spotter.finder.appss.R
 import device.spotter.finder.appss.models.Nearby
 
-class NearbyAdapter(val context: Context, val nearbyList: ArrayList<Nearby>) :
+class NearbyAdapter(val context: Context, private val nearbyList: ArrayList<Nearby>) :
     RecyclerView.Adapter<NearbyAdapter.MyViewHolder>() {
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 

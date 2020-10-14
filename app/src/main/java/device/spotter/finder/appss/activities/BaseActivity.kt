@@ -1,4 +1,4 @@
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "UNUSED_ANONYMOUS_PARAMETER")
 
 package device.spotter.finder.appss.activities
 
@@ -27,6 +27,8 @@ import androidx.lifecycle.ProcessLifecycleOwner
 import androidx.navigation.findNavController
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.Volley
+import com.anjlab.android.iab.v3.BillingProcessor
+import com.anjlab.android.iab.v3.TransactionDetails
 import com.bumptech.glide.Glide
 import com.find.lost.app.phone.utils.InternetConnection
 import com.find.lost.app.phone.utils.SharedPrefUtils
@@ -34,12 +36,9 @@ import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.InterstitialAd
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.android.gms.tasks.Task
 import com.google.android.gms.tasks.TaskExecutors
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.FirebaseException
-import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
@@ -50,6 +49,7 @@ import com.google.firebase.database.ValueEventListener
 import de.hdodenhof.circleimageview.CircleImageView
 import device.spotter.finder.appss.R
 import device.spotter.finder.appss.fragments.ProfileFragment
+import device.spotter.finder.appss.utils.Constants.PRODUCT_KEY
 import device.spotter.finder.appss.utils.Constants.TAGI
 import device.spotter.finder.appss.utils.DatabaseHelperUtils
 import device.spotter.finder.appss.utils.GPSTracker
@@ -70,19 +70,21 @@ import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.TimeUnit
 
-open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListener {
+open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListener,
+    BillingProcessor.IBillingHandler {
     var menu: Menu? = null
     lateinit var auth: FirebaseAuth
-    lateinit var auth1: FirebaseAuth
+    private lateinit var auth1: FirebaseAuth
     private var isMenuEnable = true
     lateinit var interstitial: InterstitialAd
     private var dialog: AlertDialog? = null
-    var gpsTracker: GPSTracker? = null
+    private var gpsTracker: GPSTracker? = null
     var mainUrl: String? = null
     var ringtone: Ringtone? = null
     var databaseHelperUtils: DatabaseHelperUtils? = null
     var queue: RequestQueue? = null
-
+    var noAdsItem: MenuItem? = null
+    var bp: BillingProcessor? = null
 
     //TODO: add back arrow to activity
     fun addBackArrow() {
@@ -151,6 +153,8 @@ open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListene
                 } catch (e: Exception) {
                     e.printStackTrace()
                 }
+                bp = BillingProcessor(this@BaseActivity, value, this@BaseActivity)
+                bp!!.initialize()
             }
 
             override fun onCancelled(@NonNull databaseError: DatabaseError) {
@@ -392,26 +396,26 @@ open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListene
     }
 
     //TODO: get latitude
-    fun getLat(): String {
-        var lat: String? = null
-        if (gpsTracker?.canGetLocation()!!) {
-            Log.d(TAGI, "lat: " + gpsTracker!!.getLatitude())
-            Log.d(TAGI, "long: " + gpsTracker!!.getLongitude())
-            lat = gpsTracker!!.getLatitude().toString()
-        }
-        return lat.toString()
-    }
+    /*   fun getLat(): String {
+           var lat: String? = null
+           if (gpsTracker?.canGetLocation()!!) {
+               Log.d(TAGI, "lat: " + gpsTracker!!.getLatitude())
+               Log.d(TAGI, "long: " + gpsTracker!!.getLongitude())
+               lat = gpsTracker!!.getLatitude().toString()
+           }
+           return lat.toString()
+       }
 
-    //TODO: get Longitude
-    fun getLongi(): String {
-        var longi: String? = null
-        if (gpsTracker?.canGetLocation()!!) {
-            Log.d(TAGI, "lat: " + gpsTracker!!.getLatitude())
-            Log.d(TAGI, "long: " + gpsTracker!!.getLongitude())
-            longi = gpsTracker!!.getLongitude().toString()
-        }
-        return longi.toString()
-    }
+       //TODO: get Longitude
+       fun getLongi(): String {
+           var longi: String? = null
+           if (gpsTracker?.canGetLocation()!!) {
+               Log.d(TAGI, "lat: " + gpsTracker!!.getLatitude())
+               Log.d(TAGI, "long: " + gpsTracker!!.getLongitude())
+               longi = gpsTracker!!.getLongitude().toString()
+           }
+           return longi.toString()
+       }*/
 
     //TODO: last updated
     @SuppressLint("SimpleDateFormat")
@@ -606,7 +610,7 @@ open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListene
             shareIntent.type = "text/plain"
             shareIntent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.app_name))
             var shareMessage =
-                "\nI recommend you to join me as family member by using this phone number " + number + " by visiting this app and installing the application from play store.\n\n"
+                "\nI recommend you to join me as family member by using this phone number $number by visiting this app and installing the application from play store.\n\n"
             shareMessage =
                 shareMessage + "https://play.google.com/store/apps/details?id=" + packageName + "\n\n"
             shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage)
@@ -622,12 +626,12 @@ open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListene
     private var isRecent: Boolean = false
     private var isFinish: Boolean = false
     private var cdt: CountDownTimer? = null
-    var otpDialog: AlertDialog? = null
+    private var otpDialog: AlertDialog? = null
     var getNum: String? = null
 
     fun sendVerificationCode(number: String) {
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
-            "+" + number,
+            "+$number",
             60,
             TimeUnit.SECONDS,
             TaskExecutors.MAIN_THREAD,
@@ -649,8 +653,8 @@ open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListene
             }
 
             override fun onVerificationCompleted(phoneAuthCredential: PhoneAuthCredential) {
-                val code: String = phoneAuthCredential.getSmsCode().toString()
-                Log.d(TAGI, "onVerificationCompleted: " + code)
+                val code: String = phoneAuthCredential.smsCode.toString()
+                Log.d(TAGI, "onVerificationCompleted: $code")
                 otpDialogView!!.editText_carrierNumber2.setText(code)
                 verifyCode(code)
             }
@@ -824,22 +828,19 @@ open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListene
 
     private fun signInWithCredential(credential: PhoneAuthCredential) {
         auth1.signInWithCredential(credential)
-            .addOnCompleteListener(object :
-                OnCompleteListener<AuthResult?> {
-                override fun onComplete(@NonNull task: Task<AuthResult?>) {
-                    if (task.isSuccessful()) {
-                        hideDialog()
-                        cdt!!.cancel()
-                        otpDialog!!.dismiss()
-                        showDialog(getString(R.string.saving_number))
-                        updatePhoneNumber(getNum.toString())
-                    } else {
-//                        otpDialog!!.dismiss()
-                        showToast(task.exception!!.message.toString())
-                        hideDialog()
-                    }
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    hideDialog()
+                    cdt!!.cancel()
+                    otpDialog!!.dismiss()
+                    showDialog(getString(R.string.saving_number))
+                    updatePhoneNumber(getNum.toString())
+                } else {
+                    //                        otpDialog!!.dismiss()
+                    showToast(task.exception!!.message.toString())
+                    hideDialog()
                 }
-            })
+            }
     }
 
     private fun updatePhoneNumber(num1: String) {
@@ -897,4 +898,68 @@ open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListene
 
     }
 
+    override fun onBillingInitialized() {
+        Log.d(TAGI, "onBillingInitialized")
+
+    }
+
+    override fun onPurchaseHistoryRestored() {
+        try {
+            Log.d(TAGI, "onPurchaseHistoryRestored: ")
+            if (bp!!.isPurchased(PRODUCT_KEY)) {
+                Log.d(TAGI, "onPurchaseHistoryRestored: true")
+                hideAds()
+            } else {
+                Log.d(TAGI, "onPurchaseHistoryRestored: false")
+                loadInterstial()
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
+    override fun onProductPurchased(productId: String, details: TransactionDetails?) {
+        try {
+            Log.d(TAGI, "onProductPurchased: $productId")
+            Log.d(TAGI, "onProductPurchased: $details")
+            hideAds()
+            startActivity(Intent(this@BaseActivity, MainActivity::class.java))
+            finish()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
+    override fun onBillingError(errorCode: Int, error: Throwable?) {
+        try {
+            Log.d(TAGI, "onBillingError: " + error?.message)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (!bp!!.handleActivityResult(requestCode, resultCode, data)) {
+            super.onActivityResult(requestCode, resultCode, data)
+            Log.d(TAGI, "onActivityResult: done")
+        }
+    }
+
+    override fun onDestroy() {
+        if (bp != null) {
+            bp!!.release()
+        }
+        super.onDestroy()
+    }
+
+    //TODO: hide ads
+    fun hideAds() {
+        try {
+            SharedPrefUtils.saveData(this, "hideAds", true)
+            noAdsItem!!.isVisible = false
+
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
 }

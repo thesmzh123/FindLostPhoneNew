@@ -5,12 +5,9 @@ package device.spotter.finder.appss.activities
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
-import android.text.method.LinkMovementMethod
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.TextView
 import com.find.lost.app.phone.utils.SharedPrefUtils
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import device.spotter.finder.appss.R
 
 class TermsAndConditionsActivity : BaseActivity() {
@@ -48,9 +45,9 @@ class TermsAndConditionsActivity : BaseActivity() {
         }.show()
     }
 
-    private fun setupHyperlink(subtitle: TextView) {
+   /* private fun setupHyperlink(subtitle: TextView) {
         subtitle.movementMethod = LinkMovementMethod.getInstance()
-    }
+    }*/
 
     override fun onBackPressed() {
         finishAffinity()

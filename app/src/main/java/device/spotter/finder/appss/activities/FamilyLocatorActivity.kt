@@ -204,18 +204,17 @@ class FamilyLocatorActivity : BaseActivity(), OnMapReadyCallback, LocationListen
 
     @SuppressLint("InflateParams")
     private fun showNumberDialog() {
-        val deleteDialog: AlertDialog?
         val factory = LayoutInflater.from(this@FamilyLocatorActivity)
         deleteDialogView =
             factory.inflate(R.layout.enter_phone_number_layout, null)
-        deleteDialog = if (Build.VERSION.SDK_INT > 23) {
+        val deleteDialog: AlertDialog? = if (Build.VERSION.SDK_INT > 23) {
 
             MaterialAlertDialogBuilder(this@FamilyLocatorActivity).create()
         } else {
             AlertDialog.Builder(this@FamilyLocatorActivity).create()
         }
 
-        deleteDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        deleteDialog!!.requestWindowFeature(Window.FEATURE_NO_TITLE)
         deleteDialog.setView(deleteDialogView)
         deleteDialog.setCancelable(false)
         deleteDialogView!!.send.setOnClickListener {

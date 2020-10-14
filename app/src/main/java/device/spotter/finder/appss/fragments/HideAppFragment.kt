@@ -1,3 +1,5 @@
+@file:Suppress("UNUSED_ANONYMOUS_PARAMETER")
+
 package device.spotter.finder.appss.fragments
 
 import android.content.ComponentName
@@ -78,14 +80,12 @@ class HideAppFragment : BaseFragment() {
 
         root!!.switchBtnLoc.setOnCheckedChangeListener { compoundButton, b ->
             if (b) {
-                val pkg: PackageManager = requireActivity().getPackageManager()
+                val pkg: PackageManager = requireActivity().packageManager
                 pkg.setComponentEnabledSetting(
                     ComponentName(requireActivity(), MainActivity::class.java),
                     PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
                     PackageManager.DONT_KILL_APP
                 )
-
-            } else {
 
             }
         }

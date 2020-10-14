@@ -16,4 +16,7 @@ object Constants {
     const val UNSELECTED = -1
     const val APP_UPDATE_REQUEST_CODE = 1991
 
+    //    const val PRODUCT_KEY = "android.test.purchased"
+    const val PRODUCT_KEY = "device.spotter.finder.appss"
+
 }

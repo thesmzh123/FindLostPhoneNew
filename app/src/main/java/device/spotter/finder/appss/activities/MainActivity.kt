@@ -26,6 +26,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.bumptech.glide.Glide
+import com.find.lost.app.phone.utils.InternetConnection
 import com.find.lost.app.phone.utils.SharedPrefUtils
 import com.google.android.gms.ads.AdListener
 import com.google.android.material.navigation.NavigationView
@@ -43,6 +44,7 @@ import kotlinx.android.synthetic.main.drawer_custom_layout.view.*
 import kotlinx.android.synthetic.main.nav_header_main.view.*
 import device.spotter.finder.appss.R
 import device.spotter.finder.appss.utils.Constants.APP_UPDATE_REQUEST_CODE
+import device.spotter.finder.appss.utils.Constants.PRODUCT_KEY
 import device.spotter.finder.appss.utils.Constants.TAGI
 import device.spotter.finder.appss.utils.PermissionsUtils
 
@@ -72,6 +74,7 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
             }
         }
     }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         try {
@@ -85,6 +88,7 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
             e.printStackTrace()
         }
     }
+
     override fun onResume() {
         super.onResume()
         try {
@@ -199,6 +203,8 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
                     R.id.nav_profile,
                     R.id.nav_nearby,
                     R.id.nav_family,
+                    R.id.nav_browser,
+                    R.id.noAds,
                     R.id.nav_rate,
                     R.id.nav_share
                 ), drawer_layout
@@ -424,6 +430,27 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
             val browserIntent =
                 Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.site_url)))
             startActivity(browserIntent)
+        }
+
+        //remove ads menu
+        noAdsItem = navigationView!!.menu.findItem(R.id.noAds)
+        noAdsItem!!.setActionView(R.layout.drawer_custom_layout)
+        val noAds = noAdsItem!!.actionView
+        Glide.with(this).load(R.drawable.crown).into(noAds.navIcon)
+        noAds.navText.text = getString(R.string.remove_ads)
+        noAdsItem!!.isVisible = !SharedPrefUtils.getBooleanData(this@MainActivity, "hideAds")
+        noAds.setOnClickListener {
+            closeDrawer()
+            try {
+                bp!!.purchase(this@MainActivity, PRODUCT_KEY)
+            } catch (e: Exception) {
+                e.printStackTrace()
+                if (InternetConnection().checkConnection(applicationContext)) {
+                    showToast("Restart this app to use this feature")
+                } else {
+                    showToast(getString(R.string.no_internet))
+                }
+            }
         }
 
         when {
