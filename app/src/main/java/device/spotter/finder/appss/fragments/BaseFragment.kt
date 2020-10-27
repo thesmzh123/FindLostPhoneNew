@@ -366,38 +366,38 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
         alert.show()
     }
 
-   /* private fun replaceNumberDialog() {
-        val builder =
-            MaterialAlertDialogBuilder(requireActivity(), R.style.MaterialAlertDialogTheme)
-        builder.setTitle("A device with this email is already registered with another phone number.")
-        builder.setMessage("Do you want to replace your previous device with this device OR press No button to add a new device by adding a new phone number?\n\n Note: Adding the same will replace your old with new device")
-        builder.setCancelable(false)
-        builder.setPositiveButton(
-            getString(R.string.yes)
-        ) { dialog, which -> // Do do my action here
-            showDialog("Replacing device...")
-            replaceDevice()
-            dialog.dismiss()
-        }
+    /* private fun replaceNumberDialog() {
+         val builder =
+             MaterialAlertDialogBuilder(requireActivity(), R.style.MaterialAlertDialogTheme)
+         builder.setTitle("A device with this email is already registered with another phone number.")
+         builder.setMessage("Do you want to replace your previous device with this device OR press No button to add a new device by adding a new phone number?\n\n Note: Adding the same will replace your old with new device")
+         builder.setCancelable(false)
+         builder.setPositiveButton(
+             getString(R.string.yes)
+         ) { dialog, which -> // Do do my action here
+             showDialog("Replacing device...")
+             replaceDevice()
+             dialog.dismiss()
+         }
 
-        builder.setNegativeButton(
-            getString(R.string.no)
-        ) { dialog, which -> // I do not need any action here you might
-            dialog.dismiss()
-            enterNumberDialog()
+         builder.setNegativeButton(
+             getString(R.string.no)
+         ) { dialog, which -> // I do not need any action here you might
+             dialog.dismiss()
+             enterNumberDialog()
 
-        }
-        builder.setNeutralButton(
-            getString(R.string.not_now)
-        ) { dialog, which -> // I do not need any action here you might
-            dialog.dismiss()
-            SharedPrefUtils.saveData(requireActivity(), "isInserted", true)
+         }
+         builder.setNeutralButton(
+             getString(R.string.not_now)
+         ) { dialog, which -> // I do not need any action here you might
+             dialog.dismiss()
+             SharedPrefUtils.saveData(requireActivity(), "isInserted", true)
 
-        }
+         }
 
-        val alert = builder.create()
-        alert.show()
-    }*/
+         val alert = builder.create()
+         alert.show()
+     }*/
 
     private fun replaceDevice() {
         val restAdapter: RestAdapter = RestAdapter.Builder().setEndpoint(mainUrl).build()
@@ -612,7 +612,7 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
         val builder =
             MaterialAlertDialogBuilder(requireActivity(), R.style.MaterialAlertDialogTheme)
         builder.setTitle("OTP Error!")
-        builder.setMessage("Some error occured while generating OTP or Your Quota of OTP for this number has expired!\n\n Please try again by re-entering the number.")
+        builder.setMessage("Some error occurred while generating OTP or Your Quota of OTP for this number has expired!\n\n Please try again by re-entering the number.")
         builder.setCancelable(false)
         builder.setPositiveButton(
             getString(R.string.yes)
@@ -1226,35 +1226,53 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
                         output = reader.readLine()
                         Log.d(TAGI, "msg: $output")
                         val jsonObject = JSONObject(output)
-                        val newJson = jsonObject.getJSONObject("data")
-                        val pid = newJson.getString("pid")
-                        val phoneNum = newJson.getString("phone_num")
-                        val id = newJson.getString("uid")
-                        val isInserted = jsonObject.getBoolean("isInserted")
-                        val error = jsonObject.getBoolean("error")
-                        val messagePhone = jsonObject.getString("message")
+                        if (jsonObject.getBoolean("isExistSomeOne")) {
+                            hideDialog()
+                            numberExistDialog(jsonObject.getString("message").toString())
+                        } else {
+                            val newJson = jsonObject.getJSONObject("data")
+                            val pid = newJson.getString("pid")
+                            val phoneNum = newJson.getString("phone_num")
+                            val id = newJson.getString("uid")
+                            val isInserted = jsonObject.getBoolean("isInserted")
+                            val error = jsonObject.getBoolean("error")
+                            val messagePhone = jsonObject.getString("message")
 
-                        when {
-                            jsonObject.getBoolean("isInserted") -> {
-                                SharedPrefUtils.saveData(requireActivity(), "uid", id)
-                                SharedPrefUtils.saveData(requireActivity(), "phoneNum", phoneNum)
-                                SharedPrefUtils.saveData(requireActivity(), "pid", pid)
-                                layoutNumber!!.visibility = View.VISIBLE
-                                num!!.text = "Your number is $phoneNum"
-                                SharedPrefUtils.saveData(context!!, "isInserted", isInserted)
-                                registerDevice(id, pid)
-                            }
-                            error -> {
-                                alreadyAddDialog(messagePhone)
-                                hideDialog()
-                            }
-                            else -> {
-                                SharedPrefUtils.saveData(requireActivity(), "uid", id)
-                                SharedPrefUtils.saveData(requireActivity(), "phoneNum", phoneNum)
-                                SharedPrefUtils.saveData(requireActivity(), "pid", pid)
-                                layoutNumber!!.visibility = View.VISIBLE
-                                num!!.text = "Your number is $phoneNum"
-                                hideDialog()
+                            when {
+                                jsonObject.getBoolean("isInserted") -> {
+                                    SharedPrefUtils.saveData(requireActivity(), "uid", id)
+                                    SharedPrefUtils.saveData(
+                                        requireActivity(),
+                                        "phoneNum",
+                                        phoneNum
+                                    )
+                                    SharedPrefUtils.saveData(requireActivity(), "pid", pid)
+                                    layoutNumber!!.visibility = View.VISIBLE
+                                    num!!.text = "Your number is $phoneNum"
+                                    SharedPrefUtils.saveData(context!!, "isInserted", isInserted)
+                                    registerDevice(id, pid)
+                                }
+                                error -> {
+                                    deleteDialog!!.dismiss()
+                                    alreadyAddDialog(messagePhone)
+                                    hideDialog()
+                                }
+                            /*    jsonObject.getBoolean("isExistSomeOne")->{
+                                    hideDialog()
+                                    numberExistDialog(jsonObject.getString("message").toString())
+                                }*/
+                                else -> {
+                                    SharedPrefUtils.saveData(requireActivity(), "uid", id)
+                                    SharedPrefUtils.saveData(
+                                        requireActivity(),
+                                        "phoneNum",
+                                        phoneNum
+                                    )
+                                    SharedPrefUtils.saveData(requireActivity(), "pid", pid)
+                                    layoutNumber!!.visibility = View.VISIBLE
+                                    num!!.text = "Your number is $phoneNum"
+                                    hideDialog()
+                                }
                             }
                         }
 
@@ -1290,6 +1308,7 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
         builder.setNeutralButton(
             getString(R.string.not_now)
         ) { dialog, which -> // Do do my action here
+
             FirebaseAuth.getInstance().signOut()
             baseContext!!.navigateFragment(R.id.nav_profile)
             mainContext!!.updateNavView()
@@ -1301,6 +1320,24 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
         ) { dialog, which -> // Do do my action here
             showDialog("Replacing device...")
             replaceDevice()
+            dialog.dismiss()
+        }
+
+
+        val alert = builder.create()
+        alert.show()
+    }
+
+    private fun numberExistDialog(messagePhone: String) {
+        val builder =
+            MaterialAlertDialogBuilder(requireActivity(), R.style.MaterialAlertDialogTheme)
+        builder.setTitle("Your current mobile device is " + Build.BRAND + ", " + Build.MODEL)
+        builder.setMessage(messagePhone)
+        builder.setCancelable(false)
+        builder.setPositiveButton(
+            getString(R.string.ok)
+        ) { dialog, which -> // Do do my action here
+            enterNumberDialog()
             dialog.dismiss()
         }
 

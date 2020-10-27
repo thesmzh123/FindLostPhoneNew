@@ -141,14 +141,17 @@ class ProfileFragment : BaseFragment() {
     private fun changeUi() {
         root!!.signInBlock.visibility = View.GONE
         root!!.profileBlock.visibility = View.VISIBLE
-        root!!.name.text = auth.currentUser?.displayName
-        root!!.email.text = auth.currentUser?.email
-        Glide.with(this).load(auth.currentUser?.photoUrl)
-            .into(root!!.profileImage)
+        root!!.name.text = SharedPrefUtils.getStringData(requireActivity(), "username")
+        root!!.email.text = SharedPrefUtils.getStringData(requireActivity(),"useremail")
+                Glide.with(this).load(SharedPrefUtils.getStringData(requireActivity(),"userprofile"))
+                    .into(root!!.profileImage)
         val phone = SharedPrefUtils.getStringData(requireActivity(), "phoneNum").toString()
         if (phone.isNotEmpty() || !phone.equals("null", true)) {
             layoutNumber!!.visibility = View.VISIBLE
             num!!.text = "Your number is $phone"
+        } else {
+            layoutNumber!!.visibility = View.GONE
+
         }
     }
 
@@ -213,6 +216,23 @@ class ProfileFragment : BaseFragment() {
                         Log.d(TAGI, user?.displayName + "\n")
                         Log.d(TAGI, "firebaseAuthWithGoogle: " + user?.uid)
                         if (user != null) {
+
+
+                            SharedPrefUtils.saveData(
+                                requireActivity(),
+                                "username",
+                                user.displayName.toString()
+                            )
+                            SharedPrefUtils.saveData(
+                                requireActivity(),
+                                "useremail",
+                                user.email.toString()
+                            )
+                            SharedPrefUtils.saveData(
+                                requireActivity(),
+                                "userprofile",
+                                user.photoUrl.toString()
+                            )
                             changeUi()
                             mainContext!!.updateNavView()
                             baseContext!!.changeMenu()

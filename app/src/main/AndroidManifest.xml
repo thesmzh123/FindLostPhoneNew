@@ -15,6 +15,8 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+    <uses-permission android:name="com.android.vending.BILLING" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -28,8 +30,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
-        tools:targetApi="q"
-        tools:ignore="UnusedAttribute">
+        tools:ignore="UnusedAttribute"
+        tools:targetApi="q">
         <activity
             android:name=".activities.SplashScreenActivity"
             android:launchMode="singleTask"
@@ -58,7 +60,7 @@
         </activity>
         <activity
             android:name=".activities.FamilyLocatorActivity"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="lost.phone.finder.app.online.finder.ACCEPTNOTIFICATION" />
 
@@ -75,21 +77,21 @@
         <activity
             android:name=".activities.MainActivity"
             android:screenOrientation="portrait">
-        <!--    <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            <!--    <intent-filter>
+                    <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
-          <!--  <intent-filter> &lt;!&ndash; Handle intent from a file browser app: &ndash;&gt;
-                <action android:name="android.intent.action.VIEW" />
-                <action android:name="android.intent.action.INSERT_OR_EDIT" />
+                    <category android:name="android.intent.category.LAUNCHER" />
+                </intent-filter>-->
+            <!--  <intent-filter> &lt;!&ndash; Handle intent from a file browser app: &ndash;&gt;
+                  <action android:name="android.intent.action.VIEW" />
+                  <action android:name="android.intent.action.INSERT_OR_EDIT" />
 
-                <category android:name="android.intent.category.DEFAULT" />
+                  <category android:name="android.intent.category.DEFAULT" />
 
-                <data android:scheme="file" />
-                <data android:scheme="content" />
-                <data android:mimeType="text/x-vcard" />
-            </intent-filter>-->
+                  <data android:scheme="file" />
+                  <data android:scheme="content" />
+                  <data android:mimeType="text/x-vcard" />
+              </intent-filter>-->
         </activity>
 
         <meta-data
@@ -123,7 +125,7 @@
         </receiver>
         <receiver
             android:name=".receivers.ShareLocReceiver"
-            android:enabled="true"/>
+            android:enabled="true" />
         <receiver
             android:name=".receivers.DeviceAdminSample"
             android:permission="android.permission.BIND_DEVICE_ADMIN">

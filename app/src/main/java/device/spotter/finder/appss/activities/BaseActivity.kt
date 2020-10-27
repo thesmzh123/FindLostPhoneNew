@@ -217,7 +217,9 @@ open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListene
             val itemClick = v.layout
             val profileImage = changeProfile()
             if (isLoggedIn()) {
-                Glide.with(this@BaseActivity).load(auth.currentUser!!.photoUrl).into(profileImage)
+                Glide.with(this@BaseActivity)
+                    .load(SharedPrefUtils.getStringData(this@BaseActivity, "userprofile"))
+                    .into(profileImage)
             } else {
                 Glide.with(this@BaseActivity).load(R.drawable.ic_profile_black_24dp)
                     .into(profileImage)
@@ -719,8 +721,8 @@ open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListene
                         showDialog(getString(R.string.sending_you_verification_code))
                         getNum =
                             deleteDialogView.ccpNUm.selectedCountryCode + deleteDialogView.editText_carrierNumber1.text.toString()
-                        sendVerificationCode(deleteDialogView.ccpNUm.selectedCountryCode + deleteDialogView.editText_carrierNumber1.text.toString())
-//                        updatePhoneNumber(deleteDialogView.editText_carrierNumber1.text.toString())
+//                        sendVerificationCode(deleteDialogView.ccpNUm.selectedCountryCode + deleteDialogView.editText_carrierNumber1.text.toString())
+                        updatePhoneNumber(deleteDialogView.editText_carrierNumber1.text.toString())
                     }
                     deleteDialog!!.dismiss()
                 } else {
@@ -870,18 +872,23 @@ open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListene
                         output = reader.readLine()
                         Log.d(TAGI, "msg: $output")
                         val jsonObject = JSONObject(output)
-                        val newJson = jsonObject.getJSONObject("data")
-                        val pid = newJson.getString("pid")
-                        val phoneNum = newJson.getString("phone_num")
-                        val id = newJson.getString("uid")
+                        if (jsonObject.getBoolean("error")) {
+                            hideDialog()
+                            Log.d(TAGI, "success: " + jsonObject.getString("message"))
+                        } else {
+                            val newJson = jsonObject.getJSONObject("data")
+                            val pid = newJson.getString("pid")
+                            val phoneNum = newJson.getString("phone_num")
+                            val id = newJson.getString("uid")
 //                        val isInserted = jsonObject.getBoolean("isInserted")
-                        SharedPrefUtils.saveData(this@BaseActivity, "uid", id)
-                        SharedPrefUtils.saveData(this@BaseActivity, "phoneNum", phoneNum)
-                        SharedPrefUtils.saveData(this@BaseActivity, "pid", pid)
+                            SharedPrefUtils.saveData(this@BaseActivity, "uid", id)
+                            SharedPrefUtils.saveData(this@BaseActivity, "phoneNum", phoneNum)
+                            SharedPrefUtils.saveData(this@BaseActivity, "pid", pid)
 
 
-                        hideDialog()
-                        navigateFragment(R.id.nav_profile)
+                            hideDialog()
+                            navigateFragment(R.id.nav_profile)
+                        }
                     } catch (e: Exception) {
                         Log.d(TAGI, "error: " + e.message)
                         e.printStackTrace()
@@ -939,9 +946,13 @@ open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListene
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (!bp!!.handleActivityResult(requestCode, resultCode, data)) {
-            super.onActivityResult(requestCode, resultCode, data)
-            Log.d(TAGI, "onActivityResult: done")
+        try {
+            if (!bp!!.handleActivityResult(requestCode, resultCode, data)) {
+                super.onActivityResult(requestCode, resultCode, data)
+                Log.d(TAGI, "onActivityResult: done")
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
     }
 

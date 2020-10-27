@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "artifactType": {
+    "type": "APK",
+    "kind": "Directory"
+  },
+  "applicationId": "device.spotter.finder.appss",
+  "variantName": "release",
+  "elements": [
+    {
+      "type": "SINGLE",
+      "filters": [],
+      "properties": [],
+      "versionCode": 9,
+      "versionName": "1.5",
+      "enabled": true,
+      "outputFile": "Find Lost Phone(New) App_ - 1.5-9-release.apk"
+    }
+  ]
+}

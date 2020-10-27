@@ -505,11 +505,11 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
 
     fun updateNavView() {
         if (isLoggedIn()) {
-            headerView!!.name.text = auth.currentUser!!.displayName
+            headerView!!.name.text =SharedPrefUtils.getStringData(this@MainActivity, "username")
             headerView!!.name.isSelected = true
-            headerView!!.email.text = auth.currentUser!!.email
+            headerView!!.email.text = SharedPrefUtils.getStringData(this@MainActivity, "useremail")
             headerView!!.email.isSelected = true
-            Glide.with(this).load(auth.currentUser?.photoUrl).into(headerView!!.profileImage)
+            Glide.with(this).load(SharedPrefUtils.getStringData(this@MainActivity, "userprofile")).into(headerView!!.profileImage)
 
         } else {
             headerView!!.name.text = getString(R.string.app_name)
