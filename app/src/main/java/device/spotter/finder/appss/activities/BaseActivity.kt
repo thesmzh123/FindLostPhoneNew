@@ -54,8 +54,11 @@ import device.spotter.finder.appss.utils.Constants.TAGI
 import device.spotter.finder.appss.utils.DatabaseHelperUtils
 import device.spotter.finder.appss.utils.GPSTracker
 import device.spotter.finder.appss.utils.RegisterAPI
-import kotlinx.android.synthetic.main.enter_phone_num_layout.view.*
+import kotlinx.android.synthetic.main.enter_phone_num_layout.view.ccpNUm
+import kotlinx.android.synthetic.main.enter_phone_num_layout.view.editText_carrierNumber1
+import kotlinx.android.synthetic.main.enter_phone_num_layout.view.mainBtnNUm
 import kotlinx.android.synthetic.main.enter_phone_num_otp_layout.view.*
+import kotlinx.android.synthetic.main.enter_phone_num_update_layout.view.*
 import kotlinx.android.synthetic.main.layout_loading_dialog.view.*
 import kotlinx.android.synthetic.main.profile_menu_layout.view.*
 import org.json.JSONObject
@@ -629,9 +632,9 @@ open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListene
     private var isFinish: Boolean = false
     private var cdt: CountDownTimer? = null
     private var otpDialog: AlertDialog? = null
-    var getNum: String? = null
+    private var getNum: String? = null
 
-    fun sendVerificationCode(number: String) {
+    private fun sendVerificationCode(number: String) {
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
             "+$number",
             60,
@@ -675,12 +678,12 @@ open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListene
         val builder =
             MaterialAlertDialogBuilder(this@BaseActivity, R.style.MaterialAlertDialogTheme)
         builder.setTitle("OTP Error!")
-        builder.setMessage("Some error occured while generating OTP or Your Quota of OTP for this number has expired!\n\n Please try again by re-entering the number.")
+        builder.setMessage("Some error occurred while generating OTP or Your Quota of OTP for this number has expired!\n\n Please try again by re-entering the number.")
         builder.setCancelable(false)
         builder.setPositiveButton(
             getString(R.string.yes)
         ) { dialog, which -> // Do do my action here
-            enterNumberDialog()
+            updateNumberDialog()
             dialog.dismiss()
         }
 
@@ -695,6 +698,7 @@ open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListene
         val alert = builder.create()
         alert.show()
     }
+/*
 
     private fun enterNumberDialog() {
         val factory = LayoutInflater.from(this@BaseActivity)
@@ -734,6 +738,7 @@ open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListene
         deleteDialog!!.show()
         deleteDialog!!.window!!.decorView.setBackgroundResource(android.R.color.transparent)
     }
+*/
 
     @SuppressLint("InflateParams")
     private fun showOTPDialog() {
@@ -811,7 +816,7 @@ open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListene
                     isRecent = true
                     showToast("Please re-enter the number to get the verification code (OTP).")
                     otpDialog!!.dismiss()
-                    enterNumberDialog()
+                    updateNumberDialog()
                 } else {
                     showToast("Timer is already running.\n Can't resend the OTP Code.")
                 }
@@ -873,8 +878,10 @@ open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListene
                         Log.d(TAGI, "msg: $output")
                         val jsonObject = JSONObject(output)
                         if (jsonObject.getBoolean("error")) {
+                            deleteDialog!!.dismiss()
                             hideDialog()
                             Log.d(TAGI, "success: " + jsonObject.getString("message"))
+                            numberExistDialog(jsonObject.getString("message"))
                         } else {
                             val newJson = jsonObject.getJSONObject("data")
                             val pid = newJson.getString("pid")
@@ -908,6 +915,67 @@ open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListene
     override fun onBillingInitialized() {
         Log.d(TAGI, "onBillingInitialized")
 
+    }
+
+    fun updateNumberDialog() {
+        val factory = LayoutInflater.from(this@BaseActivity)
+        @SuppressLint("InflateParams") val deleteDialogView: View =
+            factory.inflate(R.layout.enter_phone_num_update_layout, null)
+        deleteDialog = if (Build.VERSION.SDK_INT > 23) {
+
+            MaterialAlertDialogBuilder(this@BaseActivity).create()
+        } else {
+            AlertDialog.Builder(this@BaseActivity).create()
+        }
+
+        deleteDialog!!.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        deleteDialog!!.setView(deleteDialogView)
+        deleteDialog!!.setCancelable(false)
+//        deleteDialogView.ccp1.registerCarrierNumberEditText(deleteDialogView.editText_carrierNumber1)
+        deleteDialogView.mainBtnNUmCancel.setOnClickListener {
+            deleteDialog!!.dismiss()
+        }
+        deleteDialogView.mainBtnNUm.setOnClickListener {
+            if (TextUtils.isEmpty(deleteDialogView.editText_carrierNumber1.text)) {
+                showToast(getString(R.string.fill_the_field))
+            } else {
+                if (InternetConnection().checkConnection(this@BaseActivity)) {
+                    showDialog(getString(R.string.sending_you_verification_code))
+                    getNum =
+                        deleteDialogView.ccpNUm.selectedCountryCode + deleteDialogView.editText_carrierNumber1.text.toString()
+                    sendVerificationCode(deleteDialogView.ccpNUm.selectedCountryCode + deleteDialogView.editText_carrierNumber1.text.toString())
+//                    updatePhoneNumber(getNum.toString())
+//                        updatePhoneNumber(deleteDialogView.editText_carrierNumber1.text.toString())
+
+                    deleteDialog!!.dismiss()
+                } else {
+                    showToast(getString(R.string.no_internet))
+                }
+            }
+        }
+
+        deleteDialog!!.show()
+        deleteDialog!!.window!!.decorView.setBackgroundResource(
+            android.R.color.transparent
+        )
+    }
+
+    private fun numberExistDialog(messagePhone: String) {
+        val builder =
+            MaterialAlertDialogBuilder(this@BaseActivity, R.style.MaterialAlertDialogTheme)
+        builder.setTitle("Your current mobile device is " + Build.BRAND + ", " + Build.MODEL)
+        builder.setMessage(messagePhone)
+        builder.setCancelable(false)
+        builder.setPositiveButton(
+            getString(R.string.ok)
+        ) { dialog, which -> // Do do my action here
+            updateNumberDialog()
+            dialog.dismiss()
+        }
+
+
+        val alert = builder.create()
+        alert.show()
     }
 
     override fun onPurchaseHistoryRestored() {
