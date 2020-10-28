@@ -141,7 +141,7 @@ class FamilyRequestAdapter(
                     HashMap()
                 params["sender_id"] = family.pid.toString()
                 params["senderToken"] = family.token
-                params["senderName"] = context.auth.currentUser!!.displayName.toString()
+                params["senderName"] =  SharedPrefUtils.getStringData(context, "username").toString()
                 params["phonenum"] =
                     SharedPrefUtils.getStringData(context, "phoneNum").toString()
                 return params
@@ -181,7 +181,7 @@ class FamilyRequestAdapter(
                     HashMap()
                 params["sender_id"] = family.pid.toString()
                 params["senderToken"] = family.token
-                params["senderName"] = context.auth.currentUser!!.displayName.toString()
+                params["senderName"] = SharedPrefUtils.getStringData(context, "username").toString()
                 params["phonenum"] =
                     SharedPrefUtils.getStringData(context, "phoneNum").toString()
                 return params
@@ -221,7 +221,7 @@ class FamilyRequestAdapter(
                     HashMap()
                 params["receiver_id"] = family.pid.toString()
                 params["receiverToken"] = family.token
-                params["receiverName"] = context.auth.currentUser!!.displayName.toString()
+                params["receiverName"] = SharedPrefUtils.getStringData(context, "username").toString()
                 params["phonenum"] =
                     SharedPrefUtils.getStringData(context, "phoneNum").toString()
                 return params

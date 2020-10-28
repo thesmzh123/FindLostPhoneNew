@@ -64,17 +64,16 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_margin="@dimen/_5sdp"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_5sdp">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/mainBtnNUm"
             android:layout_width="@dimen/_100sdp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="@dimen/_10sdp"
-            android:gravity="center"
             android:layout_alignParentStart="true"
+            android:layout_gravity="center"
+            android:gravity="center"
             android:text="@string/update"
             android:textAlignment="center"
             android:textColor="@color/colorPrimary"
@@ -82,14 +81,14 @@
             app:backgroundTint="@color/colorAccent"
             app:cornerRadius="@dimen/_10sdp"
             app:elevation="@dimen/_10sdp" />
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/mainBtnNUmCancel"
             android:layout_width="@dimen/_100sdp"
             android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
             android:layout_gravity="center"
-            android:layout_margin="@dimen/_10sdp"
             android:gravity="center"
-android:layout_alignParentEnd="true"
             android:text="@string/cancel"
             android:textAlignment="center"
             android:textColor="@color/colorPrimary"

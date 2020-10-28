@@ -99,7 +99,7 @@ class FamilyLocatorActivity : BaseActivity(), OnMapReadyCallback, LocationListen
 
     private fun addNewMember() {
 
-     addMem()
+        addMem()
     }
 
     private fun addMem() {
@@ -269,7 +269,8 @@ class FamilyLocatorActivity : BaseActivity(), OnMapReadyCallback, LocationListen
             this@FamilyLocatorActivity,
             R.style.MaterialAlertDialogTheme
         )
-        builder.setTitle("Disclaimer").setMessage("Sending this request will mean that you will be allowed by your family member to check his live location on maps.")
+        builder.setTitle("Disclaimer")
+            .setMessage("Sending this request will mean that you will be allowed by your family member to check his live location on maps.")
             .setPositiveButton(getString(R.string.send), dialogClickListener)
             .setNegativeButton(getString(R.string.cancel), dialogClickListener).show()
     }
@@ -297,7 +298,8 @@ class FamilyLocatorActivity : BaseActivity(), OnMapReadyCallback, LocationListen
             override fun getParams(): Map<String, String> {
                 val params: MutableMap<String, String> =
                     HashMap()
-                params["name"] = auth.currentUser!!.displayName.toString()
+                params["name"] =
+                    SharedPrefUtils.getStringData(this@FamilyLocatorActivity, "username").toString()
                 params["phonenum"] = num
                 params["phonenumSend"] =
                     SharedPrefUtils.getStringData(this@FamilyLocatorActivity, "phoneNum").toString()
@@ -325,7 +327,12 @@ class FamilyLocatorActivity : BaseActivity(), OnMapReadyCallback, LocationListen
                 getString(R.string.invite)
             ) { dialogInterface: DialogInterface?, i: Int ->
                 try {
-                    shareAppFamily(SharedPrefUtils.getStringData(this@FamilyLocatorActivity,"phoneNum"))
+                    shareAppFamily(
+                        SharedPrefUtils.getStringData(
+                            this@FamilyLocatorActivity,
+                            "phoneNum"
+                        )
+                    )
                     dialogInterface!!.dismiss()
                 } catch (e: Exception) {
                     e.printStackTrace()
