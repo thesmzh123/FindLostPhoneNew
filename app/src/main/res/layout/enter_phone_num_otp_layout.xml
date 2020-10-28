@@ -31,7 +31,8 @@
             android:layout_marginBottom="@dimen/_2sdp"
             android:padding="@dimen/_5sdp"
             android:textColor="@android:color/white"
-            android:textSize="@dimen/_12ssp" />
+            android:textSize="@dimen/_12ssp"
+            tools:ignore="RelativeOverlap" />
     </RelativeLayout>
 
     <RelativeLayout
