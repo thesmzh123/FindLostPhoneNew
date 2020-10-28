@@ -65,21 +65,43 @@ class FamilyRequestAdapter(
             }
         }
         holder.itemView.cancel.setOnClickListener {
-            if (family.isFriendRequest) {
-                if (InternetConnection().checkConnection(context)) {
-                    cancelRequest(family, position)
-                } else {
-                    context.getString(R.string.no_internet)
+            val dialogClickListener =
+                DialogInterface.OnClickListener { dialog, which ->
+                    when (which) {
+                        DialogInterface.BUTTON_POSITIVE -> {
+                            if (family.isFriendRequest) {
+                                if (InternetConnection().checkConnection(context)) {
+                                    cancelRequest(family, position)
+                                } else {
+                                    context.getString(R.string.no_internet)
+                                }
+
+                            } else {
+                                Log.d(TAGI, "onBindViewHolder: pending")
+                                if (InternetConnection().checkConnection(context)) {
+                                    cancelRequestPending(family, position)
+                                } else {
+                                    context.getString(R.string.no_internet)
+                                }
+                            }
+                            dialog.dismiss()
+                        }
+
+                        DialogInterface.BUTTON_NEGATIVE -> {
+                            dialog.dismiss()
+                        }
+                    }
                 }
 
-            } else {
-                Log.d(TAGI, "onBindViewHolder: pending")
-                if (InternetConnection().checkConnection(context)) {
-                    cancelRequestPending(family, position)
-                } else {
-                    context.getString(R.string.no_internet)
-                }
-            }
+            val builder = MaterialAlertDialogBuilder(
+                context,
+                R.style.MaterialAlertDialogTheme
+            )
+            builder.setTitle("Cancel Request")
+                .setMessage("Do you want to cancel this request?")
+                .setPositiveButton(context.getString(R.string.yes), dialogClickListener)
+                .setNegativeButton(context.getString(R.string.no), dialogClickListener).show()
+
         }
     }
 
@@ -108,7 +130,7 @@ class FamilyRequestAdapter(
             R.style.MaterialAlertDialogTheme
         )
         builder.setTitle("Disclaimer")
-            .setMessage("Accepting this request will mean that you will allow your family member to check your live location on ma")
+            .setMessage("Accepting this request will mean that you will allow your family member to check your live location on map")
             .setPositiveButton(context.getString(R.string.accept), dialogClickListener)
             .setNegativeButton(context.getString(R.string.cancel), dialogClickListener).show()
     }
