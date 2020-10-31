@@ -36,15 +36,16 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import kotlinx.android.synthetic.main.activity_family_locator.*
-import kotlinx.android.synthetic.main.enter_phone_number_layout.view.*
 import device.spotter.finder.appss.R
 import device.spotter.finder.appss.adapters.FamilyLocatorAdapter
 import device.spotter.finder.appss.models.FamilyLocator
 import device.spotter.finder.appss.utils.Constants.FAMILY_REQUEST_URL
 import device.spotter.finder.appss.utils.Constants.PICK_CONTACT
+import device.spotter.finder.appss.utils.Constants.REMOVE_REQUEST_URL
 import device.spotter.finder.appss.utils.Constants.TAGI
 import device.spotter.finder.appss.utils.RegisterAPI
+import kotlinx.android.synthetic.main.activity_family_locator.*
+import kotlinx.android.synthetic.main.enter_phone_number_layout.view.*
 import org.json.JSONArray
 import org.json.JSONObject
 import retrofit.Callback
@@ -309,6 +310,40 @@ class FamilyLocatorActivity : BaseActivity(), OnMapReadyCallback, LocationListen
         queue!!.add(postRequest)
     }
 
+    fun removeMemeber(familyLocator: FamilyLocator) {
+        showDialog(getString(R.string.remove_friend1))
+        val postRequest: StringRequest = object : StringRequest(
+            Method.POST, mainUrl + REMOVE_REQUEST_URL,
+            Response.Listener<String?> { response -> // response
+                Log.d(TAGI, "onResponse: $response")
+                hideDialog()
+                val jsonObject = JSONObject(response!!)
+                if (jsonObject.getBoolean("error")) {
+                    showToast(jsonObject.getString("message"))
+                } else {
+                    showToast(jsonObject.getString("message"))
+                    loadFamilyList()
+
+                }
+                hideDialog()
+            },
+            Response.ErrorListener { error -> // error
+                Log.d(TAGI, "onErrorResponse: " + error!!.message)
+                hideDialog()
+            }
+        ) {
+            override fun getParams(): Map<String, String> {
+                val params: MutableMap<String, String> =
+                    HashMap()
+                params["user_id"] =
+                    SharedPrefUtils.getStringData(this@FamilyLocatorActivity, "pid").toString()
+                params["friend_id"] = familyLocator.friendId.toString()
+                return params
+            }
+        }
+        queue!!.add(postRequest)
+    }
+
     private fun showInviteDialog() {
         val yesNoDialog =
             MaterialAlertDialogBuilder(
@@ -363,6 +398,7 @@ class FamilyLocatorActivity : BaseActivity(), OnMapReadyCallback, LocationListen
 
 
     private fun loadFamilyList() {
+        familyLocatorList!!.clear()
         showDialog(getString(R.string.fetch_family_list))
         val restAdapter: RestAdapter = RestAdapter.Builder().setEndpoint(mainUrl).build()
         val api: RegisterAPI = restAdapter.create(RegisterAPI::class.java)

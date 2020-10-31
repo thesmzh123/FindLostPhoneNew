@@ -79,13 +79,27 @@
             android:layout_width="@dimen/_40sdp"
             android:layout_height="@dimen/_30sdp"
             android:layout_gravity="center"
-            android:layout_margin="@dimen/_10sdp"
             android:background="?android:attr/selectableItemBackground"
             android:clickable="true"
             android:contentDescription="@string/app_name"
             android:focusable="true"
             android:gravity="center"
             android:src="@drawable/ic_baseline_expand_more_24"
+            app:tint="@color/colorAccent" />
+        <ImageView
+            android:id="@+id/removeFriend"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_gravity="center"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:contentDescription="@string/app_name"
+            android:focusable="true"
+            android:scaleType="centerInside"
+            android:padding="@dimen/_5sdp"
+            android:gravity="center"
+            android:src="@drawable/remove_friend"
+
             app:tint="@color/colorAccent" />
     </LinearLayout>
 
@@ -192,6 +206,8 @@
                     android:src="@drawable/ic_baseline_chevron_right_24"
 
                     app:tint="@color/colorAccent" />
+
+
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/lastUpdated"

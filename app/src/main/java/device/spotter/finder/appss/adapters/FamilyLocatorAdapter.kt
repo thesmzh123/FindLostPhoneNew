@@ -97,6 +97,61 @@ class FamilyLocatorAdapter(
                 selectedItem = position
             }
         }
+        holder.itemView.removeFriend.setOnClickListener {
+            val dialogClickListener =
+                DialogInterface.OnClickListener { dialog, which ->
+                    when (which) {
+                        DialogInterface.BUTTON_POSITIVE -> {
+
+                            if (!SharedPrefUtils.getBooleanData(context, "hideAds")) {
+                                if ((context as BaseActivity).interstitial.isLoaded) {
+                                    context.interstitial.show()
+                                } else {
+                                    if (InternetConnection().checkConnection(context)) {
+                                        (context as FamilyLocatorActivity).removeMemeber(familyLocator)
+
+                                    } else {
+                                        context.showToast(context.getString(R.string.no_internet))
+                                    }
+                                }
+                                context.interstitial.adListener = object : AdListener() {
+                                    override fun onAdClosed() {
+                                        context.requestNewInterstitial()
+                                        if (InternetConnection().checkConnection(context)) {
+                                            (context as FamilyLocatorActivity).removeMemeber(familyLocator)
+
+                                        } else {
+                                            context.showToast(context.getString(R.string.no_internet))
+                                        }
+                                    }
+                                }
+                            } else {
+                                if (InternetConnection().checkConnection(context)) {
+                                    (context as FamilyLocatorActivity).removeMemeber(familyLocator)
+
+                                } else {
+                                    (context as BaseActivity).showToast(context.getString(R.string.no_internet))
+                                }
+                            }
+                            dialog.dismiss()
+                        }
+
+                        DialogInterface.BUTTON_NEGATIVE -> {
+                            dialog.dismiss()
+                        }
+                    }
+                }
+
+            val builder = MaterialAlertDialogBuilder(
+                context,
+                R.style.MaterialAlertDialogTheme
+            )
+            builder.setTitle("Remove Family Member")
+                .setMessage("Do you want to remove " + familyLocator.name + " from your family list?")
+                .setPositiveButton(context.getString(R.string.yes), dialogClickListener)
+                .setNegativeButton(context.getString(R.string.no), dialogClickListener).show()
+
+        }
         holder.itemView.viewLayout.setOnClickListener {
             (context as FamilyLocatorActivity).mapLayout.visibility = View.GONE
             if (holder.itemView.expandable_layout.isExpanded) {
@@ -257,6 +312,7 @@ class FamilyLocatorAdapter(
             }
         }
     }
+
 
     private fun showLocDialog(switchBtnLoc: SwitchMaterial) {
         val dialogClickListener =

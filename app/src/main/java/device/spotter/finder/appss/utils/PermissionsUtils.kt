@@ -1,3 +1,5 @@
+@file:Suppress("UNUSED_ANONYMOUS_PARAMETER")
+
 package device.spotter.finder.appss.utils
 
 import android.Manifest.permission.*
@@ -5,7 +7,9 @@ import android.app.Activity
 import android.app.AlertDialog
 import android.content.DialogInterface
 import android.content.pm.PackageManager
+import android.os.Build
 import android.util.Log
+import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import device.spotter.finder.appss.R
@@ -16,13 +20,15 @@ class PermissionsUtils {
     companion object {
         const val PERMISSION_ACCESS_COARSE_LOCATION = ACCESS_COARSE_LOCATION
         const val PERMISSION_ACCESS_FINE_LOCATION = ACCESS_FINE_LOCATION
+
+        @RequiresApi(Build.VERSION_CODES.Q)
+        const val PERMISSION_ACCESS_BACKGROUND_LOCATION = ACCESS_BACKGROUND_LOCATION
         const val PERMISSION_READ_STORAGE = READ_EXTERNAL_STORAGE
         const val PERMISSION_WRITE_STORAGE = WRITE_EXTERNAL_STORAGE
         const val PERMISSION_WRITE_CONTACTS = WRITE_CONTACTS
         const val PERMISSION_READ_CONTACTS = READ_CONTACTS
 
         const val PERMISSION_REQUEST_CODE = 1
-        const val PERMISSION_AUDIO = RECORD_AUDIO
     }
 
 
@@ -55,6 +61,9 @@ class PermissionsUtils {
         requiredPermissions!!.add(PERMISSION_WRITE_STORAGE)
         requiredPermissions!!.add(PERMISSION_READ_CONTACTS)
         requiredPermissions!!.add(PERMISSION_WRITE_CONTACTS)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            requiredPermissions!!.add(PERMISSION_ACCESS_BACKGROUND_LOCATION)
+        }
 
         //Add all the required permission in the list
     }

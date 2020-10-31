@@ -222,4 +222,5 @@ Permission is required**\n\n
     <string name="share_your_location">Share your location</string>
     <string name="replace">Replace</string>
     <string name="remove_ads">Remove Ads</string>
+    <string name="remove_friend1">Removing family member…</string>
 </resources>

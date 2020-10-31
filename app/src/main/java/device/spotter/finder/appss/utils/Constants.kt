@@ -13,6 +13,7 @@ object Constants {
     const val CANCEL_PENDING_FAMILY_REQUEST_URL = "/cancel_family_request_pending.php"
     const val CANCEL_FAMILY_REQUEST_URL = "/cancel_family_request.php"
     const val ACCEPT_REQUEST_URL = "/accept_request.php"
+    const val REMOVE_REQUEST_URL = "/remove_member.php"
     const val UNSELECTED = -1
     const val APP_UPDATE_REQUEST_CODE = 1991
 
