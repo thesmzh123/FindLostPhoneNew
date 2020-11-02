@@ -147,7 +147,7 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
                         this,
                         APP_UPDATE_REQUEST_CODE
                     )
-                } catch (e: IntentSender.SendIntentException) {
+                } catch (e: Exception) {
                     e.printStackTrace()
                 }
             }

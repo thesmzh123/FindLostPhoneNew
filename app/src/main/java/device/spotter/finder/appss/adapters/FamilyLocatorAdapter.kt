@@ -50,8 +50,10 @@ class FamilyLocatorAdapter(
 ) :
     RecyclerView.Adapter<FamilyLocatorAdapter.MyHolder>(),
     ExpandableLayout.OnExpansionUpdateListener {
+
     init {
         (context as BaseActivity).loadInterstial()
+
     }
 
     private var selectedItem: Int = UNSELECTED
@@ -108,7 +110,9 @@ class FamilyLocatorAdapter(
                                     context.interstitial.show()
                                 } else {
                                     if (InternetConnection().checkConnection(context)) {
-                                        (context as FamilyLocatorActivity).removeMemeber(familyLocator)
+                                        (context as FamilyLocatorActivity).removeMemeber(
+                                            familyLocator
+                                        )
 
                                     } else {
                                         context.showToast(context.getString(R.string.no_internet))
@@ -118,7 +122,9 @@ class FamilyLocatorAdapter(
                                     override fun onAdClosed() {
                                         context.requestNewInterstitial()
                                         if (InternetConnection().checkConnection(context)) {
-                                            (context as FamilyLocatorActivity).removeMemeber(familyLocator)
+                                            (context as FamilyLocatorActivity).removeMemeber(
+                                                familyLocator
+                                            )
 
                                         } else {
                                             context.showToast(context.getString(R.string.no_internet))
@@ -305,11 +311,18 @@ class FamilyLocatorAdapter(
         holder.itemView.expandable_layout.shareLoc.isChecked =
             SharedPrefUtils.getBooleanData(context, "isTrackLoc1")
         holder.itemView.expandable_layout.shareLoc.setOnCheckedChangeListener { compoundButton, b ->
+            /*     val manager = context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+
+                 if (!manager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+                     buildAlertMessageNoGps()
+
+                 } else {*/
             if (b) {
                 showLocDialog(holder.itemView.expandable_layout.shareLoc)
             } else {
                 cancelAlarm(holder.itemView.expandable_layout.shareLoc)
             }
+//            }
         }
     }
 
@@ -354,9 +367,14 @@ class FamilyLocatorAdapter(
         alarmManager
             .set(
                 AlarmManager.RTC_WAKEUP,
-                System.currentTimeMillis() + 60000,
+                System.currentTimeMillis() + 30000,
                 pendingIntent
             )//180000
+        (context as BaseActivity).updateLocation(
+            context.gpsTracker!!.getLatitude().toString(),
+            context.gpsTracker!!.getLongitude().toString(),
+            context.lastUpdatedDate()
+        )
         SharedPrefUtils.saveData(context, "isTrackLoc1", true)
         switchBtnLoc.isChecked = true
     }
@@ -527,5 +545,19 @@ class FamilyLocatorAdapter(
             }
         )
     }
-
+/*
+    private fun buildAlertMessageNoGps() {
+        val builder =
+            AlertDialog.Builder(context)
+        builder.setMessage("Your GPS seems to be disabled, do you want to enable it?")
+            .setCancelable(false)
+            .setPositiveButton(
+                "Yes"
+            ) { dialog, id -> context.startActivity(Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)) }
+            .setNegativeButton(
+                "No"
+            ) { dialog, id -> dialog.cancel() }
+        val alert = builder.create()
+        alert.show()
+    }*/
 }

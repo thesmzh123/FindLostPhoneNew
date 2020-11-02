@@ -1257,10 +1257,10 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
                                     alreadyAddDialog(messagePhone)
                                     hideDialog()
                                 }
-                            /*    jsonObject.getBoolean("isExistSomeOne")->{
-                                    hideDialog()
-                                    numberExistDialog(jsonObject.getString("message").toString())
-                                }*/
+                                /*    jsonObject.getBoolean("isExistSomeOne")->{
+                                        hideDialog()
+                                        numberExistDialog(jsonObject.getString("message").toString())
+                                    }*/
                                 else -> {
                                     SharedPrefUtils.saveData(requireActivity(), "uid", id)
                                     SharedPrefUtils.saveData(

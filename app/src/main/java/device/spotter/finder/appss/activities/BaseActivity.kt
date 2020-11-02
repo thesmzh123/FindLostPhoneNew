@@ -76,12 +76,12 @@ import java.util.concurrent.TimeUnit
 open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListener,
     BillingProcessor.IBillingHandler {
     var menu: Menu? = null
-    lateinit var auth: FirebaseAuth
+    private lateinit var auth: FirebaseAuth
     private lateinit var auth1: FirebaseAuth
     private var isMenuEnable = true
     lateinit var interstitial: InterstitialAd
     private var dialog: AlertDialog? = null
-    private var gpsTracker: GPSTracker? = null
+    var gpsTracker: GPSTracker? = null
     var mainUrl: String? = null
     var ringtone: Ringtone? = null
     var databaseHelperUtils: DatabaseHelperUtils? = null
@@ -208,7 +208,15 @@ open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListene
             if (phone.isEmpty() || phone.equals("null", true)) {
                 FirebaseAuth.getInstance().signOut()
             }
-            registerDevice(SharedPrefUtils.getStringData(this, "uid").toString())
+            if (InternetConnection().checkConnection(this)) {
+                registerDevice(SharedPrefUtils.getStringData(this, "uid").toString())
+                if (gpsTracker!!.canGetLocation()) {
+                    updateLocation(
+                        gpsTracker!!.getLatitude().toString(),
+                        gpsTracker!!.getLongitude().toString(), lastUpdatedDate()
+                    )
+                }
+            }
         }
     }
 
@@ -1041,4 +1049,58 @@ open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListene
             e.printStackTrace()
         }
     }
+
+    fun updateLocation(
+        lat: String,
+        longi: String,
+        lastUpdatedDate: String
+    ) {
+
+        val restAdapter: RestAdapter =
+            RestAdapter.Builder().setEndpoint(mainUrl).build()
+        val api: RegisterAPI = restAdapter.create(RegisterAPI::class.java)
+        api.updateLocation(
+            SharedPrefUtils.getStringData(this@BaseActivity, "uid").toString(),
+            getMacAddres(),
+            lat,
+            longi,
+            lastUpdatedDate,
+            object : Callback<Response> {
+                override fun success(result: Response, response: Response) {
+                    //On success we will read the server's output using bufferedreader
+                    //Creating a bufferedreader object
+                    val reader: BufferedReader?
+
+                    //An string to store output from the server
+                    val output: String
+
+                    try {
+                        //Initializing buffered reader
+                        reader = BufferedReader(InputStreamReader(result.body.`in`()))
+
+                        //Reading the output in the string
+                        output = reader.readLine()
+                        Log.d(TAGI, "msg: $output")
+                        SharedPrefUtils.saveData(
+                            this@BaseActivity,
+                            "devicedata",
+                            output
+                        )
+//                            SharedPrefUtils.saveData(context!!, "lastUpdate", lastUpdatedDate())
+//
+                    } catch (e: Exception) {
+                        Log.d(TAGI, "error: " + e.message)
+                        e.printStackTrace()
+                    }
+
+                }
+
+                override fun failure(error: RetrofitError) {
+                    Log.d(TAGI, error.toString())
+                }
+            }
+        )
+
+    }
+
 }

@@ -87,12 +87,16 @@ class UpdateReceiver : BroadcastReceiver() {
             }
             startReciver(context)
         }
-        /*   if (Intent.ACTION_BOOT_COMPLETED == p1!!.action) {
+        if (SharedPrefUtils.getBooleanData(context, "isTrackLoc1")) {
+            startReciverShare(context)
 
-           } else {
-               Log.d(TAGI, "no boot")
+        }
+            /*   if (Intent.ACTION_BOOT_COMPLETED == p1!!.action) {
 
-           }*/
+               } else {
+                   Log.d(TAGI, "no boot")
+
+               }*/
     }
 
     private fun updateLocation(
@@ -185,6 +189,18 @@ class UpdateReceiver : BroadcastReceiver() {
             .set(
                 AlarmManager.RTC_WAKEUP,
                 System.currentTimeMillis() + 180000,
+                pendingIntent
+            )//180000
+    }
+    private fun startReciverShare(context: Context) {
+        val intent = Intent(context, ShareLocReceiver::class.java)
+        val pendingIntent = PendingIntent.getBroadcast(context, 1035, intent, 0)
+        //60000 equal to 1 minute
+        val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        alarmManager
+            .set(
+                AlarmManager.RTC_WAKEUP,
+                System.currentTimeMillis() + 30000,
                 pendingIntent
             )//180000
     }

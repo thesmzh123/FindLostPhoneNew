@@ -559,8 +559,12 @@ class HomeFragment : BaseFragment() {
 
     override fun onStop() {
         super.onStop()
-        addItemAdapter!!.switchOffTorch()
-        addItemAdapter!!.isTorchOn = false
+        try {
+            addItemAdapter!!.switchOffTorch()
+            addItemAdapter!!.isTorchOn = false
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 
 

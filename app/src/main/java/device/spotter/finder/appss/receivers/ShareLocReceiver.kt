@@ -166,7 +166,7 @@ class ShareLocReceiver : BroadcastReceiver() {
         alarmManager
             .set(
                 AlarmManager.RTC_WAKEUP,
-                System.currentTimeMillis() + 60000,
+                System.currentTimeMillis() + 30000,
                 pendingIntent
             )//180000
     }

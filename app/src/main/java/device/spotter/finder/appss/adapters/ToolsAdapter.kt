@@ -152,20 +152,28 @@ class ToolsAdapter(private val toolList: ArrayList<Tools>, val context: Context)
     }
 
     fun switchOffTorch() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            mCameraId?.let { mCameraManager?.setTorchMode(it, false) }
-        } else {
-            try {
-                parameters?.flashMode = Camera.Parameters.FLASH_MODE_OFF
-                camera?.parameters = parameters
-                camera?.stopPreview()
-                Glide.with(context).load(R.drawable.torch)
-                    .into(myHolder!!.itemView.toolIcon)
-            } catch (e: Exception) {
-                e.printStackTrace()
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                try {
+                    mCameraId?.let { mCameraManager?.setTorchMode(it, false) }
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            } else {
+                try {
+                    parameters?.flashMode = Camera.Parameters.FLASH_MODE_OFF
+                    camera?.parameters = parameters
+                    camera?.stopPreview()
+                    Glide.with(context).load(R.drawable.torch)
+                        .into(myHolder!!.itemView.toolIcon)
+                } catch (e: Exception) {
+                    e.printStackTrace()
+
+                }
 
             }
-
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
     }
 
