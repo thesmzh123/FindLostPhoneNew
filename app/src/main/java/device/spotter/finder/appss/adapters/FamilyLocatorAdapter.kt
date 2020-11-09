@@ -17,7 +17,7 @@ import android.view.animation.OvershootInterpolator
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.find.lost.app.phone.utils.InternetConnection
+import device.spotter.finder.appss.utils.InternetConnection
 import com.find.lost.app.phone.utils.SharedPrefUtils
 import com.google.android.gms.ads.AdListener
 import com.google.android.material.dialog.MaterialAlertDialogBuilder

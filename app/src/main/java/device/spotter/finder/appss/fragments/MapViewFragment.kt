@@ -10,7 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.app.ActivityCompat
 import androidx.navigation.fragment.findNavController
-import com.find.lost.app.phone.utils.InternetConnection
+import device.spotter.finder.appss.utils.InternetConnection
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener

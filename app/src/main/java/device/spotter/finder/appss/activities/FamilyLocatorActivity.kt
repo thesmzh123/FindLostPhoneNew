@@ -23,7 +23,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ProcessLifecycleOwner
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
-import com.find.lost.app.phone.utils.InternetConnection
+import device.spotter.finder.appss.utils.InternetConnection
 import com.find.lost.app.phone.utils.SharedPrefUtils
 import com.google.android.gms.ads.AdListener
 import com.google.android.gms.maps.CameraUpdateFactory

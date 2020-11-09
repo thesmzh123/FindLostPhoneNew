@@ -30,7 +30,7 @@ import com.android.volley.toolbox.Volley
 import com.anjlab.android.iab.v3.BillingProcessor
 import com.anjlab.android.iab.v3.TransactionDetails
 import com.bumptech.glide.Glide
-import com.find.lost.app.phone.utils.InternetConnection
+import device.spotter.finder.appss.utils.InternetConnection
 import com.find.lost.app.phone.utils.SharedPrefUtils
 import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest

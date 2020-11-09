@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
-import com.find.lost.app.phone.utils.InternetConnection
+import device.spotter.finder.appss.utils.InternetConnection
 import com.find.lost.app.phone.utils.SharedPrefUtils
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.android.synthetic.main.family_request_list_layout.view.*

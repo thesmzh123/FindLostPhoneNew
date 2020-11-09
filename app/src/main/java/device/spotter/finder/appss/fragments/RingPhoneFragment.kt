@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ProcessLifecycleOwner
 import com.bumptech.glide.Glide
-import com.find.lost.app.phone.utils.InternetConnection
+import device.spotter.finder.appss.utils.InternetConnection
 import com.find.lost.app.phone.utils.SharedPrefUtils
 import com.google.android.gms.ads.AdListener
 import kotlinx.android.synthetic.main.banner.view.*

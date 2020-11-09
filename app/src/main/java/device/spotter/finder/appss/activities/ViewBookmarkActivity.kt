@@ -11,7 +11,7 @@ import android.view.MenuItem
 import android.view.View
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ProcessLifecycleOwner
-import com.find.lost.app.phone.utils.InternetConnection
+import device.spotter.finder.appss.utils.InternetConnection
 import com.find.lost.app.phone.utils.SharedPrefUtils
 import com.google.android.gms.ads.AdListener
 import com.google.android.material.dialog.MaterialAlertDialogBuilder

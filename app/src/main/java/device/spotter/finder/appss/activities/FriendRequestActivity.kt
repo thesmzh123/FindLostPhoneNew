@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import com.bumptech.glide.Glide
-import com.find.lost.app.phone.utils.InternetConnection
+import device.spotter.finder.appss.utils.InternetConnection
 import com.find.lost.app.phone.utils.SharedPrefUtils
 import kotlinx.android.synthetic.main.activity_friend_request.*
 import kotlinx.android.synthetic.main.banner.*

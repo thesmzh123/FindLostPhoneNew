@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
-import com.find.lost.app.phone.utils.InternetConnection
+import device.spotter.finder.appss.utils.InternetConnection
 import com.find.lost.app.phone.utils.SharedPrefUtils
 import kotlinx.android.synthetic.main.banner.view.*
 import kotlinx.android.synthetic.main.custom_curve_profile_layout.view.*

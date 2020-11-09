@@ -7,7 +7,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.util.Log
-import com.find.lost.app.phone.utils.InternetConnection
+import device.spotter.finder.appss.utils.InternetConnection
 import com.find.lost.app.phone.utils.SharedPrefUtils
 import device.spotter.finder.appss.utils.Constants.TAGI
 import device.spotter.finder.appss.utils.DatabaseHelperUtils

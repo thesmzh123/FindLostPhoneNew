@@ -1,4 +1,4 @@
-package com.find.lost.app.phone.utils
+package device.spotter.finder.appss.utils
 
 import android.content.Context
 import android.net.ConnectivityManager
