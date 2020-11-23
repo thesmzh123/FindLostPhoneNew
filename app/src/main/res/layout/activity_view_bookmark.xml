@@ -1,48 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg"
+    android:orientation="vertical"
     tools:context=".activities.ViewBookmarkActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:overScrollMode="never"
-        android:paddingBottom="?attr/actionBarSize"
-        android:scrollbars="none"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:reverseLayout="false" />
 
-    <LinearLayout
-        android:id="@+id/emptyView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:orientation="vertical"
-        android:visibility="gone">
 
-        <ImageView
-            android:layout_width="@dimen/_100sdp"
-            android:layout_height="@dimen/_100sdp"
-            android:layout_gravity="center"
-            android:contentDescription="@string/app_name"
-            android:padding="@dimen/_5sdp"
-            android:scaleType="centerInside"
-            android:src="@drawable/no_bookmark"
-            android:tint="@android:color/white" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never"
+            android:paddingBottom="?attr/actionBarSize"
+            android:scrollbars="none"
 
-        <com.google.android.material.textview.MaterialTextView
+            android:layout_alignParentTop="true"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:reverseLayout="false" />
+
+        <LinearLayout
+            android:id="@+id/emptyView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="@dimen/_5sdp"
-            android:gravity="center"
-            android:text="@string/no_bookmark_found"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/_14ssp" />
-    </LinearLayout>
-</FrameLayout>
+            android:visibility="gone"
+            android:layout_centerInParent="true"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_100sdp"
+                android:layout_gravity="center"
+                android:contentDescription="@string/app_name"
+                android:padding="@dimen/_5sdp"
+                android:scaleType="centerInside"
+                android:src="@drawable/no_bookmark"
+                app:tint="@android:color/white" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/_5sdp"
+                android:gravity="center"
+                android:text="@string/no_bookmark_found"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/_14ssp" />
+        </LinearLayout>
+
+    <include layout="@layout/fb_banner"
+        android:id="@+id/layout"/>
+</RelativeLayout>

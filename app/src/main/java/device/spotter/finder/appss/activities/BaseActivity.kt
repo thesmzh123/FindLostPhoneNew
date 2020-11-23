@@ -16,6 +16,7 @@ import android.provider.Settings
 import android.text.TextUtils
 import android.util.Log
 import android.view.*
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.annotation.NonNull
 import androidx.annotation.RequiresApi
@@ -30,7 +31,7 @@ import com.android.volley.toolbox.Volley
 import com.anjlab.android.iab.v3.BillingProcessor
 import com.anjlab.android.iab.v3.TransactionDetails
 import com.bumptech.glide.Glide
-import device.spotter.finder.appss.utils.InternetConnection
+import com.facebook.ads.*
 import com.find.lost.app.phone.utils.SharedPrefUtils
 import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest
@@ -53,6 +54,7 @@ import device.spotter.finder.appss.utils.Constants.PRODUCT_KEY
 import device.spotter.finder.appss.utils.Constants.TAGI
 import device.spotter.finder.appss.utils.DatabaseHelperUtils
 import device.spotter.finder.appss.utils.GPSTracker
+import device.spotter.finder.appss.utils.InternetConnection
 import device.spotter.finder.appss.utils.RegisterAPI
 import kotlinx.android.synthetic.main.enter_phone_num_layout.view.ccpNUm
 import kotlinx.android.synthetic.main.enter_phone_num_layout.view.editText_carrierNumber1
@@ -88,6 +90,101 @@ open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListene
     var queue: RequestQueue? = null
     var noAdsItem: MenuItem? = null
     var bp: BillingProcessor? = null
+    private var fbAdView: com.facebook.ads.AdView? = null
+    private var interstitialAdFb: com.facebook.ads.InterstitialAd? = null
+
+    fun loadFbInter() {
+        interstitialAdFb = InterstitialAd(this, getString(R.string.fb_inter))
+        val interstitialAdListener: InterstitialAdListener = object : InterstitialAdListener {
+            override fun onInterstitialDisplayed(ad: Ad?) {
+                // Interstitial ad displayed callback
+                Log.e(TAGI, "Interstitial ad displayed.")
+            }
+
+            override fun onInterstitialDismissed(ad: Ad?) {
+                // Interstitial dismissed callback
+                Log.e(TAGI, "Interstitial ad dismissed.")
+            }
+
+            override fun onError(ad: Ad?, adError: AdError) {
+                // Ad error callback
+                Log.e(
+                    TAGI,
+                    "Interstitial ad failed to load: " + adError.errorMessage
+                )
+            }
+
+            override fun onAdLoaded(p0: Ad?) {
+                Log.d(TAGI, "onAdLoaded: ")
+            }
+
+            override fun onAdClicked(ad: Ad?) {
+                // Ad clicked callback
+                Log.d(TAGI, "Interstitial ad clicked!")
+            }
+
+            override fun onLoggingImpression(ad: Ad?) {
+                // Ad impression logged callback
+                Log.d(TAGI, "Interstitial ad impression logged!")
+            }
+        }
+
+
+        // For auto play video ads, it's recommended to load the ad
+        // at least 30 seconds before it is shown
+        interstitialAdFb!!.loadAd(
+            interstitialAdFb!!.buildLoadAdConfig()
+                .withAdListener(interstitialAdListener)
+                .build()
+        )
+
+    }
+
+    fun fbBanner(linearLayout: LinearLayout) {
+        if (!SharedPrefUtils.getBooleanData(this, "hideAds")) {
+            fbAdView = AdView(
+                this,
+                getString(R.string.fb_banner),
+                AdSize.BANNER_HEIGHT_50
+            )
+
+            // Find the Ad Container
+
+
+            // Add the ad view to your activity layout
+            linearLayout.addView(fbAdView)
+
+
+            // Request an ad
+            fbAdView!!.loadAd()
+            val adListener: com.facebook.ads.AdListener = object : com.facebook.ads.AdListener {
+
+                override fun onAdLoaded(ad: Ad?) {
+                    // Ad loaded callback
+                    linearLayout.visibility = View.VISIBLE
+                }
+
+                override fun onAdClicked(ad: Ad?) {
+                    // Ad clicked callback
+                }
+
+                override fun onError(p0: Ad?, p1: AdError?) {
+                    linearLayout.visibility = View.GONE
+                }
+
+                override fun onLoggingImpression(ad: Ad?) {
+                    // Ad impression logged callback
+                }
+            }
+
+
+            // Request an ad
+            fbAdView!!.loadAd(fbAdView!!.buildLoadAdConfig().withAdListener(adListener).build())
+        } else {
+            linearLayout.visibility = View.GONE
+
+        }
+    }
 
     //TODO: add back arrow to activity
     fun addBackArrow() {
@@ -218,6 +315,8 @@ open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListene
                 }
             }
         }
+        AdSettings.addTestDevice("2e4d7d54-ff72-4459-8b49-045049218ba7")
+        loadFbInter()
     }
 
     //TODO: change profile menu
@@ -352,6 +451,78 @@ open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListene
                         findNavController(R.id.nav_host_fragment).navigate(id)
                     }
                 }
+            } else {
+                hideDialog()
+                findNavController(R.id.nav_host_fragment).navigate(id)
+
+            }
+        }, 2000)
+    }
+
+    //TODO: navigate to new fragment by ads fb
+    fun navigateFragmentByAdsFb(id: Int) {
+        showDialog(getString(R.string.loading))
+        Handler(Looper.getMainLooper()).postDelayed({
+            if (!SharedPrefUtils.getBooleanData(this, "hideAds")) {
+                hideDialog()
+                if (interstitialAdFb!!.isAdLoaded) {
+                    if (ProcessLifecycleOwner.get().lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED)) {
+                        interstitialAdFb!!.show()
+                    } else {
+                        Log.d(TAGI, "App Is In Background Ad Is Not Going To Show")
+
+                    }
+                } else {
+                    findNavController(R.id.nav_host_fragment).navigate(id)
+
+                }
+                val interstitialAdListener: InterstitialAdListener =
+                    object : InterstitialAdListener {
+                        override fun onInterstitialDisplayed(ad: Ad?) {
+                            // Interstitial ad displayed callback
+                            Log.e(TAGI, "Interstitial ad displayed.")
+                        }
+
+                        override fun onInterstitialDismissed(ad: Ad?) {
+                            // Interstitial dismissed callback
+                            loadFbInter()
+                            Log.e(TAGI, "Interstitial ad dismissed.")
+                            findNavController(R.id.nav_host_fragment).navigate(id)
+
+                        }
+
+                        override fun onError(ad: Ad?, adError: AdError) {
+                            // Ad error callback
+                            Log.e(
+                                TAGI,
+                                "Interstitial ad failed to load: " + adError.errorMessage
+                            )
+                        }
+
+                        override fun onAdLoaded(p0: Ad?) {
+                            Log.d(TAGI, "onAdLoaded: ")
+                        }
+
+                        override fun onAdClicked(ad: Ad?) {
+                            // Ad clicked callback
+                            Log.d(TAGI, "Interstitial ad clicked!")
+                        }
+
+                        override fun onLoggingImpression(ad: Ad?) {
+                            // Ad impression logged callback
+                            Log.d(TAGI, "Interstitial ad impression logged!")
+                        }
+                    }
+
+
+                // For auto play video ads, it's recommended to load the ad
+                // at least 30 seconds before it is shown
+                interstitialAdFb!!.loadAd(
+                    interstitialAdFb!!.buildLoadAdConfig()
+                        .withAdListener(interstitialAdListener)
+                        .build()
+                )
+
             } else {
                 hideDialog()
                 findNavController(R.id.nav_host_fragment).navigate(id)
@@ -1035,6 +1206,9 @@ open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListene
     override fun onDestroy() {
         if (bp != null) {
             bp!!.release()
+        }
+        if (fbAdView != null) {
+            fbAdView!!.destroy()
         }
         super.onDestroy()
     }

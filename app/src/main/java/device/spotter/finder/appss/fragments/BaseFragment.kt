@@ -22,7 +22,9 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import device.spotter.finder.appss.utils.InternetConnection
+import com.facebook.ads.Ad
+import com.facebook.ads.AdSize
+import com.facebook.ads.AdView
 import com.find.lost.app.phone.utils.SharedPrefUtils
 import com.google.android.gms.ads.*
 import com.google.android.gms.ads.formats.UnifiedNativeAd
@@ -56,6 +58,7 @@ import device.spotter.finder.appss.utils.Constants.REQUEST_ID_MULTIPLE_PERMISSIO
 import device.spotter.finder.appss.utils.Constants.SEND_MULTIPLE_REQUEST
 import device.spotter.finder.appss.utils.Constants.TAGI
 import device.spotter.finder.appss.utils.GPSTracker
+import device.spotter.finder.appss.utils.InternetConnection
 import device.spotter.finder.appss.utils.RegisterAPI
 import kotlinx.android.synthetic.main.ad_unified.view.*
 import kotlinx.android.synthetic.main.enter_phone_num_layout.view.*
@@ -116,6 +119,53 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
     private var cdt: CountDownTimer? = null
     var layoutNumber: LinearLayout? = null
     var num: MaterialTextView? = null
+    private var fbAdView: AdView? = null
+
+    fun fbBanner(linearLayout: LinearLayout) {
+        if (!SharedPrefUtils.getBooleanData(requireContext(), "hideAds")) {
+            fbAdView = AdView(
+                requireContext(),
+                getString(R.string.fb_banner),
+                AdSize.BANNER_HEIGHT_50
+            )
+
+            // Find the Ad Container
+
+
+            // Add the ad view to your activity layout
+            linearLayout.addView(fbAdView)
+
+
+            // Request an ad
+            fbAdView!!.loadAd()
+            val adListener: com.facebook.ads.AdListener = object : com.facebook.ads.AdListener {
+
+                override fun onAdLoaded(ad: Ad?) {
+                    // Ad loaded callback
+                    linearLayout.visibility = View.VISIBLE
+                }
+
+                override fun onAdClicked(ad: Ad?) {
+                    // Ad clicked callback
+                }
+
+                override fun onError(p0: Ad?, p1: com.facebook.ads.AdError?) {
+                    linearLayout.visibility = View.GONE
+                }
+
+                override fun onLoggingImpression(ad: Ad?) {
+                    // Ad impression logged callback
+                }
+            }
+
+
+            // Request an ad
+            fbAdView!!.loadAd(fbAdView!!.buildLoadAdConfig().withAdListener(adListener).build())
+        } else {
+            linearLayout.visibility = View.GONE
+
+        }
+    }
 
     //TODO: load interstial
     fun loadInterstial() {
@@ -278,7 +328,7 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
                 object : Callback<Response> {
                     @SuppressLint("SetTextI18n")
                     override fun success(result: Response, response: Response) {
-                        //On success we will read the server's output using bufferedreader
+                        //On success we will read the server's output using 2bufferedreader
                         //Creating a bufferedreader object
                         val reader: BufferedReader?
 

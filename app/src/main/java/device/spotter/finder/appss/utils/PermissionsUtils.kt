@@ -22,7 +22,7 @@ class PermissionsUtils {
         const val PERMISSION_ACCESS_FINE_LOCATION = ACCESS_FINE_LOCATION
 
         @RequiresApi(Build.VERSION_CODES.Q)
-        const val PERMISSION_ACCESS_BACKGROUND_LOCATION = ACCESS_BACKGROUND_LOCATION
+//        const val PERMISSION_ACCESS_BACKGROUND_LOCATION = ACCESS_BACKGROUND_LOCATION
         const val PERMISSION_READ_STORAGE = READ_EXTERNAL_STORAGE
         const val PERMISSION_WRITE_STORAGE = WRITE_EXTERNAL_STORAGE
         const val PERMISSION_WRITE_CONTACTS = WRITE_CONTACTS
@@ -53,6 +53,7 @@ class PermissionsUtils {
     }
 
 
+    @RequiresApi(Build.VERSION_CODES.Q)
     private fun initPermissions() {
         requiredPermissions = ArrayList()
         requiredPermissions!!.add(PERMISSION_ACCESS_COARSE_LOCATION)
@@ -61,9 +62,9 @@ class PermissionsUtils {
         requiredPermissions!!.add(PERMISSION_WRITE_STORAGE)
         requiredPermissions!!.add(PERMISSION_READ_CONTACTS)
         requiredPermissions!!.add(PERMISSION_WRITE_CONTACTS)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+     /*   if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             requiredPermissions!!.add(PERMISSION_ACCESS_BACKGROUND_LOCATION)
-        }
+        }*/
 
         //Add all the required permission in the list
     }
@@ -156,6 +157,7 @@ class PermissionsUtils {
     }
 
 
+    @RequiresApi(Build.VERSION_CODES.Q)
     fun isAllPermissionAvailable(): Boolean {
         var isAllPermissionAvailable = true
         initPermissions()

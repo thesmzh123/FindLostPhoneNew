@@ -22,6 +22,7 @@ import device.spotter.finder.appss.models.Bookmarks
 import device.spotter.finder.appss.utils.Constants.TAGI
 import device.spotter.finder.appss.utils.RecyclerClickListener
 import device.spotter.finder.appss.utils.RecyclerTouchListener
+import kotlinx.android.synthetic.main.fb_banner.*
 
 class ViewBookmarkActivity : BaseActivity() {
     private var bookmarkList: ArrayList<Bookmarks>? = null
@@ -117,7 +118,7 @@ class ViewBookmarkActivity : BaseActivity() {
                 })
         )
         loadInterstial()
-
+        fbBanner(banner_container)
     }
 
     override fun onBackPressed() {

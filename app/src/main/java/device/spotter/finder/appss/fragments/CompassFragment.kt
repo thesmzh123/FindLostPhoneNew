@@ -25,6 +25,7 @@ import kotlinx.android.synthetic.main.fragment_compass.view.*
 import kotlinx.android.synthetic.main.main_header_layout.view.*
 import device.spotter.finder.appss.R
 import device.spotter.finder.appss.utils.Constants.TAGI
+import kotlinx.android.synthetic.main.fb_banner.view.*
 import java.util.*
 import kotlin.math.roundToInt
 
@@ -83,6 +84,7 @@ class CompassFragment : BaseFragment(), SensorEventListener {
             e.printStackTrace()
             root!!.country.visibility = View.GONE
         }
+        fbBanner(root!!.banner_container)
         return root
     }
 
