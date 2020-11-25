@@ -17,6 +17,7 @@ buildscript {
         maven {
             url 'http://dl.bintray.com/amulyakhare/maven'
         }
+        mavenCentral()
     }
     dependencies {
         classpath "com.android.tools.build:gradle:4.0.2"
@@ -43,6 +44,7 @@ allprojects {
         maven {
             url 'http://dl.bintray.com/amulyakhare/maven'
         }
+        mavenCentral()
     }
 }
 
