@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--      test ads-->
-    <!--    <string name="app_id" translatable="false">ca-app-pub-3940256099942544~3347511713</string>
-        <string name="banner" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
-        <string name="interstitial" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
-        <string name="nativead" translatable="false">ca-app-pub-3940256099942544/2247696110</string>-->
+    <!--  <string name="app_id" translatable="false">ca-app-pub-3940256099942544~3347511713</string>
+      <string name="banner" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
+      <string name="interstitial" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
+      <string name="nativead" translatable="false">ca-app-pub-3940256099942544/2247696110</string>-->
 
     <!--      real ads-->
-    <string name="app_id" translatable="false">ca-app-pub-2504925461485700~6479489736</string>
-    <string name="banner" translatable="false">ca-app-pub-2504925461485700/5382030486</string>
-    <string name="interstitial" translatable="false">ca-app-pub-2504925461485700/1227163056</string>
-    <string name="nativead" translatable="false">ca-app-pub-2504925461485700/9416821870</string>
-
+    <string name="app_id" translatable="false">ca-app-pub-5011394130146356~6596695767</string>
+    <string name="banner" translatable="false">ca-app-pub-5011394130146356/9760262766</string>
+    <string name="interstitial" translatable="false">ca-app-pub-5011394130146356/6695115726</string>
+    <string name="nativead" translatable="false">ca-app-pub-5011394130146356/3970532429</string>
 
     <string name="fb_inter">285526062859728_285526622859672</string>
     <string name="fb_banner">285526062859728_285527546192913</string>

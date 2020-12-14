@@ -11,6 +11,6 @@ public class ApplicationUtils extends Application {
         super.onCreate();
         // Initialize the Audience Network SDK
         AudienceNetworkAds.initialize(this);
-        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+//        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
     }
 }
