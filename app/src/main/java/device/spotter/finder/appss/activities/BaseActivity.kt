@@ -285,9 +285,10 @@ open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListene
         StrictMode.setThreadPolicy(policy)
         queue = Volley.newRequestQueue(this) // this = context
         databaseHelperUtils = DatabaseHelperUtils(this@BaseActivity)
-        auth = FirebaseAuth.getInstance()
+            auth = FirebaseAuth.getInstance()
         auth1 = FirebaseAuth.getInstance()
         if (!SharedPrefUtils.getBooleanData(this, "isFirst")) {
+
             FirebaseAuth.getInstance().signOut()
         }
         fetchBaseUrl()

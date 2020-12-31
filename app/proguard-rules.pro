@@ -75,4 +75,9 @@
     public static *** w(...);
     public static *** e(...);
 }
-
+-keepnames class androidx.navigation.fragment.NavHostFragment
+-keep class * extends androidx.fragment.app.Fragment{}
+-keepnames class * extends android.os.Parcelable
+-keepnames class * extends java.io.Serializable
+-keep class device.spotter.finder.appss.models.MapView
+#-keep class com.google.firebase.* { *; }
