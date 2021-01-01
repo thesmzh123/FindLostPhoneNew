@@ -167,6 +167,37 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
         }
     }
 
+    //TODO: banner
+    fun adView(
+        adView: com.google.android.gms.ads.AdView
+    ) {
+//        adView.visibility = View.GONE
+        try {
+            if (!SharedPrefUtils.getBooleanData(requireContext(), "hideAds")) {
+                val adRequest = AdRequest.Builder().build()
+                adView.loadAd(adRequest)
+                adView.adListener = object : AdListener() {
+
+                    override fun onAdLoaded() {
+                        adView.visibility = View.VISIBLE
+                    }
+
+                    override fun onAdFailedToLoad(error: Int) {
+                        adView.visibility = View.GONE
+//                        bannerContainer.visibility=View.VISIBLE
+//                        fbBanner(bannerContainer)
+
+                    }
+
+                }
+            } else {
+                adView.visibility = View.GONE
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
     //TODO: load interstial
     fun loadInterstial() {
         try {

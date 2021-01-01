@@ -9,7 +9,7 @@ public class ApplicationUtils extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        FirebaseApp.initializeApp(this);
+//        FirebaseApp.initializeApp(this);
         // Initialize the Audience Network SDK
         AudienceNetworkAds.initialize(this);
 //        FirebaseDatabase.getInstance().setPersistenceEnabled(true);

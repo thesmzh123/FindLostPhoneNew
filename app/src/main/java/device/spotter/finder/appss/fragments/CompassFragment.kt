@@ -84,6 +84,7 @@ class CompassFragment : BaseFragment(), SensorEventListener {
             e.printStackTrace()
             root!!.country.visibility = View.GONE
         }
+        root!!.banner_container.visibility = View.VISIBLE
         fbBanner(root!!.banner_container)
         return root
     }

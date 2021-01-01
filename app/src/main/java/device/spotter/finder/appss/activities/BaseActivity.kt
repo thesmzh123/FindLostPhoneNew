@@ -91,10 +91,9 @@ open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListene
     var noAdsItem: MenuItem? = null
     var bp: BillingProcessor? = null
     private var fbAdView: com.facebook.ads.AdView? = null
-    private var interstitialAdFb: com.facebook.ads.InterstitialAd? = null
+    var interstitialAdFb: com.facebook.ads.InterstitialAd? = null
 
     fun loadFbInter() {
-        interstitialAdFb = InterstitialAd(this, getString(R.string.fb_inter))
         val interstitialAdListener: InterstitialAdListener = object : InterstitialAdListener {
             override fun onInterstitialDisplayed(ad: Ad?) {
                 // Interstitial ad displayed callback
@@ -116,6 +115,7 @@ open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListene
 
             override fun onAdLoaded(p0: Ad?) {
                 Log.d(TAGI, "onAdLoaded: ")
+                interstitialAdFb!!.show()
             }
 
             override fun onAdClicked(ad: Ad?) {
@@ -285,7 +285,7 @@ open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListene
         StrictMode.setThreadPolicy(policy)
         queue = Volley.newRequestQueue(this) // this = context
         databaseHelperUtils = DatabaseHelperUtils(this@BaseActivity)
-            auth = FirebaseAuth.getInstance()
+        auth = FirebaseAuth.getInstance()
         auth1 = FirebaseAuth.getInstance()
         if (!SharedPrefUtils.getBooleanData(this, "isFirst")) {
 
@@ -316,7 +316,8 @@ open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListene
                 }
             }
         }
-        AdSettings.addTestDevice("2e4d7d54-ff72-4459-8b49-045049218ba7")
+        interstitialAdFb = InterstitialAd(this,"YOUR_PLACEMENT_ID")
+        AdSettings.addTestDevice("64a7c830-fb22-4d74-b485-22f97e5a3197")
         loadFbInter()
     }
 
@@ -443,8 +444,57 @@ open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListene
 
                     }
                 } else {
-                    findNavController(R.id.nav_host_fragment).navigate(id)
+                    if (interstitialAdFb!!.isAdLoaded) {
+                        interstitialAdFb!!.show()
+                    } else {
+                        findNavController(R.id.nav_host_fragment).navigate(id)
+                    }
+                    val interstitialAdListener: InterstitialAdListener =
+                        object : InterstitialAdListener {
+                            override fun onInterstitialDisplayed(ad: Ad?) {
+                                // Interstitial ad displayed callback
+                                Log.e(TAGI, "Interstitial ad displayed.")
+                            }
 
+                            override fun onInterstitialDismissed(ad: Ad?) {
+                                // Interstitial dismissed callback
+                                loadFbInter()
+                                Log.e(TAGI, "Interstitial ad dismissed.")
+                                findNavController(R.id.nav_host_fragment).navigate(id)
+
+                            }
+
+                            override fun onError(ad: Ad?, adError: AdError) {
+                                // Ad error callback
+                                Log.e(
+                                    TAGI,
+                                    "Interstitial ad failed to load: " + adError.errorMessage
+                                )
+                            }
+
+                            override fun onAdLoaded(p0: Ad?) {
+                                Log.d(TAGI, "onAdLoaded: ")
+                            }
+
+                            override fun onAdClicked(ad: Ad?) {
+                                // Ad clicked callback
+                                Log.d(TAGI, "Interstitial ad clicked!")
+                            }
+
+                            override fun onLoggingImpression(ad: Ad?) {
+                                // Ad impression logged callback
+                                Log.d(TAGI, "Interstitial ad impression logged!")
+                            }
+                        }
+
+
+                    // For auto play video ads, it's recommended to load the ad
+                    // at least 30 seconds before it is shown
+                    interstitialAdFb!!.loadAd(
+                        interstitialAdFb!!.buildLoadAdConfig()
+                            .withAdListener(interstitialAdListener)
+                            .build()
+                    )
                 }
                 interstitial.adListener = object : AdListener() {
                     override fun onAdClosed() {
@@ -677,7 +727,57 @@ open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListene
                         Log.d(TAGI, "App Is In Background Ad Is Not Going To Show")
                     }
                 } else {
-                    findNavController(R.id.nav_host_fragment).navigate(id, bundle)
+                    if (interstitialAdFb!!.isAdLoaded) {
+                        interstitialAdFb!!.show()
+                    } else {
+                        findNavController(R.id.nav_host_fragment).navigate(id, bundle)
+                    }
+                    val interstitialAdListener: InterstitialAdListener =
+                        object : InterstitialAdListener {
+                            override fun onInterstitialDisplayed(ad: Ad?) {
+                                // Interstitial ad displayed callback
+                                Log.e(TAGI, "Interstitial ad displayed.")
+                            }
+
+                            override fun onInterstitialDismissed(ad: Ad?) {
+                                // Interstitial dismissed callback
+                                loadFbInter()
+                                Log.e(TAGI, "Interstitial ad dismissed.")
+                                findNavController(R.id.nav_host_fragment).navigate(id, bundle)
+
+                            }
+
+                            override fun onError(ad: Ad?, adError: AdError) {
+                                // Ad error callback
+                                Log.e(
+                                    TAGI,
+                                    "Interstitial ad failed to load: " + adError.errorMessage
+                                )
+                            }
+
+                            override fun onAdLoaded(p0: Ad?) {
+                                Log.d(TAGI, "onAdLoaded: ")
+                            }
+
+                            override fun onAdClicked(ad: Ad?) {
+                                // Ad clicked callback
+                                Log.d(TAGI, "Interstitial ad clicked!")
+                            }
+
+                            override fun onLoggingImpression(ad: Ad?) {
+                                // Ad impression logged callback
+                                Log.d(TAGI, "Interstitial ad impression logged!")
+                            }
+                        }
+
+
+                    // For auto play video ads, it's recommended to load the ad
+                    // at least 30 seconds before it is shown
+                    interstitialAdFb!!.loadAd(
+                        interstitialAdFb!!.buildLoadAdConfig()
+                            .withAdListener(interstitialAdListener)
+                            .build()
+                    )
 
                 }
                 interstitial.adListener = object : AdListener() {
@@ -715,6 +815,7 @@ open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListene
 
                     override fun onAdFailedToLoad(error: Int) {
                         adView.visibility = View.GONE
+
                     }
 
                 }

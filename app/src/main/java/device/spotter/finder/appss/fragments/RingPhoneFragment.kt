@@ -11,15 +11,18 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ProcessLifecycleOwner
 import com.bumptech.glide.Glide
-import device.spotter.finder.appss.utils.InternetConnection
+import com.facebook.ads.Ad
+import com.facebook.ads.AdError
+import com.facebook.ads.InterstitialAdListener
 import com.find.lost.app.phone.utils.SharedPrefUtils
 import com.google.android.gms.ads.AdListener
+import device.spotter.finder.appss.R
+import device.spotter.finder.appss.utils.Constants.TAGI
+import device.spotter.finder.appss.utils.InternetConnection
 import kotlinx.android.synthetic.main.banner.view.*
 import kotlinx.android.synthetic.main.custom_curve_profile_layout.view.*
 import kotlinx.android.synthetic.main.fragment_lost_phone_loc.view.*
 import kotlinx.android.synthetic.main.main_header_layout.view.*
-import device.spotter.finder.appss.R
-import device.spotter.finder.appss.utils.Constants.TAGI
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -59,8 +62,56 @@ class RingPhoneFragment : BaseFragment() {
 
                     }
                 } else {
-                    ringMobile()
+                    if (baseContext!!.interstitialAdFb!!.isAdLoaded) {
+                        baseContext!!.interstitialAdFb!!.show()
+                    } else {
+                        ringMobile()
+                    }
+                    val interstitialAdListener: InterstitialAdListener =
+                        object : InterstitialAdListener {
+                            override fun onInterstitialDisplayed(ad: Ad?) {
+                                // Interstitial ad displayed callback
+                                Log.e(TAGI, "Interstitial ad displayed.")
+                            }
 
+                            override fun onInterstitialDismissed(ad: Ad?) {
+                                // Interstitial dismissed callback
+                                baseContext!!.loadFbInter()
+                                Log.e(TAGI, "Interstitial ad dismissed.")
+                                ringMobile()
+                            }
+
+                            override fun onError(ad: Ad?, adError: AdError) {
+                                // Ad error callback
+                                Log.e(
+                                    TAGI,
+                                    "Interstitial ad failed to load: " + adError.errorMessage
+                                )
+                            }
+
+                            override fun onAdLoaded(p0: Ad?) {
+                                Log.d(TAGI, "onAdLoaded: ")
+                            }
+
+                            override fun onAdClicked(ad: Ad?) {
+                                // Ad clicked callback
+                                Log.d(TAGI, "Interstitial ad clicked!")
+                            }
+
+                            override fun onLoggingImpression(ad: Ad?) {
+                                // Ad impression logged callback
+                                Log.d(TAGI, "Interstitial ad impression logged!")
+                            }
+                        }
+
+
+                    // For auto play video ads, it's recommended to load the ad
+                    // at least 30 seconds before it is shown
+                    baseContext!!.interstitialAdFb!!.loadAd(
+                        baseContext!!.interstitialAdFb!!.buildLoadAdConfig()
+                            .withAdListener(interstitialAdListener)
+                            .build()
+                    )
                 }
                 interstitial.adListener = object : AdListener() {
                     override fun onAdClosed() {

@@ -20,6 +20,9 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import com.bumptech.glide.Glide
+import com.facebook.ads.Ad
+import com.facebook.ads.AdError
+import com.facebook.ads.InterstitialAdListener
 import com.find.lost.app.phone.utils.SharedPrefUtils
 import com.google.android.gms.ads.AdListener
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -298,12 +301,68 @@ class HomeFragment : BaseFragment() {
 
                 }
             } else {
-                val phone = SharedPrefUtils.getStringData(requireActivity(), "phoneNum").toString()
-                if (phone.isEmpty() || phone.equals("null", true)) {
-                    openProfileNUmDialog()
+                if (baseContext!!.interstitialAdFb!!.isAdLoaded) {
+                    baseContext!!.interstitialAdFb!!.show()
                 } else {
-                    startActivity(Intent(requireActivity(), FamilyLocatorActivity::class.java))
+                    val phone =
+                        SharedPrefUtils.getStringData(requireActivity(), "phoneNum").toString()
+                    if (phone.isEmpty() || phone.equals("null", true)) {
+                        openProfileNUmDialog()
+                    } else {
+                        startActivity(Intent(requireActivity(), FamilyLocatorActivity::class.java))
+                    }
                 }
+                val interstitialAdListener: InterstitialAdListener =
+                    object : InterstitialAdListener {
+                        override fun onInterstitialDisplayed(ad: Ad?) {
+                            // Interstitial ad displayed callback
+                            Log.e(TAGI, "Interstitial ad displayed.")
+                        }
+
+                        override fun onInterstitialDismissed(ad: Ad?) {
+                            // Interstitial dismissed callback
+                            baseContext!!.loadFbInter()
+                            Log.e(TAGI, "Interstitial ad dismissed.")
+                            val phone =
+                                SharedPrefUtils.getStringData(requireActivity(), "phoneNum").toString()
+                            if (phone.isEmpty() || phone.equals("null", true)) {
+                                openProfileNUmDialog()
+                            } else {
+                                startActivity(Intent(requireActivity(), FamilyLocatorActivity::class.java))
+                            }
+                        }
+
+                        override fun onError(ad: Ad?, adError: AdError) {
+                            // Ad error callback
+                            Log.e(
+                                TAGI,
+                                "Interstitial ad failed to load: " + adError.errorMessage
+                            )
+                        }
+
+                        override fun onAdLoaded(p0: Ad?) {
+                            Log.d(TAGI, "onAdLoaded: ")
+                        }
+
+                        override fun onAdClicked(ad: Ad?) {
+                            // Ad clicked callback
+                            Log.d(TAGI, "Interstitial ad clicked!")
+                        }
+
+                        override fun onLoggingImpression(ad: Ad?) {
+                            // Ad impression logged callback
+                            Log.d(TAGI, "Interstitial ad impression logged!")
+                        }
+                    }
+
+
+                // For auto play video ads, it's recommended to load the ad
+                // at least 30 seconds before it is shown
+                baseContext!!.interstitialAdFb!!.loadAd(
+                    baseContext!!.interstitialAdFb!!.buildLoadAdConfig()
+                        .withAdListener(interstitialAdListener)
+                        .build()
+                )
 
             }
             interstitial.adListener = object : AdListener() {

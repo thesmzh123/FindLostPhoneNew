@@ -7,14 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
-import device.spotter.finder.appss.utils.InternetConnection
 import com.find.lost.app.phone.utils.SharedPrefUtils
+import device.spotter.finder.appss.R
+import device.spotter.finder.appss.utils.Constants.TAGI
+import device.spotter.finder.appss.utils.InternetConnection
 import kotlinx.android.synthetic.main.banner.view.*
 import kotlinx.android.synthetic.main.custom_curve_profile_layout.view.*
 import kotlinx.android.synthetic.main.fragment_lost_phone_loc.view.*
 import kotlinx.android.synthetic.main.main_header_layout.view.*
-import device.spotter.finder.appss.R
-import device.spotter.finder.appss.utils.Constants.TAGI
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -95,7 +95,7 @@ class LockPhoneFragment : BaseFragment() {
                 }
             }
         }
-        baseContext!!.adView(root!!.adView)
+        adView(root!!.adView)
 
         return root
     }

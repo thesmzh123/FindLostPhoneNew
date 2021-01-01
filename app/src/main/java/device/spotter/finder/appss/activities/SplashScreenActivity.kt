@@ -13,6 +13,9 @@ import android.view.WindowManager
 import android.view.animation.AnimationUtils
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ProcessLifecycleOwner
+import com.facebook.ads.Ad
+import com.facebook.ads.AdError
+import com.facebook.ads.InterstitialAdListener
 import com.find.lost.app.phone.utils.SharedPrefUtils
 import com.google.android.gms.ads.AdListener
 import kotlinx.android.synthetic.main.activity_splash_screen.*
@@ -80,9 +83,58 @@ class SplashScreenActivity : BaseActivity() {
                     Log.d(TAGI, "App Is In Background Ad Is Not Going To Show")
                 }
             } else {
-                startActivity(Intent(applicationContext, activity.javaClass))
-                this@SplashScreenActivity.finish()
+                if (interstitialAdFb!!.isAdLoaded){
+                    interstitialAdFb!!.show()
+                }else {
+                    startActivity(Intent(applicationContext, activity.javaClass))
+                    this@SplashScreenActivity.finish()
+                }
+                val interstitialAdListener: InterstitialAdListener =
+                    object : InterstitialAdListener {
+                        override fun onInterstitialDisplayed(ad: Ad?) {
+                            // Interstitial ad displayed callback
+                            Log.e(TAGI, "Interstitial ad displayed.")
+                        }
 
+                        override fun onInterstitialDismissed(ad: Ad?) {
+                            // Interstitial dismissed callback
+                            loadFbInter()
+                            Log.e(TAGI, "Interstitial ad dismissed.")
+                            startActivity(Intent(applicationContext, activity.javaClass))
+                            this@SplashScreenActivity.finish()
+                        }
+
+                        override fun onError(ad: Ad?, adError: AdError) {
+                            // Ad error callback
+                            Log.e(
+                                TAGI,
+                                "Interstitial ad failed to load: " + adError.errorMessage
+                            )
+                        }
+
+                        override fun onAdLoaded(p0: Ad?) {
+                            Log.d(TAGI, "onAdLoaded: ")
+                        }
+
+                        override fun onAdClicked(ad: Ad?) {
+                            // Ad clicked callback
+                            Log.d(TAGI, "Interstitial ad clicked!")
+                        }
+
+                        override fun onLoggingImpression(ad: Ad?) {
+                            // Ad impression logged callback
+                            Log.d(TAGI, "Interstitial ad impression logged!")
+                        }
+                    }
+
+
+                // For auto play video ads, it's recommended to load the ad
+                // at least 30 seconds before it is shown
+                interstitialAdFb!!.loadAd(
+                    interstitialAdFb!!.buildLoadAdConfig()
+                        .withAdListener(interstitialAdListener)
+                        .build()
+                )
             }
             interstitial.adListener = object : AdListener() {
                 override fun onAdClosed() {
