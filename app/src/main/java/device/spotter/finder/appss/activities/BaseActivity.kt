@@ -115,7 +115,7 @@ open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListene
 
             override fun onAdLoaded(p0: Ad?) {
                 Log.d(TAGI, "onAdLoaded: ")
-                interstitialAdFb!!.show()
+//                interstitialAdFb!!.show()
             }
 
             override fun onAdClicked(ad: Ad?) {
