@@ -256,10 +256,10 @@ class HomeFragment : BaseFragment() {
             neworkView!!.featureDescp.setTextSize(TypedValue.COMPLEX_UNIT_PX, 14F)
         }
         neworkView!!.cardClick.setOnClickListener {
-            baseContext!!.navigateFragmentByAdsFb(R.id.networkProviderFragment)
+            baseContext!!.navigateFragmentByAds(R.id.networkProviderFragment)
         }
         neworkView!!.featureBtn.setOnClickListener {
-            baseContext!!.navigateFragmentByAdsFb(R.id.networkProviderFragment)
+            baseContext!!.navigateFragmentByAds(R.id.networkProviderFragment)
 
         }
     }
@@ -440,7 +440,7 @@ class HomeFragment : BaseFragment() {
             if (phone.isEmpty() || phone.equals("null", true)) {
                 openProfileNUmDialog()
             } else {
-                baseContext!!.navigateFragmentByAdsFb(R.id.lastHopeFragment)
+                baseContext!!.navigateFragmentByAds(R.id.lastHopeFragment)
             }
         }
         messageView!!.featureBtn.setOnClickListener {
@@ -448,7 +448,7 @@ class HomeFragment : BaseFragment() {
             if (phone.isEmpty() || phone.equals("null", true)) {
                 openProfileNUmDialog()
             } else {
-                baseContext!!.navigateFragmentByAdsFb(R.id.lastHopeFragment)
+                baseContext!!.navigateFragmentByAds(R.id.lastHopeFragment)
             }
 
         }
@@ -468,7 +468,7 @@ class HomeFragment : BaseFragment() {
             if (phone.isEmpty() || phone.equals("null", true)) {
                 openProfileNUmDialog()
             } else {
-                baseContext!!.navigateFragmentByAdsFb(R.id.ringPhoneFragment)
+                baseContext!!.navigateFragmentByAds(R.id.ringPhoneFragment)
             }
         }
         alarmView!!.featureBtn.setOnClickListener {
@@ -476,7 +476,7 @@ class HomeFragment : BaseFragment() {
             if (phone.isEmpty() || phone.equals("null", true)) {
                 openProfileNUmDialog()
             } else {
-                baseContext!!.navigateFragmentByAdsFb(R.id.ringPhoneFragment)
+                baseContext!!.navigateFragmentByAds(R.id.ringPhoneFragment)
             }
 
         }

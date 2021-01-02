@@ -94,7 +94,7 @@ class ToolsAdapter(private val toolList: ArrayList<Tools>, val context: Context)
         holder: MyHolder
     ) {
         if (position == 0) {
-            (context as BaseActivity).navigateFragmentByAdsFb(R.id.compassFragment)
+            (context as BaseActivity).navigateFragmentByAds(R.id.compassFragment)
 
         } else if (position == 1) {
             checkFlash()
