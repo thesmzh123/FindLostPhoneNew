@@ -134,7 +134,7 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
         // now, while you are testing and replace it later when you have signed up.
         // While you are using this temporary code you will only get test ads and if you release
         // your code like this to the Google Play your users will not receive ads (you will get a no fill error).
-        nativeAd = NativeAd(requireContext(), "YOUR_PLACEMENT_ID")
+        nativeAd = NativeAd(requireContext(), getString(R.string.fb_native))
         val nativeAdListener: NativeAdListener = object : NativeAdListener {
             override fun onMediaDownloaded(ad: Ad?) {
                 // Native ad finished downloading all assets
