@@ -103,6 +103,8 @@
 
             <include layout="@layout/native_ad_layout" />
 
+            <include layout="@layout/facebook_native_ad_layout" />
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -171,13 +173,13 @@
                 android:id="@+id/recyclerViewIndicator"
                 android:layout_width="match_parent"
                 android:layout_height="8dp"
+                android:layout_marginBottom="@dimen/_10sdp"
                 app:avi_animation_enable="true"
                 app:avi_drawable="@color/colorAccent"
                 app:avi_drawable_unselected="@android:color/white"
                 app:avi_height="8dp"
                 app:avi_margin="8dp"
                 app:avi_width="8dp"
-                android:layout_marginBottom="@dimen/_10sdp"
                 app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

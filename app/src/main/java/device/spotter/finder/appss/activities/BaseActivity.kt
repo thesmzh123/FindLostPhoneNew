@@ -316,7 +316,7 @@ open class BaseActivity : AppCompatActivity(), ProfileFragment.MenuButtonListene
                 }
             }
         }
-        AdSettings.addTestDevice("529ab280-5b08-4dfb-89db-a2394131eebc")
+        AdSettings.addTestDevice("6f0d4546-e1fe-4a30-9d03-6d7d24edd597")
         interstitialAdFb = InterstitialAd(this,getString(R.string.fb_inter))
         loadFbInter()
     }

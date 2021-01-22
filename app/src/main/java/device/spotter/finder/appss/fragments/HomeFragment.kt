@@ -36,6 +36,7 @@ import device.spotter.finder.appss.adapters.ToolsAdapter
 import device.spotter.finder.appss.adapters.ViewPagerAdapter
 import device.spotter.finder.appss.models.Tools
 import device.spotter.finder.appss.utils.Constants.TAGI
+import kotlinx.android.synthetic.main.facebook_native_ad_layout.view.*
 
 
 @Suppress("UNUSED_ANONYMOUS_PARAMETER")
@@ -126,7 +127,7 @@ class HomeFragment : BaseFragment() {
             override fun onPageScrollStateChanged(state: Int) {}
         })
         initTool()
-        refreshAd(root!!.nativeAd, R.layout.ad_unified)
+        refreshAd(root!!.nativeAd, R.layout.ad_unified,root!!.native_ad_container)
         root!!.nestedScrollView.fullScroll(View.FOCUS_UP)
         root!!.nestedScrollView.scrollTo(0, 0)
         return root!!

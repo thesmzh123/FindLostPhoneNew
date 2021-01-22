@@ -22,11 +22,14 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.facebook.ads.Ad
+import com.facebook.ads.*
+import com.facebook.ads.AdError
 import com.facebook.ads.AdSize
 import com.facebook.ads.AdView
 import com.find.lost.app.phone.utils.SharedPrefUtils
 import com.google.android.gms.ads.*
+import com.google.android.gms.ads.AdListener
+import com.google.android.gms.ads.InterstitialAd
 import com.google.android.gms.ads.formats.UnifiedNativeAd
 import com.google.android.gms.ads.formats.UnifiedNativeAdView
 import com.google.android.gms.common.ConnectionResult
@@ -83,6 +86,7 @@ import java.io.*
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.TimeUnit
+import kotlin.collections.ArrayList
 
 @Suppress("NAME_SHADOWING", "UNUSED_ANONYMOUS_PARAMETER")
 open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
@@ -120,6 +124,107 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
     var layoutNumber: LinearLayout? = null
     var num: MaterialTextView? = null
     private var fbAdView: AdView? = null
+    private var nativeAd: NativeAd? = null
+    private var nativeAdLayout: NativeAdLayout? = null
+    private var adView1: LinearLayout? = null
+
+    fun loadNativeAd(nativeAdContainer: NativeAdLayout) {
+        // Instantiate a NativeAd object.
+        // NOTE: the placement ID will eventually identify this as your App, you can ignore it for
+        // now, while you are testing and replace it later when you have signed up.
+        // While you are using this temporary code you will only get test ads and if you release
+        // your code like this to the Google Play your users will not receive ads (you will get a no fill error).
+        nativeAd = NativeAd(requireContext(), "YOUR_PLACEMENT_ID")
+        val nativeAdListener: NativeAdListener = object : NativeAdListener {
+            override fun onMediaDownloaded(ad: Ad?) {
+                // Native ad finished downloading all assets
+                Log.e(TAGI, "Native ad finished downloading all assets.")
+            }
+
+            override fun onError(ad: Ad?, adError: AdError) {
+                // Native ad failed to load
+                Log.e(TAGI, "Native ad failed to load: " + adError.errorMessage)
+            }
+
+            override fun onAdLoaded(ad: Ad?) {
+                // Native ad is loaded and ready to be displayed
+                Log.d(TAGI, "Native ad is loaded and ready to be displayed!")
+                if (nativeAd == null || nativeAd != ad) {
+                    return
+                }
+                // Inflate Native Ad into Container
+                inflateAd(nativeAd!!, nativeAdContainer)
+            }
+
+            override fun onAdClicked(ad: Ad?) {
+                // Native ad clicked
+                Log.d(TAGI, "Native ad clicked!")
+            }
+
+            override fun onLoggingImpression(ad: Ad?) {
+                // Native ad impression
+                Log.d(TAGI, "Native ad impression logged!")
+            }
+        }
+
+        // Request an ad
+        nativeAd!!.loadAd(
+            nativeAd!!.buildLoadAdConfig()
+                .withAdListener(nativeAdListener)
+                .build()
+        )
+    }
+
+    fun inflateAd(
+        nativeAd: NativeAd,
+        nativeAdContainer: NativeAdLayout
+    ) {
+        nativeAd.unregisterView()
+
+        // Add the Ad view into the ad container.
+        nativeAdLayout = nativeAdContainer
+        val inflater = LayoutInflater.from(requireContext())
+        // Inflate the Ad view.  The layout referenced should be the one you created in the last step.
+        adView1 =
+            inflater.inflate(R.layout.ad_unified_fb, nativeAdLayout, false) as LinearLayout
+        nativeAdLayout!!.addView(adView1)
+
+        // Add the AdOptionsView
+        val adChoicesContainer: LinearLayout = adView1!!.findViewById(R.id.ad_choices_container)
+        val adOptionsView =
+            AdOptionsView(requireContext(), nativeAd, nativeAdLayout)
+        adChoicesContainer.removeAllViews()
+        adChoicesContainer.addView(adOptionsView, 0)
+
+        // Create native UI using the ad metadata.
+        val nativeAdIcon: MediaView = adView1!!.findViewById(R.id.native_ad_icon)
+        val nativeAdTitle: TextView = adView1!!.findViewById(R.id.native_ad_title)
+        val nativeAdMedia: MediaView = adView1!!.findViewById(R.id.native_ad_media)
+        val nativeAdSocialContext: TextView = adView1!!.findViewById(R.id.native_ad_social_context)
+        val nativeAdBody: TextView = adView1!!.findViewById(R.id.native_ad_body)
+        val sponsoredLabel: TextView = adView1!!.findViewById(R.id.native_ad_sponsored_label)
+        val nativeAdCallToAction: Button = adView1!!.findViewById(R.id.native_ad_call_to_action)
+
+        // Set the Text.
+        nativeAdTitle.text = nativeAd.advertiserName
+        nativeAdBody.text = nativeAd.adBodyText
+        nativeAdSocialContext.text = nativeAd.adSocialContext
+        nativeAdCallToAction.visibility =
+            if (nativeAd.hasCallToAction()) View.VISIBLE else View.INVISIBLE
+        nativeAdCallToAction.text = nativeAd.adCallToAction
+        sponsoredLabel.text = nativeAd.sponsoredTranslation
+
+        // Create a list of clickable views
+        val clickableViews: ArrayList<View> = ArrayList()
+
+        clickableViews.add(nativeAdTitle)
+        clickableViews.add(nativeAdCallToAction)
+
+        // Register the Title and CTA button to listen for clicks.
+        nativeAd.registerViewForInteraction(
+            adView1!!, nativeAdMedia, nativeAdIcon, clickableViews
+        )
+    }
 
     fun fbBanner(linearLayout: LinearLayout) {
         if (!SharedPrefUtils.getBooleanData(requireContext(), "hideAds")) {
@@ -275,6 +380,7 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
                 FirebaseAuth.getInstance().signOut()
             }
         }
+        AdSettings.addTestDevice("6f0d4546-e1fe-4a30-9d03-6d7d24edd597")
 
     }
 
@@ -1428,7 +1534,11 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
     }
 
     @SuppressLint("InflateParams")
-    fun refreshAd(frameLayout: FrameLayout, layout: Int) {
+    fun refreshAd(
+        frameLayout: FrameLayout,
+        layout: Int,
+        nativeAdContainer: NativeAdLayout
+    ) {
 
         try {
             if (!SharedPrefUtils.getBooleanData(requireActivity(), "hideAds")) {
@@ -1454,6 +1564,9 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
                 val adLoader = builder.withAdListener(object : AdListener() {
                     override fun onAdFailedToLoad(errorCode: Int) {
                         frameLayout.visibility = View.GONE
+                        nativeAdContainer.visibility = View.VISIBLE
+                        loadNativeAd(nativeAdContainer)
+
                     }
                 }).build()
 

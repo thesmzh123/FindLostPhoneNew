@@ -23,6 +23,9 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ProcessLifecycleOwner
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
+import com.facebook.ads.Ad
+import com.facebook.ads.AdError
+import com.facebook.ads.InterstitialAdListener
 import device.spotter.finder.appss.utils.InternetConnection
 import com.find.lost.app.phone.utils.SharedPrefUtils
 import com.google.android.gms.ads.AdListener
@@ -113,7 +116,57 @@ class FamilyLocatorActivity : BaseActivity(), OnMapReadyCallback, LocationListen
 
                 }
             } else {
-                showNumberDialog()
+                if (interstitialAdFb!!.isAdLoaded){
+                    interstitialAdFb!!.show()
+                }else {
+                    showNumberDialog()
+                }
+                val interstitialAdListener: InterstitialAdListener =
+                    object : InterstitialAdListener {
+                        override fun onInterstitialDisplayed(ad: Ad?) {
+                            // Interstitial ad displayed callback
+                            Log.e(TAGI, "Interstitial ad displayed.")
+                        }
+
+                        override fun onInterstitialDismissed(ad: Ad?) {
+                            // Interstitial dismissed callback
+                            loadFbInter()
+                            Log.e(TAGI, "Interstitial ad dismissed.")
+                            showNumberDialog()
+                        }
+
+                        override fun onError(ad: Ad?, adError: AdError) {
+                            // Ad error callback
+                            Log.e(
+                                TAGI,
+                                "Interstitial ad failed to load: " + adError.errorMessage
+                            )
+                        }
+
+                        override fun onAdLoaded(p0: Ad?) {
+                            Log.d(TAGI, "onAdLoaded: ")
+                        }
+
+                        override fun onAdClicked(ad: Ad?) {
+                            // Ad clicked callback
+                            Log.d(TAGI, "Interstitial ad clicked!")
+                        }
+
+                        override fun onLoggingImpression(ad: Ad?) {
+                            // Ad impression logged callback
+                            Log.d(TAGI, "Interstitial ad impression logged!")
+                        }
+                    }
+
+
+                // For auto play video ads, it's recommended to load the ad
+                // at least 30 seconds before it is shown
+                interstitialAdFb!!.loadAd(
+                    interstitialAdFb!!.buildLoadAdConfig()
+                        .withAdListener(interstitialAdListener)
+                        .build()
+                )
+
 
             }
             interstitial.adListener = object : AdListener() {
@@ -505,7 +558,58 @@ class FamilyLocatorActivity : BaseActivity(), OnMapReadyCallback, LocationListen
 
                         }
                     } else {
-                        openActivity(true, FriendRequestActivity())
+                        if (interstitialAdFb!!.isAdLoaded){
+                            interstitialAdFb!!.show()
+                        }else {
+                            openActivity(true, FriendRequestActivity())
+
+                        }
+                        val interstitialAdListener: InterstitialAdListener =
+                            object : InterstitialAdListener {
+                                override fun onInterstitialDisplayed(ad: Ad?) {
+                                    // Interstitial ad displayed callback
+                                    Log.e(TAGI, "Interstitial ad displayed.")
+                                }
+
+                                override fun onInterstitialDismissed(ad: Ad?) {
+                                    // Interstitial dismissed callback
+                                    loadFbInter()
+                                    Log.e(TAGI, "Interstitial ad dismissed.")
+                                    openActivity(true, FriendRequestActivity())
+
+                                }
+
+                                override fun onError(ad: Ad?, adError: AdError) {
+                                    // Ad error callback
+                                    Log.e(
+                                        TAGI,
+                                        "Interstitial ad failed to load: " + adError.errorMessage
+                                    )
+                                }
+
+                                override fun onAdLoaded(p0: Ad?) {
+                                    Log.d(TAGI, "onAdLoaded: ")
+                                }
+
+                                override fun onAdClicked(ad: Ad?) {
+                                    // Ad clicked callback
+                                    Log.d(TAGI, "Interstitial ad clicked!")
+                                }
+
+                                override fun onLoggingImpression(ad: Ad?) {
+                                    // Ad impression logged callback
+                                    Log.d(TAGI, "Interstitial ad impression logged!")
+                                }
+                            }
+
+
+                        // For auto play video ads, it's recommended to load the ad
+                        // at least 30 seconds before it is shown
+                        interstitialAdFb!!.loadAd(
+                            interstitialAdFb!!.buildLoadAdConfig()
+                                .withAdListener(interstitialAdListener)
+                                .build()
+                        )
 
                     }
                     interstitial.adListener = object : AdListener() {
@@ -531,7 +635,57 @@ class FamilyLocatorActivity : BaseActivity(), OnMapReadyCallback, LocationListen
 
                         }
                     } else {
-                        openActivity(false, FriendRequestActivity())
+                        if (interstitialAdFb!!.isAdLoaded){
+                            interstitialAdFb!!.show()
+                        }else {
+                            openActivity(false, FriendRequestActivity())
+                        }
+                        val interstitialAdListener: InterstitialAdListener =
+                            object : InterstitialAdListener {
+                                override fun onInterstitialDisplayed(ad: Ad?) {
+                                    // Interstitial ad displayed callback
+                                    Log.e(TAGI, "Interstitial ad displayed.")
+                                }
+
+                                override fun onInterstitialDismissed(ad: Ad?) {
+                                    // Interstitial dismissed callback
+                                    loadFbInter()
+                                    Log.e(TAGI, "Interstitial ad dismissed.")
+                                    openActivity(false, FriendRequestActivity())
+                                }
+
+                                override fun onError(ad: Ad?, adError: AdError) {
+                                    // Ad error callback
+                                    Log.e(
+                                        TAGI,
+                                        "Interstitial ad failed to load: " + adError.errorMessage
+                                    )
+                                }
+
+                                override fun onAdLoaded(p0: Ad?) {
+                                    Log.d(TAGI, "onAdLoaded: ")
+                                }
+
+                                override fun onAdClicked(ad: Ad?) {
+                                    // Ad clicked callback
+                                    Log.d(TAGI, "Interstitial ad clicked!")
+                                }
+
+                                override fun onLoggingImpression(ad: Ad?) {
+                                    // Ad impression logged callback
+                                    Log.d(TAGI, "Interstitial ad impression logged!")
+                                }
+                            }
+
+
+                        // For auto play video ads, it's recommended to load the ad
+                        // at least 30 seconds before it is shown
+                        interstitialAdFb!!.loadAd(
+                            interstitialAdFb!!.buildLoadAdConfig()
+                                .withAdListener(interstitialAdListener)
+                                .build()
+                        )
+
 
                     }
                     interstitial.adListener = object : AdListener() {
