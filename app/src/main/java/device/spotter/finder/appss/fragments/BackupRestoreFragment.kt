@@ -29,6 +29,7 @@ import device.spotter.finder.appss.utils.RestoreContacts
 import kotlinx.android.synthetic.main.banner.view.*
 import kotlinx.android.synthetic.main.contact_email_restore_dialog.view.*
 import kotlinx.android.synthetic.main.custom_curve_profile_layout.view.*
+import kotlinx.android.synthetic.main.fb_banner.view.*
 import kotlinx.android.synthetic.main.fragment_backup_restore.view.*
 import kotlinx.android.synthetic.main.main_header_layout.view.*
 import java.io.File
@@ -115,7 +116,9 @@ class BackupRestoreFragment : BaseFragment() {
                 ContactsBackground("memorybackup").execute()
             }
         }
-        baseContext!!.adView(root!!.adView)
+//        baseContext!!.adView(root!!.adView)
+        adView(root!!.adView, root!!.banner_container)
+
         return root
     }
 

@@ -102,4 +102,6 @@
     </LinearLayout>
 
     <include layout="@layout/banner" />
+    <include layout="@layout/fb_banner" />
+
 </LinearLayout>

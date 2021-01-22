@@ -13,6 +13,7 @@ import device.spotter.finder.appss.utils.Constants.TAGI
 import device.spotter.finder.appss.utils.InternetConnection
 import kotlinx.android.synthetic.main.banner.view.*
 import kotlinx.android.synthetic.main.custom_curve_profile_layout.view.*
+import kotlinx.android.synthetic.main.fb_banner.view.*
 import kotlinx.android.synthetic.main.fragment_lost_phone_loc.view.*
 import kotlinx.android.synthetic.main.main_header_layout.view.*
 import org.json.JSONArray
@@ -95,7 +96,8 @@ class LockPhoneFragment : BaseFragment() {
                 }
             }
         }
-        adView(root!!.adView)
+        adView(root!!.adView,root!!.banner_container)
+//        fbBanner(root!!.banner_container)
 
         return root
     }

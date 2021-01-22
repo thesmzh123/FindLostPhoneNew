@@ -25,6 +25,7 @@ import device.spotter.finder.appss.R
 import device.spotter.finder.appss.models.MapView
 import device.spotter.finder.appss.receivers.UpdateReceiver
 import device.spotter.finder.appss.utils.Constants.TAGI
+import kotlinx.android.synthetic.main.fb_banner.view.*
 
 @Suppress("UNUSED_ANONYMOUS_PARAMETER")
 class LostPhoneLocFragment : BaseFragment() {
@@ -79,7 +80,8 @@ class LostPhoneLocFragment : BaseFragment() {
                 cancelAlarm()
             }
         }
-        baseContext!!.adView(root!!.adView)
+//        baseContext!!.adView(root!!.adView)
+        adView(root!!.adView,root!!.banner_container)
 
         return root!!
     }

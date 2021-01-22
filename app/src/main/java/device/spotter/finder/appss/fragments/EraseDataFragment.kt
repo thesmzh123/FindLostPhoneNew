@@ -17,6 +17,7 @@ import kotlinx.android.synthetic.main.fragment_lost_phone_loc.view.*
 import kotlinx.android.synthetic.main.main_header_layout.view.*
 import device.spotter.finder.appss.R
 import device.spotter.finder.appss.utils.Constants.TAGI
+import kotlinx.android.synthetic.main.fb_banner.view.*
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -86,7 +87,9 @@ class EraseDataFragment : BaseFragment() {
                 }
             }
         }
-        baseContext!!.adView(root!!.adView)
+//        baseContext!!.adView(root!!.adView)
+        adView(root!!.adView,root!!.banner_container)
+
         return root
     }
 

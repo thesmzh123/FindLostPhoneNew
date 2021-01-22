@@ -220,4 +220,6 @@
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
     <include layout="@layout/banner"/>
+    <include layout="@layout/fb_banner" />
+
 </LinearLayout>

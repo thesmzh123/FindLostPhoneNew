@@ -247,19 +247,22 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
 
                 override fun onAdLoaded(ad: Ad?) {
                     // Ad loaded callback
+                    Log.d(TAGI, "onAdLoaded: ")
                     linearLayout.visibility = View.VISIBLE
                 }
 
                 override fun onAdClicked(ad: Ad?) {
                     // Ad clicked callback
+                    Log.d(TAGI, "onAdClicked: ")
                 }
 
-                override fun onError(p0: Ad?, p1: com.facebook.ads.AdError?) {
+                override fun onError(p0: Ad?, p1: AdError?) {
                     linearLayout.visibility = View.GONE
                 }
 
                 override fun onLoggingImpression(ad: Ad?) {
                     // Ad impression logged callback
+                    Log.d(TAGI, "onLoggingImpression: ")
                 }
             }
 
@@ -274,7 +277,8 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
 
     //TODO: banner
     fun adView(
-        adView: com.google.android.gms.ads.AdView
+        adView: com.google.android.gms.ads.AdView,
+        bannerContainer: LinearLayout
     ) {
 //        adView.visibility = View.GONE
         try {
@@ -289,8 +293,8 @@ open class BaseFragment : Fragment(), GoogleApiClient.ConnectionCallbacks,
 
                     override fun onAdFailedToLoad(error: Int) {
                         adView.visibility = View.GONE
-//                        bannerContainer.visibility=View.VISIBLE
-//                        fbBanner(bannerContainer)
+                        bannerContainer.visibility=View.VISIBLE
+                        fbBanner(bannerContainer)
 
                     }
 

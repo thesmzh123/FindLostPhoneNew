@@ -20,6 +20,7 @@ import kotlinx.android.synthetic.main.fragment_network_provider.view.*
 import kotlinx.android.synthetic.main.main_header_layout.view.*
 import device.spotter.finder.appss.R
 import device.spotter.finder.appss.utils.Constants.TAGI
+import kotlinx.android.synthetic.main.fb_banner.view.*
 import org.json.JSONObject
 
 
@@ -52,7 +53,9 @@ class NetworkProviderFragment : BaseFragment() {
                 return@setOnKeyListener false
             }
         }
-        baseContext!!.adView(root!!.adView)
+//        baseContext!!.adView(root!!.adView)
+        adView(root!!.adView, root!!.banner_container)
+
         return root
     }
 
